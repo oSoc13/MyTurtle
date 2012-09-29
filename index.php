@@ -22,7 +22,7 @@
             	<section class="publicTransport clearfix">
                 	<div class="titleBar clearfix">
                     	<div class="titleBarContainer clearfix">
-                        	<img src="client/css/images/FT__0005_treinstation.png" class="icon_big">
+                        	<div class="icon_big train"></div>
                     		<h2>Vilvoorde</h2>
                         </div>
                     	<div class="titleDistance clearfix">
@@ -31,7 +31,7 @@
                                 <li>00:25</li>
                             </ul>
                             <ul class="distanceByFoot tbDistance">
-                            	<li><img src="client/css/images/FT__0001_fietsafstand.png" alt="Wandel afstand"  /></li>
+                            	<li><img src="client/css/images/FT__0000_wandelafstand.png"  /></li>
                             	<li>00:40</li>
                             </ul>
                         </div>
@@ -75,6 +75,49 @@
                                  <div class="time">
                                 	<p>10:36</p>
                                     <p class="red">+0:02</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="publicTransport clearfix">
+                	<div class="titleBar clearfix">
+                    	<div class="titleBarContainer clearfix">
+                        	<div class="icon_big bus"></div>
+                    		<h2>Stop Bicoque</h2>
+                        </div>
+                    	<div class="titleDistance clearfix">
+                        	<ul class="distanceWithBike tbDistance">
+                            	<li><img src="client/css/images/FT__0001_fietsafstand.png" alt="Fiets afstand" /></li>
+                                <li>00:25</li>
+                            </ul>
+                            <ul class="distanceByFoot tbDistance">
+                            	<li><img src="client/css/images/FT__0000_wandelafstand.png" alt="Wandel afstand"  /></li>
+                            	<li>00:40</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="ptResults">
+                        <ul>
+                            <li>
+                            	<div class="floatLeft">
+                                    <div class="infoOrNumber n58"><p>58</p></div>
+                                    <h3 class="destination">Vilvoorde-station</h3>
+                                </div>
+                                <div class="time">
+                                    <p>11:25</p>
+                                </div>
+                                
+                            </li>
+                            <li>
+                            	<div class="floatLeft">
+                                    <div class="infoOrNumber n58"><p>58</p></div>
+                                    <h3 class="destination">Ysen</h3>
+                                 </div>
+                                 <div class="time">
+                                	<p>10:25</p>
+                                    <p class="red">+0:05</p>
                                 </div>
                             </li>
                         </ul>
