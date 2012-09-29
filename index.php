@@ -27,7 +27,6 @@
                             <div class="distanceByFoot tbDistance">00:40</div>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
                     <div class="ptResults">
                         <ul>
                             <li>
@@ -79,7 +78,6 @@
                             <div class="distanceByFoot tbDistance">00:30</div>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
                     <div class="ptResults">
                         <ul>
                             <li>
@@ -89,7 +87,7 @@
                                     <h3 class="destination">Vilvoorde-station</h3>
                                 </div>
                                 <div class="time">
-                                    <p>11:25</p>
+                                    <p>10:25</p>
                                 </div>
                                 
                             </li>
@@ -100,7 +98,18 @@
                                     <h3 class="destination">Ysen</h3>
                                  </div>
                                  <div class="time">
-                                	<p>10:25</p>
+                                	<p>10:48</p>
+                                    <p class="red">+0:05</p>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="floatLeft">
+                                    <div class="infoOrNumber n58"><p>58</p></div>
+                                    <div class="tramOrBus bus"></div>
+                                    <h3 class="destination">Vilvoorde-Station</h3>
+                                 </div>
+                                 <div class="time">
+                                	<p>11:25</p>
                                     <p class="red">+0:05</p>
                                 </div>
                             </li>

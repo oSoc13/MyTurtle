@@ -367,6 +367,12 @@ footer{
   	}
 }
 
+@media all and (max-width: 480px) {
+  .publicTransport .titleBar .titleDistance{
+  	display:none;
+  	}
+}
+
 
 .floatLeft{
 	float:left;
