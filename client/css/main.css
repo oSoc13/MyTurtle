@@ -18,6 +18,11 @@ textarea {
     color: #222;
 }
 
+div, ul, li, h1, h2, h3, h4, section, p{
+	background-repeat:no-repeat;
+	background-position:left center;
+}
+
 h2 {
 display: block;
 -webkit-margin-before: 0;
@@ -110,11 +115,11 @@ ul, ul li{
 	-webkit-margin-start: 0px;
 	-webkit-margin-end: 0px;
 	-webkit-padding-start: 0;
-}
+	}
 
 ul li{
 	float:left;
-}
+	}
 
 #container{
 	position:absolute;
@@ -122,17 +127,23 @@ ul li{
 	left:0;
 	right:0;
 	bottom:0;
-}
+	}
+
+footer{
+	position:fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	height:65px;
+	background-color:#FFF;
+	}
 
 .turtle{
-	width:50%; /* TO BE ADJUSTED ACCORDING TO AMOUNT OF SCREENS */
+	width:50%; 
 	float:left;
 	background-color:#DDD;
 	height:100%;
-}
-
-.titleBar h2{
-}
+	}
 
 
 /* PUBLIC TRANSPORT SCREEN CSS */
@@ -140,7 +151,7 @@ ul li{
 .publicTransport{
 	padding-bottom:20px;
 	background-color:#FFF;
-}
+	}
 
 .publicTransport .titleBar{
 	width:100%;
@@ -148,18 +159,15 @@ ul li{
 	color:#FFF;
 	background-color:#333;
 	position:relative;
-}
+	}
 
 .publicTransport h2{
 	margin-left:15px;
 	padding-left:85px;
-	background-repeat:no-repeat;
-	background-position:left center;
-	
 	font-size:32px;
 	font-weight:bold;
 	line-height:2.6em;
-}
+	}
 
 .publicTransport .titleBar .titleDistance{
 	height:55px;
@@ -177,33 +185,29 @@ ul li{
 	background: -ms-linear-gradient(top, #232323 0%,#333333 100%); /* IE10+ */
 	background: linear-gradient(to bottom, #232323 0%,#333333 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232323', endColorstr='#333333',GradientType=0 ); /* IE6-9 */
-}
+	}
 
 .publicTransport .titleBar .titleDistance .tbDistance{
 	float:left;
 	width:auto;
-	height:100%;
 	margin:0 5px 0 15px;
 	font-size:11px;
 	padding-left:45px;
-	background-repeat:no-repeat;
-	background-position:left center;
-}
+	}
 
 .publicTransport .titleBar .titleDistance .distanceBike{
 	background-image:url(images/FT__0001_fietsafstand.png);
-}
+	}
 
 .publicTransport .titleBar .titleDistance .distanceByFoot{
 	background-image:url(images/FT__0000_wandelafstand.png);
-}
+	}
 
 /* NEXT TRAINS/TRAMS/BUSSES FROM STATIONS */
 .publicTransport .ptResults{
 	display:block;
 	width:100%;
-}
-
+	}
 
 .publicTransport .ptResults ul li{
 	display:block;
@@ -218,9 +222,10 @@ ul li{
 
 .publicTransport .ptResults ul li:nth-child(2n){
 	background-color:#FFF;
-}
+	}
 
-.publicTransport .ptResults ul li .infoOrNumber{
+.publicTransport .ptResults ul li .infoOrNumber, 
+.publicTransport .ptResults ul li .tramOrBus{
 	width:40px;
 	height:40px;
 	background-color:#000;
@@ -230,39 +235,48 @@ ul li{
 	font-size:17px;
 	color:#FFF;
 	float:left;
-}
+	}
+
+.publicTransport .ptResults ul li .tramOrBus{
+	margin:0;
+	background-color:#ccc;
+	}
 
 .publicTransport .ptResults ul li h3{
 	float:left;
 	margin-left:15px;
 	line-height:2.0em;
-}
+	}
 
 .publicTransport .ptResults ul li .time{
 	float:right;
 	width:25%;
 	line-height:2.1em;
-}
+	}
 
 .publicTransport .ptResults ul li .time p{
 	float:left;
 	display:block;
 	width:40%;
 	text-align:center;
-}
+	}
 
-.publicTransport .ptResults ul li .subResult{
-	padding-left:40px;
+.publicTransport .ptResults ul .subResult{
+	background-image:url(images/arrow.png);
+	background-position:15px top;
+	}
+
+.publicTransport .ptResults ul .subResult .infoOrNumber{
+	margin-left:55px;
 }
 
 .publicTransport .ptResults ul li .time p:nth-child(2n){
 
-}
-
+	}
 
 .red{
 	color:#c30000;
-}
+	}
 
 
 /* ============================= !!! =============================
@@ -274,41 +288,51 @@ ul li{
 /*TRAM*/
 .publicTransport h2.tram{
 	background-image:url(images/FT__0004_tramhalte.png);
-}
+	}
 
 /*BUS*/
 .publicTransport h2.bus{
 	background-image:url(images/FT__0003_bushalte.png);
-}
+	}
 
 /*TRAIN*/
 .publicTransport h2.train{
 	background-image:url(images/FT__0005_treinstation.png);
-}
+	}
 
 
 /*===TRAINS===*/
 /*IC-train*/
 .publicTransport .ptResults ul li .infoOrNumber.IC{
 	background-color:#333;
-}
+	}
 
 /*IR-train*/
 .publicTransport .ptResults ul li .infoOrNumber.IR{
 	background-color:#666;
-}
+	}
 
 /*L-train*/
 .publicTransport .ptResults ul li .infoOrNumber.L{
 	background-color:#999;
-}
+	}
 
 
 /*===BUSSES==*/
 /*Bus 58*/
 .publicTransport .ptResults ul li .infoOrNumber.n58{
 	background-color:#338c26;
-}
+	}
+
+/*SUB-CLASS BUS*/
+.publicTransport .ptResults ul li .tramOrBus.bus{
+	background-image:url(images/FT__0002_bus.png);
+	}
+
+/*SUB-CLASS TRAM*/
+.publicTransport .ptResults ul li .tramOrBus.tram{
+	background-image:url(images/FT__0003_tram.png);
+	}
 
 
 
@@ -317,15 +341,15 @@ ul li{
 */
 .publicTransport .icon_big.train{
 	background-image:url(images/FT__0005_treinstation.png);
-}
+	}
 
 .publicTransport .icon_big.tram{
 	background-image:url(images/FT__0004_tramhalte.png);
-}
+	}
 
 .publicTransport .icon_big.bus{
 	background-image:url(images/FT__0003_bushalte.png);
-}
+	}
 
 /*
 * LOCATION TURTLE
@@ -335,12 +359,12 @@ ul li{
 	background-color:#969;
 	-webkit-box-shadow:  -3px 2px 2px 1px rgba(0, 0, 0, 0.3);
     box-shadow:  -3px 2px 2px 1px rgba(0, 0, 0, 0.3);
-}
+	}
 
 @media all and (max-width: 800px) {
   .turtle{
   	width:100%;
-  }
+  	}
 }
 
 

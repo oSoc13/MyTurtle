@@ -49,8 +49,8 @@
                                 	<p>10:25</p>
                                 </div>
                             </li>
-                            <li>
-                            	<div class="floatLeft subResult">
+                            <li class="subResult">
+                            	<div class="floatLeft">
                                     <div class="infoOrNumber IR"><p>IR</p></div>
                                     <h3 class="destination">Essen</h3>
                                  </div>
@@ -85,6 +85,7 @@
                             <li>
                             	<div class="floatLeft">
                                     <div class="infoOrNumber n58"><p>58</p></div>
+                                    <div class="tramOrBus bus"></div>
                                     <h3 class="destination">Vilvoorde-station</h3>
                                 </div>
                                 <div class="time">
@@ -95,6 +96,7 @@
                             <li>
                             	<div class="floatLeft">
                                     <div class="infoOrNumber n58"><p>58</p></div>
+                                    <div class="tramOrBus tram"></div>
                                     <h3 class="destination">Ysen</h3>
                                  </div>
                                  <div class="time">
@@ -109,6 +111,10 @@
             <section class="turtle test">
             </section>
         </div>
+        
+        <footer>
+        	
+        </footer>
 
         <script src="client/js/libs/jquery-1.8.0.min.js"></script>
         <script src="client/js/main.js"></script>
