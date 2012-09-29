@@ -26,14 +26,8 @@
                     		<h2>Vilvoorde</h2>
                         </div>
                     	<div class="titleDistance clearfix">
-                        	<ul class="distanceWithBike tbDistance">
-                            	<li><img src="client/css/images/FT__0001_fietsafstand.png" alt="Fiets afstand" /></li>
-                                <li>00:25</li>
-                            </ul>
-                            <ul class="distanceByFoot tbDistance">
-                            	<li><img src="client/css/images/FT__0000_wandelafstand.png"  /></li>
-                            	<li>00:40</li>
-                            </ul>
+                        	<div class="distanceBike tbDistance">00:21</div>
+                            <div class="distanceByFoot tbDistance">00:40</div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -87,14 +81,8 @@
                     		<h2>Stop Bicoque</h2>
                         </div>
                     	<div class="titleDistance clearfix">
-                        	<ul class="distanceWithBike tbDistance">
-                            	<li><img src="client/css/images/FT__0001_fietsafstand.png" alt="Fiets afstand" /></li>
-                                <li>00:25</li>
-                            </ul>
-                            <ul class="distanceByFoot tbDistance">
-                            	<li><img src="client/css/images/FT__0000_wandelafstand.png" alt="Wandel afstand"  /></li>
-                            	<li>00:40</li>
-                            </ul>
+                        	<div class="distanceBike tbDistance">00:12</div>
+                            <div class="distanceByFoot tbDistance">00:30</div>
                         </div>
                     </div>
                     <div class="clearfix"></div>
