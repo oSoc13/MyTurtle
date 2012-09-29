@@ -134,7 +134,13 @@ ul li{
 .titleBar h2{
 }
 
+
 /* PUBLIC TRANSPORT SCREEN CSS */
+
+.publicTransport{
+	padding-bottom:20px;
+	background-color:#FFF;
+}
 
 .publicTransport .titleBar{
 	width:100%;
@@ -144,15 +150,12 @@ ul li{
 	position:relative;
 }
 
-.publicTransport .icon_big{
-	width:81px;
-	height:81px;
-	margin-left:15px;
-	float:left;
-}
-
 .publicTransport h2{
-	float:left;
+	margin-left:15px;
+	padding-left:85px;
+	background-repeat:no-repeat;
+	background-position:left center;
+	
 	font-size:32px;
 	font-weight:bold;
 	line-height:2.6em;
@@ -263,9 +266,26 @@ ul li{
 
 
 /* ============================= !!! =============================
-* DIFFERENT TRAIN/BUS AND TRAMS NUMBERS OR LINES + ICONS
+* ICONS + BUS NUMBERS + TRAIN LINES
 *  ============================= !!! =============================
 */
+
+/*===TITLE BARS ICON===*/
+/*TRAM*/
+.publicTransport h2.tram{
+	background-image:url(images/FT__0004_tramhalte.png);
+}
+
+/*BUS*/
+.publicTransport h2.bus{
+	background-image:url(images/FT__0003_bushalte.png);
+}
+
+/*TRAIN*/
+.publicTransport h2.train{
+	background-image:url(images/FT__0005_treinstation.png);
+}
+
 
 /*===TRAINS===*/
 /*IC-train*/
@@ -283,11 +303,14 @@ ul li{
 	background-color:#999;
 }
 
+
 /*===BUSSES==*/
 /*Bus 58*/
 .publicTransport .ptResults ul li .infoOrNumber.n58{
 	background-color:#338c26;
 }
+
+
 
 /*
 * ICONS TITLES PUBLIC TRANSPORT

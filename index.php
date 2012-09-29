@@ -20,11 +20,8 @@
         <div id="container">
         	<section class="turtle">
             	<section class="publicTransport clearfix">
-                	<div class="titleBar clearfix">
-                    	<div class="titleBarContainer clearfix">
-                        	<div class="icon_big train"></div>
-                    		<h2>Vilvoorde</h2>
-                        </div>
+                	<div class="titleBar">
+                    	<h2 class="titleBarContainer train">Vilvoorde</h2>
                     	<div class="titleDistance clearfix">
                         	<div class="distanceBike tbDistance">00:21</div>
                             <div class="distanceByFoot tbDistance">00:40</div>
@@ -75,11 +72,8 @@
                     </div>
                 </section>
                 <section class="publicTransport clearfix">
-                	<div class="titleBar clearfix">
-                    	<div class="titleBarContainer clearfix">
-                        	<div class="icon_big bus"></div>
-                    		<h2>Stop Bicoque</h2>
-                        </div>
+                	<div class="titleBar">
+                    	<h2 class="titleBarContainer bus">Stop Bicoque</h2>
                     	<div class="titleDistance clearfix">
                         	<div class="distanceBike tbDistance">00:12</div>
                             <div class="distanceByFoot tbDistance">00:30</div>
