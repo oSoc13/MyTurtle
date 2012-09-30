@@ -1,6 +1,7 @@
 $(document).ready(function() {
   setTimeOnScreen();
   setImageAtStart();
+  timer();
 });
 
 function setTimeOnScreen(){
@@ -24,3 +25,11 @@ function setImageAtStart(){
 		$(this).find(".img").css({"width":widthImg, "height":widthImg});
 	});
 }
+
+function timer(){
+	var offset = $(".active").position().left;
+	var widthBar = $(".active").width();
+	$(".timerBarYellow").css("left",offset);
+	$(".timerBarYellow").animate({"width":widthBar}, 20000);
+
+};

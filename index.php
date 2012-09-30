@@ -118,8 +118,19 @@
                 </section>
             </section>
             <section class="turtle location clearfix">
-            	<section class="titleBar">
-                
+            	<section class="titleBar clearfix">
+                	<div class="timerBar">
+                    	<div class="timerBarYellow"></div>
+                    </div>
+                	<div id="social" class="nav active">
+                    	<h4>Social</h4>
+                    </div>
+                    <div id="news" class="nav">
+                    	<h4>News</h4>
+                    </div>
+                    <div id="location" class="nav">
+                    	<h4>Location</h4>
+                    </div>
                 	<section class="clock">
                         <h4>10:21</h4>
                     </section>

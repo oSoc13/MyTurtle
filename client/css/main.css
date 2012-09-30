@@ -391,6 +391,41 @@ footer{
 	background: linear-gradient(to bottom,  #5d0e48 0%,#b91c8f 100%); /* W3C */
 	position:relative;
 	}
+
+.location .titleBar .timerBar{
+	height:5px;
+	width:100%;
+}
+
+.location .titleBar .timerBarYellow{
+	width:0;
+	height:5px;
+	background-color:#d0e900;
+	z-index:19999;
+	position:absolute;
+	left:0;
+}
+	
+.location .titleBar .nav{
+	width:15%;
+	height:75px;
+	margin:0;
+	float:left;
+	color:#ba73a7;
+	text-align:center;
+	line-height:4em;
+}
+
+.location .titleBar .nav.active{
+	background-color:#bd1d92;
+	width:25%;
+	-webkit-box-shadow: 10px -4px 2px 1px rgba(0, 0, 0, 0.4);
+    box-shadow:  3px -4px 2px 1px rgba(0, 0, 0, 0.4);
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
+	z-index:8888;
+	color:#FFF;
+}
+
 	
 .location .titleBar .clock{
 	width:210px;
@@ -487,7 +522,7 @@ footer{
 	}
 	
 	.publicTransport h2{
-		line-height:2.8em;
+		line-height:3em;
 	}
 	
 	.publicTransport .ptResults ul li h3{
@@ -527,7 +562,7 @@ footer{
 	}
 	
 	.publicTransport h2{
-		line-height:3.3em;
+		line-height:3.5em;
 	}
 	
 	.publicTransport .ptResults ul li h3{
@@ -544,7 +579,7 @@ footer{
 	}
 }
 
-@media all and (max-width: 700px) {
+@media all and (max-width: 750px) {
   	.turtle{
   		width:100%;
 		-webkit-overflow-scrolling: touch;
