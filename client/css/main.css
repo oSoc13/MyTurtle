@@ -500,14 +500,11 @@ footer{
 	
 	.publicTransport .titleBar .titleDistance .tbDistance{
 		float:none;
-		width:auto;
 		margin:0 0 0 0;
 		font-size:11px;
-		padding-left:45px;
 	}
 	
 	.publicTransport .titleBar .titleDistance{
-		height:45px;
 		line-height:1.9em;
 		padding-top:10px;
 	}
@@ -572,10 +569,18 @@ footer{
 	
 }
 
-@media all and (max-width: 600px) {
-  .publicTransport .titleBar .titleDistance{
-  	display:none;
-  	}
+@media all and (max-width: 500px) {
+	
+	.publicTransport .titleBar .titleDistance .tbDistance{
+		float:none;
+		margin:0 0 0 0;
+		font-size:11px;
+	}
+	
+	.publicTransport .titleBar .titleDistance{
+		line-height:1.9em;
+		padding-top:10px;
+	}
 }
 
 
