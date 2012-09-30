@@ -4,16 +4,32 @@ if (!defined('BASEPATH'))
 
 class Initialize extends CI_Controller {
     
-    public function index() {
+    public function index($id = FALSE) {
         
         /*
          * Dummy configuration array
          * 
-         * This controller will contact the database and load
-         * the configuration for the requested screen.
+         * This controller will contact the database and load  the configuration for 
+         * the requested screen.
          */
         $config = array();
-        $config['test'] = 'test';
+        
+        // interface options
+        $config['interface'] = array('color' => '#BD1D92', 'language' => 'eng');
+        
+        // panel options
+        $config['panes'] = array();
+        $config['panes'][1] = array('type' => 'transport');
+        $config['panes'][2] = array('type' => 'social');
+        
+        // turtle options
+        $config['turtles'] = array();
+        $config['turtles'][35] = array('pane' => 1, 'type' => 'nmbs', 'location' => 'vilvoorde');
+        $config['turtles'][36] = array('pane' => 1, 'type' => 'delijn', 'location' => 'vilvoorde');
+        
+        // plugins to be loaded
+        $config['plugins'] = array();
+        $config['plugins'][] = array('type' => 'clock');
         
         // load external view from client folder
         $this->load->view('../../../client/template', array('config' => $config));
