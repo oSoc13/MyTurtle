@@ -1,3 +1,5 @@
+var timer;
+
 $(document).ready(function() {
   setTimeOnScreen();
   setImageAtStart();
@@ -33,3 +35,5 @@ function timer(){
 	$(".timerBarYellow").animate({"width":widthBar}, 20000);
 
 };
+
+timer = setInterval(setTimeOnScreen(), 1000);
