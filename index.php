@@ -5,7 +5,7 @@
         <title>InfoScreen</title>
         <meta name="description" content="MyTurtle">
         <meta name="viewport" content="width=device-width">
-
+		<meta name="apple-mobile-web-app-capable" content="yes" />
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	
         <link rel="stylesheet" href="client/css/normalize.css">
@@ -18,7 +18,7 @@
         <![endif]-->
 
         <div id="container">
-        	<section class="turtle">
+        	<section class="turtle pTransport">
             	<section class="publicTransport clearfix">
                 	<div class="titleBar">
                     	<h2 class="titleBarContainer train">Vilvoorde</h2>
@@ -117,7 +117,14 @@
                     </div>
                 </section>
             </section>
-            <section class="turtle test">
+            <section class="turtle location">
+            	<section class="titleBar">
+                
+                	<section class="clock">
+                        <h4>10:21</h4>
+                    </section>
+                </section>
+             
             </section>
         </div>
         
