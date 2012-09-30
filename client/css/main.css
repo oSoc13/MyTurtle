@@ -18,6 +18,26 @@ textarea {
     color: #222;
 }
 
+@font-face {
+    font-family: SohoGothicProReg;
+    src:url(fonts/SohoGothicPro-Regular.otf);
+}
+
+@font-face {
+    font-family: SohoGothicProMed;
+    src:url(fonts/SohoGothicPro-Medium.otf);
+}
+
+@font-face {
+    font-family: SohoGothicProBold;
+    src:url(fonts/SohoGothicPro-Bold.otf);
+}
+
+@font-face {
+    font-family: SohoStdProBold;
+    src:url(fonts/SohoStdBold.otf);
+}
+
 div, ul, li, h1, h2, h3, h4, section, p{
 	background-repeat:no-repeat;
 	background-position:left center;
@@ -41,11 +61,11 @@ display: block;
 }
 
 body {
-    font-size: 1em;
+    font-size: 19px;
     line-height: 1.2;
 	width:100%;
 	height:100%;
-	font-family:Arial, Helvetica, sans-serif;
+	font-family:SohoGothicProMed;
 }
 
 /*
@@ -165,9 +185,10 @@ footer{
 .publicTransport h2{
 	margin-left:15px;
 	padding-left:85px;
-	font-size:32px;
+	font-size:1.6em;
 	font-weight:bold;
-	line-height:2.6em;
+	line-height:2.3em;
+	font-family:SohoGothicProBold;
 	}
 
 .publicTransport .titleBar .titleDistance{
@@ -188,7 +209,7 @@ footer{
 	float:left;
 	width:auto;
 	margin:0 5px 0 15px;
-	font-size:11px;
+	font-size:12px;
 	padding-left:45px;
 	}
 
@@ -204,6 +225,7 @@ footer{
 .publicTransport .ptResults{
 	display:block;
 	width:100%;
+	font-family:SohoGothicProMed;
 	}
 
 .publicTransport .ptResults ul li{
@@ -213,8 +235,8 @@ footer{
 	padding-top:7px;
 	background-color:#f2f2f2;
 	clear:both;
-	font-size:18px;
-	line-height:0.6em;
+	font-size:1em;
+	line-height:2.4em;
 	}
 
 .publicTransport .ptResults ul li:nth-child(2n){
@@ -228,8 +250,8 @@ footer{
 	background-color:#000;
 	margin-left:15px;
 	text-align:center;
-	line-height:2.4em;
-	font-size:17px;
+	line-height:2.2em;
+	font-size:0.9em;
 	color:#FFF;
 	float:left;
 	}
@@ -242,13 +264,14 @@ footer{
 .publicTransport .ptResults ul li h3{
 	float:left;
 	margin-left:15px;
-	line-height:2.0em;
+	line-height:1.8em;
 	}
 
 .publicTransport .ptResults ul li .time{
 	float:right;
-	width:25%;
-	line-height:2.1em;
+	width:30%;
+	font-family:SohoGothicProMed;
+	line-height:2.2em;
 	}
 
 .publicTransport .ptResults ul li .time p{
@@ -378,27 +401,38 @@ footer{
 	background-color:#bd1d92;
 	-webkit-box-shadow:  -3px -4px 3px 1px rgba(0, 0, 0, 0.4);
     box-shadow:  -3px -4px 3px 1px rgba(0, 0, 0, 0.4);
-	font-size:40px;
+	font-size:2.4em;
 	text-align:center;
 	line-height:1.9em;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
 	color:#de8ec9;
+	font-family:SohoStdProBold;
 }
 
 .location .locContent{
 	padding:6%;
 	line-height:1.5em;
+	font-family:SohoGothicProReg;
+	font-size:14px;
 }
 
 .location .socialContent .socialBox{
 	width:30%;
 	float:left;
 	min-height:80px;
+	height:auto;
 	margin-bottom:20px;
+	-webkit-box-shadow:  0px 2px 1px 1px rgba(0, 0, 0, 0.4);
+    box-shadow:  0px 2px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .location .socialContent .socialBox:nth-child(2n){
 	width:50%;
+	margin-left:4%;
+}
+
+.location .socialContent .socialBox:nth-child(2n).instgrm{
+	width:56%;
 	margin-left:4%;
 }
 
@@ -408,12 +442,7 @@ footer{
 }
 
 .location .socialContent .socialBox.instgrm{
-	
-}
-
-.location .socialContent .socialBox.instgrm img{
-	width:inherit;
-	height:inherit;
+	width:36%;
 }
 
 .location .socialContent .socialBox.tweet{
@@ -421,6 +450,7 @@ footer{
 	padding:3%;
 	position:relative;
 	margin-bottom:40px;
+	height:auto;
 }
 
 .location .socialContent .socialBox.tweet:before{
@@ -438,8 +468,12 @@ footer{
 	color:#d0e900;
 }
 
-@media all and (max-width: 1000px) {
-  	.location .socialBox{
+.location .bold{
+	font-family:SohoGothicProBold;
+}
+
+@media all and (max-width: 1200px) {
+  	.location .socialContent .socialBox{
 		width:90%;
 		margin:0;
 	}
@@ -448,9 +482,72 @@ footer{
 		width:140px;
 	}
 	
+	body{
+		font-size:15px;
+	}
+	
+	.publicTransport h2{
+		line-height:2.8em;
+	}
+	
+	.publicTransport .ptResults ul li h3{
+		line-height:2.2em;
+	}
+	
+	.publicTransport .ptResults ul li .time{
+		line-height:2.9em;
+	}
+	
+	.publicTransport .titleBar .titleDistance .tbDistance{
+		float:none;
+		width:auto;
+		margin:0 0 0 0;
+		font-size:11px;
+		padding-left:45px;
+	}
+	
+	.publicTransport .titleBar .titleDistance{
+		height:45px;
+		line-height:1.9em;
+		padding-top:10px;
+	}
+	
+	.publicTransport .ptResults ul li .infoOrNumber, 
+	.publicTransport .ptResults ul li .tramOrBus{
+		line-height:2.8em;
+	}
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width:900px){
+	body{
+		font-size:13px;
+	}
+	
+	.location .titleBar .clock{
+		width:100px;
+		font-size:1.5em;
+		line-height:4em;
+	}
+	
+	.publicTransport h2{
+		line-height:3.3em;
+	}
+	
+	.publicTransport .ptResults ul li h3{
+		line-height:2.9em;
+	}
+	
+	.publicTransport .ptResults ul li .time{
+		line-height:3.3em;
+	}
+	
+	.publicTransport .ptResults ul li .infoOrNumber, 
+	.publicTransport .ptResults ul li .tramOrBus{
+		line-height:3.2em;
+	}
+}
+
+@media all and (max-width: 700px) {
   	.turtle{
   		width:100%;
 		-webkit-overflow-scrolling: touch;
@@ -460,9 +557,22 @@ footer{
 		-webkit-transform: translateZ(0px);
 	}
 	
+	.publicTransport .titleBar .titleDistance .tbDistance{
+		float:left;
+		width:auto;
+		margin:0 5px 0 15px;
+		font-size:11px;
+		padding-left:45px;
+	}
+	
+	.publicTransport .titleBar .titleDistance{
+		height:55px;
+		line-height:3.9em;
+	}
+	
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 600px) {
   .publicTransport .titleBar .titleDistance{
   	display:none;
   	}

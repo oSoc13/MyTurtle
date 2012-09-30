@@ -17,8 +17,8 @@
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
 
-        <div id="container">
-        	<section class="turtle pTransport">
+        <div id="container clearfix">
+        	<section class="turtle pTransport clearfix">
             	<section class="publicTransport clearfix">
                 	<div class="titleBar">
                     	<h2 class="titleBarContainer train">Vilvoorde</h2>
@@ -117,7 +117,7 @@
                     </div>
                 </section>
             </section>
-            <section class="turtle location">
+            <section class="turtle location clearfix">
             	<section class="titleBar">
                 
                 	<section class="clock">
@@ -127,16 +127,19 @@
                 <section class="locContent">
                     <section class="socialContent clearfix">
                         <div class="socialBox fsq">
-                            <p>Glen Dehaek just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
+                            <p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
                         </div>
                         <div class="socialBox tweet">
                         	<p>#uplace is the place!</p>
                         </div>
                         <div class="socialBox tweet">
-                        	<p>test</p>
+                        	<p>#Uplace trekt record aantal bezoekers sinds officiiële opening <span class="yellow">http://www.drd.be/vy</span></p>
                         </div>
                         <div class="socialBox instgrm">
-                        	<img src="client/css/images/Instagram-shot.jpg" />
+                        	<img src="client/css/images/Instagram-shot.jpg" class="img" />
+                        </div>
+                        <div class="socialBox instgrm">
+                        	<img src="client/css/images/Instagram-shot.jpg" class="img" />
                         </div>
                     </section>
              	</section>

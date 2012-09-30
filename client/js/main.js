@@ -1,5 +1,6 @@
 $(document).ready(function() {
   setTimeOnScreen();
+  setImageAtStart();
 });
 
 function setTimeOnScreen(){
@@ -13,4 +14,13 @@ function setTimeOnScreen(){
 		var timeString = dateObject.getHours() + ":" + minutes;
 	}
 	$(".location .titleBar .clock").html(timeString);
+}
+
+/* FUNCTION TO SET INSTAGRAM IMAGE WITH RIGHT WIDTH AND HEIGHT*/
+function setImageAtStart(){
+	$(".instgrm").each(function(){
+		var widthImg = $(this).width();
+		$(this).height(widthImg);
+		$(this).find(".img").css({"width":widthImg, "height":widthImg});
+	});
 }
