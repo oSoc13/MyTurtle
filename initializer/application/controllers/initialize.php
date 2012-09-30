@@ -19,8 +19,8 @@ class Initialize extends CI_Controller {
         
         // panel options
         $config['panes'] = array();
-        $config['panes'][1] = array('type' => 'transport');
-        $config['panes'][2] = array('type' => 'social');
+        $config['panes'][1] = array('type' => 'list');
+        $config['panes'][2] = array('type' => 'widget');
         
         // turtle options
         $config['turtles'] = array();
