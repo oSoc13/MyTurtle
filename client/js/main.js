@@ -17,6 +17,8 @@ function setTimeOnScreen(){
 		var timeString = dateObject.getHours() + ":" + minutes;
 	}
 	$(".location .titleBar .clock").html(timeString);
+	
+
 }
 
 /* FUNCTION TO SET INSTAGRAM IMAGE WITH RIGHT WIDTH AND HEIGHT*/
@@ -36,4 +38,5 @@ function timer(){
 
 };
 
-timer = setInterval(setTimeOnScreen(), 1000);
+setInterval(setTimeOnScreen(), 1000);
+
