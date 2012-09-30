@@ -10,7 +10,7 @@
 	
         <link rel="stylesheet" href="client/css/normalize.css">
         <link rel="stylesheet" href="client/css/main.css">
-        <script src="client/js/libs/modernizr-2.6.1.min.js"></script>
+        <script src="client/js/libs/modernizr.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -161,7 +161,10 @@
         	
         </footer>
 
-        <script src="client/js/libs/jquery-1.8.0.min.js"></script>
+        <script src="client/js/libs/jquery.js"></script>
+		<script src="client/js/libs/underscore.js"></script>
+		<script src="client/js/libs/backbone.js"></script>
+		
         <script src="client/js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

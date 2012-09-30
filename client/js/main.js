@@ -35,8 +35,7 @@ function timer(){
 	var widthBar = $(".active").width();
 	$(".timerBarYellow").css("left",offset);
 	$(".timerBarYellow").animate({"width":widthBar}, 20000);
-
 };
 
-setInterval(setTimeOnScreen(), 1000);
+setInterval('setTimeOnScreen', 1000);
 
