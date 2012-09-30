@@ -356,6 +356,7 @@ footer{
 	background-color:#bd1d92;
 	-webkit-box-shadow:  -3px 2px 3px 1px rgba(0, 0, 0, 0.4);
     box-shadow:  -3px 2px 3px 1px rgba(0, 0, 0, 0.4);
+	color:#FFF;
 	}
 	
 .location .titleBar{
@@ -366,7 +367,6 @@ footer{
 	background: -webkit-linear-gradient(top,  #5d0e48 0%,#b91c8f 100%); /* Chrome10+,Safari5.1+ */
 	background: linear-gradient(to bottom,  #5d0e48 0%,#b91c8f 100%); /* W3C */
 	position:relative;
-	color:#FFF;
 	}
 	
 .location .titleBar .clock{
@@ -383,6 +383,71 @@ footer{
 	line-height:1.9em;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
 	color:#de8ec9;
+}
+
+.location .locContent{
+	padding:6%;
+	line-height:1.5em;
+}
+
+.location .socialContent .socialBox{
+	width:30%;
+	float:left;
+	min-height:80px;
+	margin-bottom:20px;
+}
+
+.location .socialContent .socialBox:nth-child(2n){
+	width:50%;
+	margin-left:4%;
+}
+
+.location .socialContent .socialBox.fsq{
+	background-color:#711158;
+	padding:3%;
+}
+
+.location .socialContent .socialBox.instgrm{
+	
+}
+
+.location .socialContent .socialBox.instgrm img{
+	width:inherit;
+	height:inherit;
+}
+
+.location .socialContent .socialBox.tweet{
+	background-color:#c73fa2;
+	padding:3%;
+	position:relative;
+	margin-bottom:40px;
+}
+
+.location .socialContent .socialBox.tweet:before{
+    content: ' ';  
+    position: absolute;  
+    width: 0;  
+    height: 0;  
+    left: 100px;  
+    top: 100px;  
+    border: 22px solid;  
+    border-color: #c73fa2 transparent transparent #c73fa2;   
+}
+
+.location .yellow{
+	color:#d0e900;
+}
+
+@media all and (max-width: 1000px) {
+  	.location .socialBox{
+		width:90%;
+		margin:0;
+	}
+	
+	.location .titleBar .clock{
+		width:140px;
+	}
+	
 }
 
 @media all and (max-width: 800px) {

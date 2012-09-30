@@ -124,7 +124,22 @@
                         <h4>10:21</h4>
                     </section>
                 </section>
-             
+                <section class="locContent">
+                    <section class="socialContent clearfix">
+                        <div class="socialBox fsq">
+                            <p>Glen Dehaek just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
+                        </div>
+                        <div class="socialBox tweet">
+                        	<p>#uplace is the place!</p>
+                        </div>
+                        <div class="socialBox tweet">
+                        	<p>test</p>
+                        </div>
+                        <div class="socialBox instgrm">
+                        	<img src="client/css/images/Instagram-shot.jpg" />
+                        </div>
+                    </section>
+             	</section>
             </section>
         </div>
         
