@@ -137,6 +137,8 @@
                 </section>
                 <section class="locContent">
                     <section class="socialContent clearfix">
+                    	<div id="oneColumn">
+                        </div>
                         <div id="leftColumn">
                         	<div class="socialBox fsq">
                             	<p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>

@@ -459,6 +459,11 @@ ul li{
 	height:auto;
 }
 
+.location .socialContent #oneColumn{
+	width:100%;
+	height:auto;
+}
+
 .location .socialContent #rightColumn{
 	float:left;
 	width:65%;
