@@ -150,15 +150,6 @@ ul li{
 	bottom:0;
 	}
 
-footer{
-	position:fixed;
-	left:0;
-	right:0;
-	bottom:0;
-	height:65px;
-	background-color:#FFF;
-	}
-
 .turtle{
 	width:50%; 
 	float:left;
@@ -514,9 +505,41 @@ footer{
 	color:#d0e900;
 }
 
-.location .bold{
+.bold{
 	font-family:SohoGothicProBold;
 }
+
+footer{
+	position:fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	height:80px;
+	background-color:#FFF;
+	font-family:SohoGothicProReg;
+	}
+
+footer #ftlogo{
+	margin-left:10px;
+	margin-top:15px;
+}
+
+footer #loc_logo{
+	position:absolute;
+	top:10px;
+	right:20px;
+}
+
+footer #where{
+	color:#bd1d92;
+	position:absolute;
+	left:50%;
+	width:30%;
+	top:0;
+	height:80px;
+	line-height:4.5em;
+}
+
 
 @media all and (max-width: 1200px) {
   	.location .socialContent .socialBox{

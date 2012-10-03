@@ -145,7 +145,7 @@
                             	<p>#Uplace trekt record aantal bezoekers sinds officiiële opening <span class="yellow">http://www.drd.be/vy</span></p>
                        	 	</div>
                             <div class="socialBox instgrm">
-                           		<img src="client/css/images/Instagram-shot.jpg" class="img" />
+                           		<img src="client/css/images/Instagram-shot2.jpg" class="img" />
                         	</div>
                             <div class="socialBox fsq">
                             	<p><span class="bold">Pieter Colpaert</span> just checked in at Uplace Mechelen on <span class="yellow">Foursquare</span></p>
@@ -171,7 +171,9 @@
         </div>
         
         <footer>
-            
+            <img src="client/css/images/ft_logo.jpg" alt="FlatTurtle" id="ftlogo" />
+            <p id="where">Check in at <span class="bold">Uplace Machelen</span> or tag <span class="bold">#uplace</span></p>
+        	<img src="client/css/images/logo_uplace.jpg" alt="Uplace" id="loc_logo" />
         </footer>
 
         <script src="client/js/libs/jquery.js"></script>
