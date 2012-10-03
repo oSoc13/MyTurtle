@@ -1,175 +1,205 @@
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>InfoScreen</title>
-        <meta name="description" content="MyTurtle">
-        <meta name="viewport" content="width=device-width">
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<?php
+
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ *
+ */
+	define('ENVIRONMENT', 'development');
+/*
+ *---------------------------------------------------------------
+ * ERROR REPORTING
+ *---------------------------------------------------------------
+ *
+ * Different environments will require different levels of error reporting.
+ * By default development will show errors but testing and live will hide them.
+ */
+
+if (defined('ENVIRONMENT'))
+{
+	switch (ENVIRONMENT)
+	{
+		case 'development':
+			error_reporting(E_ALL);
+		break;
 	
-        <link rel="stylesheet" href="client/css/normalize.css">
-        <link rel="stylesheet" href="client/css/main.css">
-        <script src="client/js/libs/modernizr-2.6.1.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
+		case 'testing':
+		case 'production':
+			error_reporting(0);
+		break;
 
-        <div id="container clearfix">
-        	<section class="turtle pTransport clearfix">
-            	<section class="publicTransport clearfix">
-                	<div class="titleBar">
-                    	<h2 class="titleBarContainer train">Vilvoorde</h2>
-                    	<div class="titleDistance clearfix">
-                        	<div class="distanceBike tbDistance">00:21</div>
-                            <div class="distanceByFoot tbDistance">00:40</div>
-                        </div>
-                    </div>
-                    <div class="ptResults">
-                        <ul>
-                            <li>
-                            	<div class="floatLeft">
-                                    <div class="infoOrNumber IC"><p>IC</p></div>
-                                    <h3 class="destination red">Brussel-Zuid</h3>
-                                </div>
-                                <div class="time">
-                                    <p class="red">Canceled</p>
-                                </div>
-                                
-                            </li>
-                            <li>
-                            	<div class="floatLeft">
-                                    <div class="infoOrNumber L"><p>L</p></div>
-                                    <h3 class="destination">Antwerpen-centraal</h3>
-                                 </div>
-                                 <div class="time">
-                                	<p>10:25</p>
-                                </div>
-                            </li>
-                            <li class="subResult">
-                            	<div class="floatLeft">
-                                    <div class="infoOrNumber IR"><p>IR</p></div>
-                                    <h3 class="destination">Essen</h3>
-                                 </div>
-                                 <div class="time">
-                                	<p>10:25</p>
-                                </div>
-                            </li>
-                             <li>
-                            	<div class="floatLeft">
-                                    <div class="infoOrNumber IC"><p>IC</p></div>
-                                    <h3 class="destination">Charleroi-Zuid</h3>
-                                 </div>
-                                 <div class="time">
-                                	<p>10:36</p>
-                                    <p class="red">+0:02</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-                <section class="publicTransport clearfix">
-                	<div class="titleBar">
-                    	<h2 class="titleBarContainer bus">Stop Bicoque</h2>
-                    	<div class="titleDistance clearfix">
-                        	<div class="distanceBike tbDistance">00:12</div>
-                            <div class="distanceByFoot tbDistance">00:30</div>
-                        </div>
-                    </div>
-                    <div class="ptResults">
-                        <ul>
-                            <li>
-                            	<div class="floatLeft">
-                                    <div class="infoOrNumber n58"><p>58</p></div>
-                                    <div class="tramOrBus bus"></div>
-                                    <h3 class="destination">Vilvoorde-station</h3>
-                                </div>
-                                <div class="time">
-                                    <p>10:25</p>
-                                </div>
-                                
-                            </li>
-                            <li>
-                            	<div class="floatLeft">
-                                    <div class="infoOrNumber n58"><p>58</p></div>
-                                    <div class="tramOrBus tram"></div>
-                                    <h3 class="destination">Ysen</h3>
-                                 </div>
-                                 <div class="time">
-                                	<p>10:48</p>
-                                    <p class="red">+0:05</p>
-                                </div>
-                            </li>
-                            <li>
-                            	<div class="floatLeft">
-                                    <div class="infoOrNumber n58"><p>58</p></div>
-                                    <div class="tramOrBus bus"></div>
-                                    <h3 class="destination">Vilvoorde-Station</h3>
-                                 </div>
-                                 <div class="time">
-                                	<p>11:25</p>
-                                    <p class="red">+0:05</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-            </section>
-            <section class="turtle location clearfix">
-            	<section class="titleBar clearfix">
-                	<div class="timerBar">
-                    	<div class="timerBarYellow"></div>
-                    </div>
-                	<div id="social" class="nav active">
-                    	<h4>Social</h4>
-                    </div>
-                    <div id="news" class="nav">
-                    	<h4>News</h4>
-                    </div>
-                    <div id="location" class="nav">
-                    	<h4>Location</h4>
-                    </div>
-                	<section class="clock">
-                        <h4>10:21</h4>
-                    </section>
-                </section>
-                <section class="locContent">
-                    <section class="socialContent clearfix">
-                        <div class="socialBox fsq">
-                            <p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
-                        </div>
-                        <div class="socialBox tweet">
-                        	<p>#uplace is the place!</p>
-                        </div>
-                        <div class="socialBox tweet">
-                        	<p>#Uplace trekt record aantal bezoekers sinds officiiële opening <span class="yellow">http://www.drd.be/vy</span></p>
-                        </div>
-                        <div class="socialBox instgrm">
-                        	<img src="client/css/images/Instagram-shot.jpg" class="img" />
-                        </div>
-                        <div class="socialBox instgrm">
-                        	<img src="client/css/images/Instagram-shot.jpg" class="img" />
-                        </div>
-                    </section>
-             	</section>
-            </section>
-        </div>
-        
-        <footer>
-        	
-        </footer>
+		default:
+			exit('The application environment is not set correctly.');
+	}
+}
 
-        <script src="client/js/libs/jquery-1.8.0.min.js"></script>
-        <script src="client/js/main.js"></script>
+/*
+ *---------------------------------------------------------------
+ * SYSTEM FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "system" folder.
+ * Include the path if the folder is not in the same  directory
+ * as this file.
+ *
+ */
+	$system_path = 'initializer/system';
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-    </body>
-</html>
+/*
+ *---------------------------------------------------------------
+ * APPLICATION FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * If you want this front controller to use a different "application"
+ * folder then the default one you can set its name here. The folder
+ * can also be renamed or relocated anywhere on your server.  If
+ * you do, use a full server path. For more info please see the user guide:
+ * http://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ *
+ */
+	$application_folder = 'initializer/application';
+
+/*
+ * --------------------------------------------------------------------
+ * DEFAULT CONTROLLER
+ * --------------------------------------------------------------------
+ *
+ * Normally you will set your default controller in the routes.php file.
+ * You can, however, force a custom routing by hard-coding a
+ * specific controller class/function here.  For most applications, you
+ * WILL NOT set your routing here, but it's an option for those
+ * special instances where you might want to override the standard
+ * routing in a specific front controller that shares a common CI installation.
+ *
+ * IMPORTANT:  If you set the routing here, NO OTHER controller will be
+ * callable. In essence, this preference limits your application to ONE
+ * specific controller.  Leave the function name blank if you need
+ * to call functions dynamically via the URI.
+ *
+ * Un-comment the $routing array below to use this feature
+ *
+ */
+	// The directory name, relative to the "controllers" folder.  Leave blank
+	// if your controller is not in a sub-folder within the "controllers" folder
+	// $routing['directory'] = '';
+
+	// The controller class file name.  Example:  Mycontroller
+	// $routing['controller'] = '';
+
+	// The controller function you wish to be called.
+	// $routing['function']	= '';
+
+
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
+ *
+ * The $assign_to_config array below will be passed dynamically to the
+ * config class when initialized. This allows you to set custom config
+ * items or override any default config values found in the config.php file.
+ * This can be handy as it permits you to share one application between
+ * multiple front controller files, with each file containing different
+ * config values.
+ *
+ * Un-comment the $assign_to_config array below to use this feature
+ *
+ */
+	// $assign_to_config['name_of_config_item'] = 'value of config item';
+
+
+
+// --------------------------------------------------------------------
+// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
+// --------------------------------------------------------------------
+
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
+ */
+
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
+
+	if (realpath($system_path) !== FALSE)
+	{
+		$system_path = realpath($system_path).'/';
+	}
+
+	// ensure there's a trailing slash
+	$system_path = rtrim($system_path, '/').'/';
+
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: ".pathinfo(__FILE__, PATHINFO_BASENAME));
+	}
+
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
+ */
+	// The name of THIS file
+	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+	// The PHP file extension
+	// this global constant is deprecated.
+	define('EXT', '.php');
+
+	// Path to the system folder
+	define('BASEPATH', str_replace("\\", "/", $system_path));
+
+	// Path to the front controller (this file)
+	define('FCPATH', str_replace(SELF, '', __FILE__));
+
+	// Name of the "system folder"
+	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
+
+
+	// The path to the "application" folder
+	if (is_dir($application_folder))
+	{
+		define('APPPATH', $application_folder.'/');
+	}
+	else
+	{
+		if ( ! is_dir(BASEPATH.$application_folder.'/'))
+		{
+			exit("Your application folder path does not appear to be set correctly. Please open the following file and correct this: ".SELF);
+		}
+
+		define('APPPATH', BASEPATH.$application_folder.'/');
+	}
+
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ *
+ */
+require_once BASEPATH.'core/CodeIgniter.php';
+
+/* End of file index.php */
+/* Location: ./index.php */

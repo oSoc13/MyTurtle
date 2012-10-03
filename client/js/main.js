@@ -36,7 +36,6 @@ function timer(){
 	var widthBar = $(".active").width();
 	$(".timerBarYellow").css("left",offset);
 	$(".timerBarYellow").animate({"width":widthBar}, 20000);
-
 };
 
 

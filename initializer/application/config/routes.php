@@ -38,9 +38,11 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = 'initialize';
 $route['404_override'] = '';
 
+// route all requests to main controller
+$route['(:any)'] = 'initialize/index/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
