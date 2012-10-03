@@ -142,7 +142,7 @@
                             	<p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
                         	</div>
                             <div class="socialBox tweet">
-                            	<p>#Uplace trekt record aantal bezoekers sinds officiiële opening <span class="yellow">http://www.drd.be/vy</span></p>
+                            	<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
                        	 	</div>
                             <div class="socialBox instgrm">
                            		<img src="client/css/images/Instagram-shot2.jpg" class="img" />
@@ -162,7 +162,7 @@
                             	<img src="client/css/images/Instagram-shot.jpg" class="img" />
                         	</div>
                             <div class="socialBox tweet">
-                            	<p>#Uplace trekt record aantal bezoekers sinds officiiële opening <span class="yellow">http://www.drd.be/vy</span></p>
+                            	<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
                         	</div>
                         </div>
                     </section>

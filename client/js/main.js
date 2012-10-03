@@ -1,4 +1,6 @@
 var timer;
+var yellowBar = $(".timerBarYellow");
+var counterBar = 0;
 
 $(document).ready(function() {
   setImageAtStart();
@@ -36,10 +38,22 @@ function setImageAtStart(){
 }
 
 function timer(){
+	yellowBar.width(0);
 	var offset = $(".active").position().left;
 	var widthBar = $(".active").width();
-	$(".timerBarYellow").css("left",offset);
-	$(".timerBarYellow").animate({"width":widthBar}, 20000);
+	yellowBar.css("left",offset);
+	yellowBar.animate({"width":widthBar}, 20000, function(){
+		var old_active = $(".active");
+		if(counterBar % 3 !== 0){
+			$(".active").next().addClass('active');
+		}
+		else{
+			$("#social").addClass('active');
+		}
+		old_active.removeClass('active');
+		timer();
+		});
+	counterBar++;
 };
 
 

@@ -400,16 +400,20 @@ ul li{
 .location .titleBar .nav{
 	width:15%;
 	height:75px;
-	margin:0;
+	margin:0 1% 0 1%;
 	float:left;
 	color:#ba73a7;
 	text-align:center;
 	line-height:4em;
+	/*background-image:url(images/shadow_loc.jpg);
+	background-position:right top;*/
 }
 
 .location .titleBar .nav.active{
 	background-color:#bd1d92;
+	margin:0;
 	width:25%;
+	background-image:none;
 	-webkit-box-shadow: 10px -4px 2px 1px rgba(0, 0, 0, 0.4);
     box-shadow:  3px -4px 2px 1px rgba(0, 0, 0, 0.4);
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
@@ -468,8 +472,7 @@ ul li{
 	min-height:30px;
 	height:auto;
 	margin-bottom:20px;
-	-webkit-box-shadow:  0px 2px 1px 1px rgba(0, 0, 0, 0.4);
-    box-shadow:  0px 2px 1px 1px rgba(0, 0, 0, 0.4);
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
 }
 
 .location .socialContent .socialBox.fsq{
