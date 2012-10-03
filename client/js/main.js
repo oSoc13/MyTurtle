@@ -1,10 +1,12 @@
 var timer;
 
 $(document).ready(function() {
-  setTimeOnScreen();
   setImageAtStart();
   timer();
+  setTimeOnScreen();
 });
+
+window.setInterval(setTimeOnScreen, 500);
 
 function setTimeOnScreen(){
 	var dateObject = new Date();
@@ -17,7 +19,6 @@ function setTimeOnScreen(){
 		var timeString = dateObject.getHours() + ":" + minutes;
 	}
 	$(".location .titleBar .clock").html(timeString);
-	
 
 }
 
@@ -38,5 +39,4 @@ function timer(){
 
 };
 
-setInterval(setTimeOnScreen(), 1000);
 
