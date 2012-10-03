@@ -137,20 +137,33 @@
                 </section>
                 <section class="locContent">
                     <section class="socialContent clearfix">
-                        <div class="socialBox fsq">
-                            <p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
-                        </div>
-                        <div class="socialBox tweet">
-                            <p>#uplace is the place!</p>
-                        </div>
-                        <div class="socialBox tweet">
-                            <p>#Uplace trekt record aantal bezoekers sinds officiiële opening <span class="yellow">http://www.drd.be/vy</span></p>
-                        </div>
-                        <div class="socialBox instgrm">
-                            <img src="client/css/images/Instagram-shot.jpg" class="img" />
-                        </div>
-                        <div class="socialBox instgrm">
-                            <img src="client/css/images/Instagram-shot.jpg" class="img" />
+                        <div id="leftColumn">
+                        	<div class="socialBox fsq">
+                            	<p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
+                        	</div>
+                            <div class="socialBox tweet">
+                            	<p>#Uplace trekt record aantal bezoekers sinds officiiële opening <span class="yellow">http://www.drd.be/vy</span></p>
+                       	 	</div>
+                            <div class="socialBox instgrm">
+                           		<img src="client/css/images/Instagram-shot.jpg" class="img" />
+                        	</div>
+                            <div class="socialBox fsq">
+                            	<p><span class="bold">Pieter Colpaert</span> just checked in at Uplace Mechelen on <span class="yellow">Foursquare</span></p>
+                            </div>
+                            <div class="socialBox tweet">
+                            	<p>#uplace is the place!</p>
+                        	</div>
+                       	</div>
+                        <div id="rightColumn">
+                        	<div class="socialBox tweet">
+                            	<p>#uplace is the place!</p>
+                        	</div>
+                            <div class="socialBox instgrm">
+                            	<img src="client/css/images/Instagram-shot.jpg" class="img" />
+                        	</div>
+                            <div class="socialBox tweet">
+                            	<p>#Uplace trekt record aantal bezoekers sinds officiiële opening <span class="yellow">http://www.drd.be/vy</span></p>
+                        	</div>
                         </div>
                     </section>
                  </section>
