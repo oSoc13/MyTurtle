@@ -143,26 +143,32 @@
                         	</div>
                             <div class="socialBox tweet">
                             	<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
+                                <h5>@hanspans</h5>
                        	 	</div>
                             <div class="socialBox instgrm">
                            		<img src="client/css/images/Instagram-shot2.jpg" class="img" />
+                                <h5>Instagram photo: Alex Verswijvel</h5>
                         	</div>
                             <div class="socialBox fsq">
                             	<p><span class="bold">Pieter Colpaert</span> just checked in at Uplace Mechelen on <span class="yellow">Foursquare</span></p>
                             </div>
                             <div class="socialBox tweet">
                             	<p>#uplace is the place!</p>
+                                <h5>@hanspans</h5>
                         	</div>
                        	</div>
                         <div id="rightColumn">
                         	<div class="socialBox tweet">
                             	<p>#uplace is the place!</p>
+                                <h5>@phillipevdab</h5>
                         	</div>
                             <div class="socialBox instgrm">
                             	<img src="client/css/images/Instagram-shot.jpg" class="img" />
+                                <h5>Instagram photo: Dennis Kestelle</h5>
                         	</div>
                             <div class="socialBox tweet">
                             	<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
+                                <h5>@yungpanda_BE</h5>
                         	</div>
                         </div>
                     </section>
