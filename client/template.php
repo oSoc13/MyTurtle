@@ -23,8 +23,8 @@
                     <div class="titleBar">
                         <h2 class="titleBarContainer train">Vilvoorde</h2>
                         <div class="titleDistance clearfix">
-                            <div class="distanceBike tbDistance">00:21</div>
-                            <div class="distanceByFoot tbDistance">00:40</div>
+                            <div class="bike">00:21</div>
+                            <div class="foot">00:40</div>
                         </div>
                     </div>
                     <div class="ptResults">
@@ -74,8 +74,8 @@
                     <div class="titleBar">
                         <h2 class="titleBarContainer bus">Stop Bicoque</h2>
                         <div class="titleDistance clearfix">
-                            <div class="distanceBike tbDistance">00:12</div>
-                            <div class="distanceByFoot tbDistance">00:30</div>
+                            <div class="bike">00:12</div>
+                            <div class="foot">00:30</div>
                         </div>
                     </div>
                     <div class="ptResults">
@@ -83,7 +83,7 @@
                             <li>
                                 <div class="floatLeft">
                                     <div class="infoOrNumber n58"><p>58</p></div>
-                                    <div class="tramOrBus bus"></div>
+                                    <div class="bus"></div>
                                     <h3 class="destination">Vilvoorde-station</h3>
                                 </div>
                                 <div class="time">
@@ -94,7 +94,7 @@
                             <li>
                                 <div class="floatLeft">
                                     <div class="infoOrNumber n58"><p>58</p></div>
-                                    <div class="tramOrBus tram"></div>
+                                    <div class="tram"></div>
                                     <h3 class="destination">Ysen</h3>
                                  </div>
                                  <div class="time">
@@ -140,35 +140,35 @@
                     	<div id="oneColumn">
                         </div>
                         <div id="leftColumn">
-                        	<div class="socialBox fsq">
+                        	<div class="fsq">
                             	<p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
                         	</div>
-                            <div class="socialBox tweet">
+                            <div class="tweet">
                             	<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
                                 <h5>@hanspans</h5>
                        	 	</div>
-                            <div class="socialBox instgrm">
+                            <div class="instgrm">
                            		<img src="client/css/images/Instagram-shot2.jpg" class="img" />
                                 <h5>Instagram photo: Alex Verswijvel</h5>
                         	</div>
-                            <div class="socialBox fsq">
+                            <div class="fsq">
                             	<p><span class="bold">Pieter Colpaert</span> just checked in at Uplace Mechelen on <span class="yellow">Foursquare</span></p>
                             </div>
-                            <div class="socialBox tweet">
+                            <div class="tweet">
                             	<p>#uplace is the place!</p>
                                 <h5>@hanspans</h5>
                         	</div>
                        	</div>
                         <div id="rightColumn">
-                        	<div class="socialBox tweet">
+                        	<div class="tweet">
                             	<p>#uplace is the place!</p>
                                 <h5>@phillipevdab</h5>
                         	</div>
-                            <div class="socialBox instgrm">
+                            <div class="instgrm">
                             	<img src="client/css/images/Instagram-shot.jpg" class="img" />
                                 <h5>Instagram photo: Dennis Kestelle</h5>
                         	</div>
-                            <div class="socialBox tweet">
+                            <div class="tweet">
                             	<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
                                 <h5>@yungpanda_BE</h5>
                         	</div>

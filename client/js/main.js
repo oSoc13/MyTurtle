@@ -24,8 +24,9 @@ function setTimeOnScreen(){
 
 }
 
-window.onresize(function(){
+$(window).resize(function(){
 	setImageAtStart();
+	timer();
 });
 
 /* FUNCTION TO SET INSTAGRAM IMAGE WITH RIGHT WIDTH AND HEIGHT*/
