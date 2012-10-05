@@ -31,7 +31,7 @@
                         <ul>
                             <li>
                                 <div class="floatLeft">
-                                    <div class="infoOrNumber IC"><p>IC</p></div>
+                                    <div class="IC"><p>IC</p></div>
                                     <h3 class="destination red">Brussel-Zuid</h3>
                                 </div>
                                 <div class="time">
@@ -41,7 +41,7 @@
                             </li>
                             <li>
                                 <div class="floatLeft">
-                                    <div class="infoOrNumber L"><p>L</p></div>
+                                    <div class="L"><p>L</p></div>
                                     <h3 class="destination">Antwerpen-centraal</h3>
                                  </div>
                                  <div class="time">
@@ -50,7 +50,7 @@
                             </li>
                             <li class="subResult">
                                 <div class="floatLeft">
-                                    <div class="infoOrNumber IR"><p>IR</p></div>
+                                    <div class="IR"><p>IR</p></div>
                                     <h3 class="destination">Essen</h3>
                                  </div>
                                  <div class="time">
@@ -59,7 +59,7 @@
                             </li>
                              <li>
                                 <div class="floatLeft">
-                                    <div class="infoOrNumber IC"><p>IC</p></div>
+                                    <div class="IC"><p>IC</p></div>
                                     <h3 class="destination">Charleroi-Zuid</h3>
                                  </div>
                                  <div class="time">
@@ -82,7 +82,7 @@
                         <ul>
                             <li>
                                 <div class="floatLeft">
-                                    <div class="infoOrNumber n58"><p>58</p></div>
+                                    <div class="n58"><p>58</p></div>
                                     <div class="bus"></div>
                                     <h3 class="destination">Vilvoorde-station</h3>
                                 </div>
@@ -93,7 +93,7 @@
                             </li>
                             <li>
                                 <div class="floatLeft">
-                                    <div class="infoOrNumber n58"><p>58</p></div>
+                                    <div class="n58"><p>58</p></div>
                                     <div class="tram"></div>
                                     <h3 class="destination">Ysen</h3>
                                  </div>
@@ -104,7 +104,7 @@
                             </li>
                             <li>
                                 <div class="floatLeft">
-                                    <div class="infoOrNumber n58"><p>58</p></div>
+                                    <div class="n58"><p>58</p></div>
                                     <div class="tramOrBus bus"></div>
                                     <h3 class="destination">Vilvoorde-Station</h3>
                                  </div>

@@ -234,11 +234,14 @@ ul li{
 .publicTransport .ptResults ul li:nth-child(2n){
 	background-color:#FFF;
 	}
-
-.publicTransport .ptResults ul li .infoOrNumber, 
+ 
 .publicTransport .ptResults ul li .tramOrBus,
 .publicTransport .ptResults ul li .bus,
-.publicTransport .ptResults ul li .tram{
+.publicTransport .ptResults ul li .tram,
+.publicTransport .ptResults ul li .L,
+.publicTransport .ptResults ul li .IC,
+.publicTransport .ptResults ul li .IR,
+.publicTransport .ptResults ul li .n58{
 	width:40px;
 	height:40px;
 	background-color:#000;
@@ -280,7 +283,7 @@ ul li{
 	background-position:15px top;
 	}
 
-.publicTransport .ptResults ul .subResult .infoOrNumber{
+.publicTransport .ptResults ul .subResult{
 	margin-left:55px;
 }
 
@@ -317,24 +320,24 @@ ul li{
 
 /*===TRAINS===*/
 /*IC-train*/
-.publicTransport .ptResults ul li .infoOrNumber.IC{
+.publicTransport .ptResults ul li .IC{
 	background-color:#333;
 	}
 
 /*IR-train*/
-.publicTransport .ptResults ul li .infoOrNumber.IR{
+.publicTransport .ptResults ul li .IR{
 	background-color:#666;
 	}
 
 /*L-train*/
-.publicTransport .ptResults ul li .infoOrNumber.L{
+.publicTransport .ptResults ul li .L{
 	background-color:#999;
 	}
 
 
 /*===BUSSES==*/
 /*Bus 58*/
-.publicTransport .ptResults ul li .infoOrNumber.n58{
+.publicTransport .ptResults ul li .n58{
 	background-color:#338c26;
 	}
 
@@ -650,7 +653,7 @@ footer #where{
 		padding-top:10px;
 	}
 	
-	.publicTransport .ptResults ul li .infoOrNumber, 
+	.publicTransport .ptResults ul li, 
 	.publicTransport .ptResults ul li .bus,
 	.publicTransport .ptResults ul li .tram{
 		line-height:2.8em;
@@ -680,7 +683,7 @@ footer #where{
 		line-height:3.3em;
 	}
 	
-	.publicTransport .ptResults ul li .infoOrNumber, 
+	.publicTransport .ptResults ul li, 
 	.publicTransport .ptResults ul li .bus,
 	.publicTransport .ptResults ul li .tram{
 		line-height:3.2em;
