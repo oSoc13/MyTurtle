@@ -733,6 +733,13 @@ footer #where{
 	}
 }
 
+@media all and (min-width: 1600px) {
+	
+	body{
+		font-size:16px;
+	}
+}
+
 
 .floatLeft{
 	float:left;
