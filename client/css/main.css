@@ -283,7 +283,9 @@ ul li{
 	background-position:15px top;
 	}
 
-.publicTransport .ptResults ul .subResult{
+.publicTransport .ptResults ul .subResult .IR,
+.publicTransport .ptResults ul .subResult .L,
+.publicTransport .ptResults ul .subResult .IC{
 	margin-left:55px;
 }
 
