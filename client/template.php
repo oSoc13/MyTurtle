@@ -105,7 +105,7 @@
                             <li>
                                 <div class="floatLeft">
                                     <div class="n58"><p>58</p></div>
-                                    <div class="tramOrBus bus"></div>
+                                    <div class="bus"></div>
                                     <h3 class="destination">Vilvoorde-Station</h3>
                                  </div>
                                  <div class="time">
@@ -136,7 +136,7 @@
                     </section>
                 </section>
                 <section class="locContent">
-                    <section class="socialContent clearfix">
+                    <section class="social">
                     	<div id="oneColumn">
                         </div>
                         <div id="leftColumn">

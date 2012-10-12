@@ -178,7 +178,7 @@ ul li{
 	padding-left:85px;
 	font-size:1.6em;
 	font-weight:bold;
-	line-height:2.3em;
+	line-height:2.5em;
 	font-family:SohoGothicProBold;
 	}
 
@@ -456,30 +456,30 @@ ul li{
 	font-size:14px;
 }
 
-.location .socialContent{
+.location .social{
 	width:100%;
 	padding-bottom:70px;
 }
 
-.location .socialContent #leftColumn{
+.location .social #leftColumn{
 	float:left;
 	width:30%;
 	height:auto;
 }
 
-.location .socialContent #oneColumn{
+.location .social #oneColumn{
 	width:100%;
 	height:auto;
 }
 
-.location .socialContent #rightColumn{
+.location .social #rightColumn{
 	float:left;
 	width:65%;
 	height:auto;
 	margin-left:5%;
 }
 
-.location .socialContent .fsq{
+.location .social .fsq{
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
@@ -489,7 +489,7 @@ ul li{
 	background-color:#711158;
 }
 
-.location .socialContent .instgrm{
+.location .social .instgrm{
 	min-height:30px;
 	height:auto;
 	padding:0;
@@ -498,7 +498,7 @@ ul li{
 	margin-bottom:35px;
 }
 
-.location .socialContent .instgrm:after{
+.location .social .instgrm:after{
 	content: "";
 	background-image:url(images/shadow3.png);
 	background-size:100%;
@@ -508,7 +508,7 @@ ul li{
 	display:block;
 }
 
-.location .socialContent .tweet{
+.location .social .tweet{
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
@@ -519,7 +519,7 @@ ul li{
 	height:auto;
 }
 
-.location .socialContent h5{
+.location .social h5{
 	position:absolute;
 	bottom:-40px;
 	left:2px;
@@ -527,14 +527,14 @@ ul li{
 	z-index:3;
 }
 
-.location .socialContent .instgrm h5{
+.location .social .instgrm h5{
 	right:0;
 	text-align:right;
 	bottom:-42px;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
 }
 
-.location .socialContent .tweet:before{
+.location .social .tweet:before{
     content: "";
 	position: absolute;
 	bottom: -20px;
@@ -547,7 +547,7 @@ ul li{
 	z-index:99999;
 }
 
-.location .socialContent .tweet:after{
+.location .social .tweet:after{
     content: "";
 	position:absolute;
 	background-image:url(images/shadow3.png);
@@ -618,7 +618,7 @@ footer #where{
 
 
 @media all and (max-width: 1200px) {
-  	.location .socialContent .socialBox{
+  	.location .social .socialBox{
 		width:90%;
 		margin:0;
 	}
@@ -830,13 +830,13 @@ footer #where{
  *    `:before` to contain the top-margins of child elements.
  */
 
-.clearfix:before,
+.clearfix:before, .social:before, .social:after,
 .clearfix:after {
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
-.clearfix:after {
+.clearfix:after, .social:after {
     clear: both;
 }
 
