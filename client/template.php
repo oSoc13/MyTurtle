@@ -16,13 +16,14 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-
+			
+        <!-- PUBLIC TRANSPORT TURTLE -->
         <div id="container clearfix">
-            <section class="turtle pTransport clearfix">
-                <section class="publicTransport clearfix">
+            <section class="turtle pTransport">
+                <section class="train">
                     <div class="titleBar">
-                        <h2 class="titleBarContainer train">Vilvoorde</h2>
-                        <div class="titleDistance clearfix">
+                        <h2>Vilvoorde</h2>
+                        <div class="distance clearfix">
                             <div class="bike">00:21</div>
                             <div class="foot">00:40</div>
                         </div>
@@ -30,9 +31,9 @@
                     <div class="ptResults">
                         <ul>
                             <li>
-                                <div class="floatLeft">
+                                <div>
                                     <div class="IC"><p>IC</p></div>
-                                    <h3 class="destination red">Brussel-Zuid</h3>
+                                    <h3 class="red">Brussel-Zuid</h3>
                                 </div>
                                 <div class="time">
                                     <p class="red">Canceled</p>
@@ -40,27 +41,27 @@
                                 
                             </li>
                             <li>
-                                <div class="floatLeft">
+                                <div>
                                     <div class="L"><p>L</p></div>
-                                    <h3 class="destination">Antwerpen-centraal</h3>
+                                    <h3>Antwerpen-centraal</h3>
                                  </div>
                                  <div class="time">
                                     <p>10:25</p>
                                 </div>
                             </li>
-                            <li class="subResult">
-                                <div class="floatLeft">
+                            <li class="via">
+                                <div>
                                     <div class="IR"><p>IR</p></div>
-                                    <h3 class="destination">Essen</h3>
+                                    <h3>Essen</h3>
                                  </div>
                                  <div class="time">
                                     <p>10:25</p>
                                 </div>
                             </li>
                              <li>
-                                <div class="floatLeft">
+                                <div>
                                     <div class="IC"><p>IC</p></div>
-                                    <h3 class="destination">Charleroi-Zuid</h3>
+                                    <h3>Charleroi-Zuid</h3>
                                  </div>
                                  <div class="time">
                                     <p>10:36</p>
@@ -70,10 +71,10 @@
                         </ul>
                     </div>
                 </section>
-                <section class="publicTransport clearfix">
+                <section class="bus">
                     <div class="titleBar">
-                        <h2 class="titleBarContainer bus">Stop Bicoque</h2>
-                        <div class="titleDistance clearfix">
+                        <h2>Stop Bicoque</h2>
+                        <div class="distance clearfix">
                             <div class="bike">00:12</div>
                             <div class="foot">00:30</div>
                         </div>
@@ -81,10 +82,10 @@
                     <div class="ptResults">
                         <ul>
                             <li>
-                                <div class="floatLeft">
+                                <div>
                                     <div class="n58"><p>58</p></div>
                                     <div class="bus"></div>
-                                    <h3 class="destination">Vilvoorde-station</h3>
+                                    <h3>Vilvoorde-station</h3>
                                 </div>
                                 <div class="time">
                                     <p>10:25</p>
@@ -92,10 +93,10 @@
                                 
                             </li>
                             <li>
-                                <div class="floatLeft">
+                                <div>
                                     <div class="n58"><p>58</p></div>
                                     <div class="tram"></div>
-                                    <h3 class="destination">Ysen</h3>
+                                    <h3>Ysen</h3>
                                  </div>
                                  <div class="time">
                                     <p>10:48</p>
@@ -103,10 +104,10 @@
                                 </div>
                             </li>
                             <li>
-                                <div class="floatLeft">
-                                    <div class="n58"><p>58</p></div>
+                                <div>
+                                    <div class="n58"></div>
                                     <div class="bus"></div>
-                                    <h3 class="destination">Vilvoorde-Station</h3>
+                                    <h3>Vilvoorde-Station</h3>
                                  </div>
                                  <div class="time">
                                     <p>11:25</p>
@@ -116,7 +117,32 @@
                         </ul>
                     </div>
                 </section>
+                
+                <section class="traffic">
+                    <div class="titleBar">
+                        <h2>Mechelen</h2>
+                    </div>
+                    <div class="ptResults">
+                        <ul>
+                            <li>
+                                <div class="floatLeft">
+                                    <div class="e19"><p>E19</p></div>
+                                    <h3>Mechelen - Brussel</h3>
+                                </div>
+                                <div class="time">
+                                    <p>Ongeval</p>
+                                    <p class="red">+01:14</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+             
             </section>
+            
+            
+            
+            <!-- LOCATION TURTLE -->
             <section class="turtle location clearfix">
                 <section class="titleBar clearfix">
                     <div class="timerBar">
