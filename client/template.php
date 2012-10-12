@@ -120,7 +120,7 @@
                 
                 <section class="traffic">
                     <div class="titleBar">
-                        <h2>Mechelen</h2>
+                        <h2>Verkeer</h2>
                     </div>
                     <div class="ptResults">
                         <ul>
