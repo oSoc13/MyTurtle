@@ -45,13 +45,10 @@ function timer(){
 	yellowBar.css("left",offset);
 	yellowBar.animate({"width":widthBar}, 20000, function(){
 		var old_active = $(".active");
-		if(counterBar % 3 !== 0){
-			$(".active").next().addClass('active');
-		}
-		else{
-			$("#social").addClass('active');
-		}
+		old_active.next().addClass('active');
+		var last_child = old_active.next().next();
 		old_active.removeClass('active');
+		old_active.insertAfter(last_child);
 		timer();
 		});
 	counterBar++;
