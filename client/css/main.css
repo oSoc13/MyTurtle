@@ -133,6 +133,69 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+
+/* ============================= !!! =============================
+* ICONS + BUS NUMBERS + TRAIN LINES
+*  ============================= !!! =============================
+*/
+
+/*===TITLE BARS ICON===*/
+
+/*TRAIN*/
+.titleBar .train, .titleBar .tram.bus, .titleBar .traffic, .titleBar .bus, .titleBar .bike{
+	width:81px;
+	height:81px;
+	float:left;
+	margin-left:15px;
+	}
+
+.titleBar h2{
+	float:left;
+	margin-left:5px;
+	font-size:1.5em;
+	font-weight:bold;
+	line-height:2.8em;
+	font-family:SohoGothicProBold;
+}
+
+.titleBar .train{
+	background-image:url(images/FT__0005_treinstation.png);
+}
+
+/*TRAFFIC*/
+.titleBar .traffic{
+	background-image:url(images/FT__0002_autoverkeer.png);
+	}
+	
+/*tram bus*/
+.titleBar .tram.bus{
+	background-image:url(images/FT__0000_tram-enbushalte.png);
+	}
+
+/*tram bus*/
+.titleBar .bike{
+	background-image:url(images/FT__0001_huurfietsen.png);
+	}
+	
+/*bus*/
+.titleBar .bus{
+	background-image:url(images/FT__0003_bushalte.png);
+	}
+
+/*SUB-CLASS BUS*/
+.results .bus{
+	background-image:url(images/FT__0002_bus.png);
+	padding:0;
+	}
+
+/*SUB-CLASS TRAM*/
+.results .tram{
+	background-image:url(images/FT__0003_tram.png);
+	padding:0;
+	}
+
+
+
 ul, ul li{
 	list-style-type:none;
 	-webkit-margin-before: 0;
@@ -202,12 +265,6 @@ ul li{
 }
 
 .distance .bike{
-	background-image:url(images/FT__0001_fietsafstand.png);
-	width:40px;
-	height:40px;
-	}
-
-.bike{
 	background-image:url(images/FT__0001_fietsafstand.png);
 	width:40px;
 	height:40px;
@@ -341,66 +398,6 @@ ul li{
 	margin-left:55px;
 }
 
-
-/* ============================= !!! =============================
-* ICONS + BUS NUMBERS + TRAIN LINES
-*  ============================= !!! =============================
-*/
-
-/*===TITLE BARS ICON===*/
-
-/*TRAIN*/
-.titleBar .train, .titleBar .tram.bus, .titleBar .traffic, .titleBar .bus{
-	width:81px;
-	height:81px;
-	float:left;
-	margin-left:15px;
-	}
-
-.titleBar h2{
-	float:left;
-	margin-left:5px;
-	font-size:1.7em;
-	font-weight:bold;
-	line-height:2.4em;
-	font-family:SohoGothicProBold;
-}
-
-.titleBar .train{
-	background-image:url(images/FT__0005_treinstation.png);
-}
-
-/*TRAFFIC*/
-.titleBar .traffic{
-	background-image:url(images/FT__0002_autoverkeer.png);
-	}
-	
-/*tram bus*/
-.titleBar .tram.bus{
-	background-image:url(images/FT__0000_tram-enbushalte.png);
-	}
-
-/*tram bus*/
-.titleBar .tram{
-	background-image:url(images/FT__0001_huurfietsen.png);
-	}
-	
-/*bus*/
-.titleBar .bus{
-	background-image:url(images/FT__0003_bushalte.png);
-	}
-
-/*SUB-CLASS BUS*/
-.results .bus{
-	background-image:url(images/FT__0002_bus.png);
-	padding:0;
-	}
-
-/*SUB-CLASS TRAM*/
-.results .tram{
-	background-image:url(images/FT__0003_tram.png);
-	padding:0;
-	}
 
 
 /*

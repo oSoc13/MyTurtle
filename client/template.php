@@ -129,7 +129,7 @@
                         <ul>
                             <li>
                                 <div>
-                                    <div class="square wide">E19</div>
+                                    <div class="square">E19</div>
                                     <h3>Mechelen - Brussel</h3>
                                 </div>
                                 <div class="time">
@@ -139,7 +139,7 @@
                             </li>
                             <li>
                                 <div>
-                                    <div class="square wide">E19</div>
+                                    <div class="square">E19</div>
                                     <h3>Nederland</h3>
                                 </div>
                                 <div class="time">
@@ -147,7 +147,30 @@
                                     <p class="orange">+00:12</p>
                                 </div>
                             </li>
+                            <li>
+                                <div>
+                                    <div class="square">E313</div>
+                                    <h3>Hasselt - Luik</h3>
+                                </div>
+                                <div class="time">
+                                    <p>Werken</p>
+                                    <p class="orange">+00:10</p>
+                                </div>
+                            </li>
                         </ul>
+                    </div>
+                </section>
+                
+                <section class="turtle">
+                    <div class="titleBar">
+                    	<i class="bike"></i>
+                        <h2>Velo punt Kioskplaats</h2>
+                        <div class="distance">
+                            <p><i class="foot"></i>00:07</p>
+                        </div>
+                    </div>
+                    <div class="titleBar">
+
                     </div>
                 </section>
              
