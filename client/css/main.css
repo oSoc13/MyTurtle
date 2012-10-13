@@ -18,6 +18,10 @@ textarea {
     color: #222;
 }
 
+i{
+	display:block;
+}
+
 @font-face {
     font-family: SohoGothicProReg;
     src:url(fonts/SohoGothicPro-Regular.otf);
@@ -160,7 +164,7 @@ ul li{
 
 /* PUBLIC TRANSPORT SCREEN CSS */
 
-.pTransport .train, .pTransport .bus, .pTransport .tram, .pTransport .traffic{
+.publicTransport .train, .publicTransport .bus, .publicTransport .tram, .publicTransport .traffic{
 	padding-bottom:20px;
 	background-color:#FFF;
 	}
@@ -173,7 +177,7 @@ ul li{
 	position:relative;
 	}
 
-.pTransport h2{
+.publicTransport h2{
 	margin-left:15px;
 	padding-left:85px;
 	font-size:1.6em;
@@ -182,7 +186,7 @@ ul li{
 	font-family:SohoGothicProBold;
 	}
 
-.pTransport .distance{
+.publicTransport .distance{
 	height:55px;
 	position:absolute;
 	right:0;
@@ -196,7 +200,7 @@ ul li{
 	background: linear-gradient(to bottom, #232323 0%,#333333 100%); /* W3C */
 	}
 
-.pTransport{
+.publicTransport{
 	background-color:#CCC;
 }
 
@@ -210,20 +214,22 @@ ul li{
 
 .distance .bike{
 	background-image:url(images/FT__0001_fietsafstand.png);
+	background-repeat:no-repeat;
 	}
 
 .distance .foot{
 	background-image:url(images/FT__0000_wandelafstand.png);
+	background-repeat:no-repeat;
 	}
 
 /* NEXT TRAINS/TRAMS/BUSSES FROM STATIONS */
-.ptResults{
+.results{
 	display:block;
 	width:100%;
 	font-family:SohoGothicProMed;
 	}
 
-.ptResults ul li{
+.results ul li{
 	display:block;
 	float:none;
 	height:48px;
@@ -234,18 +240,14 @@ ul li{
 	line-height:2.4em;
 	}
 
-.ptResults ul li:nth-child(2n){
+.results ul li:nth-child(2n){
 	background-color:#FFF;
 	}
  
-.ptResults ul li .tramOrBus,
-.ptResults ul li .bus,
-.ptResults ul li .tram,
-.ptResults ul li .L,
-.ptResults ul li .IC,
-.ptResults ul li .IR,
-.ptResults ul li .n58,
-.ptResults ul li .e19{
+.results ul li .tramOrBus,
+.results ul li .bus,
+.results ul li .tram,
+.results ul li .square{
 	width:40px;
 	height:40px;
 	background-color:#000;
@@ -257,47 +259,57 @@ ul li{
 	float:left;
 	}
 
-.ptResults ul li .e19{
+.traffic .results ul li .square{
 	width:60px;
+	background-color:#BBB;
+	color:#333;
 }
 
-.ptResults ul li .bus, .ptResults ul li .tram{
+.results ul li .bus, .results ul li .tram{
 	margin:0;
 	background-color:#ccc;
 	}
 
-.ptResults ul li h3{
+.results ul li h3{
 	float:left;
 	margin-left:15px;
 	line-height:1.8em;
 	}
 
-.ptResults ul li .time{
+.results ul li .time{
 	float:right;
 	width:30%;
 	font-family:SohoGothicProMed;
 	line-height:2.2em;
 	}
 
-.ptResults ul li .time p{
+.results ul li .time p{
 	float:left;
 	display:block;
 	width:40%;
 	text-align:center;
 	}
 
-.traffic .ptResults ul li .time p:first-child{
+.traffic .results ul li .time p:first-child{
 	color:#666;
+	text-align:right;
 }
 
-.ptResults ul .via{
+.traffic .results ul li .time{
+	width:35%;
+	}
+
+.traffic .results ul li .time p{
+	text-align:right;
+	width:40%;
+}
+
+.results ul .via{
 	background-image:url(images/arrow.png);
 	background-position:15px top;
 	}
 
-.ptResults ul .via .IR,
-.ptResults ul .via .L,
-.ptResults ul .via .IC{
+.results ul .via .square{
 	margin-left:55px;
 }
 
@@ -323,34 +335,19 @@ ul li{
 	background-image:url(images/FT__0005_treinstation.png);
 	}
 
-/*TRAIN*/
+/*TRAFFIC*/
 .traffic h2{
 	background-image:url(images/FT__0002_autoverkeer.png);
 	}
-
-
-
-/*===TRAINS===*/
-/*IC-train*/
-.train .ptResults ul li .IC{
-	background-color:#333;
+	
+/*tram bus*/
+.tram.bus h2{
+	background-image:url(images/FT__0000_tram-enbushalte.png);
 	}
 
-/*IR-train*/
-.train .ptResults ul li .IR{
-	background-color:#666;
-	}
-
-/*L-train*/
-.train .ptResults ul li .L{
-	background-color:#999;
-	}
-
-
-/*===BUSSES==*/
-/*Bus 58*/
-.bus ul li .n58{
-	background-color:#338c26;
+/*tram bus*/
+.fiets h2{
+	background-image:url(images/FT__0001_huurfietsen.png);
 	}
 
 /*SUB-CLASS BUS*/
@@ -364,13 +361,6 @@ ul li{
 	background-image:url(images/FT__0003_tram.png);
 	padding:0;
 	}
-
-/*===TRAFFIC==*/
-
-.traffic ul li .e19{
-	background-color:#BBB;
-	color:#333;
-}
 
 
 /*
@@ -653,11 +643,11 @@ footer #where{
 		line-height:3em;
 	}
 	
-	.ptResults ul li h3{
+	.results ul li h3{
 		line-height:2.2em;
 	}
 	
-	..ptResults ul li .time{
+	..results ul li .time{
 		line-height:2.9em;
 	}
 	
@@ -673,9 +663,9 @@ footer #where{
 		padding-top:10px;
 	}
 	
-	.ptResults ul li, 
-	.ptResults ul li .bus,
-	.ptResults ul li .tram{
+	.results ul li, 
+	.results ul li .bus,
+	.results ul li .tram{
 		line-height:2.8em;
 	}
 }
@@ -695,17 +685,17 @@ footer #where{
 		line-height:3.5em;
 	}
 	
-	.ptResults ul li h3{
+	.results ul li h3{
 		line-height:2.9em;
 	}
 	
-	.ptResults ul li .time{
+	.results ul li .time{
 		line-height:3.3em;
 	}
 	
-	.ptResults ul li, 
-	.ptResults ul li .bus,
-	.ptResults ul li .tram{
+	.results ul li, 
+	.results ul li .bus,
+	.results ul li .tram{
 		line-height:3.2em;
 	}
 }
@@ -759,7 +749,7 @@ footer #where{
 }
 
 
-.floatLeft, .ptResults ul li div:first-child{
+.floatLeft, .results ul li div:first-child{
 	float:left;
 }
 
@@ -767,6 +757,9 @@ footer #where{
 	color:#c30000;
 	}
 
+.orange{
+	color:#F93;
+}
 
 
 
@@ -853,12 +846,12 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .pTransport:after, .pTransport:before {
+.clearfix:after, .publicTransport:after, .publicTransport:before {
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
-.clearfix:after, .social:after, .pTransport:after {
+.clearfix:after, .social:after, .publicTransport:after {
     clear: both;
 }
 
