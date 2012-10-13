@@ -282,6 +282,10 @@ ul li{
 	color:#333;
 }
 
+.results ul li .square:nth-child(2){
+	margin-left:0;
+}
+
 .results ul li .bus, .results ul li .tram{
 	margin:0;
 	background-color:#ccc;
@@ -443,7 +447,6 @@ ul li{
 }
 
 .location .titleBar .nav.active{
-	background-color:#bd1d92;
 	margin:0;
 	width:25%;
 	background-image:none;
@@ -778,6 +781,10 @@ footer #where{
 	color:#F93;
 }
 
+/* MAIN COLOR */
+.color{
+	background-color:#bd1d92;
+}
 
 
 /* ==========================================================================

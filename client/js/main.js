@@ -45,9 +45,9 @@ function timer(){
 	yellowBar.css("left",offset);
 	yellowBar.animate({"width":widthBar}, 20000, function(){
 		var old_active = $(".active");
-		old_active.next().addClass('active');
+		old_active.next().addClass('active color');
 		var last_child = old_active.next().next();
-		old_active.removeClass('active');
+		old_active.removeClass('active color');
 		old_active.insertAfter(last_child);
 		timer();
 		});

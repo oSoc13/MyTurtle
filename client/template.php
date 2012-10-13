@@ -95,7 +95,7 @@
                             <li>
                                 <div>
                                     <div class="square" style="background-color:#338c26;"><p>58</p></div>
-                                    <div class="tram"></div>
+                                    <div class="square"><i class="tram"></i></div>
                                     <h3>Ysen</h3>
                                  </div>
                                  <div class="time">
@@ -106,7 +106,7 @@
                             <li>
                                 <div>
                                     <div class="square" style="background-color:#338c26;">58</div>
-                                    <div class="bus"></div>
+                                    <div class="square"><i class="tram"></i></div>
                                     <h3>Vilvoorde-Station</h3>
                                  </div>
                                  <div class="time">
@@ -158,7 +158,7 @@
                     <div class="timerBar">
                         <div class="timerBarYellow"></div>
                     </div>
-                    <div id="social" class="nav active">
+                    <div id="social" class="nav active color">
                         <h4>Social</h4>
                     </div>
                     <div id="news" class="nav">
