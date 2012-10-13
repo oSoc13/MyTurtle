@@ -18,12 +18,30 @@
         initialize : function(models, options) {
 
             /*
-             * Do stuff when your collection is intialised, suggestions: 
-             * - bind events (born, refresh)
-             * - fetch collection from remote source using fetch
-             * - start refresh timer
+             * Do stuff when your collection is intialised. Bind events such as
+             * born and refresh, fetch your collection from a remote source
+             * using fetch.
              */
-            
+
+        },
+        url : function() {
+
+            /*
+             * Set the url property (or function) on a collection to reference
+             * its location on the server. Models within the collection will use
+             * url to construct URLs of their own.
+             */
+
+        },
+        parse : function(json) {
+
+            /*
+             * Parse is called whenever a collection's models are returned by
+             * the server, in fetch. The function is passed the raw response
+             * object, and should return the array of model attributes to be
+             * added to the collection.
+             */
+
         }
     });
 
@@ -41,11 +59,20 @@
         initialize : function(options) {
 
             /*
-             * Do stuff when your view is intialised, suggestions:
-             * - bind events (render, rendered, collection.reset)
-             * - initialize templating library
+             * Do stuff when your view is intialised. Bind events such as
+             * render, rendered and collection.reset or initialize your
+             * templating library.
              */
-            
+
+        },
+        render : function() {
+
+            /*
+             * Render your view from the model data and update this.el with the
+             * new generate HTML. You can access your whole collection in JSON
+             * format through this.collection.toJSON().
+             */
+
         }
     });
 

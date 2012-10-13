@@ -1,6 +1,6 @@
 /*
- * The core of the the flatturtle framework Grow and manage turtles from this
- * basic interface, more functionality is added by prototype
+ * The core of the the flatturtle framework. Grow and manage turtles from this
+ * basic interface, more functionality is added by prototype.
  */
 window.Turtles = (function() {
 
@@ -11,8 +11,7 @@ window.Turtles = (function() {
     var instances = {};
 
     /*
-     * Register a new turtle interface The supplied turtle must be the correct
-     * format
+     * Register a new turtle interface
      */
     function register(name, turtle) {
         if (turtles[name] != null)
@@ -25,6 +24,9 @@ window.Turtles = (function() {
         return true;
     }
 
+    /*
+     * Create a new turtle instance
+     */
     function instantiate(name, id, options) {
         // check if turtle specification exists
         if (turtles[name] == null) {
