@@ -42,7 +42,7 @@ i{
     src:url(fonts/SohoStdBold.otf);
 }
 
-div, ul, li, h1, h2, h3, h4, section, p{
+div, ul, li, h1, h2, h3, h4, section, p, i{
 	background-repeat:no-repeat;
 	background-position:left center;
 }
@@ -191,9 +191,9 @@ ul li{
 	position:absolute;
 	right:0;
 	top:0;
-	line-height:3.9em;
+	line-height:2.2em;
 	width:auto;
-	padding:0 10px 0 10px;
+	padding:18px 10px 0 10px;
 	background: #232323; /* Old browsers */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#232323), color-stop(100%,#333333)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, #232323 0%,#333333 100%); /* Chrome10+,Safari5.1+ */
@@ -204,22 +204,39 @@ ul li{
 	background-color:#CCC;
 }
 
-.distance .foot, .distance .bike{
+.distance .foot, .distance .bike, .distance p{
 	float:left;
 	width:auto;
-	margin:0 5px 0 15px;
-	font-size:12px;
-	padding-left:45px;
+	font-size:15px;
 	}
+
+.distance p{
+	margin:0 10px 0 0;
+	padding-left:20px;
+}
 
 .distance .bike{
 	background-image:url(images/FT__0001_fietsafstand.png);
-	background-repeat:no-repeat;
+	width:40px;
+	height:40px;
+	}
+
+.bike{
+	background-image:url(images/FT__0001_fietsafstand.png);
+	width:40px;
+	height:40px;
+	}
+
+.foot{
+	background-image:url(images/FT__0000_wandelafstand.png);
+	width:40px;
+	height:40px;
 	}
 
 .distance .foot{
 	background-image:url(images/FT__0000_wandelafstand.png);
-	background-repeat:no-repeat;
+	width:40px;
+	height:40px;
 	}
 
 /* NEXT TRAINS/TRAMS/BUSSES FROM STATIONS */

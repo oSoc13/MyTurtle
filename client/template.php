@@ -24,8 +24,8 @@
                     <div class="titleBar">
                         <h2>Vilvoorde</h2>
                         <div class="distance clearfix">
-                            <p class="bike">00:21</p>
-                            <p class="foot">00:40</p>
+                            <p><i class="bike"></i>00:21</p>
+                            <p><i class="foot"></i>00:40</p>
                         </div>
                     </div>
                     <div class="results">
@@ -71,12 +71,12 @@
                         </ul>
                     </div>
                 </section>
-                <section class="bus tram">
+                <section class="bus">
                     <div class="titleBar">
                         <h2>Stop Bicoque</h2>
                         <div class="distance clearfix">
-                            <div class="bike">00:12</div>
-                            <div class="foot">00:30</div>
+                            <p><i class="bike"></i>00:12</p>
+                            <p><i class="foot"></i>00:30</p>
                         </div>
                     </div>
                     <div class="results">
@@ -231,13 +231,6 @@
         <script>
         	config = <?php echo json_encode($config); ?>;
         </script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+        
     </body>
 </html>
