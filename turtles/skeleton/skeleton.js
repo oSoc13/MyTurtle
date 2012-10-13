@@ -28,8 +28,7 @@
 
             /*
              * Set the url property (or function) on a collection to reference
-             * its location on the server. Models within the collection will use
-             * url to construct URLs of their own.
+             * its location on the server. This url is used by the fetch method.
              */
 
         },
