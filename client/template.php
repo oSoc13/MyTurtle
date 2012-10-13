@@ -170,7 +170,9 @@
                         </div>
                     </div>
                     <div class="titleBar">
-
+						<div class="amount">
+                        	10
+                        </div>
                     </div>
                 </section>
              
