@@ -154,7 +154,7 @@ ul li{
 	bottom:0;
 	}
 
-.turtle{
+.panel{
 	width:50%; 
 	float:left;
 	background-color:#DDD;
@@ -164,11 +164,6 @@ ul li{
 
 /* PUBLIC TRANSPORT SCREEN CSS */
 
-.publicTransport .train, .publicTransport .bus, .publicTransport .tram, .publicTransport .traffic{
-	padding-bottom:20px;
-	background-color:#FFF;
-	}
-
 .titleBar{
 	width:100%;
 	height:80px;
@@ -177,16 +172,7 @@ ul li{
 	position:relative;
 	}
 
-.publicTransport h2{
-	margin-left:15px;
-	padding-left:85px;
-	font-size:1.6em;
-	font-weight:bold;
-	line-height:2.5em;
-	font-family:SohoGothicProBold;
-	}
-
-.publicTransport .distance{
+.list .distance{
 	height:55px;
 	position:absolute;
 	right:0;
@@ -200,7 +186,7 @@ ul li{
 	background: linear-gradient(to bottom, #232323 0%,#333333 100%); /* W3C */
 	}
 
-.publicTransport{
+.list{
 	background-color:#CCC;
 }
 
@@ -238,6 +224,11 @@ ul li{
 	width:40px;
 	height:40px;
 	}
+	
+.turtle{
+	padding-bottom:20px;
+	background-color:#FFF;
+}
 
 /* NEXT TRAINS/TRAMS/BUSSES FROM STATIONS */
 .results{
@@ -276,12 +267,6 @@ ul li{
 	float:left;
 	}
 
-.traffic .results ul li .square{
-	width:60px;
-	background-color:#BBB;
-	color:#333;
-}
-
 .results ul li .square:nth-child(2){
 	margin-left:0;
 }
@@ -311,16 +296,38 @@ ul li{
 	text-align:center;
 	}
 
-.traffic .results ul li .time p:first-child{
+.turtle .wide ul li .square{
+	width:60px;
+	background-color:#BBB;
+	color:#333;
+}
+
+.turtle .wide ul li h3{
+	margin-left:23px;
+}
+
+.turtle .wide ul li .square:before{
+	content:"";
+	width:20px;
+	height:40px;
+	background-image:url(images/arrow_right.png);
+	background-repeat:no-repeat;
+	display:block;
+	position:absolute;
+	left:81px;
+	margin-top:10px;
+}
+
+.turtle .wide ul li .time p:first-child{
 	color:#666;
 	text-align:right;
 }
 
-.traffic .results ul li .time{
+.turtle .results.wide ul li .time{
 	width:35%;
 	}
 
-.traffic .results ul li .time p{
+.turtle .results.wide ul li .time p{
 	text-align:right;
 	width:40%;
 }
@@ -341,44 +348,56 @@ ul li{
 */
 
 /*===TITLE BARS ICON===*/
-/*TRAM*/
-.tram h2{
-	background-image:url(images/FT__0004_tramhalte.png);
-	}
-
-/*BUS*/
-.bus h2{
-	background-image:url(images/FT__0003_bushalte.png);
-	}
 
 /*TRAIN*/
-.train h2{
-	background-image:url(images/FT__0005_treinstation.png);
+.titleBar .train, .titleBar .tram.bus, .titleBar .traffic, .titleBar .bus{
+	width:81px;
+	height:81px;
+	float:left;
+	margin-left:15px;
 	}
 
+.titleBar h2{
+	float:left;
+	margin-left:5px;
+	font-size:1.7em;
+	font-weight:bold;
+	line-height:2.4em;
+	font-family:SohoGothicProBold;
+}
+
+.titleBar .train{
+	background-image:url(images/FT__0005_treinstation.png);
+}
+
 /*TRAFFIC*/
-.traffic h2{
+.titleBar .traffic{
 	background-image:url(images/FT__0002_autoverkeer.png);
 	}
 	
 /*tram bus*/
-.tram.bus h2{
+.titleBar .tram.bus{
 	background-image:url(images/FT__0000_tram-enbushalte.png);
 	}
 
 /*tram bus*/
-.fiets h2{
+.titleBar .tram{
 	background-image:url(images/FT__0001_huurfietsen.png);
+	}
+	
+/*bus*/
+.titleBar .bus{
+	background-image:url(images/FT__0003_bushalte.png);
 	}
 
 /*SUB-CLASS BUS*/
-.bus .bus{
+.results .bus{
 	background-image:url(images/FT__0002_bus.png);
 	padding:0;
 	}
 
 /*SUB-CLASS TRAM*/
-.bus .tram{
+.results .tram{
 	background-image:url(images/FT__0003_tram.png);
 	padding:0;
 	}
@@ -403,14 +422,14 @@ ul li{
 * LOCATION TURTLE
 */
 
-.location{
+.widget{
 	background-color:#bd1d92;
 	-webkit-box-shadow:  -3px 2px 3px 1px rgba(0, 0, 0, 0.4);
     box-shadow:  -3px 2px 3px 1px rgba(0, 0, 0, 0.4);
 	color:#FFF;
 	}
 	
-.location .titleBar{
+.widget .titleBar{
 	width:100%;
 	height:80px;
 	background: #5d0e48; /* Old browsers */
@@ -420,12 +439,12 @@ ul li{
 	position:relative;
 	}
 
-.location .titleBar .timerBar{
+.widget .titleBar .timerBar{
 	height:5px;
 	width:100%;
 }
 
-.location .titleBar .timerBarYellow{
+.widget .titleBar .timerBarYellow{
 	width:0;
 	height:5px;
 	background-color:#d0e900;
@@ -434,7 +453,7 @@ ul li{
 	left:0;
 }
 	
-.location .titleBar .nav{
+.widget .titleBar .nav{
 	width:15%;
 	height:75px;
 	margin:0 1% 0 1%;
@@ -446,7 +465,7 @@ ul li{
 	background-position:right top;*/
 }
 
-.location .titleBar .nav.active{
+.widget .titleBar .nav.active{
 	margin:0;
 	width:25%;
 	background-image:none;
@@ -460,7 +479,7 @@ ul li{
 }
 
 	
-.location .titleBar .clock{
+.widget .titleBar .clock{
 	width:210px;
 	position:absolute;
 	right:0;
@@ -477,37 +496,37 @@ ul li{
 	font-family:SohoStdProBold;
 }
 
-.location .locContent{
+.widget .locContent{
 	padding:6%;
 	line-height:1.5em;
 	font-family:SohoGothicProReg;
 	font-size:14px;
 }
 
-.location .social{
+.widget .social{
 	width:100%;
 	padding-bottom:70px;
 }
 
-.location .social #leftColumn{
+.widget .social #leftColumn{
 	float:left;
 	width:30%;
 	height:auto;
 }
 
-.location .social #oneColumn{
+.widget .social #oneColumn{
 	width:100%;
 	height:auto;
 }
 
-.location .social #rightColumn{
+.widget .social #rightColumn{
 	float:left;
 	width:65%;
 	height:auto;
 	margin-left:5%;
 }
 
-.location .social .fsq{
+.widget .social .fsq{
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
@@ -517,7 +536,7 @@ ul li{
 	background-color:#711158;
 }
 
-.location .social .instgrm{
+.widget .social .instgrm{
 	min-height:30px;
 	height:auto;
 	padding:0;
@@ -526,7 +545,7 @@ ul li{
 	margin-bottom:35px;
 }
 
-.location .social .instgrm:after{
+.widget .social .instgrm:after{
 	content: "";
 	background-image:url(images/shadow3.png);
 	background-size:100%;
@@ -536,7 +555,7 @@ ul li{
 	display:block;
 }
 
-.location .social .tweet{
+.widget .social .tweet{
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
@@ -547,7 +566,7 @@ ul li{
 	height:auto;
 }
 
-.location .social h5{
+.widget .social h5{
 	position:absolute;
 	bottom:-40px;
 	left:2px;
@@ -555,14 +574,14 @@ ul li{
 	z-index:3;
 }
 
-.location .social .instgrm h5{
+.widget .social .instgrm h5{
 	right:0;
 	text-align:right;
 	bottom:-42px;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
 }
 
-.location .social .tweet:before{
+.widget .social .tweet:before{
     content: "";
 	position: absolute;
 	bottom: -20px;
@@ -575,7 +594,7 @@ ul li{
 	z-index:99999;
 }
 
-.location .social .tweet:after{
+.widget .social .tweet:after{
     content: "";
 	position:absolute;
 	background-image:url(images/shadow3.png);
@@ -591,7 +610,7 @@ ul li{
 }
 
 
-.location .yellow{
+.widget .yellow{
 	color:#d0e900;
 }
 
@@ -646,12 +665,12 @@ footer #where{
 
 
 @media all and (max-width: 1200px) {
-  	.location .social .socialBox{
+  	.widget .social .socialBox{
 		width:90%;
 		margin:0;
 	}
 	
-	.location .titleBar .clock{
+	.widget .titleBar .clock{
 		width:140px;
 	}
 	
@@ -695,7 +714,7 @@ footer #where{
 		font-size:13px;
 	}
 	
-	.location .titleBar .clock{
+	.widget .titleBar .clock{
 		width:100px;
 		font-size:1.5em;
 		line-height:4em;
@@ -721,12 +740,12 @@ footer #where{
 }
 
 @media all and (max-width: 750px) {
-  	.turtle{
+  	.panel{
   		width:100%;
 		-webkit-overflow-scrolling: touch;
   	}
 	
-	.turtle > *{
+	.panel > *{
 		-webkit-transform: translateZ(0px);
 	}
 	
@@ -870,12 +889,12 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .publicTransport:after, .publicTransport:before {
+.clearfix:after, .list:after, .list:before, .widget:before, .widget:after, .titleBar:after, .titleBar:before, .distance:before{
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
-.clearfix:after, .social:after, .publicTransport:after {
+.clearfix:after, .social:after, .list:after, .widget:after, .titleBar:after, .distance:after {
     clear: both;
 }
 

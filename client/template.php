@@ -19,11 +19,12 @@
 			
         <!-- PUBLIC TRANSPORT TURTLE -->
         <div id="container clearfix">
-            <section class="turtle publicTransport">
-                <section class="train">
+            <section class="panel list">
+                <section class="turtle">
                     <div class="titleBar">
+                    	<i class="train"></i>
                         <h2>Vilvoorde</h2>
-                        <div class="distance clearfix">
+                        <div class="distance">
                             <p><i class="bike"></i>00:21</p>
                             <p><i class="foot"></i>00:40</p>
                         </div>
@@ -42,7 +43,7 @@
                             </li>
                             <li>
                                 <div>
-                                    <p class="square" style="background-color:#999;">L</p>
+                                    <div class="square" style="background-color:#999;">L</div>
                                     <h3>Antwerpen-centraal</h3>
                                  </div>
                                  <div class="time">
@@ -51,7 +52,7 @@
                             </li>
                             <li class="via">
                                 <div>
-                                    <div class="square" style="background-color:#666;"><p>IR</p></div>
+                                    <div class="square" style="background-color:#666;">IR</div>
                                     <h3>Essen</h3>
                                  </div>
                                  <div class="time">
@@ -60,7 +61,7 @@
                             </li>
                              <li>
                                 <div>
-                                    <div class="square" style="background-color:#333;"><p>IC</p></div>
+                                    <div class="square" style="background-color:#333;">IC</div>
                                     <h3>Charleroi-Zuid</h3>
                                  </div>
                                  <div class="time">
@@ -71,10 +72,11 @@
                         </ul>
                     </div>
                 </section>
-                <section class="bus">
+                <section class="turtle">
                     <div class="titleBar">
+                    	<i class="bus"></i>
                         <h2>Stop Bicoque</h2>
-                        <div class="distance clearfix">
+                        <div class="distance">
                             <p><i class="bike"></i>00:12</p>
                             <p><i class="foot"></i>00:30</p>
                         </div>
@@ -83,8 +85,8 @@
                         <ul>
                             <li>
                                 <div>
-                                    <div class="square" style="background-color:#338c26;"><p>58</p></div>
-                                    <div class="bus"></div>
+                                    <div class="square" style="background-color:#338c26;">58</div>
+                                    <div class="square"><i class="bus"></i></div>
                                     <h3>Vilvoorde-station</h3>
                                 </div>
                                 <div class="time">
@@ -94,7 +96,7 @@
                             </li>
                             <li>
                                 <div>
-                                    <div class="square" style="background-color:#338c26;"><p>58</p></div>
+                                    <div class="square" style="background-color:#338c26;">58</div>
                                     <div class="square"><i class="tram"></i></div>
                                     <h3>Ysen</h3>
                                  </div>
@@ -118,15 +120,16 @@
                     </div>
                 </section>
                 
-                <section class="traffic">
+                <section class="turtle">
                     <div class="titleBar">
+                    	<i class="traffic"></i>
                         <h2>Verkeer</h2>
                     </div>
-                    <div class="results">
+                    <div class="results wide">
                         <ul>
                             <li>
                                 <div>
-                                    <div class="square"><p>E19</p></div>
+                                    <div class="square wide">E19</div>
                                     <h3>Mechelen - Brussel</h3>
                                 </div>
                                 <div class="time">
@@ -136,7 +139,7 @@
                             </li>
                             <li>
                                 <div>
-                                    <div class="square"><p>E19</p></div>
+                                    <div class="square wide">E19</div>
                                     <h3>Nederland</h3>
                                 </div>
                                 <div class="time">
@@ -153,7 +156,7 @@
             
             
             <!-- LOCATION TURTLE -->
-            <section class="turtle location clearfix">
+            <section class="panel widget">
                 <section class="titleBar clearfix">
                     <div class="timerBar">
                         <div class="timerBarYellow"></div>
