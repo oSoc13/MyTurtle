@@ -589,7 +589,15 @@ ul li{
 	margin-bottom:35px;
 }
 
-.widget .social .instgrm:after{
+.widget .social .tweet{
+	width:92%;
+	min-height:30px;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.4);
+	margin-bottom:40px;
+	position:relative;
+}
+
+.widget .social .instgrm:after, .widget .social .tweet .content:after{
 	content: "";
 	background-image:url(images/shadow3.png);
 	background-size:100%;
@@ -599,19 +607,18 @@ ul li{
 	display:block;
 }
 
+.widget .social .tweet .content:after{
+	z-index:0;
+	position:relative;
+	top:36px;
+}
+
 .widget .social .instgrm h5{
 	position:absolute;
 	bottom:-25px;
 	left:2px;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.7);
 	z-index:3;
-}
-
-.widget .social .tweet{
-	width:92%;
-	min-height:30px;
-	text-shadow: 2px 2px 1px rgba(0,0,0,0.4);
-	margin-bottom:40px;
 }
 
 .widget .social .tweet .content{
@@ -641,6 +648,7 @@ ul li{
 	width:1px;
 	height:10px;
 	margin-left:10px;
+	z-index:500;
 }
 
 
@@ -841,6 +849,14 @@ footer #where{
 	
 	body{
 		font-size:16px;
+	}
+	
+	footer #where{
+		font-size:28px;
+	}
+	
+	h2{
+		line-height:3.1em;
 	}
 }
 
