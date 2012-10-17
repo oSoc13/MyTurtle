@@ -858,6 +858,10 @@ footer #where{
 	h2{
 		line-height:3.1em;
 	}
+	
+	.results ul li .tramOrBus, .results ul li .bus, .results ul li .tram, .results ul li .square{
+		line-height:1.3em;
+	}
 }
 
 
