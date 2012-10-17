@@ -171,7 +171,8 @@
                     </div>
                     <div class="titleBar">
 						<div class="amount">
-                        	10
+                        	<p class="small">10</p>
+                            <p class="big">/35</p>
                         </div>
                     </div>
                 </section>
@@ -181,7 +182,7 @@
             
             
             <!-- LOCATION TURTLE -->
-            <section class="panel widget">
+            <section class="panel widget color">
                 <section class="titleBar clearfix">
                     <div class="timerBar">
                         <div class="timerBarYellow"></div>
@@ -195,7 +196,7 @@
                     <div id="location" class="nav">
                         <h4>Location</h4>
                     </div>
-                    <section class="clock">
+                    <section class="clock color">
                         <h4>10:21</h4>
                     </section>
                 </section>
@@ -205,38 +206,59 @@
                         </div>
                         <div id="leftColumn">
                         	<div class="fsq">
-                            	<p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Mechelen on <span class="yellow">Foursquare</span></p>
+                            	<p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Machelen on <span class="yellow">Foursquare</span></p>
                         	</div>
                             <div class="tweet">
-                            	<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
-                                <h5>@hanspans</h5>
+                            	<div class="content"><p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p></div>
+                                <div class="info">
+                                	<h5>@hanspans</h5>
+                                	<div class="speak"></div>
+                                </div>
                        	 	</div>
                             <div class="instgrm">
                            		<img src="client/css/images/Instagram-shot2.jpg" class="img" />
                                 <h5>Instagram photo: Alex Verswijvel</h5>
                         	</div>
                             <div class="fsq">
-                            	<p><span class="bold">Pieter Colpaert</span> just checked in at Uplace Mechelen on <span class="yellow">Foursquare</span></p>
+                            	<p><span class="bold">Pieter Colpaert</span> just checked in at Uplace Machelen on <span class="yellow">Foursquare</span></p>
                             </div>
                             <div class="tweet">
-                            	<p>#uplace is the place!</p>
-                                <h5>@hanspans</h5>
+                            	<div class="content">
+                            		<p>#uplace is the place!</p>
+                                </div>
+                                <div class="info">
+                                	<h5>@hanspans</h5>
+                                	<div class="speak"></div>
+                                </div>
                         	</div>
                        	</div>
                         <div id="rightColumn">
                         	<div class="tweet">
-                            	<p>#uplace is the place!</p>
-                                <h5>@phillipevdab</h5>
+                            	<div class="content">
+                            		<p>#uplace is the place!</p>
+                                </div>
+                                <div class="info">
+                                	<h5>@phillipevdab</h5>
+                                	<div class="speak"></div>
+                                </div>
                         	</div>
                             <div class="instgrm">
                             	<img src="client/css/images/Instagram-shot.jpg" class="img" />
                                 <h5>Instagram photo: Dennis Kestelle</h5>
                         	</div>
                             <div class="tweet">
-                            	<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
-                                <h5>@yungpanda_BE</h5>
+                                <div class="content">
+                            		<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
+                                </div>
+                                <div class="info">
+                                	<h5>@yungpanda_BE</h5>
+                                	<div class="speak"></div>
+                                </div>
                         	</div>
                         </div>
+                    </section>
+                    <section class="weather">
+                    	
                     </section>
                  </section>
             </section>

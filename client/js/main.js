@@ -3,7 +3,7 @@ var yellowBar = $(".timerBarYellow");
 var counterBar = 0;
 
 $(document).ready(function() {
-  setImageAtStart();
+  setWidgetsAtStart();
   timer();
   setTimeOnScreen();
 });
@@ -25,17 +25,27 @@ function setTimeOnScreen(){
 }
 
 $(window).resize(function(){
-	setImageAtStart();
+	setWidgetsAtStart();
 	timer();
 });
 
+
 /* FUNCTION TO SET INSTAGRAM IMAGE WITH RIGHT WIDTH AND HEIGHT*/
-function setImageAtStart(){
+function setWidgetsAtStart(){
 	$(".instgrm").each(function(){
 		var widthImg = $(this).width();
 		$(this).height(widthImg);
 		$(this).find(".img").css({"width":widthImg, "height":widthImg});
 	});
+	
+	$(".tweet").each(function(){
+		var widthText = $(this).find('h5').width();
+		widthText = parseInt(widthText + 5);
+		
+		
+	});
+	
+	
 }
 
 function timer(){
