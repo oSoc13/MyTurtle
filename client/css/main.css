@@ -161,12 +161,17 @@ textarea {
 
 .titleBar h2{
 	float:left;
-	margin-left:5px;
+	margin-left:40px;
 	font-size:1.5em;
 	font-weight:bold;
 	line-height:2.8em;
 	font-family:SohoGothicProBold;
 }
+
+.titleBar i + h2{
+	margin-left:5px;
+}
+
 
 .titleBar .train{
 	background-image:url(images/FT__0005_treinstation.png);
