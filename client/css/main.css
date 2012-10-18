@@ -76,7 +76,7 @@ font-weight: bold;
 
 body {
     font-size: 19px;
-    line-height: 1.2;
+    line-height: 120%;
 	width:100%;
 	height:100%;
 	font-family:SohoGothicProMed;
@@ -333,7 +333,6 @@ ul li{
 	background-color:#FFF;
 	}
  
-.results ul li .tramOrBus,
 .results ul li .bus,
 .results ul li .tram,
 .results ul li .square{
@@ -414,12 +413,12 @@ ul li{
 }
 
 .results ul .via{
-	background-image:url(images/arrow.png);
-	background-position:15px top;
+	background-image:url(images/arrow999.png);
+	background-position:25px -7px;
 	}
 
 .results ul .via .square{
-	margin-left:55px;
+	margin-left:60px;
 }
 
 
@@ -475,9 +474,8 @@ ul li{
 	width:100%;
 	height:80px;
 	background: #5d0e48; /* Old browsers */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5d0e48), color-stop(100%,#b91c8f)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #5d0e48 0%,#b91c8f 100%); /* Chrome10+,Safari5.1+ */
-	background: linear-gradient(to bottom,  #5d0e48 0%,#b91c8f 100%); /* W3C */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
 	position:relative;
 	}
 
@@ -496,15 +494,15 @@ ul li{
 }
 	
 .widget .titleBar .nav{
-	width:15%;
+	width:18%;
 	height:75px;
 	margin:0 1% 0 1%;
 	float:left;
-	color:#ba73a7;
+	color:rgba(255,255,255,0.4);
 	text-align:center;
 	line-height:4em;
-	/*background-image:url(images/shadow_loc.jpg);
-	background-position:right top;*/
+	background-image:url(images/shadow_vertical.png);
+	background-position:right top;
 }
 
 .widget .titleBar .nav.active{
@@ -610,6 +608,7 @@ ul li{
 	background-repeat:no-repeat;
 	height:20px;
 	display:block;
+	z-index:0;
 }
 
 .widget .social .tweet .content:after{
@@ -653,7 +652,7 @@ ul li{
 	width:1px;
 	height:10px;
 	margin-left:10px;
-	z-index:500;
+	z-index:123500;
 }
 
 

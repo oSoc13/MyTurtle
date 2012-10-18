@@ -38,10 +38,8 @@ function setWidgetsAtStart(){
 		$(this).find(".img").css({"width":widthImg, "height":widthImg});
 	});
 	
-	$(".tweet").each(function(){
-		var widthText = $(this).find('h5').width();
-		widthText = parseInt(widthText + 5);
-		
+	$(".via").each(function(){
+		var color_prev = $(this).prev().find('.square').css("background-color");
 		
 	});
 	
