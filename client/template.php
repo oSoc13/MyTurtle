@@ -74,7 +74,7 @@
                 </section>
                 <section class="turtle">
                     <div class="titleBar">
-                    	
+                    	<i class="bus"></i>
                         <h2>Stop Bicoque</h2>
                         <div class="distance">
                             <p><i class="bike"></i>00:12</p>
