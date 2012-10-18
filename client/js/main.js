@@ -39,8 +39,11 @@ function setWidgetsAtStart(){
 	});
 	
 	$(".via").each(function(){
-		var color_prev = $(this).prev().find('.square').css("background-color");
-		
+		var color_prev = $(this).prev().find('.square').attr("data-color");
+		color_prevArray = color_prev.split('#');
+		color_prev = color_prevArray[1];
+		var bgimage_url = "url(client/css/images/arrow" + color_prev + ".png)";
+		$(this).css("background-image",bgimage_url);
 	});
 	
 	

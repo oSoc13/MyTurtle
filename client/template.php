@@ -33,7 +33,7 @@
                         <ul>
                             <li>
                                 <div>
-                                    <div class="square" style="background-color:#333;"><p>IC</p></div>
+                                    <div class="square" data-color="#333" style="background-color:#333;"><p>IC</p></div>
                                     <h3 class="red">Brussel-Zuid</h3>
                                 </div>
                                 <div class="time">
@@ -43,7 +43,7 @@
                             </li>
                             <li>
                                 <div>
-                                    <div class="square" style="background-color:#999;">L</div>
+                                    <div class="square" data-color="#999" style="background-color:#999;">L</div>
                                     <h3>Antwerpen-centraal</h3>
                                  </div>
                                  <div class="time">
@@ -52,7 +52,7 @@
                             </li>
                             <li class="via">
                                 <div>
-                                    <div class="square" style="background-color:#666;">IR</div>
+                                    <div class="square" data-color="#666" style="background-color:#666;">IR</div>
                                     <h3>Essen</h3>
                                  </div>
                                  <div class="time">
@@ -61,12 +61,21 @@
                             </li>
                              <li>
                                 <div>
-                                    <div class="square" style="background-color:#333;">IC</div>
+                                    <div class="square" data-color="#333" style="background-color:#333;">IC</div>
                                     <h3>Charleroi-Zuid</h3>
                                  </div>
                                  <div class="time">
                                     <p>10:36</p>
                                     <p class="red">+0:02</p>
+                                </div>
+                            </li>
+                            <li class="via">
+                                <div>
+                                    <div class="square" data-color="#666" style="background-color:#666;">IR</div>
+                                    <h3>Essen</h3>
+                                 </div>
+                                 <div class="time">
+                                    <p>10:45</p>
                                 </div>
                             </li>
                         </ul>
