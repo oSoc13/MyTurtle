@@ -729,7 +729,7 @@ footer #where{
 	width:30%;
 	top:0;
 	height:80px;
-	line-height:4.2em;
+	line-height:5.1em;
 }
 
 
@@ -747,36 +747,44 @@ footer #where{
 		font-size:15px;
 	}
 	
-	h2{
-		line-height:3em;
+	.titleBar h2{
+		line-height:3.7em;
 	}
 	
 	.results ul li h3{
 		line-height:2.2em;
 	}
 	
-	..results ul li .time{
+	.results ul li .time{
 		line-height:2.9em;
 	}
 	
-	.titleBar .distance .foot,
-	.titleBar .distance .bike{
+	.titleBar .distance p{
 		float:none;
 		margin:0 0 0 0;
-		font-size:11px;
+		font-size:10px;
+		line-height:4em;
 	}
 	
 	.titleBar .distance{
-		line-height:1.9em;
-		padding-top:10px;
+		padding-top:0px;
 	}
 	
-	.results ul li, 
+	.titleBar .distance .bike{
+		margin-left:0;
+	}
+	
+	.results ul li .square, 
 	.results ul li .bus,
 	.results ul li .tram{
-		line-height:2.8em;
+		line-height:2.9;
+	}
+	
+	footer #where{
+		line-height:6.2;
 	}
 }
+
 
 @media all and (max-width:900px){
 	body{
@@ -789,9 +797,10 @@ footer #where{
 		line-height:4em;
 	}
 	
-	h2{
-		line-height:3.5em;
+	.titleBar h2{
+		line-height:4.1;
 	}
+	
 	
 	.results ul li h3{
 		line-height:2.9em;
@@ -801,10 +810,14 @@ footer #where{
 		line-height:3.3em;
 	}
 	
-	.results ul li, 
+	.results ul li .square, 
 	.results ul li .bus,
 	.results ul li .tram{
-		line-height:3.2em;
+		line-height:3.5em;
+	}
+	
+	.square{
+		line-height:5.4em;
 	}
 }
 
@@ -818,6 +831,11 @@ footer #where{
 		-webkit-transform: translateZ(0px);
 	}
 	
+	.titleBar h2{
+		line-height:4.0;
+	}
+	
+	
 	.titleBar .distance .foot,
 	.titleBar .distance .bike{
 		float:left;
@@ -827,25 +845,86 @@ footer #where{
 		padding-left:45px;
 	}
 	
+	.results ul li h3{
+		line-height:2.5em;
+	}
+	
 	.titleBar .distance{
 		height:55px;
 		line-height:3.9em;
+	}
+	
+	footer{
+		position:static;
+		text-align:center;
+		padding-top:20px;
+	}
+	
+	footer #ftlogo{
+		margin:10px auto 0 auto;
+	}
+	
+	footer #loc_logo{
+		position:static;
+		width:217px;
+		margin:0 auto 10px auto;
+	}
+	
+	footer:before{
+		background-image:none;
+	}
+	
+	footer #where{
+		color:#bd1d92;
+		position:static;
+		margin:0 auto;
+		width:90%;
+		text-align:center;
+		height:auto;
+		line-height:4.2em;
 	}
 	
 }
 
 @media all and (max-width: 500px) {
 	
-	.titleBar .distance .bike,
-	.titleBar .distance .foot{
-		float:none;
-		margin:0 0 0 0;
-		font-size:11px;
+	
+	footer{
+		position:static;
+		text-align:center;
+		padding-top:20px;
+	}
+	
+	footer #ftlogo{
+		margin:10px auto 0 auto;
+	}
+	
+	footer #loc_logo{
+		position:static;
+		width:217px;
+		margin:0 auto 10px auto;
 	}
 	
 	.titleBar .distance{
-		line-height:1.9em;
-		padding-top:10px;
+		padding-left:0;
+	}
+	
+	.titleBar .distance .foot, .titleBar .distance .bike{
+		margin-left:0;
+	}
+	
+	footer:before{
+		background-image:none;
+	}
+	
+	footer #where{
+		color:#bd1d92;
+		position:static;
+		margin:0 auto;
+		width:90%;
+		text-align:center;
+		height:auto;
+		line-height:4.2em;
 	}
 }
 
@@ -857,15 +936,26 @@ footer #where{
 	
 	footer #where{
 		font-size:28px;
-		line-height: 3.0em;
+		line-height: 2.6em;
 	}
 	
-	h2{
-		line-height:3.1em;
+	.titleBar h2{
+		line-height:3.4em;
 	}
 	
-	.results ul li .tramOrBus, .results ul li .bus, .results ul li .tram, .results ul li .square{
-		line-height:1.3em;
+	.locContent p{
+		font-size:18px;
+		line-height:1.4;
+	}
+	
+	h4{
+		line-height:3.4em;
+	}
+	
+	.results ul li .square, 
+	.results ul li .bus,
+	.results ul li .tram{
+		line-height:2.5em;
 	}
 }
 
