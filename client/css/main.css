@@ -783,6 +783,9 @@ footer #where{
 	footer #where{
 		line-height:6.2;
 	}
+	.widget .titleBar .clock{
+		line-height:2.3em;
+	}
 }
 
 
@@ -795,6 +798,10 @@ footer #where{
 		width:100px;
 		font-size:1.5em;
 		line-height:4em;
+	}
+	
+	h4{
+		line-height:5em;
 	}
 	
 	.titleBar h2{
@@ -884,10 +891,12 @@ footer #where{
 		line-height:4.2em;
 	}
 	
+	.widget .titleBar .clock{
+		line-height:1.8em;
+	}
 }
 
 @media all and (max-width: 500px) {
-	
 	
 	footer{
 		position:static;
