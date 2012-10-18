@@ -23,7 +23,7 @@
                 <section class="turtle">
                     <div class="titleBar">
                     	<i class="train"></i>
-                        <h2>Vilvoorde: clock kleur</h2>
+                        <h2>Vilvoorde</h2>
                         <div class="distance">
                             <p><i class="bike"></i>00:21</p>
                             <p><i class="foot"></i>00:40</p>
