@@ -672,7 +672,6 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 
 .widget .social .tweet .content{
 	width:92%;
-	background-color:rgba(255,255,255,0.2);
 	padding:16px 4% 16px 4%;
 }
 
@@ -707,7 +706,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 }
 
 .widget .social .tweet .info{
-	position:relative;
+	position:absolute;
 }
 
 .widget .social .tweet .info h5{
@@ -721,7 +720,6 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	border-width: 20px 20px 0 0;
 	border-style: solid;
 	/*border-color: #c73fa2 transparent;*/
-	border-color: rgba(255,255,255,0.2) transparent;
 	display:inline-block;
 	width:1px;
 	height:10px;
@@ -1094,6 +1092,16 @@ footer #where{
 
 .text-color{
 	color:#21aeb0;
+}
+
+/* EXTRA COLOR */
+
+.color2{
+	background-color:#7bcacb;
+}
+
+.border-color{
+	border-color:#7bcacb transparent;
 }
 
 

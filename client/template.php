@@ -218,10 +218,10 @@
                             	<p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>
                         	</div>
                             <div class="tweet">
-                            	<div class="content"><p>#Location trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p></div>
+                            	<div class="content color2"><p>#Location trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p></div>
                                 <div class="info">
                                 	<h5>@hanspans</h5>
-                                	<div class="speak"></div>
+                                	<div class="speak border-color"></div>
                                 </div>
                        	 	</div>
                             <div class="instgrm">
@@ -232,23 +232,23 @@
                             	<p><span class="bold">Pieter Colpaert</span> just checked in at This Location on <span class="yellow">Foursquare</span></p>
                             </div>
                             <div class="tweet">
-                            	<div class="content">
+                            	<div class="content color2">
                             		<p>#uplace is the place!</p>
                                 </div>
                                 <div class="info">
                                 	<h5>@hanspans</h5>
-                                	<div class="speak"></div>
+                                	<div class="speak border-color"></div>
                                 </div>
                         	</div>
                        	</div>
                         <div id="rightColumn">
                         	<div class="tweet">
-                            	<div class="content">
+                            	<div class="content color2">
                             		<p>#Location is the place!</p>
                                 </div>
                                 <div class="info">
                                 	<h5>@phillipevdab</h5>
-                                	<div class="speak"></div>
+                                	<div class="speak border-color"></div>
                                 </div>
                         	</div>
                             <div class="instgrm">
@@ -256,12 +256,12 @@
                                 <h5>Instagram photo: Dennis Kestelle</h5>
                         	</div>
                             <div class="tweet">
-                                <div class="content">
+                                <div class="content color2">
                             		<p>#Location trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
                                 </div>
                                 <div class="info">
                                 	<h5>@yungpanda_BE</h5>
-                                	<div class="speak"></div>
+                                	<div class="speak border-color"></div>
                                 </div>
                         	</div>
                         </div>
