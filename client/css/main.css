@@ -384,6 +384,7 @@ ul li{
 
 .turtle .wide ul li h3{
 	margin-left:23px;
+	line-height:1.7;
 }
 
 .turtle .wide ul li .square:before{
@@ -755,8 +756,12 @@ footer #where{
 		line-height:2.2em;
 	}
 	
+	.turtle .wide ul li h3{
+		line-height:2.1em;
+	}
+	
 	.results ul li .time{
-		line-height:2.9em;
+		line-height:2.7em;
 	}
 	
 	.titleBar .distance p{
@@ -821,6 +826,10 @@ footer #where{
 	.results ul li .bus,
 	.results ul li .tram{
 		line-height:3.5em;
+	}
+	
+	.turtle .wide ul li h3{
+		line-height:2.5em;
 	}
 	
 	.square{
@@ -940,7 +949,7 @@ footer #where{
 @media all and (min-width: 1600px) {
 	
 	body{
-		font-size:16px;
+		font-size:22px;
 	}
 	
 	footer #where{
@@ -949,7 +958,27 @@ footer #where{
 	}
 	
 	.titleBar h2{
-		line-height:3.4em;
+		line-height:2.5em;
+	}
+	
+	.titleBar .distance{
+		line-height:1.9em;
+	}
+	
+	.turtle ul li h3{
+		line-height:1.5;
+	}
+	
+	.results ul li .time p{
+		line-height:1.6;
+	}
+	
+	.turtle .wide ul li h3{
+		line-height:1.4em;
+	}
+	
+	.turtle .results.wide ul li .time{
+		line-height:1.6em;
 	}
 	
 	.locContent p{
@@ -957,14 +986,18 @@ footer #where{
 		line-height:1.4;
 	}
 	
-	h4{
-		line-height:3.4em;
+	.nav h4{
+		line-height:2.7em;
+	}
+	
+	.widget .titleBar .clock{
+		line-height:1.8;
 	}
 	
 	.results ul li .square, 
 	.results ul li .bus,
 	.results ul li .tram{
-		line-height:2.5em;
+		line-height:2.1em;
 	}
 }
 
@@ -1080,9 +1113,7 @@ footer #where{
     clear: both;
 }
 
-.clearfix2:before{
-	clear:both;
-}
+
 
 /*
  * For IE 6/7 only
