@@ -962,7 +962,6 @@ footer #where{
 	}
 	
 	footer #where{
-		color:#bd1d92;
 		position:static;
 		margin:0 auto;
 		width:90%;
@@ -973,6 +972,10 @@ footer #where{
 	
 	.widget .titleBar .clock{
 		line-height:1.8em;
+	}
+	
+	.panel{
+		overflow:visible;
 	}
 }
 
@@ -1007,13 +1010,16 @@ footer #where{
 	}
 	
 	footer #where{
-		color:#bd1d92;
 		position:static;
 		margin:0 auto;
 		width:90%;
 		text-align:center;
 		height:auto;
 		line-height:4.2em;
+	}
+	
+	.panel{
+		overflow:visible;
 	}
 }
 
@@ -1022,6 +1028,7 @@ footer #where{
 	body{
 		font-size:22px;
 	}
+	
 	
 	footer #where{
 		font-size:28px;
@@ -1097,11 +1104,11 @@ footer #where{
 /* EXTRA COLOR */
 
 .color2{
-	background-color:#7bcacb;
+	background-color:#6cc3c4;
 }
 
 .border-color{
-	border-color:#7bcacb transparent;
+	border-color:#6cc3c4 transparent;
 }
 
 

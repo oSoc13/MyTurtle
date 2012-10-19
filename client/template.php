@@ -233,7 +233,7 @@
                             </div>
                             <div class="tweet">
                             	<div class="content color2">
-                            		<p>#uplace is the place!</p>
+                            		<p>#Location is the place!</p>
                                 </div>
                                 <div class="info">
                                 	<h5>@hanspans</h5>
