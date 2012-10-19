@@ -32,6 +32,9 @@ $(window).resize(function(){
 
 /* FUNCTION TO SET INSTAGRAM IMAGE WITH RIGHT WIDTH AND HEIGHT*/
 function setWidgetsAtStart(){
+	var docHeight = $(document).height();
+	$(".panel").height(docHeight);
+	
 	$(".instgrm").each(function(){
 		var widthImg = $(this).width();
 		$(this).height(widthImg);

@@ -230,13 +230,14 @@ ul li{
 	left:0;
 	right:0;
 	bottom:0;
+	overflow:hidden;
 	}
 
 .panel{
 	width:50%; 
 	float:left;
 	background-color:#DDD;
-	height:100%;
+	overflow:scroll;
 	}
 
 
@@ -532,7 +533,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	text-align:center;
 	line-height:1.9em;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
-	color:#de8ec9;
+	color:#7deff1;
 	font-family:SohoStdProBold;
 }
 
@@ -547,19 +548,86 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 
 .widget .social{
 	width:100%;
-	padding-bottom:70px;
+	padding-bottom:20px;
 	
 }
 
 .widget .weather{
 	width:100%;
-	padding-bottom:70px;
+	padding-bottom:90px;
+	text-align:center;
+}
+
+.widget .weather .weatherBox{
+	width:45%;
+	height:auto;
+	float:left;
+}
+
+.widget .weather .weatherBox:nth-child(2n){
+	margin-left:5%;
+}
+
+.widget .weather .weatherBox .type{
+	width:100%;
+	height:160px;
+	font-size:2em;
+	font-family:SohoGothicProBold;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
+	background-color:rgba(255,255,255,0.3);
+}
+
+.widget .weather .weatherBox .time{
+	width:100%;
+	height:50px;
+	background-color:rgba(0,0,0,0.4);
+	line-height:2.1;
+	font-size:1.5em;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
+}
+
+.widget .weather .weatherBox .type i{
+	width:140px;
+	height:110px;
+	margin:0 auto 10px auto;
+	background-position:center -30px;
+}
+
+.widget .weather .weatherBox:after{
+	content: "";
+	background-image:url(images/shadow3.png);
+	background-size:100%;
+	background-position:center top;
+	background-repeat:no-repeat;
+	height:20px;
+	display:block;
+	z-index:1;
+}
+
+.regen{
+	background-image:url(images/FT__0004_zwareregen.png);
+}
+
+.zon{
+	background-image:url(images/FT__0008_zonnig.png);
 }
 
 .widget .social #leftColumn{
 	float:left;
 	width:30%;
 	height:auto;
+}
+
+.widget .weather #leftColumn{
+	float:left;
+	width:50%;
+	height:auto;
+}
+
+.widget .weather #rightColumn{
+	float:left;
+	margin-left:5%;
+	width:45%;
 }
 
 .widget .social #oneColumn{
@@ -594,10 +662,22 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 }
 
 .widget .social .tweet{
-	width:92%;
+	width:100%;
+	padding:0;
 	min-height:30px;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.4);
 	margin-bottom:40px;
+	position:relative;
+}
+
+.widget .social .tweet .content{
+	width:92%;
+	background-color:rgba(255,255,255,0.2);
+	padding:16px 4% 16px 4%;
+}
+
+.widget .social .tweet .content{
+	display:block;
 	position:relative;
 }
 
@@ -609,7 +689,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	background-repeat:no-repeat;
 	height:20px;
 	display:block;
-	z-index:0;
+	z-index:1;
 }
 
 .widget .social .tweet .content:after{
@@ -626,15 +706,8 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	z-index:3;
 }
 
-.widget .social .tweet .content{
-	width:100%;
-	/*background-color:#c73fa2;*/
-	background-color:rgba(255,255,255,0.2);
-	padding:16px 4% 16px 4%;
-}
-
-.widget .social .tweet .content{
-	display:block;
+.widget .social .tweet .info{
+	position:relative;
 }
 
 .widget .social .tweet .info h5{
@@ -724,13 +797,12 @@ footer #loc_logo{
 }
 
 footer #where{
-	color:#bd1d92;
 	position:absolute;
 	left:50%;
 	width:30%;
 	top:0;
 	height:80px;
-	line-height:5.1em;
+	line-height:4.4em;
 }
 
 
@@ -786,11 +858,12 @@ footer #where{
 	}
 	
 	footer #where{
-		line-height:6.2;
+		line-height:5.7;
 	}
 	.widget .titleBar .clock{
 		line-height:2.3em;
 	}
+	
 }
 
 
@@ -958,7 +1031,7 @@ footer #where{
 	}
 	
 	.titleBar h2{
-		line-height:2.5em;
+		line-height:2.3em;
 	}
 	
 	.titleBar .distance{
@@ -1016,7 +1089,11 @@ footer #where{
 
 /* MAIN COLOR */
 .color{
-	background-color:#bd1d92;
+	background-color:#21aeb0;
+}
+
+.text-color{
+	color:#21aeb0;
 }
 
 
@@ -1103,13 +1180,13 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .list:after, .list:before, .widget:before, .widget:after, .turtle:after, .turtle:before, .titleBar:after, .titleBar:before, .distance:before{
+.clearfix:after, .list:after, .list:before, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .titleBar:after, .titleBar:before, .distance:before{
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
 
-.clearfix:after, .social:after, .list:after, .widget:after, .turtle:after, .titleBar:after, .distance:after {
+.clearfix:after, .social:after, .list:after, .widget:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
     clear: both;
 }
 

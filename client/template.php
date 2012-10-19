@@ -215,21 +215,21 @@
                         </div>
                         <div id="leftColumn">
                         	<div class="fsq">
-                            	<p><span class="bold">Glen Dehaek</span> just became mayor of Uplace Machelen on <span class="yellow">Foursquare</span></p>
+                            	<p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>
                         	</div>
                             <div class="tweet">
-                            	<div class="content"><p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p></div>
+                            	<div class="content"><p>#Location trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p></div>
                                 <div class="info">
                                 	<h5>@hanspans</h5>
                                 	<div class="speak"></div>
                                 </div>
                        	 	</div>
                             <div class="instgrm">
-                           		<img src="client/css/images/Instagram-shot2.jpg" class="img" />
+                           		<img src="client/css/images/instagram-shot2.jpg" class="img" />
                                 <h5>Instagram photo: Alex Verswijvel</h5>
                         	</div>
                             <div class="fsq">
-                            	<p><span class="bold">Pieter Colpaert</span> just checked in at Uplace Machelen on <span class="yellow">Foursquare</span></p>
+                            	<p><span class="bold">Pieter Colpaert</span> just checked in at This Location on <span class="yellow">Foursquare</span></p>
                             </div>
                             <div class="tweet">
                             	<div class="content">
@@ -244,7 +244,7 @@
                         <div id="rightColumn">
                         	<div class="tweet">
                             	<div class="content">
-                            		<p>#uplace is the place!</p>
+                            		<p>#Location is the place!</p>
                                 </div>
                                 <div class="info">
                                 	<h5>@phillipevdab</h5>
@@ -257,7 +257,7 @@
                         	</div>
                             <div class="tweet">
                                 <div class="content">
-                            		<p>#Uplace trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
+                            		<p>#Location trekt record aantal bezoekers sinds officiële opening <span class="yellow">http://www.drd.be/vy</span></p>
                                 </div>
                                 <div class="info">
                                 	<h5>@yungpanda_BE</h5>
@@ -267,7 +267,30 @@
                         </div>
                     </section>
                     <section class="weather">
-                    	
+                    	<div id="leftColumn">
+                        	<div class="weatherBox">
+                            	<div class="type">
+                                	<i class="regen"></i>
+                                    <p>20°C</p>
+                                </div>
+                            	<div class="time now">
+                                	<p>nu</p>
+                                </div>
+                            </div>
+                            
+                            <div class="weatherBox">
+                            	<div class="type">
+                                	<i class="zon"></i>
+                                    <p>17°C</p>
+                                </div>
+                            	<div class="time now">
+                                	<p>18:00</p>
+                                </div>
+                            </div>
+                     
+                        </div>
+                        <div id="rightColumn">
+                        </div>
                     </section>
                  </section>
             </section>
@@ -275,8 +298,8 @@
         
         <footer>
             <img src="client/css/images/ft_logo.jpg" alt="FlatTurtle" id="ftlogo" />
-            <p id="where">Check in at <span class="bold">Uplace Machelen</span> or tag <span class="bold">#uplace</span></p>
-        	<img src="client/css/images/logo_uplace.jpg" alt="Uplace" id="loc_logo" />
+            <p id="where" class="text-color">Check in at <span class="bold">location</span> or tag <span class="bold">#location</span></p>
+        	<img src="client/css/images/logo_placeholder.png" alt="Logo" id="loc_logo" />
         </footer>
 
         <script src="client/js/libs/jquery.js"></script>
