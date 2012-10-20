@@ -80,6 +80,7 @@ body {
 	width:100%;
 	height:100%;
 	font-family:SohoGothicProMed;
+	overflow:hidden;
 }
 
 /*
@@ -224,20 +225,28 @@ ul li{
 	float:left;
 	}
 
-#container{
+/*#container{
 	position:absolute;
 	top:0;
 	left:0;
 	right:0;
 	bottom:0;
 	overflow:hidden;
-	}
+	}*/
 
 .panel{
 	width:50%; 
 	float:left;
 	background-color:#DDD;
 	overflow:scroll;
+	}
+	
+.panel{
+		-webkit-overflow-scrolling: touch;
+  	}
+	
+	.panel > *{
+		-webkit-transform: translateZ(0px);
 	}
 
 
@@ -377,6 +386,10 @@ ul li{
 	text-align:center;
 	}
 
+.turtle .wide ul li{
+	position:relative;
+}
+
 .turtle .wide ul li .square{
 	width:60px;
 	background-color:#BBB;
@@ -396,7 +409,7 @@ ul li{
 	background-repeat:no-repeat;
 	display:block;
 	position:absolute;
-	left:81px;
+	left:82px;
 	margin-top:10px;
 }
 
@@ -604,6 +617,8 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	z-index:1;
 }
 
+/* WEATHER ICONS */
+
 .regen{
 	background-image:url(images/FT__0004_zwareregen.png);
 }
@@ -611,6 +626,8 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 .zon{
 	background-image:url(images/FT__0008_zonnig.png);
 }
+
+/* -------------- */
 
 .widget .social #leftColumn{
 	float:left;
