@@ -80,7 +80,7 @@ body {
 	width:100%;
 	height:100%;
 	font-family:SohoGothicProMed;
-	overflow:hidden;
+	overflow:scroll;
 }
 
 /*
@@ -316,7 +316,7 @@ ul li{
 	height:40px;
 	}
 	
-.turtle{
+.list .turtle{
 	padding-bottom:20px;
 	background-color:#FFF;
 }
@@ -444,7 +444,7 @@ ul li{
 	display:block;
 }
 
-.results .turtle .colorGrey{
+.list .results .turtle .colorGrey{
 	background-color:#999;
 	height:85px;
 }
@@ -930,6 +930,10 @@ footer #where{
   		width:100%;
 		-webkit-overflow-scrolling: touch;
   	}
+	
+	.list .turtle:last-child{
+		padding:0;
+	}
 	
 	.panel > *{
 		-webkit-transform: translateZ(0px);
