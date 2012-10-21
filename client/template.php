@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>InfoScreen</title>
         <meta name="description" content="MyTurtle">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     
@@ -180,8 +180,7 @@
                     </div>
                     <div class="titleBar">
 						<div class="amount">
-                        	<p class="small">10</p>
-                            <p class="big">/35</p>
+                        	<p><span class="small">10</span><span class="big">/35</span></p>
                         </div>
                     </div>
                 </section>
@@ -268,32 +267,49 @@
                             </section>
                         </div>
                     </section>
-                    <section class="weather">
-                    	<div id="leftColumn">
-                        	<div class="weatherBox">
-                            	<div class="type">
-                                	<i class="regen"></i>
-                                    <p>20°C</p>
+                    <section class="turtle">
+                        <section class="weather">
+                                <div class="weatherBox">
+                                    <div class="type">
+                                        <i class="zon"></i>
+                                        <p>20°C</p>
+                                    </div>
+                                    <div class="time">
+                                        <p>nu</p>
+                                    </div>
                                 </div>
-                            	<div class="time now">
-                                	<p>nu</p>
+                                
+                                <div class="weatherBox">
+                                    <div class="type">
+                                        <i class="bliksem"></i>
+                                        <p>17°C</p>
+                                    </div>
+                                    <div class="time">
+                                        <p>18:00</p>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="weatherBox">
-                            	<div class="type">
-                                	<i class="zon"></i>
-                                    <p>17°C</p>
+                                
+                                <div class="weatherBox">
+                                    <div class="type">
+                                        <i class="zwareregen"></i>
+                                        <p>16°C</p>
+                                    </div>
+                                    <div class="time">
+                                        <p>20:00</p>
+                                    </div>
                                 </div>
-                            	<div class="time now">
-                                	<p>18:00</p>
+                                
+                                <div class="weatherBox">
+                                    <div class="type">
+                                        <i class="lichtbewolkt"></i>
+                                        <p>14°C</p>
+                                    </div>
+                                    <div class="time">
+                                        <p>22:00</p>
+                                    </div>
                                 </div>
-                            </div>
-                     
-                        </div>
-                        <div id="rightColumn">
-                        </div>
-                    </section>
+                        </section>
+                 	</section>
                  </section>
             </section>
         </div>

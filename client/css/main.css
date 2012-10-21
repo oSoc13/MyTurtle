@@ -151,7 +151,7 @@ textarea {
 /*TRAIN*/
 .titleBar .train, .titleBar .tram.bus, .titleBar .traffic, .titleBar .bus, .titleBar .bike{
 	width:81px;
-	height:81px;
+	height:80px;
 	float:left;
 	margin-left:15px;
 	}
@@ -251,11 +251,6 @@ ul li{
 	
 .turtle .titleBar:nth-child(2){
 	padding-bottom:40px;
-}
-
-.turtle .titleBar:nth-child(2) .amount{
-	margin:0;
-	padding:0;
 }
 
 .list .distance{
@@ -429,11 +424,14 @@ ul li{
 }
 
 
-.results ul .amount{
+.titleBar .amount{
 	position:absolute;
-	left:10px;
+	left:30px;
+	width:250px;
 	text-align:left;
 	display:block;
+	padding-top:20px;
+	font-family:SohoStdProBold;
 }
 
 .list .results .turtle .colorGrey{
@@ -441,12 +439,22 @@ ul li{
 	height:85px;
 }
 
-.results ul .amount .small{
+.titleBar .small{
 	display:inline-block;
+	color:#FFF;
+	font-size:1.7em;
+	line-height:0.5em;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+	padding-right:5px;
+	position:relative;
+	top:-15px;
 }
 
-.results ul .amount .big{
+.titleBar .big{
 	display:inline-block;
+	color:#555;
+	font-size:2.8em;
+	line-height:0.5;
 }
 
 
@@ -517,14 +525,22 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	right:0;
 	top:0;
 	bottom:0;
-	-webkit-box-shadow:  -3px -4px 3px 1px rgba(0, 0, 0, 0.4);
-    box-shadow:  -3px -4px 3px 1px rgba(0, 0, 0, 0.4);
 	font-size:2.4em;
 	text-align:center;
 	line-height:1.9em;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
 	color:#7deff1;
 	font-family:SohoStdProBold;
+}
+
+.widget .titleBar .clock:after{
+	height:75px;
+	width:30px;
+	background-image:url(images/shadow_clock.png);
+	background-color:#F00;
+	position:absolute;
+	left:0;
+	
 }
 
 .widget .locContent{
@@ -559,18 +575,23 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 }
 
 .widget .weather .weatherBox{
-	width:45%;
+	width:22%;
+	min-width:130px;
 	height:auto;
 	float:left;
 }
 
-.widget .weather .weatherBox:nth-child(2n){
-	margin-left:5%;
+.widget .weather .weatherBox{
+	margin-left:4%;
+}
+
+.widget .weather .weatherBox:first-child{
+	margin-left:0;
 }
 
 .widget .weather .weatherBox .type{
 	width:100%;
-	height:160px;
+	height:175px;
 	font-size:2em;
 	font-family:SohoGothicProBold;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
@@ -587,10 +608,11 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 }
 
 .widget .weather .weatherBox .type i{
-	width:140px;
-	height:110px;
+	width:100%;
+	max-width:160px;
+	height:125px;
 	margin:0 auto 10px auto;
-	background-position:center -30px;
+	background-position:center -20px;
 }
 
 .widget .weather .weatherBox:after{
@@ -608,13 +630,45 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 * LOCATION TURTLE > WEATHER > ICONS
 ============== */
 
-.regen{
+.mist{
+	background-image:url(images/FT__0000_mist.png);
+}
+
+.bliksem{
+	background-image:url(images/FT__0001_bliksem.png);
+}
+
+.sneeuw{
+	background-image:url(images/FT__0002_sneeuw.png);
+}
+
+.hagel{
+	background-image:url(images/FT__0003_hagel.png);
+}
+
+.zwareregen{
 	background-image:url(images/FT__0004_zwareregen.png);
+}
+
+.regen{
+	background-image:url(images/FT__0005_regen.png);
+}
+
+.wisselvallig{
+	background-image:url(images/FT__0006_wisselvallig.png);
+	background-position:right -15px !important;
+}
+
+.lichtbewolkt{
+	background-image:url(images/FT__0007_licht-bewolkt.png);
+	background-position:right -15px !important;
 }
 
 .zon{
 	background-image:url(images/FT__0008_zonnig.png);
+	background-position:center -15px !important;
 }
+
 
 
 /* ==============
@@ -680,7 +734,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
-	text-shadow: 2px 2px 1px rgba(0,0,0,0.4);
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 	margin-bottom:40px;
 	position:relative;
 }
@@ -723,8 +777,8 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 .widget .social .tweet h5{
 	position:absolute;
 	display:inline-block;
-	left:2px;
-	bottom:-20px;
+	left:3px;
+	bottom:-22px;
 }
 
 .widget .social .tweet .speak{
@@ -860,6 +914,10 @@ footer #where{
 		line-height:2.3em;
 	}
 	
+	.titleBar .small{
+		top:-11px;
+	}
+	
 }
 
 
@@ -903,6 +961,10 @@ footer #where{
 	
 	.square{
 		line-height:5.4em;
+	}
+	
+	.titleBar .small{
+		top:-9px;
 	}
 }
 
