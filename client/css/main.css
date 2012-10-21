@@ -721,10 +721,10 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 }
 
 .widget .social .tweet h5{
-	position:relative;
+	position:absolute;
 	display:inline-block;
-	top:57px;
 	left:2px;
+	bottom:-20px;
 }
 
 .widget .social .tweet .speak{
@@ -734,9 +734,9 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	width:1px;
 	height:10px;
 	z-index:123500;
-	position:relative;
-	left:10px;
-	top:72px;
+	position:absolute;
+	left:60px;
+	bottom:-30px;
 }
 
 .widget .yellow{

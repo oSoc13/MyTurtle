@@ -30,15 +30,15 @@ $(window).resize(function(){
 });
 
 
-/* FUNCTION TO SET INSTAGRAM IMAGE WITH RIGHT WIDTH AND HEIGHT*/
+
 function setWidgetsAtStart(){
 	var docHeight = $(document).height() - 480;
 	/*$(".panel").height(docHeight);*/
 	
 	$(".instgrm").each(function(){
-		var widthImg = $(this).width();
-		$(this).height(widthImg);
-		$(this).find(".img").css({"width":widthImg, "height":widthImg});
+		var imgWidth = $(this).width();
+		$(this).height(imgWidth);
+		$(this).find(".img").css({"width":imgWidth, "height":imgWidth});
 	});
 	
 	$(".via").each(function(){
@@ -49,6 +49,10 @@ function setWidgetsAtStart(){
 		$(this).css("background-image",bgimage_url);
 	});
 	
+	$(".tweet").each(function(){
+		var textWidth = $(this).find('h5').width()+15;
+		$(this).find('.speak').css("left",textWidth+"px");
+	});
 	
 }
 
