@@ -80,7 +80,18 @@ body {
 	width:100%;
 	height:100%;
 	font-family:SohoGothicProMed;
-	overflow:scroll;
+	overflow:hidden;
+}
+
+#container{
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	overflow:hidden;
 }
 
 /*
@@ -144,7 +155,12 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-
+.panel{
+	width:50%; 
+	float:left;
+	background-color:#DDD;
+	overflow:scroll;
+	}
 
 /*===TITLE BARS ICON===*/
 
@@ -168,7 +184,6 @@ textarea {
 .titleBar i + h2{
 	margin-left:5px;
 }
-
 
 .titleBar .train{
 	background-image:url(images/FT__0005_treinstation.png);
@@ -221,12 +236,6 @@ ul li{
 	float:left;
 	}
 
-.panel{
-	width:50%; 
-	float:left;
-	background-color:#DDD;
-	overflow:scroll;
-	}
 	
 .panel{
 		-webkit-overflow-scrolling: touch;
@@ -305,6 +314,9 @@ ul li{
 	background-color:#FFF;
 }
 
+.list .turtle:last-child{
+	padding-bottom:0;
+}
 
 /* ==========================
 * PUBLIC TRANSPORT SCREEN CSS > RESULTS
@@ -342,6 +354,7 @@ ul li{
 	font-size:0.9em;
 	color:#FFF;
 	float:left;
+	font-family:SohoGothicProBold;
 	}
 
 .results ul li .square:nth-child(2){
@@ -1270,13 +1283,13 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .list:after, .list:before, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .titleBar:after, .titleBar:before, .distance:before{
+.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .titleBar:after, .titleBar:before, .distance:before{
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
 
-.clearfix:after, .social:after, .list:after, .widget:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
+.clearfix:after, .social:after, .list:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
     clear: both;
 }
 

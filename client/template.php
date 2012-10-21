@@ -18,7 +18,7 @@
         <![endif]-->
 			
         <!-- PUBLIC TRANSPORT TURTLE -->
-        <div id="container clearfix">
+        <div id="container" class="clearfix">
             <section class="panel list">
                 <section class="turtle">
                     <div class="titleBar">
@@ -183,8 +183,8 @@
                         	<p><span class="small">10</span><span class="big">/35</span></p>
                         </div>
                     </div>
-                </section>
-             
+   				</section>
+             	
             </section>
             
             
