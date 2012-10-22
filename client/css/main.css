@@ -1154,6 +1154,10 @@ footer #where{
 	.results ul li .tram{
 		line-height:2.1em;
 	}
+	
+	.titleBar .small{
+		top:-18px;
+	}
 }
 
 
