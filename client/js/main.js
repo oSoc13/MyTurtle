@@ -20,7 +20,7 @@ function setTimeOnScreen(){
 	else{
 		var timeString = dateObject.getHours() + ":" + minutes;
 	}
-	$(".location .titleBar .clock").html(timeString);
+	$(".widget .titleBar .clock h4").html(timeString);
 
 }
 
