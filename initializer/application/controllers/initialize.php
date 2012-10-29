@@ -24,10 +24,10 @@ class Initialize extends CI_Controller {
         
         // turtle options
         $config['turtles'] = array();
-        $config['turtles'][35] = array('pane' => 1, 'type' => 'nmbs', 'location' => 'vilvoorde');
-        $config['turtles'][36] = array('pane' => 1, 'type' => 'delijn', 'location' => 'vilvoorde');
-        $config['turtles'][37] = array('pane' => 2, 'type' => 'twitter', 'search' => 'uplace');
-        $config['turtles'][38] = array('pane' => 2, 'type' => 'foursquare', 'location' => 'Uplace Mechelen');
+        $config['turtles'][35] = array('pane' => 1, 'type' => 'nmbs', 'options' => array('location' => 'vilvoorde'));
+        $config['turtles'][36] = array('pane' => 1, 'type' => 'delijn', 'options' => array('location' => 'vilvoorde'));
+        $config['turtles'][37] = array('pane' => 2, 'type' => 'twitter', 'options' => array('search' => 'uplace'));
+        $config['turtles'][38] = array('pane' => 2, 'type' => 'foursquare', 'options' => array('location' => 'Uplace Mechelen'));
         
         // plugins to be loaded
         $config['plugins'] = array();
@@ -35,6 +35,6 @@ class Initialize extends CI_Controller {
         
         // load external view from client folder
         $this->load->view('../../../client/template', array('config' => $config));
-        
+    
     }
 }

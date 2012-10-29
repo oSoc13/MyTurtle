@@ -19,7 +19,7 @@
 			
         <!-- PUBLIC TRANSPORT TURTLE -->
         <div id="container" class="clearfix">
-            <section class="panel list">
+            <section class="pane list">
                 <section class="turtle">
                     <div class="titleBar">
                     	<i class="train"></i>
@@ -190,7 +190,7 @@
             
             
             <!-- LOCATION TURTLE -->
-            <section class="panel widget color">
+            <section class="pane widget color">
                 <section class="titleBar clearfix">
                     <div class="timerBar">
                         <div class="timerBarYellow"></div>
@@ -323,13 +323,17 @@
         <script src="client/js/libs/jquery.js"></script>
         <script src="client/js/libs/underscore.js"></script>
         <script src="client/js/libs/backbone.js"></script>
-        <script src="client/js/libs/turtles.js"></script>
+        
+        <script src="client/js/screen.js"></script>
+        <script src="client/js/turtles.js"></script>
+        <script src="client/js/panes.js"></script>
         
         <script src="client/js/main.js"></script>
         
         <!-- Config from initializer -->
         <script>
-        	config = <?php echo json_encode($config); ?>;
+        	var config = <?php echo json_encode($config); ?>;
+        	Screen.initialize(config);
         </script>
         
     </body>

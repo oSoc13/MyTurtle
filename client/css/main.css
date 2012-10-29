@@ -155,7 +155,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.panel{
+.pane{
 	width:50%; 
 	float:left;
 	background-color:#DDD;
@@ -237,11 +237,11 @@ ul li{
 	}
 
 	
-.panel{
+.pane{
 		-webkit-overflow-scrolling: touch;
   	}
 	
-	.panel > *{
+	.pane > *{
 		-webkit-transform: translateZ(0px);
 	}
 
@@ -982,7 +982,7 @@ footer #where{
 }
 
 @media all and (max-width: 750px) {
-  	.panel{
+  	.pane{
   		width:100%;
 		-webkit-overflow-scrolling: touch;
   	}
@@ -991,7 +991,7 @@ footer #where{
 		padding:0;
 	}
 	
-	.panel > *{
+	.pane > *{
 		-webkit-transform: translateZ(0px);
 	}
 	
@@ -1051,7 +1051,7 @@ footer #where{
 		line-height:1.8em;
 	}
 	
-	.panel{
+	.pane{
 		overflow:visible;
 	}
 }
@@ -1095,7 +1095,7 @@ footer #where{
 		line-height:4.2em;
 	}
 	
-	.panel{
+	.pane{
 		overflow:visible;
 	}
 }

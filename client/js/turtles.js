@@ -23,7 +23,7 @@ window.Turtles = (function() {
 
         return true;
     }
-    
+
     /*
      * Check if a turtle is registered
      */
@@ -92,16 +92,41 @@ window.Turtles = (function() {
     }
 
     /*
-     * Grows turtles. Extend this function with your own breeder class.
+     * Grows turtles.
      */
     function grow(type, id, options) {
-        instantiate(type, id, options)
+        var defaults = {
+            lang : 'eng',
+            source : 'turtles/' + type + '/' + type + '.js'
+        };
+
+        // options must be an object
+        if (options == null || typeof options != 'object') {
+            options = {};
+        }
+
+        // add missing default options
+        options = _.extend(defaults, options);
+        
+        // fetch the turtle script only once
+        if (!registered(type)) {
+            $.ajax({
+                url : options.source,
+                dataType : 'script',
+                async : false, // to prevent duplicate javascript file loading
+                success : function() {
+                    instantiate(type, id, options);
+                }
+            });
+        } else {
+            instantiate(type, id, options);
+        }
     }
 
     /*
      * Public interface to this object
      */
-    var Turtles = {
+    return {
         register : register,
         registered : registered,
         instantiate : instantiate,
@@ -111,7 +136,5 @@ window.Turtles = (function() {
         instances : instances,
         turtles : turtles
     };
-
-    return Turtles;
 
 }());
