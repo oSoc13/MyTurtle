@@ -13,23 +13,30 @@ window.Turtles = (function() {
     /*
      * Register a new turtle interface
      */
-    function register(name, turtle) {
-        if (turtles[name] != null)
+    function register(type, turtle) {
+        if (turtles[type] != null)
             throw new Error("Turtle already regsitered");
         else if (typeof turtle != "object")
             throw new Error("Turtle has invalid type");
         else
-            turtles[name] = turtle;
+            turtles[type] = turtle;
 
         return true;
+    }
+    
+    /*
+     * Check if a turtle is registered
+     */
+    function registered(type) {
+        return turtles[type] != null;
     }
 
     /*
      * Create a new turtle instance
      */
-    function instantiate(name, id, options) {
+    function instantiate(type, id, options) {
         // check if turtle specification exists
-        if (turtles[name] == null) {
+        if (turtles[type] == null) {
             throw new Error("Unknown turtle");
             return;
         }
@@ -38,11 +45,11 @@ window.Turtles = (function() {
             options = {};
 
         // get turtle specification
-        var turtle = turtles[name];
+        var turtle = turtles[type];
 
         // perpare instance object
         var instance = {};
-        instance.name = name;
+        instance.type = type;
         instance.id = id;
 
         // assign model
@@ -85,11 +92,20 @@ window.Turtles = (function() {
     }
 
     /*
+     * Grows turtles. Extend this function with your own breeder class.
+     */
+    function grow(type, id, options) {
+        instantiate(type, id, options)
+    }
+
+    /*
      * Public interface to this object
      */
     var Turtles = {
         register : register,
+        registered : registered,
         instantiate : instantiate,
+        grow : grow,
 
         // allow access to turtle specifications and instances
         instances : instances,
