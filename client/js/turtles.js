@@ -95,10 +95,7 @@ window.Turtles = (function() {
      * Grows turtles.
      */
     function grow(type, id, options) {
-        var defaults = {
-            lang : 'eng',
-            source : 'turtles/' + type + '/' + type + '.js'
-        };
+        var source = 'turtles/' + type + '/dna.js';
 
         // options must be an object
         if (options == null || typeof options != 'object') {
@@ -111,7 +108,7 @@ window.Turtles = (function() {
         // fetch the turtle script only once
         if (!registered(type)) {
             $.ajax({
-                url : options.source,
+                url : source,
                 dataType : 'script',
                 async : false, // to prevent duplicate javascript file loading
                 success : function() {

@@ -9,18 +9,18 @@ window.Screen = (function() {
     /*
      * Initialize the UI with a DISS configuration array
      */
-    function initialize(config) {
-        this.config = config;
-        
-        // create panes
+    function build(config) {
+    	
+    	// create panes
         for(var id in config.panes) {
             var pane = config.panes[id];
-            Panes.create(pane.type, id);
+            Panes.create(pane.id, pane.type);
         }
         
         // create turtles
         for(var id in config.turtles) {
             var turtle = config.turtles[id];
+            console.log(turtle);
             
             // create a placeholder
             var placeholder = $('<section class="turtle" id="' + id + '"></section>');
@@ -36,10 +36,27 @@ window.Screen = (function() {
     }
     
     /*
+     * Fetch the configuration from the api source
+     */
+    function load(api) {
+    	
+    	$.ajax({
+            url : api,
+            dataType: 'json',
+            success : function(config) {
+            	Screen.config = config;
+            	Screen.build(config);
+            }
+        });
+    }
+    
+    /*
      * Public interface to this object
      */
     return {
-        initialize : initialize
+    	config : config,
+    	build : build,
+        load : load
     }
 
 }());

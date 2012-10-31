@@ -337,13 +337,10 @@
         <script src="client/js/turtles.js"></script>
         <script src="client/js/panes.js"></script>
         
-        <script src="client/js/main.js"></script>
-        
-        <!-- Config from initializer -->
         <script>
-        	var config = <?php echo json_encode($config); ?>;
-        	Screen.initialize(config);
+            Screen.load('http://10.13.37.7/controlbay<?php echo key($_GET); ?>.json');
         </script>
         
+        <script src="client/js/main.js"></script>
     </body>
 </html>
