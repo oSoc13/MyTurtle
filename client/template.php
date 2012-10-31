@@ -315,7 +315,7 @@
                         <section class="finances">
                             <div class="com_shares">
                                 <h2>Our shares</h2>
-                                
+                                <p>
                             </div>
                         </section>
                      </section>

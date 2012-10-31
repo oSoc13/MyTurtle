@@ -8,8 +8,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     
-        <link rel="stylesheet" href="client/css/normalize.css">
-        <link rel="stylesheet" href="client/css/main.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
         <script src="client/js/libs/modernizr.js"></script>
     </head>
     <body>
@@ -318,6 +318,10 @@
                                 
                             </div>
                         </section>
+                        <section class="shares color2">
+                        </section>
+                        <section class="shares">
+                        </section>
                      </section>
             	</section>
             </section>
@@ -329,15 +333,15 @@
         	<img src="client/css/images/logo_placeholder.png" alt="Logo" id="loc_logo" />
         </footer>
 
-        <script src="client/js/libs/jquery.js"></script>
-        <script src="client/js/libs/underscore.js"></script>
-        <script src="client/js/libs/backbone.js"></script>
+        <script src="js/libs/jquery.js"></script>
+        <script src="js/libs/underscore.js"></script>
+        <script src="js/libs/backbone.js"></script>
         
-        <script src="client/js/screen.js"></script>
-        <script src="client/js/turtles.js"></script>
-        <script src="client/js/panes.js"></script>
+        <script src="js/screen.js"></script>
+        <script src="js/turtles.js"></script>
+        <script src="js/panes.js"></script>
         
-        <script src="client/js/main.js"></script>
+        <script src="js/main.js"></script>
         
         <!-- Config from initializer -->
         <script>
