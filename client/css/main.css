@@ -510,7 +510,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 .widget .titleBar .nav{
 	width:18%;
 	height:75px;
-	margin:0 1% 0 1%;
+	margin:0;
 	margin-top:5px;
 	float:left;
 	color:rgba(255,255,255,0.4);
@@ -741,7 +741,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 * LOCATION TURTLE > SOCIAL MEDIA
 ============== */
 
-.widget .social .fsq{
+.widget .social #leftColumn .fsq, .widget .social #rightColumn .fsq{
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
@@ -751,7 +751,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	background-color:rgba(0,0,0,0.4);
 }
 
-.widget .social .instgrm{
+.widget .social #leftColumn .instgrm, .widget .social #rightColumn .instgrm{
 	min-height:30px;
 	height:auto;
 	padding:0;
@@ -760,7 +760,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	margin-bottom:35px;
 }
 
-.widget .social .tweet{
+.widget .social  #leftColumn .tweet, .widget .social  #rightColumn .tweet{
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
@@ -769,7 +769,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	position:relative;
 }
 
-.widget .social .instgrm:after{
+.widget .social #leftColumn .instgrm:after, .widget .social #rightColumn .instgrm:after{
 	content: "";
 	background-image:url(images/shadow3.png);
 	background-size:100%;
@@ -780,7 +780,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	z-index:1;
 }
 
-.widget .social .tweet:after{
+.widget .social #leftColumn .tweet:after, .widget .social #rightColumn .tweet:after{
 	content: "";
 	background-image:url(images/shadow3.png);
 	background-size:100%;
@@ -794,7 +794,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	opacity:0.6;
 }
 
-.widget .social .instgrm h5{
+.widget .social #leftColumn .instgrm h5, .widget .social #rightColumn .instgrm h5{
 	position:absolute;
 	bottom:-25px;
 	left:2px;
@@ -804,14 +804,14 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	z-index:3;
 }
 
-.widget .social .tweet h5{
+.widget .social #leftColumn .tweet h5, .widget .social #rightColumn .tweet h5 {
 	position:absolute;
 	display:inline-block;
 	left:3px;
 	bottom:-22px;
 }
 
-.widget .social .tweet .speak{
+.widget .social #leftColumn .tweet .speak, .widget .social #rightColumn .tweet .speak{
 	border-width: 20px 20px 0 0;
 	border-style: solid;
 	display:inline-block;
