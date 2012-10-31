@@ -729,6 +729,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	width:99%;
 	border:1px solid #FFF;
 	min-height:70px;
+	padding:6,1224489795918;
 }
 
 .widget .finances .com_shares h2{
@@ -1012,7 +1013,7 @@ footer #where{
 		overflow:scroll;
 	}
 	
-	.panel > *{
+	.pane > *{
 		-webkit-transform: translateZ(0px);
 	}
 	
