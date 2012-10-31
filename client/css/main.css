@@ -732,6 +732,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	min-height:70px;
 	padding:2%;
 	background-color:rgba(0,0,0,0.2);
+	margin-bottom:20px;
 }
 
 .widget .finances .com_shares h2{
@@ -742,7 +743,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 
 .widget .finances .shares{
 	width:100%;
-	min-height:15px;
+	height:15px;
 	margin-bottom:10px;
 }
 

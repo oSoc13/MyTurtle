@@ -317,11 +317,11 @@
                                 <h2>Our shares</h2>
                                 
                             </div>
-                        </section>
-                        <section class="shares color2">
-                        </section>
-                        <section class="shares">
-                        </section>
+                            <div class="shares color2">
+                            </div>
+                            <div class="shares color2">
+                            </div>
+                     	</section>
                      </section>
             	</section>
             </section>
