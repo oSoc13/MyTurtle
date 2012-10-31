@@ -13,23 +13,30 @@ window.Turtles = (function() {
     /*
      * Register a new turtle interface
      */
-    function register(name, turtle) {
-        if (turtles[name] != null)
+    function register(type, turtle) {
+        if (turtles[type] != null)
             throw new Error("Turtle already regsitered");
         else if (typeof turtle != "object")
             throw new Error("Turtle has invalid type");
         else
-            turtles[name] = turtle;
+            turtles[type] = turtle;
 
         return true;
     }
 
     /*
+     * Check if a turtle is registered
+     */
+    function registered(type) {
+        return turtles[type] != null;
+    }
+
+    /*
      * Create a new turtle instance
      */
-    function instantiate(name, id, options) {
+    function instantiate(type, id, options) {
         // check if turtle specification exists
-        if (turtles[name] == null) {
+        if (turtles[type] == null) {
             throw new Error("Unknown turtle");
             return;
         }
@@ -38,11 +45,11 @@ window.Turtles = (function() {
             options = {};
 
         // get turtle specification
-        var turtle = turtles[name];
+        var turtle = turtles[type];
 
         // perpare instance object
         var instance = {};
-        instance.name = name;
+        instance.type = type;
         instance.id = id;
 
         // assign model
@@ -85,17 +92,49 @@ window.Turtles = (function() {
     }
 
     /*
+     * Grows turtles.
+     */
+    function grow(type, id, options) {
+        var defaults = {
+            lang : 'eng',
+            source : 'turtles/' + type + '/' + type + '.js'
+        };
+
+        // options must be an object
+        if (options == null || typeof options != 'object') {
+            options = {};
+        }
+
+        // add missing default options
+        options = _.extend(defaults, options);
+        
+        // fetch the turtle script only once
+        if (!registered(type)) {
+            $.ajax({
+                url : options.source,
+                dataType : 'script',
+                async : false, // to prevent duplicate javascript file loading
+                success : function() {
+                    instantiate(type, id, options);
+                }
+            });
+        } else {
+            instantiate(type, id, options);
+        }
+    }
+
+    /*
      * Public interface to this object
      */
-    var Turtles = {
+    return {
         register : register,
+        registered : registered,
         instantiate : instantiate,
+        grow : grow,
 
         // allow access to turtle specifications and instances
         instances : instances,
         turtles : turtles
     };
-
-    return Turtles;
 
 }());

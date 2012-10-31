@@ -31,7 +31,7 @@ $(window).resize(function(){
 function setWidgetsAtStart(){
 	var docHeight = $("#container").height() - 60;
 	if($(document).width() > 600){
-		$(".panel").height(docHeight);
+		$(".pane").height(docHeight);
 	}
 	
 	$(".instgrm").each(function(){
