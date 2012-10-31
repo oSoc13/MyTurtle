@@ -159,7 +159,8 @@ textarea {
 	width:50%; 
 	float:left;
 	background-color:#DDD;
-	overflow:scroll;
+	overflow-y: auto;
+	overflow-x: hidden;
 	}
 
 /*===TITLE BARS ICON===*/

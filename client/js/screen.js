@@ -14,13 +14,12 @@ window.Screen = (function() {
     	// create panes
         for(var id in config.panes) {
             var pane = config.panes[id];
-            Panes.create(pane.id, pane.type);
+            Panes.create(pane.type, id);
         }
         
         // create turtles
         for(var id in config.turtles) {
             var turtle = config.turtles[id];
-            console.log(turtle);
             
             // create a placeholder
             var placeholder = $('<section class="turtle" id="' + id + '"></section>');
