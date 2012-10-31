@@ -57,7 +57,7 @@ window.Turtles = (function() {
 
         // build and assign collection
         if (typeof turtle.collection == "function") {
-            instance.collection = new turtle.collection(turtle.models, options);
+            instance.collection = new turtle.collection(turtle.models);
 
             if (instance.collection.model == null)
                 instance.collection.model = instance.model;
@@ -69,10 +69,11 @@ window.Turtles = (function() {
 
         // build and assign view
         if (typeof turtle.view == "function") {
-            instance.view = new turtle.view(_.extend(options, {
+            instance.view = new turtle.view({
                 collection : instance.collection,
-                model : instance.model
-            }));
+                model : instance.model,
+                el : options.el
+            });
 
             // link options
             instance.view.options = options;
@@ -101,9 +102,6 @@ window.Turtles = (function() {
         if (options == null || typeof options != 'object') {
             options = {};
         }
-
-        // add missing default options
-        options = _.extend(defaults, options);
         
         // fetch the turtle script only once
         if (!registered(type)) {
