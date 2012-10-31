@@ -1,5 +1,3 @@
-var timer;
-var yellowBar = $(".timerBarYellow");
 var counterBar = 0;
 
 $(document).ready(function() {
@@ -26,7 +24,6 @@ function setTimeOnScreen(){
 
 $(window).resize(function(){
 	setWidgetsAtStart();
-	timer();
 });
 
 
@@ -34,7 +31,7 @@ $(window).resize(function(){
 function setWidgetsAtStart(){
 	var docHeight = $("#container").height() - 60;
 	if($(document).width() > 600){
-		$(".panel").height(docHeight);
+		$(".pane").height(docHeight);
 	}
 	
 	$(".instgrm").each(function(){
@@ -55,15 +52,14 @@ function setWidgetsAtStart(){
 		var textWidth = $(this).find('h5').width()+15;
 		$(this).find('.speak').css("left",textWidth+"px");
 	});
-	
 }
 
 function timer(){
+	/*RESET ALL YELLOW BARS*/
+	$(".timerBarYellow").width(0);
+	var yellowBar = $(".active .timerBarYellow");
 	yellowBar.width(0);
-	var offset = $(".active").position().left;
-	var widthBar = $(".active").width();
-	yellowBar.css("left",offset);
-	yellowBar.animate({"width":widthBar}, 20000, function(){
+	yellowBar.stop().animate({"width":"100%"}, 20000, function(){
 		var old_active = $(".active");
 		old_active.next().addClass('active color');
 		var last_child = old_active.next().next();

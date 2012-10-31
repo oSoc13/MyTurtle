@@ -192,16 +192,16 @@
             <!-- LOCATION TURTLE -->
             <section class="pane widget color">
                 <section class="titleBar clearfix">
-                    <div class="timerBar">
-                        <div class="timerBarYellow"></div>
-                    </div>
                     <div id="social" class="nav active color">
+                    	<div class="timerBarYellow"></div>
                         <h4>Social</h4>
                     </div>
                     <div id="news" class="nav">
+                    	<div class="timerBarYellow"></div>
                         <h4>News</h4>
                     </div>
                     <div id="location" class="nav">
+                    	<div class="timerBarYellow"></div>
                         <h4>Location</h4>
                     </div>
                     <section class="clock color">
@@ -209,7 +209,7 @@
                     </section>
                 </section>
                 <section class="locContent">
-                    <section class="social">
+                    <section class="social" style="display:none">
                     	<div id="oneColumn">
                         </div>
                         <div id="leftColumn">
@@ -268,7 +268,7 @@
                         </div>
                     </section>
                     <section class="turtle">
-                        <section class="weather">
+                        <section class="weather" style="display:none">
                                 <div class="weatherBox">
                                     <div class="type">
                                         <i class="zon"></i>
@@ -310,7 +310,16 @@
                                 </div>
                         </section>
                  	</section>
-                 </section>
+                 
+                     <section class="turtle">
+                        <section class="finances">
+                            <div class="com_shares">
+                                <h2>Our shares</h2>
+                                
+                            </div>
+                        </section>
+                     </section>
+            	</section>
             </section>
         </div>
         
