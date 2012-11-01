@@ -35,7 +35,7 @@ window.Turtles = (function() {
      * Create a new turtle instance
      */
     function instantiate(type, id, options) {
-        // check if turtle specification exists
+    	// check if turtle specification exists
         if (turtles[type] == null) {
             throw new Error("Unknown turtle");
             return;
@@ -43,7 +43,7 @@ window.Turtles = (function() {
 
         if (options == null || typeof options != "object")
             options = {};
-
+        
         // get turtle specification
         var turtle = turtles[type];
 
@@ -57,7 +57,7 @@ window.Turtles = (function() {
 
         // build and assign collection
         if (typeof turtle.collection == "function") {
-            instance.collection = new turtle.collection(turtle.models);
+            instance.collection = new turtle.collection(turtle.models, { options : options });
 
             if (instance.collection.model == null)
                 instance.collection.model = instance.model;
@@ -72,9 +72,10 @@ window.Turtles = (function() {
             instance.view = new turtle.view({
                 collection : instance.collection,
                 model : instance.model,
-                el : options.el
+                el : options.el,
+                options : options
             });
-
+            
             // link options
             instance.view.options = options;
         } else

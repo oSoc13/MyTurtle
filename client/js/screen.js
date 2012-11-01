@@ -38,7 +38,6 @@ window.Screen = (function() {
      * Fetch the configuration from the api source
      */
     function load(api) {
-    	
     	$.ajax({
             url : api,
             dataType: 'json',
