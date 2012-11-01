@@ -58,9 +58,15 @@
 			// parse ajax results
 			var liveboard = json.spectql;
 
-			for ( var i in liveboard) {
-				liveboard[i].delay = liveboard[i].delay ? this.formatTime(liveboard[i].time + liveboard[i].delay) : false;
-				liveboard[i].time = this.formatTime(liveboard[i].time);
+			for (var i in liveboard) {
+				
+				var time = new Date(liveboard[i].time * 1000);
+				liveboard[i].time = this.formatTime(time);
+				
+				if (liveboard[i].delay) {
+					var delay = new Date(liveboard[i].delay * 1000);
+					liveboard[i].delay = this.formatTime(delay);
+				}
 
 				if (!liveboard[i].platform.name)
 					liveboard[i].platform.name = "-";
@@ -72,8 +78,7 @@
 
 			return liveboard;
 		},
-		formatTime : function(timestamp) {
-			var time = new Date(timestamp * 1000);
+		formatTime : function(time) {
 			var hours = time.getHours();
 			var minutes = time.getMinutes();
 			return (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
