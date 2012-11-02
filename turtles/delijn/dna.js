@@ -68,7 +68,7 @@ var thatdl;
 			// parse ajax results
 			var liveboard = json.Departures;
 
-			for ( var i in liveboard) {
+			for (var i in liveboard) {
 				
 				var time = new Date(liveboard[i].time * 1000);
 				liveboard[i].time = this.formatTime(time);
@@ -108,7 +108,7 @@ var thatdl;
 				strTripName = strTripName.split("-")[1];
 			}
 			
-			return strTripName
+			return strTripName;
 		}
 	});
 

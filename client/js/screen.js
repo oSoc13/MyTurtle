@@ -14,7 +14,7 @@ window.Screen = (function() {
     	// create panes
         for(var id in config.panes) {
             var pane = config.panes[id];
-            Panes.create(pane.type, id);
+            Panes.create(id, pane);
         }
         
         // create turtles
@@ -27,7 +27,7 @@ window.Screen = (function() {
             
             // assign the placeholder to the correct pane
             var pane = Panes.get(turtle.pane);
-            pane.append(placeholder);
+            pane.el.append(placeholder);
             
             // grow the turtle
             Turtles.grow(turtle.type, id, turtle.options);
