@@ -13,7 +13,7 @@ window.Panes = (function() {
      * Create a new pane
      */
     function create(id, pane) {
-    	pane.el = $('<section class="pane ' + pane.type + '" id="' + pane.id + '"></section>');
+    	pane.el = $('<section class="pane ' + pane.type + '" data-id="' + id + '"></section>');
         container.append(pane.el);
         
         panes[id] = pane;

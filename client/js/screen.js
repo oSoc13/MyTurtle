@@ -22,7 +22,7 @@ window.Screen = (function() {
             var turtle = config.turtles[id];
             
             // create a placeholder
-            var placeholder = $('<section class="turtle" id="' + id + '"></section>');
+            var placeholder = $('<section class="turtle" data-id="' + id + '"></section>');
             turtle.options.el = placeholder;
             
             // assign the placeholder to the correct pane
