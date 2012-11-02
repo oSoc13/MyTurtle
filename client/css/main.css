@@ -484,7 +484,7 @@ ul li{
 	}
 	
 
-.widget .titleBar{
+.widget header{
 	width:100%;
 	height:80px;
 	background: #5d0e48; /* Old browsers */
@@ -493,12 +493,12 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	position:relative;
 	}
 
-.widget .titleBar .timerBar{
+.widget header .timerBar{
 	height:5px;
 	width:100%;
 }
 
-.widget .titleBar .timerBarYellow{
+.widget header .timerBarYellow{
 	width:0;
 	height:5px;
 	background-color:#d0e900;
@@ -508,7 +508,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	top:-5px;
 }
 	
-.widget .titleBar .nav{
+.widget header .nav{
 	width:18%;
 	height:75px;
 	margin:0;
@@ -522,7 +522,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	position:relative;
 }
 
-.widget .titleBar .nav.active{
+.widget header .nav.active{
 	margin:5px 0 0 0;
 	width:25%;
 	background-image:none;
@@ -536,7 +536,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 }
 
 	
-.widget .titleBar .clock{
+.widget header .clock{
 	width:210px;
 	position:absolute;
 	right:0;
@@ -550,7 +550,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	font-family:SohoStdProBold;
 }
 
-.widget .titleBar .clock:after{
+.widget header .clock:after{
 	height:75px;
 	width:30px;
 	background-image:url(images/shadow_clock.png);
@@ -560,7 +560,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	
 }
 
-.widget .locContent{
+.widget .group{
 	padding:6%;
 	line-height:1.5em;
 	font-family:SohoGothicProReg;
@@ -744,8 +744,8 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 
 .widget .finances .shares{
 	width:100%;
-	height:15px;
-	margin-bottom:10px;
+	min-height:70px;
+	margin-bottom:25px;
 }
 
 
@@ -904,7 +904,7 @@ footer #where{
 		margin:0;
 	}
 	
-	.widget .titleBar .clock{
+	.widget header .clock{
 		width:140px;
 	}
 	
@@ -952,7 +952,7 @@ footer #where{
 	footer #where{
 		line-height:5.7;
 	}
-	.widget .titleBar .clock{
+	.widget header .clock{
 		line-height:2.3em;
 	}
 	
@@ -968,7 +968,7 @@ footer #where{
 		font-size:13px;
 	}
 	
-	.widget .titleBar .clock{
+	.widget header .clock{
 		width:100px;
 		font-size:1.5em;
 		line-height:4em;
@@ -1080,7 +1080,7 @@ footer #where{
 		line-height:4.2em;
 	}
 	
-	.widget .titleBar .clock{
+	.widget header .clock{
 		line-height:1.8em;
 	}
 	
@@ -1169,7 +1169,7 @@ footer #where{
 		line-height:1.6em;
 	}
 	
-	.locContent p{
+	.group p{
 		font-size:18px;
 		line-height:1.4;
 	}
@@ -1178,7 +1178,7 @@ footer #where{
 		line-height:2.7em;
 	}
 	
-	.widget .titleBar .clock{
+	.widget header .clock{
 		line-height:1.8;
 	}
 	

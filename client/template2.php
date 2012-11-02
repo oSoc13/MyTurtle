@@ -318,8 +318,11 @@
                                 
                             </div>
                             <div class="shares color2">
+                            	<h2>NYR.BR</h2>
+                                
                             </div>
                             <div class="shares color2">
+                            	<h2>NYR.BR</h2>
                             </div>
                      	</section>
                      </section>
