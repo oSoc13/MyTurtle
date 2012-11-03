@@ -2,25 +2,50 @@
 	
 	var collection = Backbone.Collection.extend({
 		initialize : function(models, options) {
+			// prevents loss of 'this' inside methods
+			_.bindAll(this, "refresh");
+			
 			// fetch data when born
 			this.bind("born", this.fetch);
+			this.bind("refresh", this.refresh);
+			
+			// default error value
+			options.error = false;
 			
 			// default hashtag
 			if (!options.search)
 				options.search = "flatturtle";
+			
+			// default limit
+			if (!options.limit)
+				options.limit = 3;
+			
+			// automatic collection refresh each minute, this will 
+			// trigger the reset event
+			refreshInterval = window.setInterval(this.refresh, 60000);
+		},
+		refresh : function() {
+			var self = this;
+			self.fetch({
+				error : function() {
+					// will allow the view to detect errors
+					self.options.error = true;
+					
+					// if there are no previous items to show, display error message
+					if(self.length == 0)
+						self.trigger("reset");
+				}
+			});
 		},
 		url : function() {
 			// remote source url
-			return "http://data.irail.be/spectql/twitter/search/" + encodeURIComponent(this.options.search) + "/results.limit(5):json";
+			return "http://data.irail.be/spectql/twitter/search/" + encodeURIComponent(this.options.search) + "/results.limit(" + this.options.limit + "):json";
 		},
 		parse : function(json) {
 			var tweets = json.spectql;
 
 			// process tweets
 			for (var i in tweets) {
-				// time ago string
-				tweets[i].minutes = parseInt(tweets[i].created_at.replace("'", ""));
-				
 				// #tags
 				tweets[i].text = tweets[i].text.replace(/(#[^\s]+)/g, '<span class="text-color">$1</span>');
 				// @replies
@@ -55,6 +80,7 @@
 			if(this.template) {
 				var data = {
 					search : this.options.search,
+					error : this.options.error,
 					entries : this.collection.toJSON()
 				};
 				

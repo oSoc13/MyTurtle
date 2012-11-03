@@ -89,8 +89,8 @@
 		initialize : function() {
 			// prevents loss of 'this' inside methods
 			_.bindAll(this, "render");
+			
 			// bind render to collection reset
-		    
 			this.collection.bind("reset", this.render);
 
 			// pre-fetch template file and render when ready

@@ -1,16 +1,13 @@
-var thatdl;
-
 (function($) {
 	var collection = Backbone.Collection.extend({
 		initialize : function(models, options) {
 			// prevents loss of 'this' inside methods
 			_.bindAll(this, "refresh");
+			_.bindAll(this, "parseStationName");
 
 			// bind refresh
 			this.bind("born", this.refresh);
 			this.bind("refresh", this.refresh);
-
-			thatdl = this;
 			
 			// default error value
 			options.error = false;
@@ -64,7 +61,7 @@ var thatdl;
 			return "http://data.irail.be/DeLijn/Departures/" + query + ".json?offset=0&rowcount=5";
 		},
 		parse : function(json) {
-                    // this.options.station = json.Departures.location.name;
+            // this.options.station = json.Departures.location.name;
 			// parse ajax results
 			var liveboard = json.Departures;
 
@@ -92,7 +89,7 @@ var thatdl;
 			return (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
 		},
 		parseStationName : function (data) {
-			thatdl.options.station = thatdl.capitalizeWords(data.Stations[0].name);
+			this.options.station = this.capitalizeWords(data.Stations[0].name);
 		},
 		capitalizeWords: function (strSentence) {
 			return strSentence.toLowerCase().replace(/\b[a-z]/g, convertToUpper);
@@ -116,8 +113,8 @@ var thatdl;
 		initialize : function() {
 			// prevents loss of 'this' inside methods
 			_.bindAll(this, "render");
+			
 			// bind render to collection reset
-		    
 			this.collection.bind("reset", this.render);
 
 			// pre-fetch template file and render when ready
@@ -139,7 +136,7 @@ var thatdl;
 					error : this.options.error, // have there been any errors?
 					i18n : this.options.i18n
 				};
-
+				
 				// add html to container
 				this.$el.html(Mustache.render(this.template, data));
 				

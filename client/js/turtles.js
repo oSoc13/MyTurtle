@@ -57,7 +57,7 @@ window.Turtles = (function() {
 
         // build and assign collection
         if (typeof turtle.collection == "function") {
-            instance.collection = new turtle.collection(turtle.models, { options : options });
+            instance.collection = new turtle.collection(turtle.models, options);
             
             if (instance.collection.model == null)
                 instance.collection.model = instance.model;
@@ -69,12 +69,11 @@ window.Turtles = (function() {
 
         // build and assign view
         if (typeof turtle.view == "function") {
-            instance.view = new turtle.view({
-                collection : instance.collection,
+            instance.view = new turtle.view(_.extend(options, {
+            	collection : instance.collection,
                 model : instance.model,
-                el : options.el,
-                options : options
-            });
+                el : options.el
+            }));
             
             // link options
             instance.view.options = options;
