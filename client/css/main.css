@@ -155,13 +155,25 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.pane{
+.group {
 	width:50%; 
 	float:left;
 	background-color:#DDD;
 	overflow-y: auto;
 	overflow-x: hidden;
-	}
+}
+
+.group {
+	-webkit-overflow-scrolling: touch;
+}
+	
+.group > *{
+	-webkit-transform: translateZ(0px);
+}
+
+.pane {
+	width:100%;
+}
 
 /*===TITLE BARS ICON===*/
 
@@ -235,15 +247,6 @@ ul, ul li{
 
 ul li{
 	float:left;
-	}
-
-	
-.pane{
-		-webkit-overflow-scrolling: touch;
-  	}
-	
-	.pane > *{
-		-webkit-transform: translateZ(0px);
 	}
 
 

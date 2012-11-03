@@ -18,7 +18,7 @@ function setTimeOnScreen(){
 	else{
 		var timeString = dateObject.getHours() + ":" + minutes;
 	}
-	$(".widget .titleBar .clock h4").html(timeString);
+	$(".widget header .clock h4").html(timeString);
 
 }
 
@@ -31,7 +31,7 @@ $(window).resize(function(){
 function setWidgetsAtStart(){
 	var docHeight = $("#container").height() - 60;
 	if($(document).width() > 600){
-		$(".pane").height(docHeight);
+		$(".group").height(docHeight);
 	}
 	
 	$(".instgrm").each(function(){

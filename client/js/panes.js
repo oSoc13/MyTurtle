@@ -13,8 +13,35 @@ window.Panes = (function() {
      * Create a new pane
      */
     function create(id, pane) {
-    	pane.el = $('<section class="pane ' + pane.type + '" data-id="' + id + '"></section>');
-        container.append(pane.el);
+    	// search group
+    	var group = $('.group.' + pane.type);
+    	
+    	// create group if needed
+    	if (group.length == 0) {
+    		group = $('<section class="group ' + pane.type + '"></section>');
+    		container.append(group);
+    	}
+    	
+    	// show tabs
+    	if (pane.type == 'widget') {
+    		var header = group.find('header');
+    		if (header.length == 0) {
+    			header = $('<header></header>');
+    			group.prepend(header);
+    		}
+    		
+    		header.append($('<div class="nav" data-pane="' + id + '">' + pane.title + '</div>'))
+    	}
+    	
+    	// get the header
+		var header = group.find('header');
+		if (header.length == 0) {
+			header = $('<header></header>');
+			group.prepend(header);
+		}
+    	
+    	pane.el = $('<section class="pane" data-id="' + id + '"></section>');
+        group.append(pane.el);
         
         panes[id] = pane;
     }
