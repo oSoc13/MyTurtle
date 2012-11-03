@@ -133,15 +133,11 @@
 					direction : this.options.direction || "departures",
 					station : this.options.station,
 					entries : this.collection.toJSON(),
-					error : this.options.error, // have there been any errors?
-					i18n : this.options.i18n
+					error : this.options.error // have there been any errors?
 				};
 				
 				// add html to container
 				this.$el.html(Mustache.render(this.template, data));
-				
-				// notify listeners render completed and pass element
-				this.trigger("rendered", this.$el);
 			}
 		}
 	});

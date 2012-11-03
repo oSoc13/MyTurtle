@@ -30,6 +30,32 @@ window.Turtles = (function() {
     function registered(type) {
         return turtles[type] != null;
     }
+    
+    /*
+     * Trigger an event for a turtle by id or all turtles by type
+     */
+    function trigger(type, event) {
+    	// trigger event for turtle id
+    	if (isNaN(type)) {
+    		_(instances).each(function(instance, id) {
+				if (instance.type == type) {
+					if (typeof instance.collection == "object")
+						instance.collection.trigger(event);
+					if (typeof instance.view == "object")
+						instance.view.trigger(event);
+				}
+			});
+    	} 
+    	// trigger event for turtle type
+    	else {
+    		var instance = instances[type];
+    		
+    		if (typeof instance.collection == "object")
+				instance.collection.trigger(event);
+			if (typeof instance.view == "object")
+				instance.view.trigger(event);
+    	}
+    }
 
     /*
      * Create a new turtle instance
@@ -64,8 +90,7 @@ window.Turtles = (function() {
 
             // link options
             instance.collection.options = options;
-        } else
-            throw new Error("Turtle collection was not a constructor function");
+        }
 
         // build and assign view
         if (typeof turtle.view == "function") {
@@ -77,8 +102,7 @@ window.Turtles = (function() {
             
             // link options
             instance.view.options = options;
-        } else
-            throw new Error("Turtle view was not a constructor function");
+        }
 
         // trigger born event
         if (typeof instance.collection == "object")
@@ -125,6 +149,7 @@ window.Turtles = (function() {
         register : register,
         registered : registered,
         instantiate : instantiate,
+        trigger : trigger,
         grow : grow,
 
         // allow access to turtle specifications and instances

@@ -32,9 +32,9 @@
         <script src="client/js/libs/backbone.js"></script>
         <script src="client/js/libs/mustache.js"></script>
         
-        <script src="client/js/screen.js"></script>
-        <script src="client/js/turtles.js"></script>
-        <script src="client/js/panes.js"></script>
+        <script src="client/js/core/screen.js"></script>
+        <script src="client/js/core/turtles.js"></script>
+        <script src="client/js/core/panes.js"></script>
         
         <script>
             Screen.load('https://heartbeat.corp.flatturtle.com/controlbay/ControlBay/hub.json');
