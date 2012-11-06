@@ -37,7 +37,7 @@
         <script src="client/js/core/panes.js"></script>
         
         <script>
-            Screen.load('https://heartbeat.corp.flatturtle.com/controlbay/ControlBay/hub.json');
+            Screen.load('https://s.flatturtle.anothercoolproject.com/hub.json');
         </script>
         
         <script src="client/js/main.js"></script>
