@@ -45,7 +45,6 @@ window.Interface = (function() {
             hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
         }
         lum = lum || 0;
-        sat = sat || 0;
         // convert to decimal and change luminosity
         var rgb = "#", c, i;
         for (i = 0; i < 3; i++) {
