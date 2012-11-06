@@ -40,6 +40,5 @@
             Screen.load('https://s.flatturtle.anothercoolproject.com/hub.json');
         </script>
         
-        <script src="client/js/main.js"></script>
     </body>
 </html>
