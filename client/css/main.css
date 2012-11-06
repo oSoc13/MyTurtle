@@ -178,7 +178,7 @@ textarea {
 /*===TITLE BARS ICON===*/
 
 /*TRAIN*/
-.titleBar .train, .titleBar .tram.bus, .titleBar .traffic, .titleBar .bus, .titleBar .bike{
+.titleBar i{
 	width:81px;
 	height:80px;
 	float:left;
