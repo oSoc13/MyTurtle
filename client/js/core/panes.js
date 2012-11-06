@@ -32,7 +32,7 @@ window.Panes = (function() {
     	if (pane.type == 'widget') {
     		var header = group.find('header');
     		if (header.length == 0) {
-    			header = $('<header></header>');
+    			header = $('<header class="bg-color"></header>');
     			group.prepend(header);
     		}
     		

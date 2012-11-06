@@ -1,5 +1,5 @@
 /*
- * The Screen object will generete the correct UI from the DISS configuration array
+ * The Screen object will delegate from the DISS configuration array to other object
  */
 window.Screen = (function() {
 
@@ -11,6 +11,9 @@ window.Screen = (function() {
      */
     function build(config) {
     	
+        // setup interface
+        Interface.setup(config.interface);
+        
     	// create panes
         for(var id in config.panes) {
             var pane = config.panes[id];
