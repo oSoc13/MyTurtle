@@ -19,6 +19,9 @@ window.Panes = (function() {
     	// save pane
     	panes[id] = pane;
     	
+    	// create dom element
+        pane.el = $('<section class="pane" data-id="' + id + '"></section>');
+    	
     	// search group
     	var group = $('.group.' + pane.type);
     	
@@ -28,15 +31,19 @@ window.Panes = (function() {
     		container.append(group);
     	}
     	
-    	// show tabs
+    	// widget mode
     	if (pane.type == 'widget') {
     		var header = group.find('header');
     		if (header.length == 0) {
-    			header = $('<header class="bg-color"></header>');
+    			header = $('<header></header>');
     			group.prepend(header);
     		}
     		
+    		// append header
     		header.append($('<div class="nav" data-pane="' + id + '"><div class="progress"></div>' + pane.title + '</div>'));
+    		
+    		// add color to group
+    		group.addClass('bg-color');
     	}
     	
     	// create first timer for rotation if more than 2 panes
@@ -46,8 +53,7 @@ window.Panes = (function() {
 			}, pane.interval);
 		}
 		
-    	// create and insert dom element
-    	pane.el = $('<section class="pane" data-id="' + id + '"></section>');
+    	// append element
     	group.append(pane.el);
 
         // check if first pane and mark as active if so
@@ -92,8 +98,8 @@ window.Panes = (function() {
     		var header = group.find('header');
     		
     		// mark as tab active and put in front
-    		header.find('.active').appendTo(header).removeClass("active");
-    		var active = header.find('.nav[data-pane="' + id + '"]').addClass("active");
+    		header.find('.active').appendTo(header).removeClass("active bg-color");
+    		var active = header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color");
     		
     		// start animation
     		header.find('.progress').width(0);
