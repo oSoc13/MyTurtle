@@ -19,6 +19,7 @@
 			
         <!-- PUBLIC TRANSPORT TURTLE -->
         <div id="container" class="clearfix">
+   			<div class="group">
             <section class="pane list">
                 <section class="turtle">
                     <div class="titleBar">
@@ -186,11 +187,13 @@
    				</section>
              	
             </section>
-            
+            </div>
             
             
             <!-- LOCATION TURTLE -->
-            <section class="pane widget color">
+            <div class="group widget">
+            <section class="pane color">
+            	<!--
                 <section class="titleBar clearfix">
                     <div id="social" class="nav active color">
                     	<div class="timerBarYellow"></div>
@@ -208,15 +211,20 @@
                         <h4>10:21</h4>
                     </section>
                 </section>
-                <section class="locContent">
-                    <section class="social" style="display:none;">
-                    	<div id="oneColumn">
-                        </div>
-                        <div id="leftColumn">
+				-->
+               
                         	<section class="turtle">
                                 <div class="fsq">
                                     <p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>
                                 </div>
+                                <div class="fsq">
+                                    <p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>
+                                </div>
+                                <div class="fsq">
+                                    <p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>
+                                </div>
+                                <div class="fsq">
+                                    <p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>								 </div>
                             </section>
                             <section class="turtle">
                                 <div class="tweet color2">
@@ -227,9 +235,10 @@
                             </section>
                             <section class="turtle">
                                 <div class="instgrm">
-                                    <img src="client/css/images/instagram-shot2.jpg" class="img" />
+                                    <img src="css/images/instagram-shot2.jpg" class="img" />
                                     <h5>Instagram photo: Alex Verswijvel</h5>
                                 </div>
+                               
                             </section>
                             <section class="turtle">
                                 <div class="fsq">
@@ -243,8 +252,7 @@
                                 	<div class="speak border-color"></div>
                                 </div>
                             </section>
-                       	</div>
-                        <div id="rightColumn">
+                   
                         	<section class="turtle">
                                 <div class="tweet color2">
                                 	<p>#Location is the place!</p>
@@ -265,7 +273,6 @@
                                         <div class="speak border-color"></div>
                                 </div>
                             </section>
-                        </div>
                     </section>
                     <section class="turtle">
                         <section class="weather" style="display:none">
@@ -312,7 +319,7 @@
                  	</section>
                  
                      <section class="turtle">
-                        <section class="finances">
+                        <section class="finances" style="display:none;">
                             <div class="com_shares">
                                 <h2>Our shares</h2>
                                 
@@ -328,6 +335,7 @@
                      </section>
             	</section>
             </section>
+        </div>
         </div>
         
         <footer>

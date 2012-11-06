@@ -178,7 +178,7 @@ textarea {
 /*===TITLE BARS ICON===*/
 
 /*TRAIN*/
-.titleBar .train, .titleBar .tram.bus, .titleBar .traffic, .titleBar .bus, .titleBar .bike{
+.titleBar i{
 	width:81px;
 	height:80px;
 	float:left;
@@ -701,29 +701,24 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	height:auto;
 }
 
-.widget .weather #leftColumn{
-	float:left;
-	width:50%;
-	height:auto;
+.widget .pane{
+   
+   -webkit-column-count: 2;
+   -webkit-column-gap:   5px;
+   -moz-column-count:    2;
+   -moz-column-gap:      5px;
+   column-count:         2;
+   column-gap:           5px;
+   
 }
 
-.widget .weather #rightColumn{
-	float:left;
-	margin-left:5%;
-	width:45%;
+.widget .turtle{
+	width:92%;
+	padding:4%;
+	display:block;
+	
 }
 
-.widget .social #oneColumn{
-	width:100%;
-	height:auto;
-}
-
-.widget .social #rightColumn{
-	float:left;
-	width:65%;
-	height:auto;
-	margin-left:5%;
-}
 
 /* ==============
 * LOCATION TURTLE > FINANCES
@@ -756,7 +751,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 * LOCATION TURTLE > SOCIAL MEDIA
 ============== */
 
-.widget .social #leftColumn .fsq, .widget .social #rightColumn .fsq{
+.fsq{
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
@@ -766,25 +761,28 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	background-color:rgba(0,0,0,0.4);
 }
 
-.widget .social #leftColumn .instgrm, .widget .social #rightColumn .instgrm{
+.instgrm{
 	min-height:30px;
 	height:auto;
 	padding:0;
 	width:100%;
 	position:relative;
 	margin-bottom:35px;
+	display:block;
+	padding-bottom:25px;
 }
 
-.widget .social  #leftColumn .tweet, .widget .social  #rightColumn .tweet{
+.tweet{
 	width:92%;
 	padding:16px 4% 16px 4%;
 	min-height:30px;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 	margin-bottom:40px;
 	position:relative;
+	display:block;
 }
 
-.widget .social #leftColumn .instgrm:after, .widget .social #rightColumn .instgrm:after{
+.instgrm:after{
 	content: "";
 	background-image:url(images/shadow3.png);
 	background-size:100%;
@@ -795,7 +793,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	z-index:1;
 }
 
-.widget .social #leftColumn .tweet:after, .widget .social #rightColumn .tweet:after{
+.tweet:after{
 	content: "";
 	background-image:url(images/shadow3.png);
 	background-size:100%;
@@ -809,9 +807,9 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	opacity:0.6;
 }
 
-.widget .social #leftColumn .instgrm h5, .widget .social #rightColumn .instgrm h5{
+.instgrm h5{
 	position:absolute;
-	bottom:-25px;
+	bottom:2px;
 	left:2px;
 	right:0;
 	text-align:right;
@@ -819,14 +817,14 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	z-index:3;
 }
 
-.widget .social #leftColumn .tweet h5, .widget .social #rightColumn .tweet h5 {
+.tweet h5 {
 	position:absolute;
 	display:inline-block;
 	left:3px;
 	bottom:-22px;
 }
 
-.widget .social #leftColumn .tweet .speak, .widget .social #rightColumn .tweet .speak{
+.tweet .speak{
 	border-width: 20px 20px 0 0;
 	border-style: solid;
 	display:inline-block;
@@ -1011,6 +1009,16 @@ footer #where{
 	.titleBar .small{
 		top:-9px;
 	}
+	
+	.widget .pane{
+    	-webkit-column-count: 1;
+   		-webkit-column-gap:   0;
+   		-moz-column-count:    1;
+   		-moz-column-gap:      0;
+   		column-count:         1;
+   		column-gap:           0;
+   
+}
 }
 
 @media all and (max-width: 750px) {
