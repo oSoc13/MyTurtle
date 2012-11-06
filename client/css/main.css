@@ -701,7 +701,7 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	height:auto;
 }
 
-.widget .pane{
+.widget .pane.column{
    
    -webkit-column-count: 2;
    -webkit-column-gap:   5px;
@@ -835,6 +835,42 @@ background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
 	left:60px;
 	bottom:-30px;
 }
+
+
+/* ==============
+* LOCATION TURTLE > FLOORS
+============== */
+
+.floor{
+	width:92%;
+	padding:16px 4% 16px 4%;
+	min-height:80px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+	margin-bottom:30px;
+	display:block;
+	font-size:2.9em;
+}
+
+
+.floor h2{
+	font-size:1em;
+	float:left;
+	width:20%;
+	margin-top:20px;
+}
+
+.floor .here{
+	float:right;
+	font-size:0.45em;
+}
+
+.floor ul li{
+	display:block;
+	float:none;
+	margin-bottom:20px;
+}
+
+
 
 .widget .yellow{
 	color:#d0e900;
@@ -1010,7 +1046,7 @@ footer #where{
 		top:-9px;
 	}
 	
-	.widget .pane{
+	.widget .pane.column{
     	-webkit-column-count: 1;
    		-webkit-column-gap:   0;
    		-moz-column-count:    1;
@@ -1043,6 +1079,9 @@ footer #where{
 		line-height:4.0;
 	}
 	
+	.group{
+		width:100%;
+	}
 	
 	.titleBar .distance .foot,
 	.titleBar .distance .bike{
@@ -1150,6 +1189,9 @@ footer #where{
 		font-size:22px;
 	}
 	
+	.floor{
+		font-size:3.1em;
+	}
 	
 	footer #where{
 		font-size:28px;
@@ -1331,13 +1373,13 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .titleBar:after, .titleBar:before, .distance:before{
+.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .titleBar:after, .floor:after, .floor:before, .titleBar:before, .distance:before{
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
 
-.clearfix:after, .social:after, .list:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
+.clearfix:after, .social:after, .list:after, .floor:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
     clear: both;
 }
 

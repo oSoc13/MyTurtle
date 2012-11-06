@@ -192,28 +192,8 @@
             
             <!-- LOCATION TURTLE -->
             <div class="group widget">
-            <section class="pane color">
-            	<!--
-                <section class="titleBar clearfix">
-                    <div id="social" class="nav active color">
-                    	<div class="timerBarYellow"></div>
-                        <h4>Social</h4>
-                    </div>
-                    <div id="news" class="nav">
-                    	<div class="timerBarYellow"></div>
-                        <h4>News</h4>
-                    </div>
-                    <div id="location" class="nav">
-                    	<div class="timerBarYellow"></div>
-                        <h4>Location</h4>
-                    </div>
-                    <section class="clock color">
-                        <h4>10:21</h4>
-                    </section>
-                </section>
-				-->
-               
-                        	<section class="turtle">
+            <section class="pane column color" style="display:none;">
+				<section class="turtle" style="display:none;">
                                 <div class="fsq">
                                     <p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>
                                 </div>
@@ -274,8 +254,10 @@
                                 </div>
                             </section>
                     </section>
-                    <section class="turtle">
-                        <section class="weather" style="display:none">
+                    
+                    
+                   <section class="pane color">
+                        <section class="turtle weather" style="display:none">
                                 <div class="weatherBox">
                                     <div class="type">
                                         <i class="zon"></i>
@@ -318,8 +300,8 @@
                         </section>
                  	</section>
                  
-                     <section class="turtle">
-                        <section class="finances" style="display:none;">
+                    <section class="pane color">
+                        <section class="turtle finances" style="display:none;">
                             <div class="com_shares">
                                 <h2>Our shares</h2>
                                 
@@ -330,6 +312,38 @@
                             </div>
                             <div class="shares color2">
                             	<h2>NYR.BR</h2>
+                            </div>
+                     	</section>
+                     </section>
+                     
+                     <section class="pane color" style="height:800px">
+                        <section class="turtle">
+                            <div class="floor color2">
+                                <h2>+1</h2>
+                                <div class="here">
+                                	<ul>
+                                    	<li>Conference Room</li>
+                                        <li>A305</li>
+                                    </ul>
+                                </div>
+                            </div>
+                             <div class="floor color2">
+                                <h2>+2</h2>
+                                <div class="here">
+                                	<ul>
+                                    	<li>Conference Room</li>
+                                        <li>A305</li>
+                                    </ul>
+                                </div>
+                            </div>
+                             <div class="floor color2">
+                                <h2>+3</h2>
+                                <div class="here">
+                                	<ul>
+                                    	<li>Conference Room</li>
+                                        
+                                    </ul>
+                                </div>
                             </div>
                      	</section>
                      </section>

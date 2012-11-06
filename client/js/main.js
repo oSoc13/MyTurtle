@@ -29,10 +29,7 @@ $(window).resize(function(){
 
 
 function setWidgetsAtStart(){
-	var docHeight = $("#container").height() - 60;
-	if($(document).width() > 600){
-		$(".group").height(docHeight);
-	}
+	
 	
 	$(".instgrm").each(function(){
 		var imgWidth = $(this).width();
