@@ -1,15 +1,14 @@
 (function($) {
-	
+
 	var collection = Backbone.Collection.extend({
 		initialize : function(models, options) {
 			// prevents loss of 'this' inside methods
 			_.bindAll(this, "refresh");
-			_.bindAll(this, "parseStationName");
 
 			// bind refresh
 			this.bind("born", this.refresh);
 			this.bind("refresh", this.refresh);
-			
+
 			// default error value
 			options.error = false;
 
@@ -25,8 +24,9 @@
 					self.options.error = true;
 					
 					// if there are no previous items to show, display error message
-					if(self.length == 0)
+					if(self.length == 0) {
 						self.trigger("reset");
+					}
 				}
 			});
 		},
@@ -36,7 +36,7 @@
 			var day = today.getDate();
 			var year = today.getFullYear();
 			var minutes = today.getMinutes();
-			var hours = today.getHours();
+		    var hours = (today.getHours() + 2)%24;
 
 			if (minutes < 10)
 				minutes = "0" + minutes;
@@ -50,63 +50,28 @@
 			if (day < 10)
 				day = "0" + day;
 
-			var query = encodeURIComponent(this.options.location) + "/" + year + "/" + month + "/" + day + "/" + hours + "/" + minutes;
+			var query = this.options.location + "/" + year + "/" + month + "/" + day + "/" + hours + "/" + minutes;
 
-			if(isNaN(this.options.location)) {
-				this.options.station = this.capitalizeWords(this.options.location);
-			} else {
-				$.getJSON("http://data.irail.be/DeLijn/Stations.json?id=" + encodeURIComponent(this.options.location), this.parseStationName);
-			}
-			
-			// remote source url - todo: add departures or arrivals
-			return "http://data.irail.be/DeLijn/Departures/" + query + ".json?offset=0&rowcount=5";
+			// remote source url
+		    // todo: add departures or arrivals
+			return "http://data.irail.be/spectql/Airports/Liveboard/" + query + "/departures.limit(17):json";
 		},
 		parse : function(json) {
-            // this.options.station = json.Departures.location.name;
 			// parse ajax results
-			var liveboard = json.Departures;
+			var liveboard = json.spectql;
 
 			for (var i in liveboard) {
-				
-				var time = new Date(liveboard[i].time * 1000);
-				liveboard[i].time = this.formatTime(time);
-				
-				if (liveboard[i].delay) {
-					var delay = new Date(liveboard[i].delay * 1000);
-					liveboard[i].delay = this.formatTime(delay);
-				}
-
-				if (!liveboard[i].long_name)
-					liveboard[i].long_name = "-";
-				else 
-					liveboard[i].long_name = this.parseTripName(liveboard[i].long_name)
+				liveboard[i].delay = liveboard[i].delay ? this.formatTime(liveboard[i].time + liveboard[i].delay) : false;
+				liveboard[i].time = this.formatTime(liveboard[i].time);
 			}
-
+			
 			return liveboard;
 		},
-		formatTime : function(time) {
+		formatTime : function(timestamp) {
+			var time = new Date(timestamp * 1000);
 			var hours = time.getHours();
 			var minutes = time.getMinutes();
 			return (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
-		},
-		parseStationName : function (data) {
-			this.options.station = this.capitalizeWords(data.Stations[0].name);
-		},
-		capitalizeWords: function (strSentence) {
-			return strSentence.toLowerCase().replace(/\b[a-z]/g, convertToUpper);
-		 
-			function convertToUpper() {
-				return arguments[0].toUpperCase();
-			}
-		}, 
-		parseTripName: function (strTripName) {
-			strTripName = this.capitalizeWords(strTripName);
-			
-			if(strTripName.split("-").length == 2) {
-				strTripName = strTripName.split("-")[1];
-			}
-			
-			return strTripName;
 		}
 	});
 
@@ -114,14 +79,27 @@
 		initialize : function() {
 			// prevents loss of 'this' inside methods
 			_.bindAll(this, "render");
-			
+
 			// bind render to collection reset
 			this.collection.bind("reset", this.render);
 
-			// pre-fetch template file and render when ready
 			var self = this;
+			
+			// get the airport name
+			$.ajax({
+				url: "http://data.irail.be/spectql/Airports/Stations%7Bname,code%7D?code=='" + self.options.location + "':json",
+				dataType: 'json',
+				success: function(data) {
+				    if (data.spectql.length > 0) {
+    					self.options.airport = data.spectql[0].name;
+    					self.render();
+				    }
+				}
+			});
+			
+			// pre-fetch template file and render when ready
 			if (this.template == null) {
-				$.get("turtles/delijn/views/list.html", function(template) {
+				$.get("turtles/airport/views/list.html", function(template) {
 					self.template = template;
 					self.render();
 				});
@@ -129,22 +107,22 @@
 		},
 		render : function() {
 			// only render when template file is loaded
-			if (this.template) {
+			if (this.template && this.options.airport) {
 				var data = {
 					direction : this.options.direction || "departures",
-					station : this.options.station,
+					airport : this.options.airport || this.options.location,
 					entries : this.collection.toJSON(),
 					error : this.options.error // have there been any errors?
-				};
-				
-				// add html to container
+			    };
+			    
+			    // add html to container
 				this.$el.html(Mustache.render(this.template, data));
 			}
 		}
 	});
 
 	// register turtle
-	Turtles.register("delijn", {
+	Turtles.register("airport", {
 		collection : collection,
 		view : view
 	});
