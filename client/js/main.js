@@ -56,7 +56,7 @@ function setWidgetsAtStart(){
 
 function timer(){
 	/*RESET ALL YELLOW BARS*/
-	$(".timerBarYellow").width(0);
+	/*$(".timerBarYellow").width(0);
 	var yellowBar = $(".active .timerBarYellow");
 	yellowBar.width(0);
 	yellowBar.stop().animate({"width":"100%"}, 20000, function(){
@@ -67,7 +67,7 @@ function timer(){
 		old_active.insertAfter(last_child);
 		timer();
 		});
-	counterBar++;
+	counterBar++;*/
 };
 
 
