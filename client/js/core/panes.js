@@ -97,7 +97,9 @@ window.Panes = (function() {
     		
     		// start animation
     		header.find('.progress').width(0);
-    		header.find('.active .progress').stop().animate({"width":"100%"}, pane.interval);
+    		header.find('.active .progress').animate({width:"100%"}, parseInt(pane.interval), function() {
+    			$(this).width(0);
+    		});    		
     	}
     	
     	// mark pane as active and show
