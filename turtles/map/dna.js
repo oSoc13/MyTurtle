@@ -21,7 +21,7 @@
 		render : function() {
 			var self = this;
 			
-			$.get('turtles/map/views/list.html', function(template) {
+			$.get('turtles/map/views/widget.html', function(template) {
 				var data = {
 					location : self.options.location
 				};
@@ -34,7 +34,7 @@
 				
 				// map options
 				var options = {
-				    zoom : self.options.zoom,
+				    zoom : parseInt(self.options.zoom),
 				    disableDefaultUI: true,
 				    mapTypeId : google.maps.MapTypeId.ROADMAP
 				};
