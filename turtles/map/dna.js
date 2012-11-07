@@ -19,7 +19,7 @@
 		render : function() {
 			var self = this;
 			
-			$.get('turtles/map/views/list.html', function(template) {
+			$.get('turtles/map/views/widget.html', function(template) {
 				var data = {
 					location : self.options.location
 				};
