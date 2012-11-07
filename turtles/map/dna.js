@@ -9,8 +9,6 @@
 			// default zoom
 			if (!this.options.zoom)
 				this.options.zoom = 13;
-			else
-			    this.options.zoom = parseInt(this.options.zoom);
 			
 			// get the google maps api
 			$.getScript("http://maps.googleapis.com/maps/api/js?sensor=false&callback=mapsLoaded");
