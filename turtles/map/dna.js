@@ -32,7 +32,7 @@
 				
 				// map options
 				var options = {
-				    zoom : self.options.zoom,
+				    zoom : parseInt(self.options.zoom),
 				    disableDefaultUI: true,
 				    mapTypeId : google.maps.MapTypeId.ROADMAP
 				};
