@@ -119,6 +119,24 @@ window.Panes = (function() {
     }
     
     /*
+     * Sort turtles in a pane by id
+     */
+    function sort(group) {
+        var group = $('.pane[data-id="' + group + '"]');
+        var list = group.find('.turtle').get();
+        
+        // sort by data-order attribute
+        list.sort(function(a, b) {
+            // both are plain javascript objects now
+            if (a.getAttribute('data-order') == b.getAttribute('data-order'))
+                return 0;
+            return a.getAttribute('data-order') < b.getAttribute('data-order') ? -1 : 1;
+        });
+        
+        $.each(list, function(idx, itm) { group.append(itm); });
+    }
+    
+    /*
      * Get a panel by id
      */
     function get(id) {
@@ -131,6 +149,7 @@ window.Panes = (function() {
     return {
     	show : show,
     	rotate : rotate,
+    	sort : sort,
         create : create,
         get : get
     };
