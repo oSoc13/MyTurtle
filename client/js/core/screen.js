@@ -33,8 +33,7 @@ window.Screen = (function() {
             pane.el.append(placeholder);
             
             // sort the pane
-            var items = pane.el.find('.turtle');
-            Panes.sort(items);
+            sort(pane.el.find('.turtle'));
             
             // grow the turtle
             Turtles.grow(turtle.type, id, turtle.options);

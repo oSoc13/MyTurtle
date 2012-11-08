@@ -33,6 +33,7 @@
         <script src="client/js/libs/mustache.js"></script>
         <script src="client/js/libs/tinycolor.js"></script>
         
+        <script src="client/js/core/functions.js"></script>
         <script src="client/js/core/screen.js"></script>
         <script src="client/js/core/interface.js"></script>
         <script src="client/js/core/turtles.js"></script>
