@@ -211,6 +211,11 @@ textarea {
 .titleBar .traffic{
 	background-image:url(images/FT__0002_autoverkeer.png);
 	}
+
+/*PLANE*/
+.titleBar .plane{
+	background-image:url(images/FT_plane.png);
+	}
 	
 /*tram bus*/
 .titleBar .tram.bus{
@@ -1275,6 +1280,12 @@ footer #where{
 	.floor{
 		font-size:3.1em;
 		padding-top:30px;
+	}
+	
+	.results ul li > *{
+		width:70%;
+		height:100%;
+		overflow:hidden;
 	}
 	
 	.widget header .nav{
