@@ -301,7 +301,7 @@
                  	</section>
                  
                     <section class="pane color">
-                        <section class="turtle finances" style="display:none;">
+                        <section class="turtle" style="display:none;">
                             <div class="com_shares">
                                 <h2>Our shares</h2>
                                 
@@ -316,7 +316,32 @@
                      	</section>
                      </section>
                      
-                     <section class="pane color" style="height:800px">
+                     <section class="pane color">
+                        <section class="turtle" style="height:800px;">
+                            <div class="rss color2">
+                                <h2>Here comes a title</h2>
+                                <p class="time">18:00</p>
+                                <div class="text">
+                               		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean massa arcu, tempus eu porttitor vitae, malesuada ut nibh. Proin adipiscing neque et risus venenatis posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum faucibus ornare elementum. In eget dictum ligula.</p>
+                                </div>
+                                <p class="source">Source: tweakers.com</p>
+                            </div>
+                            
+                            <div class="rss color2">
+                                <h2>Title numbero 2</h2>
+                                <p class="time">18:00</p>
+                                <div class="text">
+                                    <div class="img">
+                                        <img src="css/images/Instagram-shot.jpg" />
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean massa arcu, tempus eu porttitor vitae, malesuada ut nibh. Proin adipiscing neque et risus venenatis posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum faucibus ornare elementum. In eget dictum ligula.</p>
+                                </div>
+                                 <p class="source">Source: tweakers.com</p>
+                            </div>
+                     	</section>
+                     </section>
+                     
+                     <section class="pane color" style="display:none;">
                         <section class="turtle">
                             <div class="floor color2">
                                 <h2>+1</h2>
@@ -334,6 +359,9 @@
                                     	<li>Conference Room</li>
                                         <li>A305</li>
                                     </ul>
+                                </div>
+                                <div class="logo">
+                                	<img src="css/images/ft_logo.jpg" />
                                 </div>
                             </div>
                              <div class="floor color2">
