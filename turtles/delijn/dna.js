@@ -13,6 +13,10 @@
 			// default error value
 			options.error = false;
 
+			// default limit
+            if (!options.limit)
+                options.limit = 5;
+			
 			// automatic collection refresh each minute, this will 
 			// trigger the reset event
 			refreshInterval = window.setInterval(this.refresh, 60000);
@@ -59,7 +63,7 @@
 			}
 			
 			// remote source url - todo: add departures or arrivals
-			return "http://data.irail.be/DeLijn/Departures/" + query + ".json?offset=0&rowcount=5";
+			return "http://data.irail.be/DeLijn/Departures/" + query + ".json?offset=0&rowcount=" + parseInt(this.options.limit);
 		},
 		parse : function(json) {
             // this.options.station = json.Departures.location.name;

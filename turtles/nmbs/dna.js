@@ -11,6 +11,10 @@
 
 			// default error value
 			options.error = false;
+			
+			// default limit
+            if (!options.limit)
+                options.limit = 5;
 
 			// automatic collection refresh each minute, this will 
 			// trigger the reset event
@@ -52,7 +56,7 @@
 			var query = this.options.location + "/" + year + "/" + month + "/" + day + "/" + hours + "/" + minutes;
 
 			// remote source url - todo: add departures or arrivals
-			return "http://data.irail.be/spectql/NMBS/Liveboard/" + query + "/departures.limit(5):json";
+			return "http://data.irail.be/spectql/NMBS/Liveboard/" + query + "/departures.limit(" + parseInt(this.options.limit) + "):json";
 		},
 		parse : function(json) {
 			// parse ajax results

@@ -11,6 +11,10 @@
 
 			// default error value
 			options.error = false;
+			
+			// default limit
+            if (!options.limit)
+                options.limit = 5;
 
 			// automatic collection refresh each minute, this will 
 			// trigger the reset event
@@ -54,7 +58,7 @@
 
 			// remote source url
 		    // todo: add departures or arrivals
-			return "http://data.irail.be/spectql/Airports/Liveboard/" + query + "/departures.limit(17):json";
+			return "http://data.irail.be/spectql/Airports/Liveboard/" + query + "/departures.limit(" + parseInt(this.options.limit) + "):json";
 		},
 		parse : function(json) {
 			// parse ajax results
