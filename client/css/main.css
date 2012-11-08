@@ -366,6 +366,12 @@ ul li{
 	font-family:SohoGothicProBold;
 	}
 
+.results ul li > *{
+	width:60%;
+	height:100%;
+	overflow:hidden;
+}
+
 .results ul li .square:nth-child(2){
 	margin-left:0;
 }
@@ -379,9 +385,7 @@ ul li{
 	float:left;
 	margin-left:15px;
 	line-height:1.8em;
-	max-width:80%;
-	display:block;
-	overflow:hidden;
+	width:80%;
 	}
 
 .results ul li .time{
@@ -1006,6 +1010,12 @@ footer #where{
 		width:140px;
 	}
 	
+	.results ul li > *{
+		width:70%;
+		height:100%;
+		overflow:hidden;
+	}
+	
 	body{
 		font-size:15px;
 	}
@@ -1072,6 +1082,12 @@ footer #where{
 		line-height:4em;
 	}
 	
+	.results ul li > *{
+		width:75%;
+		height:100%;
+		overflow:hidden;
+	}
+	
 	h4{
 		line-height:5em;
 	}
@@ -1123,6 +1139,12 @@ footer #where{
   		width:100%;
 		-webkit-overflow-scrolling: touch;
   	}
+	
+	.results ul li > *{
+		width:70%;
+		height:100%;
+		overflow:hidden;
+	}
 	
 	.list .turtle:last-child{
 		padding:0;
