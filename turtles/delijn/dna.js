@@ -137,6 +137,7 @@
 				var data = {
 					station : this.options.station,
 					entries : this.collection.toJSON(),
+					color : this.options.color,
 					error : this.options.error // have there been any errors?
 				};
 				
