@@ -113,7 +113,6 @@
 			// only render when template file is loaded
 			if (this.template && this.options.airport) {
 				var data = {
-					direction : this.options.direction || "departures",
 					airport : this.options.airport || this.options.location,
 					entries : this.collection.toJSON(),
 					error : this.options.error // have there been any errors?
