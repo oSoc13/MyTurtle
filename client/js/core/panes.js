@@ -20,7 +20,7 @@ window.Panes = (function() {
     	panes[id] = pane;
     	
     	// create dom element
-        pane.el = $('<section class="pane" data-id="' + id + '"></section>');
+        pane.el = $('<section class="pane" data-id="' + id + '" data-order="' + pane.order + '"></section>');
     	
     	// search group
     	var group = $('.group.' + pane.type);
@@ -55,6 +55,10 @@ window.Panes = (function() {
 		
     	// append element
     	group.append(pane.el);
+    	
+    	// make sure panes are in correct order
+    	var items = group.find('.pane');
+        sort(items);
 
         // check if first pane and mark as active if so
     	if (group.find('.pane.active').length == 0) {
@@ -119,11 +123,11 @@ window.Panes = (function() {
     }
     
     /*
-     * Sort turtles in a pane by id
+     * Sort elements in a parent container by data-order attribute
      */
-    function sort(group) {
-        var group = $('.pane[data-id="' + group + '"]');
-        var list = group.find('.turtle').get();
+    function sort(items) {
+        var parent = items.parent();
+        var list = items.get();
         
         // sort by data-order attribute
         list.sort(function(a, b) {
@@ -133,7 +137,7 @@ window.Panes = (function() {
             return a.getAttribute('data-order') < b.getAttribute('data-order') ? -1 : 1;
         });
         
-        $.each(list, function(idx, itm) { group.append(itm); });
+        $.each(list, function(idx, itm) { parent.append(itm); });
     }
     
     /*
@@ -148,8 +152,8 @@ window.Panes = (function() {
      */
     return {
     	show : show,
-    	rotate : rotate,
     	sort : sort,
+    	rotate : rotate,
         create : create,
         get : get
     };
