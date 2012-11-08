@@ -22,17 +22,19 @@
         </div>
         
         <footer>
-            <img src="client/css/images/ft_logo.jpg" alt="FlatTurtle" id="ftlogo" />
+            <img src="client/css/images/ft_logo.jpg" alt="FlatTurtle" id="flatturtle-logo" />
             <p id="where" class="text-color">Check in at <span class="bold">location</span> or tag <span class="bold">#location</span></p>
-        	<img src="client/css/images/logo_placeholder.png" alt="Logo" id="loc_logo" />
+        	<img src="client/css/images/logo_placeholder.png" alt="Logo" id="client-logo" />
         </footer>
 
         <script src="client/js/libs/jquery.js"></script>
         <script src="client/js/libs/underscore.js"></script>
         <script src="client/js/libs/backbone.js"></script>
         <script src="client/js/libs/mustache.js"></script>
+        <script src="client/js/libs/tinycolor.js"></script>
         
         <script src="client/js/core/screen.js"></script>
+        <script src="client/js/core/interface.js"></script>
         <script src="client/js/core/turtles.js"></script>
         <script src="client/js/core/panes.js"></script>
         

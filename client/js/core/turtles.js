@@ -35,7 +35,7 @@ window.Turtles = (function() {
      * Trigger an event for a turtle by id or all turtles by type
      */
     function trigger(type, event) {
-    	// trigger event for turtle id
+    	// trigger event turtle type
     	if (isNaN(type)) {
     		_(instances).each(function(instance, id) {
 				if (instance.type == type) {
@@ -46,7 +46,7 @@ window.Turtles = (function() {
 				}
 			});
     	} 
-    	// trigger event for turtle type
+    	// trigger event for turtle id
     	else {
     		var instance = instances[type];
     		
@@ -141,6 +141,27 @@ window.Turtles = (function() {
             instantiate(type, id, options);
         }
     }
+    
+    /*
+     * Change a turtle's options object
+     */
+    function options(id, options) {
+        if (instances[id] == null)
+            throw new Error("Unknown turtle instance");
+        
+        var turtle = instances[id];
+        
+        // update collection options
+        if (turtle.collection.options != null)
+            turtle.collection.options = _.extend(turtle.collection.options, options);
+        
+        // update view options
+        if (turtle.view.options != null)
+            turtle.view.options = _.extend(turtle.view.options, options);
+        
+        // trigger refresh event
+        Turtles.trigger(id, 'refresh');
+    }
 
     /*
      * Public interface to this object
@@ -151,6 +172,7 @@ window.Turtles = (function() {
         instantiate : instantiate,
         trigger : trigger,
         grow : grow,
+        options : options,
 
         // allow access to turtle specifications and instances
         instances : instances,
