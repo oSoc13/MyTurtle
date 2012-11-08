@@ -806,11 +806,11 @@ ul li{
 	background-size:100%;
 	background-position:center top;
 	background-repeat:no-repeat;
-	height:20px;
+	height:40px;
 	display:block;
 	z-index:0;
 	position:relative;
-	top:36px;
+	top:56px;
 	opacity:0.6;
 }
 
