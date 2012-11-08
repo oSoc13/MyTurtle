@@ -81,7 +81,7 @@ body {
 	height:100%;
 	font-family:SohoGothicProMed;
 	overflow:hidden;
-}.list
+}
 
 #container{
 	width:100%;
@@ -271,7 +271,7 @@ ul li{
 	padding-bottom:40px;
 }
 
-.list .pane .turtle .distance{
+.list .distance{
 	height:55px;
 	position:absolute;
 	right:0;
@@ -379,6 +379,9 @@ ul li{
 	float:left;
 	margin-left:15px;
 	line-height:1.8em;
+	max-width:80%;
+	display:block;
+	overflow:hidden;
 	}
 
 .results ul li .time{
@@ -1253,6 +1256,14 @@ footer #where{
 		padding-top:30px;
 	}
 	
+	.widget header .nav{
+		line-height:3.4em;
+	}
+	
+	.widget header .nav.active{
+		line-height:2.7em;
+	}
+	
 	.floor .logo{
 		width:20%;
 	}
@@ -1277,8 +1288,8 @@ footer #where{
 		line-height:2.3em;
 	}
 	
-	.titleBar .distance{
-		line-height:1.9em;
+	.list .distance p{
+		line-height:2.2em;
 	}
 	
 	.turtle ul li h3{
@@ -1327,10 +1338,11 @@ footer #where{
 		line-height:1.8;
 	}
 	
-	.results ul li .square, 
+	.results ul li .square,
+	.results ul li .square p, 
 	.results ul li .bus,
 	.results ul li .tram{
-		line-height:3.1em;
+		line-height:2.0em;
 	}
 	
 	.titleBar .small{
