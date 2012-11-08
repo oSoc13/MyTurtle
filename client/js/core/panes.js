@@ -99,10 +99,10 @@ window.Panes = (function() {
     		
     		// mark as tab active and put in front
     		header.find('.active').appendTo(header).removeClass("active bg-color");
-    		var active = header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color");
+    		var active = header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
     		
     		// start animation
-    		header.find('.progress').width(0);
+    		header.find('.progress').stop().width(0);
     		header.find('.active .progress').animate({width:"100%"}, parseInt(pane.interval), function() {
     			$(this).width(0);
     		});    		
