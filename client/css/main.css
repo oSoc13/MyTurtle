@@ -81,7 +81,7 @@ body {
 	height:100%;
 	font-family:SohoGothicProMed;
 	overflow:hidden;
-}
+}.list
 
 #container{
 	width:100%;
@@ -271,7 +271,7 @@ ul li{
 	padding-bottom:40px;
 }
 
-.list .distance{
+.list .pane .turtle .distance{
 	height:55px;
 	position:absolute;
 	right:0;
@@ -1282,11 +1282,11 @@ footer #where{
 	}
 	
 	.turtle ul li h3{
-		line-height:1.5;
+		line-height:1.4;
 	}
 	
 	.results ul li .time p{
-		line-height:1.6;
+		line-height:1.9;
 	}
 	
 	.turtle .wide ul li h3{
@@ -1330,7 +1330,7 @@ footer #where{
 	.results ul li .square, 
 	.results ul li .bus,
 	.results ul li .tram{
-		line-height:2.1em;
+		line-height:3.1em;
 	}
 	
 	.titleBar .small{
