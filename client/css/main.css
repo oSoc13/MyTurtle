@@ -379,6 +379,9 @@ ul li{
 	float:left;
 	margin-left:15px;
 	line-height:1.8em;
+	max-width:80%;
+	display:block;
+	overflow:hidden;
 	}
 
 .results ul li .time{
@@ -728,7 +731,7 @@ ul li{
 * LOCATION TURTLE > FINANCES
 ============== */
 
-.widget .finances .com_shares{
+.widget .com_shares{
 	width:auto;
 	max-width:99%;
 	border:3px solid #FFF;
@@ -738,13 +741,13 @@ ul li{
 	margin-bottom:20px;
 }
 
-.widget .finances .com_shares h2{
+.widget .com_shares h2{
 	font-family:SohoGothicProBold;
 	font-size:1,5em;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
 }
 
-.widget .finances .shares{
+.widget .shares{
 	width:100%;
 	min-height:70px;
 	margin-bottom:25px;
@@ -855,7 +858,6 @@ ul li{
 	font-size:2.9em;
 }
 
-
 .floor h2{
 	font-size:1em;
 	float:left;
@@ -866,12 +868,68 @@ ul li{
 .floor .here{
 	float:right;
 	font-size:0.45em;
+	width:35%;
+}
+
+.floor .logo{
+	float:right;
+	width:25%;
+	margin-right:5%;
+}
+
+.floor .logo img{
+	max-width:auto;
 }
 
 .floor ul li{
 	display:block;
 	float:none;
 	margin-bottom:20px;
+}
+
+/* ==============
+* LOCATION TURTLE > RSS
+============== */
+
+.rss{
+	width:92%;
+	padding:16px 4% 16px 4%;
+	min-height:80px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+	margin-bottom:30px;
+	display:block;
+	position:relative;
+	font-size:2.9em;
+}
+
+.rss h2{
+	font-size:0.55em;
+}
+
+.rss .time{
+	position:absolute;
+	font-size:0.55em;
+	right:20px;
+	top:15px;
+}
+
+.rss .img{
+	width:30%;
+	display:inline-block;
+	float:left;
+	margin:26px 10px 10px 0;
+}
+
+.rss .img img{
+	max-width:100%;
+	height:auto !important;
+}
+
+.rss .text p, .rss .text + p{
+	text-shadow:none;
+	font-size:0.3em;
+	margin-top:20px;
+	line-height:1.6em;
 }
 
 
@@ -1196,6 +1254,30 @@ footer #where{
 	
 	.floor{
 		font-size:3.1em;
+		padding-top:30px;
+	}
+	
+	.widget header .nav{
+		line-height:3.4em;
+	}
+	
+	.widget header .nav.active{
+		line-height:2.7em;
+	}
+	
+	.floor .logo{
+		width:20%;
+	}
+	
+	.floor .here{
+		float:right;
+		font-size:0.60em;
+		width:55%;
+	}
+	
+	.floor .here ul li{
+		margin-bottom:35px;
+		line-height:1em;
 	}
 	
 	footer #where{
@@ -1207,16 +1289,16 @@ footer #where{
 		line-height:2.3em;
 	}
 	
-	.titleBar .distance{
-		line-height:1.9em;
+	.list .distance p{
+		line-height:2.2em;
 	}
 	
 	.turtle ul li h3{
-		line-height:1.5;
+		line-height:1.4;
 	}
 	
 	.results ul li .time p{
-		line-height:1.6;
+		line-height:1.9;
 	}
 	
 	.turtle .wide ul li h3{
@@ -1225,6 +1307,23 @@ footer #where{
 	
 	.turtle .results.wide ul li .time{
 		line-height:1.6em;
+	}
+	
+	.rss h2{
+		margin-top:20px;
+	}
+	
+	.rss .time{
+		top:30px;
+		right:40px;
+	}
+	
+	.rss .text{
+		margin-top:10px;
+	}
+	
+	.rss .text .img{
+		margin-right:5%;
 	}
 	
 	.group p{
@@ -1240,10 +1339,11 @@ footer #where{
 		line-height:1.8;
 	}
 	
-	.results ul li .square, 
+	.results ul li .square,
+	.results ul li .square p, 
 	.results ul li .bus,
 	.results ul li .tram{
-		line-height:2.1em;
+		line-height:2.0em;
 	}
 	
 	.titleBar .small{
@@ -1378,13 +1478,13 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .titleBar:after, .floor:after, .floor:before, .titleBar:before, .distance:before{
+.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .titleBar:after, .text:after, .text:before, .floor:after, .floor:before, .titleBar:before, .distance:before{
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
 
-.clearfix:after, .social:after, .list:after, .floor:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
+.clearfix:after, .social:after, .list:after, .floor:after, .text:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
     clear: both;
 }
 
