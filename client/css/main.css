@@ -344,7 +344,7 @@ ul li{
 .results ul li{
 	display:block;
 	float:none;
-	height:48px;
+	min-height:48px;
 	padding-top:7px;
 	background-color:#f2f2f2;
 	clear:both;
@@ -369,12 +369,12 @@ ul li{
 	color:#FFF;
 	float:left;
 	font-family:SohoGothicProBold;
+	overflow:hidden;
 	}
 
 .results ul li > *{
 	width:60%;
-	height:100%;
-	overflow:hidden;
+	height:auto;
 }
 
 .results ul li .square:nth-child(2){
@@ -391,6 +391,7 @@ ul li{
 	margin-left:15px;
 	line-height:1.8em;
 	width:80%;
+	display:block;
 	}
 
 .results ul li .time{
@@ -1509,13 +1510,13 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .titleBar:after, .text:after, .text:before, .floor:after, .floor:before, .titleBar:before, .distance:before{
+.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .results ul li:after, .results ul li:before, .titleBar:after, .text:after, .text:before, .floor:after, .floor:before, .titleBar:before, .distance:before{
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
 
-.clearfix:after, .social:after, .list:after, .floor:after, .text:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
+.clearfix:after, .results ul li:after, .social:after, .list:after, .floor:after, .text:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
     clear: both;
 }
 
