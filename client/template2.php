@@ -19,8 +19,8 @@
 			
         <!-- PUBLIC TRANSPORT TURTLE -->
         <div id="container" class="clearfix">
-   			<div class="group">
-            <section class="pane list">
+   			<div class="group list">
+            <section class="pane active">
                 <section class="turtle">
                     <div class="titleBar">
                     	<i class="train"></i>
@@ -192,8 +192,8 @@
             
             <!-- LOCATION TURTLE -->
             <div class="group widget">
-            <section class="pane column color" style="display:none;">
-				<section class="turtle" style="display:none;">
+            <section class="pane column color active">
+				<section class="turtle">
                                 <div class="fsq">
                                     <p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>
                                 </div>
@@ -257,7 +257,7 @@
                     
                     
                    <section class="pane color">
-                        <section class="turtle weather" style="display:none">
+                        <section class="turtle weather">
                                 <div class="weatherBox">
                                     <div class="type">
                                         <i class="zon"></i>
@@ -301,7 +301,7 @@
                  	</section>
                  
                     <section class="pane color">
-                        <section class="turtle" style="display:none;">
+                        <section class="turtle">
                             <div class="com_shares">
                                 <h2>Our shares</h2>
                                 

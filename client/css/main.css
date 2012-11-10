@@ -458,6 +458,17 @@ ul li{
 	margin-left:60px;
 }
 
+.results ul .via h3{
+	width:70%;
+}
+
+.results ul li .square:nth-child(2) + h3{
+	width:60%;
+}
+
+.wide ul li h3{
+	width:70%;
+}
 
 .titleBar .amount{
 	position:absolute;
