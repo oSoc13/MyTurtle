@@ -311,10 +311,23 @@
                                     <h2>NYR.BR</h2>
                                     <h3>NYRSTAR</h3>
                                 </div>
-                                <div class="numbers">
+                                <div class="numbers red">
 									<ul>
-                                    	<li>+0,132</li>
-                                        <li>+1,26%</li>
+                                    	<li>-0,132</li>
+                                        <li>-1,26%</li>
+                                    </ul>
+                                </div>
+                                <p class="main_number">4,37</p>
+                            </div>
+                            <div class="shares color2">
+                            	<div>
+                                    <h2>KBC.BR</h2>
+                                    <h3>KBC GR</h3>
+                                </div>
+                                <div class="numbers grey">
+									<ul>
+                                    	<li>+0</li>
+                                        <li>+0</li>
                                     </ul>
                                 </div>
                                 <p class="main_number">4,37</p>
@@ -324,7 +337,7 @@
                                     <h2>BANI.BRU</h2>
                                     <h3>Banimmo A</h3>
                                 </div>
-                                <div class="numbers">
+                                <div class="numbers green">
 									<ul>
                                     	<li>+0,132</li>
                                         <li>+1,26%</li>

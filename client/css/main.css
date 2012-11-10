@@ -811,16 +811,35 @@ ul li{
 	font-size:1.8em;
 }
 
-.shares h3{
-	
-}
 
 .shares .numbers{
 	float:right;
 	width:15%;
 	height:80% !important;
 	padding:3%;
-	background-color:rgba(0,0,0,0.3);
+	color:#FFF;
+}
+
+.shares .numbers ul{
+	margin:0 auto;
+}
+
+.shares .numbers ul li{
+	float:right;
+	display:block;
+	clear:right;
+}
+
+.shares .numbers.red{
+	background-color:#F00;
+}
+
+.shares .numbers.green{
+	background-color:#3C3;
+}
+
+.shares .numbers.grey{
+	background-color:#CCC;
 }
 
 .shares .main_number{
@@ -829,6 +848,7 @@ ul li{
 	margin-right:4%;
 	font-size:1.8em;
 	margin-top:4%;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.4);
 }
 
 
@@ -1578,13 +1598,13 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .shares:after, .shares:before, .results ul li:after, .results ul li:before, .titleBar:after, .text:after, .text:before, .floor:after, .floor:before, .titleBar:before, .distance:before{
+.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .shares:after, .shares:before, .results ul li:after, .results ul li:before, .titleBar:after, .text:after, .text:before, .floor:after, .floor:before, .shares .numbers ul:after, .shares .numbers ul:before, .titleBar:before, .distance:before{
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
 
-.clearfix:after, .results ul li:after, .shares:after, .social:after, .list:after, .floor:after, .text:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
+.clearfix:after, .results ul li:after, .shares:after, .shares .numbers ul:after, .social:after, .list:after, .floor:after, .text:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
     clear: both;
 }
 
