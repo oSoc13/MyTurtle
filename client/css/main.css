@@ -811,6 +811,10 @@ ul li{
 	font-size:1.8em;
 }
 
+.shares h3{
+	text-transform:uppercase;
+}
+
 
 .shares .numbers{
 	float:right;
