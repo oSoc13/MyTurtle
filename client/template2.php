@@ -34,7 +34,7 @@
                         <ul>
                             <li>
                                 <div>
-                                    <div class="square" data-color="#333" style="background-color:#333;"><p>IC</p></div>
+                                    <div class="square IC" data-color="#333"><p>IC</p></div>
                                     <h3 class="red">Brussel-Zuid</h3>
                                 </div>
                                 <div class="time">
@@ -44,7 +44,7 @@
                             </li>
                             <li>
                                 <div>
-                                    <div class="square" data-color="#999" style="background-color:#999;">L</div>
+                                    <div class="square L" data-color="#999">L</div>
                                     <h3>Antwerpen-centraal</h3>
                                  </div>
                                  <div class="time">
@@ -53,7 +53,7 @@
                             </li>
                             <li class="via">
                                 <div>
-                                    <div class="square" data-color="#666" style="background-color:#666;">IR</div>
+                                    <div class="square CR" data-color="#666">CR</div>
                                     <h3>Essen</h3>
                                  </div>
                                  <div class="time">
@@ -62,7 +62,7 @@
                             </li>
                              <li>
                                 <div>
-                                    <div class="square" data-color="#333" style="background-color:#333;">IC</div>
+                                    <div class="square IC" data-color="#333">IC</div>
                                     <h3>Charleroi-Zuid</h3>
                                  </div>
                                  <div class="time">
@@ -72,7 +72,7 @@
                             </li>
                             <li class="via">
                                 <div>
-                                    <div class="square" data-color="#666" style="background-color:#666;">IR</div>
+                                    <div class="square P">P</div>
                                     <h3>Essen</h3>
                                  </div>
                                  <div class="time">
@@ -192,7 +192,7 @@
             
             <!-- LOCATION TURTLE -->
             <div class="group widget">
-            <section class="pane column color active">
+            <section class="pane column color">
 				<section class="turtle">
                                 <div class="fsq">
                                     <p><span class="bold">Glen Dehaek</span> just became mayor of This Location on <span class="yellow">Foursquare</span></p>
@@ -300,7 +300,7 @@
                         </section>
                  	</section>
                  
-                    <section class="pane color">
+                    <section class="pane color active">
                         <section class="turtle">
                             <div class="com_shares">
                                 <h2>Our shares</h2>
@@ -341,7 +341,7 @@
                      	</section>
                      </section>
                      
-                     <section class="pane color" style="display:none;">
+                     <section class="pane color">
                         <section class="turtle">
                             <div class="floor color2">
                                 <h2>+1</h2>

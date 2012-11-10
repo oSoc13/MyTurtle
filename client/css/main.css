@@ -504,6 +504,28 @@ ul li{
 }
 
 
+.turtle ul li .square.IC{
+	background-color:#333;
+}
+
+.turtle ul li .square.IR{
+	background-color:#777;
+}
+
+.turtle ul li .square.L{
+	background-color:#999;
+}
+
+.turtle ul li .square.P{
+	background-color:#555;
+}
+
+.turtle ul li .square.CR{
+	background-color:#CCC;
+}
+
+
+
 
 /* ==============
 * LOCATION TURTLE > MAIN
