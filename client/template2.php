@@ -322,7 +322,7 @@
                                     	<li>Open &euro; 4,321</li>
                                         <li>Hoog &euro; 8,321</li>
                                         <li>Laag &euro; 2,321</li>
-                                        <li>Vrij slot &euro; 4,321</li>
+                                        <li>Vorig slot &euro; 4,321</li>
                                         <li>Volume &euro; 207.386</li>
                                     </ul>
                                 </div>
