@@ -786,9 +786,71 @@ ul li{
 
 .widget .com_shares h2{
 	font-family:SohoGothicProBold;
-	font-size:1,5em;
+	font-size:1.5em;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.3);
+	margin-bottom:2%;
 }
+
+
+.widget .com_shares div:nth-child(2){
+	float:left;
+	width:60%;
+	clear:both;
+}
+
+.widget .com_shares div:nth-child(2) div:first-child{
+	float:left;
+	width:100%;
+	clear:both;
+	margin-bottom:6%;
+	margin-top:4%;
+}
+
+.widget .com_shares div:nth-child(2) div:first-child > *{
+	float:left;
+	width:30%;
+	clear:none;
+	padding:3%;
+}
+
+.widget .com_shares .numbers ul li{
+	float:right;
+	clear:both;
+	margin-right:5%;
+}
+
+.widget .com_shares div:nth-child(2) div:first-child .main_number{
+	float:left;
+	width:35%;
+	padding:0;
+	padding-top:3%;
+}
+
+.widget .com_shares div:nth-child(2) div:first-child .div:nth-child(2) ul li{
+	display:block;
+	float:right;
+}
+
+.widget .com_shares div:nth-child(3){
+	float:right;
+	width:40%;
+	margin-top:2%;
+}
+
+.widget .com_shares div:nth-child(3) ul li{
+	float:right;
+	clear:both;
+	margin-bottom:3%;
+}
+
+.widget .com_shares .main_number{
+	font-family:SohoGothicProBold;
+	margin-right:4%;
+	font-size:1.8em;
+	margin-top:2%;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.4);
+}
+
 
 .shares{
 	width:94%;
@@ -834,16 +896,19 @@ ul li{
 	clear:right;
 }
 
-.shares .numbers.red{
+.shares .numbers.red, .com_shares .red{
 	background-color:#F00;
+	color:#FFF;
 }
 
-.shares .numbers.green{
+.shares .numbers.green,  .com_shares .green{
 	background-color:#3C3;
+	color:#FFF;
 }
 
-.shares .numbers.grey{
+.shares .numbers.grey,  .com_shares .grey{
 	background-color:#CCC;
+	color:#FFF;
 }
 
 .shares .main_number{
@@ -1602,13 +1667,13 @@ footer #where{
  */
 
 .clearfix:before, .social:before, .social:after,
-.clearfix:after, .list:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .shares:after, .shares:before, .results ul li:after, .results ul li:before, .titleBar:after, .text:after, .text:before, .floor:after, .floor:before, .shares .numbers ul:after, .shares .numbers ul:before, .titleBar:before, .distance:before{
+.clearfix:after, .list:after, ul:before, ul:after, .list:before, #container:before, #container:after, .widget:before, .widget:after, .weather:after, .weather:before, .turtle:after, .turtle:before, .shares:after, .shares:before, .results ul li:after, .results ul li:before, .titleBar:after, .text:after, .text:before, .floor:after, .floor:before, .com_shares:after, .com_shares:before, .shares .numbers ul:after, .shares .numbers ul:before, .titleBar:before, .distance:before{
     content: " "; /* 1 */
     display: table; /* 2 */
 }
 
 
-.clearfix:after, .results ul li:after, .shares:after, .shares .numbers ul:after, .social:after, .list:after, .floor:after, .text:after, .widget:after, #container:after, .turtle:after, .weather:after, .titleBar:after, .distance:after {
+.clearfix:after, .results ul li:after, ul:after, .shares:after, .shares .numbers ul:after, .social:after, .list:after, .floor:after, .text:after, .widget:after, #container:after, .turtle:after, .com_shares:after, .weather:after, .titleBar:after, .distance:after {
     clear: both;
 }
 

@@ -304,7 +304,28 @@
                         <section class="turtle">
                             <div class="com_shares">
                                 <h2>Our shares</h2>
-                                
+                                <div>
+                                	<div>
+                                		<p class="main_number">&euro; 9,53</p>
+                                        <div class="numbers red">
+                                        	<ul>
+                                            	<li>-0,721</li>
+                                                <li>-1,75%</li>
+                                            </ul>
+                                        </div>
+                                	</div>
+                                	<h2>NYR.BR</h2>
+                                    <h3>NYRSTAR</h3>
+                                </div>
+                                <div>
+                                	<ul>
+                                    	<li>Open &euro; 4,321</li>
+                                        <li>Hoog &euro; 8,321</li>
+                                        <li>Laag &euro; 2,321</li>
+                                        <li>Vrij slot &euro; 4,321</li>
+                                        <li>Volume &euro; 207.386</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="shares color2">
                             	<div>
@@ -317,7 +338,7 @@
                                         <li>-1,26%</li>
                                     </ul>
                                 </div>
-                                <p class="main_number">4,37</p>
+                                <p class="main_number">&euro; 4,37</p>
                             </div>
                             <div class="shares color2">
                             	<div>
@@ -330,7 +351,7 @@
                                         <li>+0</li>
                                     </ul>
                                 </div>
-                                <p class="main_number">4,37</p>
+                                <p class="main_number">&euro; 4,37</p>
                             </div>
                              <div class="shares color2">
                             	<div>
@@ -343,7 +364,7 @@
                                         <li>+1,26%</li>
                                     </ul>
                                 </div>
-                                <p class="main_number">9,53</p>
+                                <p class="main_number">&euro; 9,53</p>
                             </div>
                      	</section>
                      </section>
