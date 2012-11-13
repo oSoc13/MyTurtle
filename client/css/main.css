@@ -173,11 +173,14 @@ textarea {
 
 .pane {
 	width:100%;
-	display: none;
+	height: 100%;
+	position: absolute;
+	left: -9000px;
 }
 
 .pane.active {
-	display: block !important;
+	position: static;
+	left: 0;
 }
 
 /*===TITLE BARS ICON===*/

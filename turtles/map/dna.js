@@ -24,6 +24,9 @@
 					location : self.options.location
 				};
 				
+				// set window height to load
+				self.$el.height('100%');
+				
 				// render html
 				self.$el.html(Mustache.render(template, data));
 				
