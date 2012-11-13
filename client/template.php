@@ -10,7 +10,6 @@
     
         <link rel="stylesheet" href="client/css/normalize.css">
         <link rel="stylesheet" href="client/css/main.css">
-        <script src="client/js/libs/modernizr.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
