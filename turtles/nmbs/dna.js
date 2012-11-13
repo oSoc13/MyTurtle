@@ -78,22 +78,6 @@
 				liveboard[i].type = liveboard[i].vehicle.match(/\.([a-zA-Z]+)[0-9]+$/)[1];
 				if (!liveboard[i].type)
 					liveboard[i].type = "-";
-				
-				switch(liveboard[i].type.toLowerCase()){
-					case "ic":
-					case "ir":
-						liveboard[i].color = "f5ee31";
-						break;
-					case "p":
-						liveboard[i].color = "2a85c3";
-						break;
-					case "l":
-						liveboard[i].color = "b5202e";
-						break;
-					default:
-						liveboard[i].color = "333";
-						break;
-				}
 			}
 
 			return liveboard;

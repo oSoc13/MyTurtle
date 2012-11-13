@@ -361,7 +361,7 @@ ul li{
 .results ul li .square{
 	width:40px;
 	height:40px;
-	background-color:#000;
+	background-color:#333;
 	margin-left:15px;
 	text-align:center;
 	line-height:2.2em;
@@ -505,26 +505,28 @@ ul li{
 
 
 .turtle ul li .square.IC{
-	background-color:#333;
+	background-color:#f5ee31;
 }
 
 .turtle ul li .square.IR{
-	background-color:#777;
+	background-color:#f5ee31;
 }
 
 .turtle ul li .square.L{
-	background-color:#999;
+	background-color:#b5202e;
 }
 
 .turtle ul li .square.P{
-	background-color:#555;
+	background-color:#2a85c3;
 }
 
 .turtle ul li .square.CR{
 	background-color:#CCC;
 }
 
-
+.turtle ul li .square.light {
+	background-color:#555;
+}
 
 
 /* ==============
