@@ -7,9 +7,14 @@ window.Interface = (function() {
      * Execute all functions for passed config
      */
     function setup(config) {
-        color(config.color);
-        logo(config.logo);
-        title(config.title);
+        if (config.color)
+            color(config.color);
+        
+        if (config.logo)
+            logo(config.logo);
+        
+        if (config.footer)
+            footer(config.footer);
     }
     
     /*
@@ -42,10 +47,10 @@ window.Interface = (function() {
     }
     
     /*
-     * Set the window title
+     * Set the footer message
      */
-    function title(value) {
-        document.title = value;
+    function footer(value) {
+        $('footer #where').html(value);
     }
 
     /*
@@ -55,7 +60,7 @@ window.Interface = (function() {
         setup : setup,
         color : color,
         logo : logo,
-        title : title
+        footer : footer
     };
 
 }());
