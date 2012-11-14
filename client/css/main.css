@@ -167,7 +167,7 @@ textarea {
 .group {
 	-webkit-overflow-scrolling: touch;
 }
-	
+
 .group > *{
 	-webkit-transform: translateZ(0px);
 }
