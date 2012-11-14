@@ -4,6 +4,7 @@
 		// hold google maps objects
 		center : null,
 		map : null,
+		traffic : null,
 
 		initialize : function() {
 			// default zoom
@@ -15,6 +16,18 @@
 			
 			// render will be triggered when the google maps api is loaded
 			this.bind("render", this.render);
+			
+			// refresh traffic
+			var self = this; 
+			refreshInterval = window.setInterval(function () {
+				// remove old layer
+				self.traffic.setMap(null);
+				self.traffic = null;
+				
+				// add fresh layer
+				self.traffic = new google.maps.TrafficLayer();
+				self.traffic.setMap(self.map);
+			}, 120000);
 		},
 		render : function() {
 			var self = this;
@@ -63,8 +76,8 @@
 				});
 				
 				// add traffic layer
-				var trafficLayer = new google.maps.TrafficLayer();
-				trafficLayer.setMap(self.map);
+				self.traffic = new google.maps.TrafficLayer();
+				self.traffic.setMap(self.map);
 			});
 		}
 	});
