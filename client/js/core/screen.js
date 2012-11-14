@@ -38,6 +38,20 @@ window.Screen = (function() {
             // grow the turtle
             Turtles.grow(turtle.type, id, turtle.options);
         }
+        
+        // enable plugins
+        for(var name in config.plugins) {
+        	// try uppercase or lowercase
+        	if (window[plugin] == null) {
+        		var plugin = window[name.charAt(0).toUpperCase() + name.slice(1)];
+        	} else {
+        		var plugin = window[name];
+        	}
+        	
+        	if (config.plugins[name] == 1 && plugin != null) {
+        		plugin.enable();
+        	}
+        }
     }
     
     /*

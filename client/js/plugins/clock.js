@@ -1,12 +1,15 @@
+/*
+ * Clock
+ */
 var Clock = {
 
 	element : $("#clock"),
 	timer : null,
 
-	add : function() {
+	enable : function() {
 		// check if clock element exists
 		if (Clock.element.length == 0) {
-			Clock.element = $('<div id="clock" class="color"><span id="hour">00</span>:<span id="minutes">00</span></div>');
+			Clock.element = $('<div id="clock" class="color"><span id="hour">00</span><span id="minutes">00</span></div>');
 			$("body").prepend(Clock.element);
 		}
 
@@ -19,7 +22,7 @@ var Clock = {
 		Clock.element.show();
 	},
 
-	remove : function() {
+	disable : function() {
 		// hide clock
 		Clock.element.hide();
 
@@ -52,7 +55,5 @@ var Clock = {
 
 };
 
-$(document).ready(function() {
-	// auto start clock
-	Clock.add();
-});
+// default behaviour
+Clock.enable();

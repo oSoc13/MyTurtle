@@ -37,7 +37,9 @@
         <script src="client/js/core/interface.js"></script>
         <script src="client/js/core/turtles.js"></script>
         <script src="client/js/core/panes.js"></script>
-        <script src="client/js/core/plugins.js"></script>
+        
+        <script src="client/js/plugins/clock.js"></script>
+        <script src="client/js/plugins/power.js"></script>
         
         <script>
             Screen.load('https://s.flatturtle.anothercoolproject.com/hub.json');
