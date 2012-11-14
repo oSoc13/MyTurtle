@@ -158,7 +158,7 @@ textarea {
 	width:50%; 
 	float:left;
 	background-color:#DDD;
-	overflow-y: auto;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	height: 100%;
 	position: relative;
