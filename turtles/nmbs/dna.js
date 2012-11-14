@@ -63,7 +63,6 @@
 			var liveboard = json.spectql;
 
 			for (var i in liveboard) {
-				
 				var time = new Date(liveboard[i].time * 1000);
 				liveboard[i].time = this.formatTime(time);
 				
