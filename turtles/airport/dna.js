@@ -34,6 +34,7 @@
 				}
 			});
 			
+			// refresh entries
 			self.fetch({
 				error : function() {
 					// will allow the view to detect errors
@@ -111,7 +112,7 @@
 		},
 		render : function() {
 			// only render when template file is loaded
-			if (this.template && this.options.airport) {
+			if (this.template) {
 				var data = {
 					airport : this.options.airport || this.options.location,
 					entries : this.collection.toJSON(),
