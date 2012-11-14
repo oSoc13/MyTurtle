@@ -608,6 +608,10 @@ ul li{
 	z-index: 1000;
 }
 
+#clock #blink {
+	text-decoration: blink;
+}
+
 #clock:after{
 	height:75px;
 	width:30px;

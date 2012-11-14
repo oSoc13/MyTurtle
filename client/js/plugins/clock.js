@@ -9,7 +9,7 @@ var Clock = {
 	enable : function() {
 		// check if clock element exists
 		if (Clock.element.length == 0) {
-			Clock.element = $('<div id="clock"><span id="hour">00</span>:<span id="minutes">00</span></div>');
+			Clock.element = $('<div id="clock"><span id="hour">00</span><span id="blink">:</span><span id="minutes">00</span></div>');
 			$("body").prepend(Clock.element);
 		}
 
