@@ -6,7 +6,7 @@ var Clock = {
 	add : function() {
 		// check if clock element exists
 		if (Clock.element.length == 0) {
-			Clock.element = $('<div id="clock" class="color"><span id="hour">00</span><img src="templates/default/img/colon.gif"><span id="minutes">00</span></div>');
+			Clock.element = $('<div id="clock" class="color"><span id="hour">00</span>:<span id="minutes">00</span></div>');
 			$("body").prepend(Clock.element);
 		}
 

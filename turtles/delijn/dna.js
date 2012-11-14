@@ -85,11 +85,13 @@
 				else 
 					liveboard[i].long_name = this.parseTripName(liveboard[i].long_name)
 					
-				switch(liveboard[i].type) {
+				switch (parseInt(liveboard[i].type)) {
 				case 0:
 					liveboard[i].type = "tram";
+					break;
 				default:
 					liveboard[i].type = "bus";
+					break;
 				}
 			}
 
