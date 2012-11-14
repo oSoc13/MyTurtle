@@ -44,7 +44,10 @@
             
             for(var i in villo) {
                 villo[i].distance = Math.round(parseInt(villo[i].distance)/10)*10;
-				villo[i].name = this.capitalizeWords(jQuery.trim(villo[i].name));
+                
+                var name = jQuery.trim(villo[i].name);
+                name = name.match(/^[0-9]+\s*-\s*(.*?)(?:[\/|:](.*))?$/)[1];
+				villo[i].name = this.capitalizeWords(name);
             }
             
             return villo;
