@@ -30,6 +30,9 @@
 				// render html
 				self.$el.html(Mustache.render(template, data));
 				
+				// change turtle padding
+				self.$el.addClass('nopadding');
+				
 				// canvas element
 				var canvas = self.$el.find("#canvas")[0];
 				
