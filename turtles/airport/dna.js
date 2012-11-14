@@ -22,6 +22,18 @@
 		},
 		refresh : function() {
 			var self = this;
+			
+			// get the airport name
+			$.ajax({
+				url: "http://data.irail.be/spectql/Airports/Stations%7Bname,code%7D?code=='" + self.options.location + "':json",
+				dataType: 'json',
+				success: function(data) {
+				    if (data.spectql.length > 0) {
+    					self.options.airport = data.spectql[0].name;
+				    }
+				}
+			});
+			
 			self.fetch({
 				error : function() {
 					// will allow the view to detect errors
@@ -88,18 +100,6 @@
 			this.collection.bind("reset", this.render);
 
 			var self = this;
-			
-			// get the airport name
-			$.ajax({
-				url: "http://data.irail.be/spectql/Airports/Stations%7Bname,code%7D?code=='" + self.options.location + "':json",
-				dataType: 'json',
-				success: function(data) {
-				    if (data.spectql.length > 0) {
-    					self.options.airport = data.spectql[0].name;
-    					self.render();
-				    }
-				}
-			});
 			
 			// pre-fetch template file and render when ready
 			if (this.template == null) {
