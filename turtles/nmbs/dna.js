@@ -68,7 +68,7 @@
 				liveboard[i].time = this.formatTime(time);
 				
 				if (liveboard[i].delay) {
-					var delay = new Date(liveboard[i].delay * 1000);
+					var delay = new Date(liveboard[i].delay * 1000 + time.getTimezoneOffset() * 60000);
 					liveboard[i].delay = this.formatTime(delay);
 				}
 
