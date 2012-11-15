@@ -112,7 +112,7 @@ window.Panes = (function() {
     	}
     	
     	// mark pane as active and show
-    	group.find('.pane').removeClass("active");
+    	group.find('.pane.active').removeClass("active");
     	pane.el.addClass("active");
     	
     	// create timer for next rotation
