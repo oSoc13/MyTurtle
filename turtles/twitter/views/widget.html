@@ -1,9 +1,10 @@
 {{#entries}}
-<div class="tweet bg-color-light">
-	<p>
+<div class="tweet">
+	<p class='body bg-color-light'>
 		{{&text}}
 	</p>
-	<h5>{{from_user}}</h5>
-	<div class="speak border-color" style="left: 15px;"></div>
+	<div class="author">
+		<h5>{{from_user}}<span class='triangle border-color-light'></span></h5>
+	</div>
 </div>
 {{/entries}}

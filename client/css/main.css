@@ -967,14 +967,14 @@ ul li{
 	padding-bottom:25px;
 }
 
-.tweet{
-	width:92%;
-	padding:16px 4% 0 4%;
-	min-height:20px;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
-	margin-bottom:40px;
-	position:relative;
-	display:block;
+.instgrm h5{
+	position:absolute;
+	bottom:2px;
+	left:2px;
+	right:0;
+	text-align:right;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+	z-index:3;
 }
 
 .instgrm:after{
@@ -988,45 +988,43 @@ ul li{
 	z-index:1;
 }
 
-.tweet:after{
-	content: "";
-	background-image:url(images/shadow3.png);
-	background-size:100%;
-	background-position:center top;
-	background-repeat:no-repeat;
-	height:40px;
-	display:block;
-	z-index:0;
+.tweet{
+	width:100%;
 	position:relative;
-	top:40px;
-	opacity:0.6;
+	display:block;
 }
 
-.instgrm h5{
-	position:absolute;
-	bottom:2px;
-	left:2px;
-	right:0;
-	text-align:right;
-	text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
-	z-index:3;
+.tweet .body{
+	padding:4%;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
-.tweet h5 {
-	position:absolute;
-	left:3px;
-	bottom:-22px;
+.tweet .author{
+	background-image:url(images/shadow3.png);
+	background-repeat:no-repeat;
+	background-size: 100%;
+	background-position: top center;
+	width:100%;
+	height:40px;
 }
 
-.tweet .speak{
-	border-width: 20px 20px 0 0;
+.tweet .author h5{
+	height: 25px;
+	line-height: 25px;
+	position: relative;
+}
+
+.tweet .triangle{
+	width: 0; 
+	height: 0; 
 	border-style: solid;
-	width:1px;
-	height:10px;
-	z-index:123500;
-	position:absolute;
-	left:60px;
-	bottom:-30px;
+	border-top-width: 20px;
+	border-left: 0px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom-color: transparent;
+	position: absolute;
+	top: 0px;
+	margin-left: 10px;
 }
 
 

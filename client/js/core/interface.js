@@ -29,11 +29,14 @@ window.Interface = (function() {
         }
         
         // custom styles
+		var lightColor = tinycolor.desaturate(tinycolor.lighten(value, 15));
+		var darkColor = tinycolor.darken(value);
         var style = ".text-color { color: " + value + "; }\n"
                   + ".bg-color { background-color: " + value + "; }\n"
-                  + ".bg-color-light { background-color: " + tinycolor.desaturate(tinycolor.lighten(value)) + "; }\n"
-                  + ".bg-color-dark { background-color: " + tinycolor.darken(value) + "; }\n"
-                  + ".border-color { border-color: " + value + " transparent; }\n";
+                  + ".bg-color-light { background-color: " + lightColor + "; }\n"
+                  + ".bg-color-dark { background-color: " + darkColor + "; }\n"
+                  + ".border-color { border-color: " + value + " transparent; }\n"
+                  + ".border-color-light { border-color: " + lightColor + " transparent; }\n";
         
         // add to body
         custom.html(style);
