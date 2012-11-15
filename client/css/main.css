@@ -1009,7 +1009,7 @@ ul li{
 	top: 0px
 }
 
-.titleBar .small{
+.villo .small{
 	color:#FFF;
 	font-size:2em;
 	line-height:54px;
@@ -1017,10 +1017,49 @@ ul li{
 	display: inline-block;
 }
 
-.titleBar .big{
+.villo .big{
 	color:#888;
 	font-size:2.5em;
 	line-height:54px;
+}
+
+.rss{
+	width:92%;
+	padding:16px 4% 16px 4%;
+	min-height:80px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+	margin-bottom:30px;
+	display:block;
+	position:relative;
+}
+
+.rss .time{
+	position:absolute;
+	right:20px;
+	top:15px;
+}
+
+.rss .img{
+	width:30%;
+	display:inline-block;
+	float:left;
+	margin:26px 10px 10px 0;
+}
+
+.rss .img img{
+	max-width:100%;
+	height:auto !important;
+}
+
+.rss .text p, .rss .text + p{
+	text-shadow:none;
+	margin-top:20px;
+	line-height:1.6em;
+}
+
+.rss h2{
+		margin-top:20px;
+		line-height: 1.1em;
 }
 
 /* ==============
@@ -1069,45 +1108,6 @@ ul li{
 /* ==============
 * LOCATION TURTLE > RSS
 ============== */
-
-.rss{
-	width:92%;
-	padding:16px 4% 16px 4%;
-	min-height:80px;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
-	margin-bottom:30px;
-	display:block;
-	position:relative;
-}
-
-.rss h2{
-}
-
-.rss .time{
-	position:absolute;
-	right:20px;
-	top:15px;
-}
-
-.rss .img{
-	width:30%;
-	display:inline-block;
-	float:left;
-	margin:26px 10px 10px 0;
-}
-
-.rss .img img{
-	max-width:100%;
-	height:auto !important;
-}
-
-.rss .text p, .rss .text + p{
-	text-shadow:none;
-	margin-top:20px;
-	line-height:1.6em;
-}
-
-
 
 .widget .yellow{
 	color:#d0e900;
@@ -1207,6 +1207,7 @@ footer #where{
 	
 	.results ul li .time{
 		line-height:2.7em;
+		font-size: 1.2em;
 	}
 	
 	.titleBar .distance p{
@@ -1497,7 +1498,8 @@ footer #where{
 	}
 	
 	.results ul li .time p{
-		line-height:1.9;
+		line-height:1.4em;
+        font-size: 1em;
 	}
 	
 	.turtle .wide ul li h3{
@@ -1506,23 +1508,6 @@ footer #where{
 	
 	.turtle .results.wide ul li .time{
 		line-height:1.6em;
-	}
-	
-	.rss h2{
-		margin-top:20px;
-	}
-	
-	.rss .time{
-		top:30px;
-		right:40px;
-	}
-	
-	.rss .text{
-		margin-top:10px;
-	}
-	
-	.rss .text .img{
-		margin-right:5%;
 	}
 	
 	.group p{
