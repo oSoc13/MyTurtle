@@ -966,11 +966,21 @@ ul li{
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
-.tweet .author{
+.tweet .body:after{
+    content: "";
 	background-image:url(images/shadow3.png);
 	background-repeat:no-repeat;
 	background-size: 100%;
 	background-position: top center;
+	width:100%;
+	opacity: 0.4;
+	height: 50px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+.tweet .author{
 	width:100%;
 	height: 50px;
 }
@@ -1706,5 +1716,5 @@ footer #where{
 }
 
 .airport h3{
-	width: 75% !important;
+	width: 70% !important;
 }
