@@ -1078,16 +1078,13 @@ ul li{
 	margin-bottom:30px;
 	display:block;
 	position:relative;
-	font-size:2.9em;
 }
 
 .rss h2{
-	font-size:0.55em;
 }
 
 .rss .time{
 	position:absolute;
-	font-size:0.55em;
 	right:20px;
 	top:15px;
 }
@@ -1106,7 +1103,6 @@ ul li{
 
 .rss .text p, .rss .text + p{
 	text-shadow:none;
-	font-size:0.3em;
 	margin-top:20px;
 	line-height:1.6em;
 }
