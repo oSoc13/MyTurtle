@@ -995,7 +995,7 @@ ul li{
 }
 
 .tweet .body{
-	padding:4%;
+	padding:25px;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
@@ -1012,6 +1012,7 @@ ul li{
 	height: 25px;
 	line-height: 25px;
 	position: relative;
+	margin: 0px;
 }
 
 .tweet .triangle{
