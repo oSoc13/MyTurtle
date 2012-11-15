@@ -1012,7 +1012,7 @@ ul li{
 .titleBar .small{
 	color:#FFF;
 	font-size:2em;
-	line-height:56px;
+	line-height:54px;
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
 	display: inline-block;
 }
@@ -1020,7 +1020,7 @@ ul li{
 .titleBar .big{
 	color:#888;
 	font-size:2.5em;
-	line-height:56px;
+	line-height:54px;
 }
 
 /* ==============
