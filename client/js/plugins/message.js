@@ -7,6 +7,10 @@ var Message = {
 	timer : null,
 
 	enable : function(text, duration) {
+		// default duration
+		if (duration == undefined)
+			duration = 30000;
+		
 		// check if clock element exists
 		if (Message.element.length == 0) {
 			Message.element = $('<div id="black-screen"><h1 class="text-color"></h1></div>');
@@ -18,7 +22,7 @@ var Message = {
 		msg.css("margin-top", "-" + (msg.height()/2) + "px");
 
 		// remove
-		if (duration != null) {
+		if (duration != 0) {
 			clearTimeout(Message.timer);
 			Message.timer = setTimeout(Message.disable, duration);
 		}
