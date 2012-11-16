@@ -168,9 +168,9 @@ textarea {
 	-webkit-overflow-scrolling: touch;
 }
 
-.group > *{
+/*.group > *{
 	-webkit-transform: translateZ(0px);
-}
+}*/
 
 .pane {
 	width:100%;
@@ -1176,7 +1176,25 @@ footer #where{
 	line-height:4.4em;
 }
 
+/* ==============
+* PLUGINS
+============== */
 
+#black-screen {
+	background-color: #000;
+	z-index: 99999999999;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+#black-screen h1 {
+	position: absolute;
+	display:block;
+	text-align: center;
+	width: 100%;
+	top: 50%;
+}
 
 /* ==============
 *  MEDIA QUERIES
@@ -1338,9 +1356,9 @@ footer #where{
 		overflow:scroll;
 	}
 	
-	.pane > *{
+	/*.pane > *{
 		-webkit-transform: translateZ(0px);
-	}
+	}*/
 	
 	.titleBar h2{
 		line-height:4.0;

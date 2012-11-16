@@ -9,16 +9,16 @@ var Message = {
 	enable : function(text, duration) {
 		// check if clock element exists
 		if (Message.element.length == 0) {
-			Message.element = $('<div id="message"><span class="text-color"></span></div>');
+			Message.element = $('<div id="black-screen"><h1 class="text-color"></h1></div>');
 			$("body").prepend(Message.element);
 		}
 		
-		var span = Message.element.find("span");
-		span.html(text);
-		span.css("margin-top", "-" + (span.height()/2) + "px");
+		var msg = Message.element.find("h1");
+		msg.html(text);
+		msg.css("margin-top", "-" + (msg.height()/2) + "px");
 		
 		// remove
-		if (duration != 0) {
+		if (duration != null) {
 			clearTimeout(Message.timer);
 			Message.timer = setTimeout(Message.disable, duration);
 		}
@@ -29,11 +29,13 @@ var Message = {
 	disable : function() {
 		// hide message
 		Message.element.fadeOut();
+		clearTimeout(Message.timer);
 	},
 
 	destroy : function() {
 		// remove element
 		Message.element.remove();
+		clearTimeout(Message.timer);
 	}
 
 };

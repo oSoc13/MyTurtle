@@ -17,7 +17,7 @@ var Power = {
 
 	disable : function() {
 		if (Power.element == null) {
-			Power.element = $('<div style="background-color: #000; z-index: 99999999999; position: absolute; height: 100%; width: 100%;"></div>');
+			Power.element = $('<div id="black-screen"></div>');
 			$("body").prepend(Power.element);
 		}
 		
