@@ -9,7 +9,6 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
-
 html,button,input,select,textarea {
 	color: #222;
 }
@@ -153,9 +152,8 @@ ul li {
 }
 
 /* ==========================================================================
-   Default colors
+   Default colors and styles
    ========================================================================== */
-
 .bg-color {
 	background-color: #21aeb0;
 }
@@ -168,6 +166,18 @@ ul li {
 	border-color: #6cc3c4 transparent;
 }
 
+.bold {
+	font-family: SohoGothicProBold;
+}
+
+.red {
+	color: #c30000;
+}
+
+.orange {
+	color: #F93;
+}
+
 /* ==========================================================================
    Groups 'n panes
    ========================================================================== */
@@ -175,7 +185,7 @@ ul li {
 	width: 50%;
 	float: left;
 	background-color: #CCC;
-	overflow-y: auto;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	height: 100%;
 	position: relative;
@@ -291,13 +301,11 @@ ul li {
 	line-height: 2.2em;
 	width: auto;
 	padding: 18px 10px 0 10px;
-	background: #232323; /* Old browsers */
+	background: #232323;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #232323),
-		color-stop(100%, #333333) ); /* Chrome,Safari4+ */
+		color-stop(100%, #333333) );
 	background: -webkit-linear-gradient(top, #232323 0%, #333333 100%);
-	/* Chrome10+,Safari5.1+ */
 	background: linear-gradient(to bottom, #232323 0%, #333333 100%);
-	/* W3C */
 }
 
 .list .header .distance i {
@@ -351,6 +359,29 @@ ul li {
 	height: auto;
 }
 
+.results ul li h3 {
+	float: left;
+	margin-left: 15px;
+	line-height: 1.8em;
+	width: 80%;
+	display: block;
+	font-size: 1.2em;
+}
+
+.results ul li .time {
+	float: right;
+	width: 30%;
+	line-height: 1.7em;
+	font-size: 1.2em;
+}
+
+.results ul li .time p {
+	float: left;
+	display: block;
+	width: 40%;
+	text-align: center;
+}
+
 .results ul li .square {
 	width: 40px;
 	height: 40px;
@@ -378,47 +409,11 @@ ul li {
 	margin-left: 0;
 }
 
-.results ul li h3 {
-	float: left;
-	margin-left: 15px;
-	line-height: 1.8em;
-	width: 80%;
-	display: block;
-	font-size: 1.2em;
-}
-
-.results ul li .time {
-	float: right;
-	width: 30%;
-	line-height: 1.7em;
-	font-size: 1.2em;
-}
-
-.results ul li .time p {
-	float: left;
-	display: block;
-	width: 40%;
-	text-align: center;
-}
-
-/*.results ul .via {
-	background-image: url(images/arrow999.png);
-	background-position: 25px -7px;
-}
-
-.results ul .via .square {
-	margin-left: 60px;
-}
-
-.results ul .via h3 {
-	width: 70%;
-}*/
-
-.results ul li .square:nth-child(2) + h3 {
+.results ul li .square:nth-child(2)+h3 {
 	width: 60%;
 }
 
-.results ul li .square.wide + h3 {
+.results ul li .square.wide+h3 {
 	width: 60%;
 }
 
@@ -429,7 +424,6 @@ ul li {
 /* ==========================================================================
    NMBS
    ========================================================================== */
-
 .results .square.IC {
 	background-color: #666;
 }
@@ -451,17 +445,16 @@ ul li {
 }
 
 /* ==========================================================================
-   DE LIJN
+   De Lijn
    ========================================================================== */
-
-.results .square .tram, .results .square .bus {
+.results .square .tram,.results .square .bus {
 	margin: 0;
 	background-color: #ccc;
 }
 
-/* ==============
-* LOCATION TURTLE > MAIN
-============== */
+/* ==========================================================================
+   Widget pane
+   ========================================================================== */
 .widget {
 	-webkit-box-shadow: -3px 2px 3px 1px rgba(0, 0, 0, 0.4);
 	box-shadow: -3px 2px 3px 1px rgba(0, 0, 0, 0.4);
@@ -473,15 +466,9 @@ ul li {
 	height: 80px;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0
 		, 0, 0.65) ), color-stop(100%, rgba(0, 0, 0, 0) ) );
-	/* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%,
-		rgba(0, 0, 0, 0) 100% ); /* Chrome10+,Safari5.1+ */
+		rgba(0, 0, 0, 0) 100% );
 	position: relative;
-}
-
-.widget header .timerBar {
-	height: 5px;
-	width: 100%;
 }
 
 .widget header .progress {
@@ -521,41 +508,6 @@ ul li {
 	line-height: 2.8em;
 }
 
-#clock {
-	width: 210px;
-	position: absolute;
-	right: 0;
-	top: 0;
-	font-size: 2.4em;
-	text-align: center;
-	line-height: 1.9em;
-	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
-	color: #FFF;
-	font-family: SohoStdProBold;
-	z-index: 100000;
-}
-
-#clock #blink {
-	text-decoration: blink;
-}
-
-#clock:after {
-	height: 75px;
-	width: 30px;
-	background-image: url(images/shadow_clock.png);
-	background-color: #F00;
-	position: absolute;
-	left: 0;
-}
-
-.widget .group {
-	padding: 6%;
-	line-height: 1.5em;
-	font-family: SohoGothicProReg;
-	font-size: 14px;
-	height: 100%;
-}
-
 .widget .pane {
 	position: absolute;
 	width: 100%;
@@ -571,9 +523,9 @@ ul li {
 	padding-bottom: 20px;
 }
 
-/* ==============
-* LOCATION TURTLE > WEATHER
-============== */
+/* ==========================================================================
+   Weather
+   ========================================================================== */
 .widget .weather {
 	width: 100%;
 	padding-bottom: 90px;
@@ -632,9 +584,9 @@ ul li {
 	z-index: 1;
 }
 
-/* ==============
-* LOCATION TURTLE > WEATHER > ICONS
-============== */
+/* ==========================================================================
+   Weather icons
+   ========================================================================== */
 .mist {
 	background-image: url(images/FT__0000_mist.png);
 }
@@ -1054,20 +1006,10 @@ ul li {
 	margin-bottom: 20px;
 }
 
-/* ==============
-* LOCATION TURTLE > RSS
-============== */
-.widget .yellow {
-	color: #d0e900;
-}
 
-.bold {
-	font-family: SohoGothicProBold;
-}
-
-/* ==============
-* 		FOOTER	  > MAIN	
-============== */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 footer {
 	position: fixed;
 	left: 0;
@@ -1113,9 +1055,9 @@ footer #where {
 	line-height: 4.4em;
 }
 
-/* ==============
-* PLUGINS
-============== */
+/* ==========================================================================
+   Plugins
+   ========================================================================== */
 #black-screen {
 	background-color: #000;
 	z-index: 99999999999;
@@ -1132,19 +1074,31 @@ footer #where {
 	top: 50%;
 }
 
-/* ==============
-* 	BASIC CLASSES
-============== */
-.floatLeft,.results ul li div:first-child {
-	float: left;
+#clock {
+	width: 210px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 2.4em;
+	text-align: center;
+	line-height: 1.9em;
+	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+	color: #FFF;
+	font-family: SohoStdProBold;
+	z-index: 999999;
 }
 
-.red {
-	color: #c30000;
+#clock #blink {
+	text-decoration: blink;
 }
 
-.orange {
-	color: #F93;
+#clock:after {
+	height: 75px;
+	width: 30px;
+	background-image: url(images/shadow_clock.png);
+	background-color: #F00;
+	position: absolute;
+	left: 0;
 }
 
 /* ==========================================================================
