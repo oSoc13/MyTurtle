@@ -464,9 +464,12 @@ ul li {
 .widget header {
 	width: 100%;
 	height: 80px;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65) ), color-stop(100%, rgba(0, 0, 0, 0) ) );
-	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0
+		, 0, 0.65) ), color-stop(100%, rgba(0, 0, 0, 0) ) );
+	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%,
+		rgba(0, 0, 0, 0) 100% );
+	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%,
+		rgba(0, 0, 0, 0) 100% );
 	position: relative;
 }
 
@@ -849,6 +852,7 @@ ul li {
 
 .tweet .body {
 	padding: 25px;
+	font-size: 1.6em;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
@@ -999,7 +1003,6 @@ ul li {
 	margin-bottom: 20px;
 }
 
-
 /* ==========================================================================
    Footer
    ========================================================================== */
@@ -1081,10 +1084,6 @@ footer #where {
 	z-index: 1000;
 }
 
-#clock #blink {
-	display: inline-block;
-}
-
 #clock:after {
 	height: 75px;
 	width: 30px;
@@ -1092,6 +1091,18 @@ footer #where {
 	background-color: #F00;
 	position: absolute;
 	left: 0;
+}
+
+#clock #blink {
+	-webkit-animation-name: blink;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+}
+
+@-webkit-keyframes blink {
+	from { opacity:1.0; }
+	to { opacity: 0.0; }
 }
 
 /* ==========================================================================
