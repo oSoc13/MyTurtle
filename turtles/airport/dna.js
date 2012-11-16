@@ -35,26 +35,7 @@
     						self.trigger("reset");
 							
 							// get walk and bike times with airport name
-							$.ajax({
-								url: "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Gent%Korenmarkt%perron%3&destinations=" + self.options.airport + '&sensor=false&mode=walking',
-								dataType: 'json',
-								success: function(data) {
-									if (data.rows.elements.duration.value > 0) {
-										self.options.walking = data.rows.elements.duration.value/60;
-										self.trigger("reset");
-									}
-								}
-							});
-							$.ajax({
-								url: "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Gent%Korenmarkt%perron%3&destinations=" + self.options.airport + '&sensor=false&mode=bicycling',
-								dataType: 'json',
-								success: function(data) {
-									if (data.rows.elements.duration.value > 0) {
-										self.options.bicycling = data.rows.elements.duration.value/60;
-										self.trigger("reset");
-									}
-								}
-							});
+							// @TODO: use opentripplanner
 				    	}
 				    }
 				}
