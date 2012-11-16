@@ -1094,14 +1094,7 @@ footer #where {
 }
 
 #clock #blink {
-	-webkit-animation-name: blink;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-duration: 1s;
-}
-
-@-webkit-keyframes blink {
-	from { opacity:1.0; }
-	to { opacity: 0.0; }
+	text-decoration: blink;
 }
 
 /* ==========================================================================
