@@ -148,29 +148,49 @@ textarea {
     resize: vertical;
 }
 
+ul, ul li{
+	list-style-type:none;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 0;
+}
 
+ul li{
+	float:left;
+}
 
 /* ==========================================================================
-   Author's custom styles
+   Groups 'n panes
    ========================================================================== */
 
-.group {
+.group.list {
 	width:50%; 
 	float:left;
-	background-color:#DDD;
+	background-color:#CCC;
 	overflow-y: hidden;
 	overflow-x: hidden;
 	height: 100%;
 	position: relative;
-}
-
-.group {
 	-webkit-overflow-scrolling: touch;
 }
 
-/*.group > *{
-	-webkit-transform: translateZ(0px);
-}*/
+.group.widget {
+	width:50%; 
+	float:left;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	height: 100%;
+	position: relative;
+	-webkit-overflow-scrolling: touch;
+}
+
+.group.fullscreen {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
 
 .pane {
 	width:100%;
@@ -183,17 +203,35 @@ textarea {
 	left: 0;
 }
 
-/*===TITLE BARS ICON===*/
+/* ==========================================================================
+   List pane
+   ========================================================================== */
 
-/*TRAIN*/
-.titleBar i{
+.list .turtle{
+	padding-bottom:1px;
+	background-color:#FFF;
+}
+
+.list .turtle:last-child{
+	padding-bottom:0;
+}
+
+.list .header {
+	width:100%;
+	height:80px;
+	color:#FFF;
+	background-color:#333;
+	position:relative;
+}
+
+.list .header > i{
 	width:81px;
 	height:80px;
 	float:left;
 	margin-left:15px;
-	}
+}
 
-.titleBar h2{
+.list .header h2{
 	float:left;
 	margin-left:40px;
 	font-size:1.5em;
@@ -202,80 +240,45 @@ textarea {
 	font-family:SohoGothicProBold;
 }
 
-.titleBar i + h2{
+.list .header > i + h2{
 	margin-left:5px;
 }
 
-.titleBar .train{
+.list .header .train{
 	background-image:url(images/FT__0005_treinstation.png);
 }
 
-/*TRAFFIC*/
-.titleBar .traffic{
+.list .header .traffic{
 	background-image:url(images/FT__0002_autoverkeer.png);
-	}
+}
 
-/*PLANE*/
-.titleBar .plane{
+.list .header .plane{
 	background-image:url(images/FT_plane.png);
-	}
+}
 	
-/*tram bus*/
-.titleBar .tram.bus{
+.list .header .tram.bus{
 	background-image:url(images/FT__0000_tram-enbushalte.png);
-	}
+}
 
-/*tram bus*/
-.titleBar .bike{
+.list .header .bike{
 	background-image:url(images/FT__0001_huurfietsen.png);
-	}
+}
 	
-/*bus*/
-.titleBar .bus{
+.list .header .bus{
 	background-image:url(images/FT__0003_bushalte.png);
-	}
+}
 
-/*SUB-CLASS BUS*/
-.results .bus{
+.list .results .bus{
 	background-image:url(images/FT__0002_bus.png);
 	padding:0;
-	}
+}
 
-/*SUB-CLASS TRAM*/
-.results .tram{
+.list .results .tram{
 	background-image:url(images/FT__0003_tram.png);
 	padding:0;
-	}
+}
 
-
-
-ul, ul li{
-	list-style-type:none;
-	-webkit-margin-before: 0;
-	-webkit-margin-after: 0;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-	-webkit-padding-start: 0;
-	}
-
-ul li{
-	float:left;
-	}
-
-
-/* ==========================
-* PUBLIC TRANSPORT SCREEN CSS > MAIN
-========================== */
-
-.titleBar{
-	width:100%;
-	height:80px;
-	color:#FFF;
-	background-color:#333;
-	position:relative;
-	}
-
-.list .distance{
+.list .header .distance {
 	height:55px;
 	position:absolute;
 	right:0;
@@ -287,48 +290,28 @@ ul li{
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#232323), color-stop(100%,#333333)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, #232323 0%,#333333 100%); /* Chrome10+,Safari5.1+ */
 	background: linear-gradient(to bottom, #232323 0%,#333333 100%); /* W3C */
-	}
-
-.list{
-	background-color:#CCC;
 }
 
-.distance .foot, .distance .bike, .distance p{
+.list .header .distance i {
+	float:left;
+	width:40px;
+	height:40px;
+}
+
+.list .header .distance p{
 	float:left;
 	width:auto;
 	font-size:15px;
-	}
-
-.distance p{
 	margin:0 10px 0 0;
 	padding-left:20px;
 }
 
-.distance .bike{
+.list .header .distance .bike{
 	background-image:url(images/FT__0001_fietsafstand.png);
-	width:40px;
-	height:40px;
-	}
-
-.foot{
-	background-image:url(images/FT__0000_wandelafstand.png);
-	width:40px;
-	height:40px;
-	}
-
-.distance .foot{
-	background-image:url(images/FT__0000_wandelafstand.png);
-	width:40px;
-	height:40px;
-	}
-	
-.list .turtle{
-	padding-bottom:1px;
-	background-color:#FFF;
 }
 
-.list .turtle:last-child{
-	padding-bottom:0;
+.list .header .distance .foot{
+	background-image:url(images/FT__0000_wandelafstand.png);
 }
 
 /* ==========================
