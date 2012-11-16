@@ -77,7 +77,8 @@ window.Turtles = (function() {
         var instance = {};
         instance.type = type;
         instance.id = id;
-
+        instance.el = options.el;
+        
         // assign model
         instance.model = turtle.model || Backbone.Model.extend();
 
@@ -143,6 +144,22 @@ window.Turtles = (function() {
     }
     
     /*
+     * Change a turtle's order
+     */
+    function order(id, order) {
+    	if (instances[id] == null)
+            throw new Error("Unknown turtle instance");
+    	
+    	var turtle = instances[id];
+    	
+    	// change order attribute
+    	turtle.el.attr('data-order', order);
+    	
+    	// sort turtles in this group
+    	sort(turtle.el.parent().find('.turtle'));
+    }
+    
+    /*
      * Change a turtle's options object
      */
     function options(id, options) {
@@ -173,10 +190,7 @@ window.Turtles = (function() {
         trigger : trigger,
         grow : grow,
         options : options,
-
-        // allow access to turtle specifications and instances
-        instances : instances,
-        turtles : turtles
+        order : order
     };
 
 }());

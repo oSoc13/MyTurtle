@@ -50,6 +50,8 @@ window.Screen = (function() {
         	
         	if (config.plugins[name] == 1 && plugin != null) {
         		plugin.enable();
+        	} else {
+        		plugin.disable();
         	}
         }
     }

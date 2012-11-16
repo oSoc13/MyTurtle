@@ -12,17 +12,17 @@ var Message = {
 			Message.element = $('<div id="black-screen"><h1 class="text-color"></h1></div>');
 			$("body").prepend(Message.element);
 		}
-		
+
 		var msg = Message.element.find("h1");
 		msg.html(text);
 		msg.css("margin-top", "-" + (msg.height()/2) + "px");
-		
+
 		// remove
 		if (duration != null) {
 			clearTimeout(Message.timer);
 			Message.timer = setTimeout(Message.disable, duration);
 		}
-		
+
 		Message.element.fadeIn();
 	},
 
