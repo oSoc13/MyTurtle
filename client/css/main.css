@@ -852,7 +852,7 @@ ul li {
 
 .tweet .body {
 	padding: 25px;
-	font-size: 1.6em;
+	line-height: 1.5em;	
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
@@ -953,7 +953,7 @@ ul li {
 .rss .text p,.rss .text+p {
 	text-shadow: none;
 	margin-top: 20px;
-	line-height: 1.6em;
+	line-height: 1.5em;
 }
 
 .rss h2 {
@@ -1097,7 +1097,6 @@ footer #where {
 	-webkit-animation-name: blink;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-duration: 1s;
-	-webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
 }
 
 @-webkit-keyframes blink {
