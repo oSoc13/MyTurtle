@@ -475,7 +475,6 @@ ul li {
 	width: 0;
 	height: 5px;
 	background-color: #d0e900;
-	z-index: 19999;
 	position: absolute;
 	left: 0;
 	top: -5px;
@@ -502,7 +501,6 @@ ul li {
 	-webkit-box-shadow: 10px -4px 2px 1px rgba(0, 0, 0, 0.4);
 	box-shadow: 3px -4px 2px 1px rgba(0, 0, 0, 0.4);
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
-	z-index: 8888;
 	color: #FFF;
 	font-size: 1.3em;
 	line-height: 2.8em;
@@ -581,7 +579,6 @@ ul li {
 	background-repeat: no-repeat;
 	height: 20px;
 	display: block;
-	z-index: 1;
 }
 
 /* ==========================================================================
@@ -833,7 +830,6 @@ ul li {
 	right: 0;
 	text-align: right;
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
-	z-index: 3;
 }
 
 .instgrm:after {
@@ -844,7 +840,6 @@ ul li {
 	background-repeat: no-repeat;
 	height: 20px;
 	display: block;
-	z-index: 1;
 }
 
 .tweet {
@@ -905,7 +900,6 @@ ul li {
 	position: absolute;
 	background: #333;
 	padding: 10px;
-	z-index: 5;
 	right: 150px;
 	height: 60px;
 	top: 0px
@@ -1018,7 +1012,7 @@ footer {
 	height: 80px;
 	background-color: #FFF;
 	font-family: SohoGothicProReg;
-	z-index: 99999999;
+	z-index: 1000;
 }
 
 footer:before {
@@ -1031,7 +1025,7 @@ footer:before {
 	height: 10px;
 	bottom: 10px;
 	display: block;
-	z-index: 9999999;
+	z-index: 1000;
 }
 
 footer #flatturtle-logo {
@@ -1060,7 +1054,7 @@ footer #where {
    ========================================================================== */
 #black-screen {
 	background-color: #000;
-	z-index: 99999999999;
+	z-index: 99999999;
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -1085,7 +1079,7 @@ footer #where {
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
 	color: #FFF;
 	font-family: SohoStdProBold;
-	z-index: 999999;
+	z-index: 1000;
 }
 
 #clock #blink {
