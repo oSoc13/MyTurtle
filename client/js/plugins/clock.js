@@ -12,6 +12,8 @@ var Clock = {
 			Clock.element = $('<div id="clock"><span id="hour">00</span><span id="blink">:</span><span id="minutes">00</span></div>');
 			$("body").append(Clock.element);
 		}
+		
+		Clock.element.find("#blink").width(Clock.element.find("#blink").width());
 
 		// start timer if needed
 		if (Clock.timer == null) {
@@ -41,6 +43,12 @@ var Clock = {
 
 		Clock.element.find("#hour").html(hours);
 		Clock.element.find("#minutes").html(minutes);
+		
+		if (Clock.element.find("#blink").html().length > 0)
+			Clock.element.find("#blink").html("");
+		else
+			Clock.element.find("#blink").html(":");
+				
 	},
 
 	destroy : function() {

@@ -1082,7 +1082,7 @@ footer #where {
 }
 
 #clock #blink {
-	text-decoration: blink;
+	display: inline-block;
 }
 
 #clock:after {
