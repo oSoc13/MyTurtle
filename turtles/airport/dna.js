@@ -29,7 +29,11 @@
 				dataType: 'json',
 				success: function(data) {
 				    if (data.spectql.length > 0) {
-    					self.options.airport = data.spectql[0].name;
+				    	// detect airport name change
+				    	if (self.options.airport != data.spectql[0].name) {
+    						self.options.airport = data.spectql[0].name;
+    						self.trigger("reset");
+				    	}
 				    }
 				}
 			});

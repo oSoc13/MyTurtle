@@ -40,6 +40,7 @@
         
         <script src="client/js/plugins/clock.js"></script>
         <script src="client/js/plugins/power.js"></script>
+        <script src="client/js/plugins/message.js"></script>
         
         <script>
             Screen.load('https://s.flatturtle.anothercoolproject.com/hub.json');
