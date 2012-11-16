@@ -18,7 +18,7 @@ var Power = {
 	disable : function() {
 		if (Power.element == null) {
 			Power.element = $('<div id="black-screen"></div>');
-			$("body").prepend(Power.element);
+			$("body").append(Power.element);
 		}
 		
 		if (typeof application == "object")

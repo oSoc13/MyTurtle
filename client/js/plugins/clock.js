@@ -10,7 +10,7 @@ var Clock = {
 		// check if clock element exists
 		if (Clock.element.length == 0) {
 			Clock.element = $('<div id="clock"><span id="hour">00</span><span id="blink">:</span><span id="minutes">00</span></div>');
-			$("body").prepend(Clock.element);
+			$("body").append(Clock.element);
 		}
 
 		// start timer if needed
@@ -27,7 +27,7 @@ var Clock = {
 		Clock.element.hide();
 
 		// stop timer
-		window.clearInterval(Clock.timer);
+		clearInterval(Clock.timer);
 		Clock.timer = null;
 	},
 

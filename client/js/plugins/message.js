@@ -14,7 +14,7 @@ var Message = {
 		// check if clock element exists
 		if (Message.element.length == 0) {
 			Message.element = $('<div id="black-screen"><h1 class="text-color"></h1></div>');
-			$("body").prepend(Message.element);
+			$("body").append(Message.element);
 		}
 
 		var msg = Message.element.find("h1");
