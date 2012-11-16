@@ -33,6 +33,28 @@
 				    	if (self.options.airport != data.spectql[0].name) {
     						self.options.airport = data.spectql[0].name;
     						self.trigger("reset");
+							
+							// get walk and bike times with airport name
+							$.ajax({
+								url: "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Gent%Korenmarkt%perron%3&destinations=" + self.options.airport + '&sensor=false&mode=walking',
+								dataType: 'json',
+								success: function(data) {
+									if (data.rows.elements.duration.value > 0) {
+										self.options.walking = data.rows.elements.duration.value/60;
+										self.trigger("reset");
+									}
+								}
+							});
+							$.ajax({
+								url: "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Gent%Korenmarkt%perron%3&destinations=" + self.options.airport + '&sensor=false&mode=bicycling',
+								dataType: 'json',
+								success: function(data) {
+									if (data.rows.elements.duration.value > 0) {
+										self.options.bicycling = data.rows.elements.duration.value/60;
+										self.trigger("reset");
+									}
+								}
+							});
 				    	}
 				    }
 				}
@@ -123,6 +145,8 @@
 			if (this.template) {
 				var data = {
 					airport : this.options.airport || this.options.location,
+					walking : this.options.walking,
+					walking : this.options.bicycling,
 					entries : this.collection.toJSON(),
 					error : this.options.error // have there been any errors?
 			    };
