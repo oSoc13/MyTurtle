@@ -153,7 +153,7 @@ window.Turtles = (function() {
     	var turtle = instances[id];
     	
     	// change order attribute
-    	turtle.el.attr('data-order', order);
+    	turtle.el.attr('data-order', parseInt(order));
     	
     	// sort turtles in this group
     	sort(turtle.el.parent().find('.turtle'));
