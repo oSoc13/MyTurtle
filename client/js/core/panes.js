@@ -105,7 +105,7 @@ window.Panes = (function() {
     	     var active = header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
     	    
     	     // start animation
-    	     jQuery.fx.interval = 500;
+    	     jQuery.fx.interval = 250;
     	     header.find('.progress').stop().width(0);
     	     header.find('.active .progress').animate({width:"100%"}, parseInt(pane.interval), function() {
     	         $(this).width(0);
