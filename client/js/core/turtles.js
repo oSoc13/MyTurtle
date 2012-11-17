@@ -15,7 +15,7 @@ window.Turtles = (function() {
      */
     function register(type, turtle) {
         if (turtles[type] != null)
-            throw new Error("Turtle already regsitered");
+            throw new Error("Turtle already registered");
         else if (typeof turtle != "object")
             throw new Error("Turtle has invalid type");
         else

@@ -27,6 +27,9 @@ window.Screen = (function() {
             // create a placeholder
             var placeholder = $('<section class="turtle ' + turtle.type + '" data-id="' + id + '" data-order="' + turtle.order + '"></section>');
             turtle.options.el = placeholder;
+			
+			// push location data to turtle
+			turtle.options.screen_location = config.interface.latitude + ',' + config.interface.longitude;
             
             // append to pane
             var pane = Panes.get(turtle.pane);

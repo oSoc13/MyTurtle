@@ -12,6 +12,10 @@
 			// default error value
 			options.error = false;
 			
+			// default distance values
+			options.walking = "00:00";
+			options.bicycling = "00:00";
+			
 			// default limit
             if (!options.limit)
                 options.limit = 5;
@@ -22,22 +26,37 @@
 		},
 		refresh : function() {
 			var self = this;
-			
 			// get the airport name
 			$.ajax({
-				url: "http://data.irail.be/spectql/Airports/Stations%7Bname,code%7D?code=='" + self.options.location + "':json",
+				url: "http://data.irail.be/spectql/Airports/Stations%7Bname,code,longitude,latitude%7D?code=='" + self.options.location + "':json",
 				dataType: 'json',
 				success: function(data) {
-				    if (data.spectql.length > 0) {
-				    	// detect airport name change
-				    	if (self.options.airport != data.spectql[0].name) {
-    						self.options.airport = data.spectql[0].name;
-    						self.trigger("reset");
+					if (data.spectql.length > 0) {
+						// detect airport name change
+						if (self.options.airport != data.spectql[0].name) {
+							self.options.airport = data.spectql[0].name;
+							self.trigger("reset");
 							
 							// get walk and bike times with airport name
-							// @TODO: use opentripplanner
-				    	}
-				    }
+							if(self.options.screen_location){
+								var fromGeocode = self.options.screen_location;
+								var toGeocode = data.spectql[0].latitude + "," + data.spectql[0].longitude;
+								
+								Duration.walking(fromGeocode, toGeocode, function(time){
+									if (self.options.walking != self.formatTime(time)) {
+										self.options.walking = self.formatTime(time);
+										self.trigger("reset");
+									}
+								});
+								Duration.cycling(fromGeocode, toGeocode, function(time){
+									if (self.options.bicycling != self.formatTime(time)) {
+										self.options.bicycling = self.formatTime(time);
+										self.trigger("reset");
+									}
+								});								
+							}
+						}
+					}
 				}
 			});
 			
@@ -127,7 +146,7 @@
 				var data = {
 					airport : this.options.airport || this.options.location,
 					walking : this.options.walking,
-					walking : this.options.bicycling,
+					bicycling : this.options.bicycling,
 					entries : this.collection.toJSON(),
 					error : this.options.error // have there been any errors?
 			    };
