@@ -11,6 +11,9 @@
 
 			// default error value
 			options.error = false;
+			
+			// default distance values
+			options.walking = "00:00";
 
 			// automatic collection refresh each minute, this will 
 			// trigger the reset event
@@ -30,27 +33,41 @@
 			});
 		},
 		url : function() {
-            var latitude = this.options.location.split(';')[0];
-            var longitude = this.options.location.split(';')[1];
+			var latitude = this.options.location.split(',')[0];
+			var longitude = this.options.location.split(',')[1];
         
-            return "http://data.irail.be/Bikes/Villo.json?lat=" + encodeURIComponent(latitude) + "&long=" + encodeURIComponent(longitude) + "&offset=0&rowcount=1";
+			return "http://data.irail.be/Bikes/Villo.json?lat=" + encodeURIComponent(latitude) + "&long=" + encodeURIComponent(longitude) + "&offset=0&rowcount=1";
 		},
 		parse : function(json) {
-            var villo = json.Villo;
+			var villo = json.Villo;
             
-            if (villo.length <= 0) {
-                return undefined;
-            }
+			if (villo.length <= 0) {
+				return undefined;
+			}
             
-            for(var i in villo) {
-                villo[i].distance = Math.round(parseInt(villo[i].distance)/10)*10;
+			for(var i in villo) {
+				villo[i].distance = Math.round(parseInt(villo[i].distance)/10)*10;
                 
-                var name = jQuery.trim(villo[i].name);
-                name = name.match(/^[0-9]+\s*-\s*(.*?)(?:[\/|:](.*))?$/)[1];
+				var name = jQuery.trim(villo[i].name);
+				name = name.match(/^[0-9]+\s*-\s*(.*?)(?:[\/|:](.*))?$/)[1];
 				villo[i].name = this.capitalizeWords(name);
-            }
+			}
+			
+			// get walk time from station location
+			if(this.options.screen_location){
+				var self = this;
+				var fromGeocode = self.options.screen_location;
+				var toGeocode = villo[0].latitude + "," + villo[0].longitude;
+
+				Duration.walking(fromGeocode, toGeocode, function(time){
+					if (self.options.walking != self.formatTime(time)) {
+						self.options.walking = self.formatTime(time);
+						self.trigger("reset");
+					}
+				});							
+			}
             
-            return villo;
+			return villo;
 		},
 		capitalizeWords: function (strSentence) {
 			return strSentence.toLowerCase().replace(/\b[a-z]/g, convertToUpper);
@@ -58,6 +75,11 @@
 			function convertToUpper() {
 				return arguments[0].toUpperCase();
 			}
+		},
+		formatTime : function(time) {
+			var hours = time.getHours();
+			var minutes = time.getMinutes();
+			return (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
 		}
 	});
 
@@ -83,6 +105,8 @@
 			if (this.template && this.collection.length) {
 			
 				var data = this.collection.toJSON()[0];
+				data.freespots += data.freebikes;
+				data.walking =  this.options.walking;
 				data.error = this.options.error; // have there been any errors?
 				
 				// add html to container

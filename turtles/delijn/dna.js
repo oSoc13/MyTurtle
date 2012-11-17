@@ -12,10 +12,14 @@
 			
 			// default error value
 			options.error = false;
+			
+			// default distance values
+			options.walking = "00:00";
+			options.bicycling = "00:00";
 
 			// default limit
-            if (!options.limit)
-                options.limit = 5;
+			if (!options.limit)
+				options.limit = 5;
 			
 			// automatic collection refresh each minute, this will 
 			// trigger the reset event
@@ -58,6 +62,7 @@
 
 			if(isNaN(this.options.location)) {
 				this.options.station = this.capitalizeWords(this.options.location);
+				$.getJSON("http://data.irail.be/DeLijn/Stations.json?name=" + encodeURIComponent(this.options.station), this.parseStationName);
 			} else {
 				$.getJSON("http://data.irail.be/DeLijn/Stations.json?id=" + encodeURIComponent(this.options.location), this.parseStationName);
 			}
@@ -66,7 +71,7 @@
 			return "http://data.irail.be/DeLijn/Departures/" + query + ".json?offset=0&rowcount=" + parseInt(this.options.limit);
 		},
 		parse : function(json) {
-            // this.options.station = json.Departures.location.name;
+			// this.options.station = json.Departures.location.name;
 			// parse ajax results
 			var liveboard = json.Departures;
 
@@ -86,12 +91,12 @@
 					liveboard[i].long_name = this.parseTripName(liveboard[i].long_name)
 					
 				switch (parseInt(liveboard[i].type)) {
-				case 0:
-					liveboard[i].type = "tram";
-					break;
-				default:
-					liveboard[i].type = "bus";
-					break;
+					case 0:
+						liveboard[i].type = "tram";
+						break;
+					default:
+						liveboard[i].type = "bus";
+						break;
 				}
 			}
 
@@ -104,6 +109,25 @@
 		},
 		parseStationName : function (data) {
 			this.options.station = this.capitalizeWords(data.Stations[0].name);
+			// get walk and bike times from station location
+			if(this.options.screen_location){
+				var self = this;
+				var fromGeocode = self.options.screen_location;
+				var toGeocode = data.Stations[0].latitude + "," + data.Stations[0].longitude;
+				
+				Duration.walking(fromGeocode, toGeocode, function(time){
+					if (self.options.walking != self.formatTime(time)) {
+						self.options.walking = self.formatTime(time);
+						self.trigger("reset");
+					}
+				});
+				Duration.cycling(fromGeocode, toGeocode, function(time){
+					if (self.options.bicycling != self.formatTime(time)) {
+						self.options.bicycling = self.formatTime(time);
+						self.trigger("reset");
+					}
+				});								
+			}
 		},
 		capitalizeWords: function (strSentence) {
 			return strSentence.toLowerCase().replace(/\b[a-z]/g, convertToUpper);
@@ -144,6 +168,8 @@
 			// only render when template file is loaded
 			if (this.template) {
 				var data = {
+					walking : this.options.walking,
+					bicycling : this.options.bicycling,
 					station : this.options.station,
 					entries : this.collection.toJSON(),
 					color : this.options.color,
