@@ -882,6 +882,10 @@ ul li {
 	margin: 0px;
 }
 
+.tweet .author .account{
+	opacity: 0.3;
+}
+	
 .tweet .triangle {
 	width: 0;
 	height: 0;
