@@ -482,6 +482,26 @@ ul li {
 	top: -5px;
 }
 
+@-webkit-animation progress {
+   0% { width: 0; }
+   100% { width: 100%; }
+}
+
+@-moz-keyframes progress { 
+   0% { width: 0; }
+   100% { width: 100%; }
+}
+
+@-ms-keyframes progress { 
+   0% { width: 0; }
+   100% { width: 100%; }
+}
+
+@keyframes progress { 
+   0% { width: 0; }
+   100% { width: 100%; }
+}
+
 .widget header .nav {
 	width: 18%;
 	height: 75px;

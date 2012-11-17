@@ -98,17 +98,18 @@ window.Panes = (function() {
     	
     	// switch tabs
     	if (pane.type == 'widget') {
-    		var header = group.find('header');
-    		
-    		// mark as tab active and put in front
-    		header.find('.active').appendTo(header).removeClass("active bg-color");
-    		var active = header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
-    		
-    		// start animation
-    		header.find('.progress').stop().width(0);
-    		header.find('.active .progress').animate({width:"100%"}, parseInt(pane.interval), function() {
-    			$(this).width(0);
-    		});    		
+    	     var header = group.find('header');
+    	     
+    	     // mark as tab active and put in front
+    	     header.find('.active').appendTo(header).removeClass("active bg-color");
+    	     var active = header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
+    	    
+    	     // start animation
+    	     jQuery.fx.interval = 500;
+    	     header.find('.progress').stop().width(0);
+    	     header.find('.active .progress').animate({width:"100%"}, parseInt(pane.interval), function() {
+    	         $(this).width(0);
+    	     });
     	}
     	
     	// mark pane as active and show
