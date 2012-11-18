@@ -480,6 +480,10 @@ ul li {
 	position: absolute;
 	left: 0;
 	top: -5px;
+
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .widget header .nav {

@@ -40,6 +40,11 @@ window.Screen = (function() {
             
             // grow the turtle
             Turtles.grow(turtle.type, id, turtle.options);
+            
+            // trigger event if needed
+            if (pane.el.hasClass('active')) {
+                Turtles.trigger(id, 'shown');
+            }
         }
         
         // enable plugins
