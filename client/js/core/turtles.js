@@ -49,6 +49,8 @@ window.Turtles = (function() {
     	// trigger event for turtle id
     	else {
     		var instance = instances[type];
+    		if (instance == null)
+                throw new Error("Unknown turtle instance");
     		
     		if (typeof instance.collection == "object")
 				instance.collection.trigger(event);
@@ -121,10 +123,10 @@ window.Turtles = (function() {
      * Grows turtles.
      */
     function grow(type, id, options) {
-        var source = 'turtles/' + type + '/dna.js';
+        var source = "turtles/" + type + "/dna.js";
 
         // options must be an object
-        if (options == null || typeof options != 'object') {
+        if (options == null || typeof options != "object") {
             options = {};
         }
         
@@ -132,7 +134,7 @@ window.Turtles = (function() {
         if (!registered(type)) {
             $.ajax({
                 url : source,
-                dataType : 'script',
+                dataType : "script",
                 async : false, // to prevent duplicate javascript file loading
                 success : function() {
                     instantiate(type, id, options);
@@ -153,10 +155,10 @@ window.Turtles = (function() {
     	var turtle = instances[id];
     	
     	// change order attribute
-    	turtle.el.attr('data-order', parseInt(order));
+    	turtle.el.attr("data-order", parseInt(order));
     	
     	// sort turtles in this group
-    	sort(turtle.el.parent().find('.turtle'));
+    	sort(turtle.el.parent().find(".turtle"));
     }
     
     /*
@@ -177,7 +179,7 @@ window.Turtles = (function() {
             turtle.view.options = _.extend(turtle.view.options, options);
         
         // trigger refresh event
-        Turtles.trigger(id, 'refresh');
+        Turtles.trigger(id, "refresh");
     }
 
     /*
