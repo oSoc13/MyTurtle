@@ -149,17 +149,6 @@ window.Panes = (function() {
     }
     
     /*
-     * Sort turtles in a pane
-     */
-    function sort(id) {
-        if (panes[id] == null)
-            return;
-        
-        // sort turtles
-        sort(panes[id].el.find('.turtle'));
-    }
-    
-    /*
      * Check if a pane is active
      */
     function isActive(id) {
@@ -178,7 +167,6 @@ window.Panes = (function() {
         create : create,
         get : get,
         append : append,
-        sort : sort,
         isActive : isActive
     };
 

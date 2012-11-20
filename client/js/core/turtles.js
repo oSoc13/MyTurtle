@@ -145,7 +145,7 @@ window.Turtles = (function() {
         }
         
         // create a placeholder
-        var placeholder = $('<section class="turtle ' + type + '" data-id="' + id + '" data-order="' + order + '"></section>');
+        var placeholder = $('<section class="turtle ' + type + '" data-id="' + id + '" data-order="' + parseInt(order) + '"></section>');
         options.el = placeholder;
         
         // append placeholder to pane
