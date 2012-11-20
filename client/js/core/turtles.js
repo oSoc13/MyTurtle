@@ -232,6 +232,7 @@ window.Turtles = (function() {
         registered : registered,
         trigger : trigger,
         grow : grow,
+        kill : kill,
         options : options,
         order : order
     };
