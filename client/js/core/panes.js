@@ -133,6 +133,41 @@ window.Panes = (function() {
     function get(id) {
         return panes[id];
     }
+    
+    /*
+     * Append an element to a pane by id
+     */
+    function append(id, element) {
+        if (panes[id] == null)
+            return;
+       
+        // append
+        panes[id].el.append(element);
+        
+        // sort turtles
+        sort(panes[id].el.find('.turtle'));
+    }
+    
+    /*
+     * Sort turtles in a pane
+     */
+    function sort(id) {
+        if (panes[id] == null)
+            return;
+        
+        // sort turtles
+        sort(panes[id].el.find('.turtle'));
+    }
+    
+    /*
+     * Check if a pane is active
+     */
+    function isActive(id) {
+        if (panes[id] == null)
+            return;
+        
+        return panes[id].el.hasClass('active');
+    }
 
     /*
      * Public interface to this object
@@ -141,7 +176,10 @@ window.Panes = (function() {
         show : show,
         rotate : rotate,
         create : create,
-        get : get
+        get : get,
+        append : append,
+        sort : sort,
+        isActive : isActive
     };
 
 }());

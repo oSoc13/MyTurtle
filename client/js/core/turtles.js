@@ -15,9 +15,9 @@ window.Turtles = (function() {
      */
     function register(type, turtle) {
         if (turtles[type] != null)
-            throw new Error("Turtle already registered");
+            return Debug.log("Turtle already registered: " + type);
         else if (typeof turtle != "object")
-            throw new Error("Turtle has invalid type");
+            return Debug.log("Turtle has invalid type: " + type);
         else
             turtles[type] = turtle;
 
@@ -35,43 +35,35 @@ window.Turtles = (function() {
      * Trigger an event for a turtle by id or all turtles by type
      */
     function trigger(type, event) {
-    	// trigger event turtle type
-    	if (isNaN(type)) {
-    		_(instances).each(function(instance, id) {
-				if (instance.type == type) {
-					if (typeof instance.collection == "object")
-						instance.collection.trigger(event);
-					if (typeof instance.view == "object")
-						instance.view.trigger(event);
-				}
-			});
-    	} 
-    	// trigger event for turtle id
-    	else {
-    		var instance = instances[type];
-    		if (instance == null)
-                throw new Error("Unknown turtle instance");
-    		
-    		if (typeof instance.collection == "object")
-				instance.collection.trigger(event);
-			if (typeof instance.view == "object")
-				instance.view.trigger(event);
-    	}
+        // trigger event turtle type
+        if (isNaN(type)) {
+            _(instances).each(function(instance, id) {
+                if (instance.type == type) {
+                    if (typeof instance.collection == "object")
+                        instance.collection.trigger(event);
+                    if (typeof instance.view == "object")
+                        instance.view.trigger(event);
+                }
+            });
+        } 
+        // trigger event for turtle id
+        else {
+            if (instances[type] == null)
+                return Debug.log("Unknown turtle instance: " + type);
+            
+            var instance = instances[type];
+            
+            if (typeof instance.collection == "object")
+                instance.collection.trigger(event);
+            if (typeof instance.view == "object")
+                instance.view.trigger(event);
+        }
     }
 
     /*
-     * Create a new turtle instance
+     * Create a new turtle (backbone) instance
      */
     function instantiate(type, id, options) {
-    	// check if turtle specification exists
-        if (turtles[type] == null) {
-            throw new Error("Unknown turtle");
-            return;
-        }
-
-        if (options == null || typeof options != "object")
-            options = {};
-        
         // get turtle specification
         var turtle = turtles[type];
 
@@ -98,7 +90,7 @@ window.Turtles = (function() {
         // build and assign view
         if (typeof turtle.view == "function") {
             instance.view = new turtle.view(_.extend(options, {
-            	collection : instance.collection,
+                collection : instance.collection,
                 model : instance.model,
                 el : options.el
             }));
@@ -115,50 +107,77 @@ window.Turtles = (function() {
 
         // save instance
         instances[id] = instance;
-
         return instance;
+    }
+    
+    /*
+     * Load a turtle dna with a callback (async)
+     */
+    function load(type) {
+        // dna location
+        var source = "turtles/" + type + "/dna.js";
+        
+        $.ajax({
+            url : source,
+            dataType : "script",
+            async : false, // to prevent duplicate javascript file loading
+            error : function() {
+                Debug.log("Unable to load turtle dna: " + type);
+            }
+        });
     }
 
     /*
-     * Grows turtles.
+     * Grows baby turtles.
      */
-    function grow(type, id, options) {
-        var source = "turtles/" + type + "/dna.js";
+    function grow(type, id, pane, order, options) {
+        
+        // load the turtle dna if needed
+        if (!registered(type))
+            load(type);
+        
+        // check if dna was loaded
+        if (turtles[type] == null)
+            return Debug.log("Unknown turtle dna: " + type);
 
         // options must be an object
         if (options == null || typeof options != "object") {
             options = {};
         }
         
-        // fetch the turtle script only once
-        if (!registered(type)) {
-            $.ajax({
-                url : source,
-                dataType : "script",
-                async : false, // to prevent duplicate javascript file loading
-                success : function() {
-                    instantiate(type, id, options);
-                }
-            });
-        } else {
-            instantiate(type, id, options);
+        // create a placeholder
+        var placeholder = $('<section class="turtle ' + type + '" data-id="' + id + '" data-order="' + order + '"></section>');
+        options.el = placeholder;
+        
+        // append placeholder to pane
+        Panes.append(pane, placeholder);
+        
+        // create a baby turtle
+        var instance = instantiate(type, id, options);
+        
+        // check if pane is active and trigger event
+        if (Panes.isActive(pane)) {
+            Turtles.trigger(id, "shown");
         }
+        
+        // return our baby turtle
+        return instance;
     }
     
     /*
      * Change a turtle's order
      */
     function order(id, order) {
-    	if (instances[id] == null)
-            throw new Error("Unknown turtle instance");
-    	
-    	var turtle = instances[id];
-    	
-    	// change order attribute
-    	turtle.el.attr("data-order", parseInt(order));
-    	
-    	// sort turtles in this group
-    	sort(turtle.el.parent().find(".turtle"));
+        if (instances[id] == null)
+            return Debug.log("Unknown turtle instance: " + id);
+        
+        var turtle = instances[id];
+        
+        // change order attribute
+        turtle.el.attr("data-order", parseInt(order));
+        
+        // sort turtles in this group
+        sort(turtle.el.parent().find(".turtle"));
     }
     
     /*
@@ -166,7 +185,7 @@ window.Turtles = (function() {
      */
     function options(id, options) {
         if (instances[id] == null)
-            throw new Error("Unknown turtle instance");
+            return Debug.log("Unknown turtle instance: " + id);
         
         var turtle = instances[id];
         
@@ -188,7 +207,6 @@ window.Turtles = (function() {
     return {
         register : register,
         registered : registered,
-        instantiate : instantiate,
         trigger : trigger,
         grow : grow,
         options : options,
