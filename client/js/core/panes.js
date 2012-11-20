@@ -50,7 +50,7 @@ window.Panes = (function() {
         if (group.find('.pane').length > 1 && timers[pane.type] == null) {
             timers[pane.type] = setTimeout(function() {
                 rotate(pane.type);
-            }, pane.interval);
+            }, pane.duration);
         }
         
         // append element
@@ -82,11 +82,24 @@ window.Panes = (function() {
         var pane = panes[id];
         var group = $('.group.' + pane.type);
         
+        // set order on object
+        pane.order = order;
+        
         // change order attribute
         pane.el.attr('data-order', parseInt(order));
         
         // make sure panes are in correct order
         sort(group.find('.pane'));
+    }
+    
+    /*
+     * Change pane display duration
+     */
+    function duration(id, ms) {
+        var pane = panes[id];
+        
+        // set duration on object
+        pane.duration = ms;
     }
     
     /*
@@ -131,7 +144,7 @@ window.Panes = (function() {
              // start animation
              jQuery.fx.interval = 250;
              header.find('.progress').stop().width(0);
-             header.find('.active .progress').animate({width:"100%"}, parseInt(pane.interval), function() {
+             header.find('.active .progress').animate({width:"100%"}, parseInt(pane.duration), function() {
                  $(this).width(0);
              });
         }
@@ -148,7 +161,7 @@ window.Panes = (function() {
         // create timer for next rotation
         timers[pane.type] = setTimeout(function() {
             rotate(pane.type);
-        }, pane.interval);
+        }, pane.duration);
     }
     
     /*
@@ -192,6 +205,7 @@ window.Panes = (function() {
         remove : remove,
         get : get,
         order : order,
+        duration : duration,
         append : append,
         isActive : isActive
     };
