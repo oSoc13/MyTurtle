@@ -131,7 +131,6 @@ window.Turtles = (function() {
      * Grows baby turtles.
      */
     function grow(type, id, pane, order, options) {
-        
         // load the turtle dna if needed
         if (!registered(type))
             load(type);
@@ -198,7 +197,31 @@ window.Turtles = (function() {
             turtle.view.options = _.extend(turtle.view.options, options);
         
         // trigger refresh event
-        Turtles.trigger(id, "refresh");
+        trigger(id, "refresh");
+    }
+    
+    /*
+     * Kill a turtle :(
+     */
+    function kill(id) {
+        if (instances[id] == null)
+            return Debug.log("Unknown turtle instance: " + id);
+        
+        var turtle = instances[id];
+        
+        // trigger destroy event
+        trigger(id, "destroy");
+        
+        // remove placeholder
+        turtle.el.remove();
+
+        // delete backbone objects
+        delete instance.collection;
+        delete instance.view;
+        delete instance.model;
+        
+        // delete instance
+        delete instances[id];
     }
 
     /*
