@@ -62,6 +62,12 @@ window.Screen = (function() {
         		plugin.disable();
         	}
         }
+		
+		// create jobs
+        for(var id in config.jobs) {
+            var job = config.jobs[id];
+            Jobs.add(job);
+        }
     }
     
     /*
