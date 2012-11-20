@@ -31,6 +31,7 @@
         <script src="client/js/libs/backbone.js"></script>
         <script src="client/js/libs/mustache.js"></script>
         <script src="client/js/libs/tinycolor.js"></script>
+		<script src="client/js/libs/later.js"></script>
         <script src="client/js/libs/duration.js"></script>
         
         <script src="client/js/core/functions.js"></script>
@@ -38,6 +39,7 @@
         <script src="client/js/core/interface.js"></script>
         <script src="client/js/core/turtles.js"></script>
         <script src="client/js/core/panes.js"></script>
+		<script src="client/js/core/jobs.js"></script>
         
         <script src="client/js/plugins/clock.js"></script>
         <script src="client/js/plugins/power.js"></script>
