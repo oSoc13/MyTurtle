@@ -17,7 +17,7 @@ window.Screen = (function() {
         // create panes
         for (var id in config.panes) {
             var pane = config.panes[id];
-            Panes.create(id, pane);
+            Panes.add(id, pane);
         }
         
         // create turtles

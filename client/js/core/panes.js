@@ -15,7 +15,7 @@ window.Panes = (function() {
     /*
      * Create a new pane
      */
-    function create(id, pane) {
+    function add(id, pane) {
         // save pane
         panes[id] = pane;
         
@@ -63,6 +63,30 @@ window.Panes = (function() {
         if (group.find('.pane.active').length == 0) {
             show(id);
         }
+    }
+    
+    /*
+     * Remove a pane
+     */
+    function remove(id) {
+        var pane = panes[id];
+        
+        // remove element
+        pane.el.remove();
+    }
+    
+    /*
+     * Change pane order
+     */
+    function order(id, order) {
+        var pane = panes[id];
+        var group = $('.group.' + pane.type);
+        
+        // change order attribute
+        pane.el.attr('data-order', parseInt(order));
+        
+        // make sure panes are in correct order
+        sort(group.find('.pane'));
     }
     
     /*
@@ -164,8 +188,10 @@ window.Panes = (function() {
     return {
         show : show,
         rotate : rotate,
-        create : create,
+        add : add,
+        remove : remove,
         get : get,
+        order : order,
         append : append,
         isActive : isActive
     };
