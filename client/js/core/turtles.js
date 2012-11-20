@@ -131,6 +131,10 @@ window.Turtles = (function() {
      * Grows baby turtles.
      */
     function grow(type, id, pane, order, options) {
+        // check if turtle already exists
+        if (instances[id] != null)
+            return Debug.log("Turtle already exists: " + id);
+        
         // load the turtle dna if needed
         if (!registered(type))
             load(type);
