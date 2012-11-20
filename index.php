@@ -14,7 +14,7 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
-			$alias = 'https://s.flatturtle.anothercoolproject.com/hub.json';
+			$alias = 'https://s.flatturtle.anothercoolproject.com/hub';
 		break;
 
 		case 'testing':
