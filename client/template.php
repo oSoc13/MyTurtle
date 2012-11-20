@@ -10,6 +10,7 @@
 
 		<link rel="stylesheet" href="client/css/normalize.css">
 		<link rel="stylesheet" href="client/css/main.css">
+   		<link type="text/css" rel="stylesheet" href="https://fast.fonts.com/cssapi/66253153-9c89-413c-814d-60d3ba0d6ac2.css"/>
 	</head>
 	<body>
 		<!--[if lt IE 7]>
