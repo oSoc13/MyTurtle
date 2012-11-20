@@ -26,6 +26,10 @@
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         refresh : function() {
+            // don't fetch if there is no location
+            if (this.options.location == null || !this.options.location)
+                return;
+            
             var self = this;
             self.fetch({
                 error : function() {

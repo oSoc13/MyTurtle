@@ -25,6 +25,10 @@
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         refresh : function() {
+            // don't fetch if there is no search
+            if (this.options.search == null || !this.options.search)
+                return;
+            
             var self = this;
             self.fetch({
                 error : function() {

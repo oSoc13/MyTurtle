@@ -21,6 +21,10 @@
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         refresh : function() {
+            // don't fetch if there is no feed
+            if (this.options.feed == null || !this.options.feed)
+                return;
+            
             var self = this;
             self.fetch({
                 error : function(jqXHR, textStatus, errorThrown) {
