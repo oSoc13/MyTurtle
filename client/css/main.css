@@ -1059,13 +1059,14 @@ footer #where {
 }
 
 #clock {
-	width: 210px;
+	width: 200px;
+	height: 80px;
 	position: absolute;
 	right: 0;
 	top: 0;
 	font-size: 2.4em;
 	text-align: center;
-	line-height: 1.9em;
+	line-height: 85px;
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
 	color: #FFF;
 	font-family: "Soho W01 Bold";
@@ -1073,12 +1074,15 @@ footer #where {
 }
 
 #clock:after {
-	height: 75px;
+	content: '';
+	height: 80px;
 	width: 30px;
-	background-image: url(images/shadow_clock.png);
-	background-color: #F00;
 	position: absolute;
-	left: 0;
+	background: url(images/shadow_clock.png) repeat-y;
+	background-size: 100%;
+	z-index: 1001;
+	top: 0;
+	left: -30px;
 }
 
 #clock #blink {
@@ -1087,7 +1091,7 @@ footer #where {
 
 /* ==========================================================================
    Helper classes
-   ========================================================================== */
+   ==========================================================================
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
