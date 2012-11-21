@@ -1,6 +1,11 @@
-/*
- * Clock
+/* 
+ * FlatTurtle
+ * Clock plugin
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
  */
+
 var Clock = {
 
 	element : $("#clock"),

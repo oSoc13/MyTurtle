@@ -1,6 +1,11 @@
-/*
+/* 
+ * FlatTurtle
  * Wrapper Qt Browser application object
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
  */
+
 var Power = {
 		
 	element : null,

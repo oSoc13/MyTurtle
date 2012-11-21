@@ -1,6 +1,11 @@
-/*
+/* 
+ * FlatTurtle
  * Later.js based jobs object
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
  */
+
 window.Jobs = (function() {
 
     /*

@@ -1,6 +1,11 @@
-/*
+/* 
+ * FlatTurtle
  * The panes object will take care of the interface elements and colors
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
  */
+
 window.Interface = (function() {
 
     /*

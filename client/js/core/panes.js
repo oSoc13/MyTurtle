@@ -1,6 +1,11 @@
-/*
+/* 
+ * FlatTurtle
  * The panes object will take care of the available panes
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
  */
+
 window.Panes = (function() {
 
     // the container element

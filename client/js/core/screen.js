@@ -1,6 +1,11 @@
-/*
+/* 
+ * FlatTurtle
  * The Screen object will delegate from the DISS configuration array to other object
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
  */
+
 window.Screen = (function() {
 
     // DISS configuration
