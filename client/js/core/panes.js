@@ -90,7 +90,7 @@ window.Panes = (function() {
         
         var pane = panes[id];
         
-        // remove element
+        // add fullscreen class
         pane.el.addClass("fullscreen");
         
         // remove
@@ -99,6 +99,16 @@ window.Panes = (function() {
                 pane.el.removeClass("fullscreen");
             }, duration);
         }
+    }
+    
+    /*
+     * Reset a pane from fullscreen
+     */
+    function close(id) {
+        var pane = panes[id];
+        
+        // remove fullscreen class
+        pane.el.removeClass("fullscreen");
     }
     
     /*
@@ -234,6 +244,7 @@ window.Panes = (function() {
         duration : duration,
         append : append,
         fullscreen : fullscreen,
+        close : close,
         isActive : isActive
     };
 
