@@ -86,7 +86,7 @@ window.Panes = (function() {
     function fullscreen(id, duration) {
         // default duration
         if (duration == undefined)
-            duration = 30000;
+            duration = pane.duration;
         
         var pane = panes[id];
         
