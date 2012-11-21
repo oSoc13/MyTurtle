@@ -46,8 +46,8 @@ window.Interface = (function() {
         }
         
         // custom styles
-		var lightColor = tinycolor.desaturate(tinycolor.lighten(value, 15));
-		var darkColor = tinycolor.desaturate(tinycolor.darken(value), 15);
+		var lightColor = tinycolor.desaturate(tinycolor.lighten(value));
+		var darkColor = tinycolor.desaturate(tinycolor.darken(value));
         var style = ".text-color { color: " + value + "; }\n"
                   + ".bg-color { background-color: " + value + "; }\n"
                   + ".bg-color-light { background-color: " + lightColor + "; }\n"
