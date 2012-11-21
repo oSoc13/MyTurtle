@@ -57,9 +57,9 @@
             // process tweets
             for (var i in tweets) {
                 // #tags
-                tweets[i].text = tweets[i].text.replace(/(#[^\s]+)/g, '<span class="text-color">$1</span>');
+                tweets[i].text = tweets[i].text.replace(/(#[\w-_]+)/g, '<span class="text-color">$1</span>');
                 // @replies
-                tweets[i].text = tweets[i].text.replace(/(@[^\s]+)/g, '<span class="text-color">$1</span>');
+                tweets[i].text = tweets[i].text.replace(/(@[\w-_]+)/g, '<span class="text-color">$1</span>');
                 // links                                  [   https://www.   |www.| domain.| ... ]
                 tweets[i].text = tweets[i].text.replace(/((https?:\/\/(\w\.)*|\w\.)[^\s]+\.[^\s]+)/g, '<span class="text-color">$1</span>');
             }
