@@ -29,7 +29,7 @@ window.Duration = (function() {
 			},
 			dataType: 'jsonp',
 			success: function(data) {
-				if(data.plan.itineraries[0].duration){
+				if(data.plan != null && data.plan.itineraries[0].duration){
 					// Cancel timezone effect
 					var UTC = new Date();
 					var time = new Date(data.plan.itineraries[0].duration + (UTC.getTimezoneOffset()*1000*60));
