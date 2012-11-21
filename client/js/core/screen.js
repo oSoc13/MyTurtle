@@ -11,10 +11,21 @@ window.Screen = (function() {
     // DISS configuration
     var config = {};
     
+    // Screen location
+    var location = {};
+    
     /*
      * Initialize the UI with a DISS configuration array
      */
     function build(config) {
+        
+        // populate screen location properties
+        Screen.location =  {
+                address : config.interface.location,
+                latitude : config.interface.latitude,
+                longitude : config.interface.longitude,
+                geocode : config.interface.latitude + "," + config.interface.longitude
+        };
         
         // setup interface
         Interface.setup(config.interface);
@@ -28,11 +39,6 @@ window.Screen = (function() {
         // create turtles
         for (var id in config.turtles) {
             var turtle = config.turtles[id];
-            
-            // push location data to turtle
-            turtle.options.screen_location = config.interface.latitude + "," + config.interface.longitude;
-            
-            // grow the turtle
             Turtles.grow(turtle.type, id, turtle.pane, turtle.order, turtle.options);
         }
         
@@ -68,7 +74,7 @@ window.Screen = (function() {
             dataType: "json",
             success : function(config) {
                 Screen.config = config;
-                Screen.build(config);
+                build(config);
             }
         });
     }
@@ -78,8 +84,8 @@ window.Screen = (function() {
      */
     return {
         config : config,
-        build : build,
-        load : load
+        load : load,
+        location : location
     }
 
 }());

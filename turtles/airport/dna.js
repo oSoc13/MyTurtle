@@ -49,8 +49,8 @@
                             self.trigger("reset");
                             
                             // get walk and bike times with airport name
-                            if(self.options.screen_location){
-                                var fromGeocode = self.options.screen_location;
+                            if (Screen.location) {
+                                var fromGeocode = Screen.location.geocode;
                                 var toGeocode = data.spectql[0].latitude + "," + data.spectql[0].longitude;
                                 
                                 Duration.walking(fromGeocode, toGeocode, function(time){

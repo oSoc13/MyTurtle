@@ -90,9 +90,9 @@
                 this.options.station = data.Stations[0].name.capitalize();
             
             // get walk and bike times from station location
-            if (this.options.screen_location) {
+            if (Screen.location) {
                 var self = this;
-                var fromGeocode = self.options.screen_location;
+                var fromGeocode = Screen.location.geocode;
                 var toGeocode = data.Stations[0].latitude + "," + data.Stations[0].longitude;
                 
                 Duration.walking(fromGeocode, toGeocode, function(time){

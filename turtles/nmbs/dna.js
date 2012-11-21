@@ -82,9 +82,9 @@
         },
         parseStation : function(data) {
             // get walk and bike times from station location
-            if(this.options.screen_location){
+            if (Screen.location) {
                 var self = this;
-                var fromGeocode = self.options.screen_location;
+                var fromGeocode = Screen.location.geocode;
                 var toGeocode = data.Liveboard.location.latitude + "," + data.Liveboard.location.longitude;
                 
                 Duration.walking(fromGeocode, toGeocode, function(time){

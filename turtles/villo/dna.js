@@ -59,7 +59,7 @@
             // get walk time from station location
             if (this.options.screen_location){
                 var self = this;
-                var fromGeocode = self.options.screen_location;
+                var fromGeocode = Screen.location.geocode;
                 var toGeocode = villo[0].latitude + "," + villo[0].longitude;
 
                 Duration.walking(fromGeocode, toGeocode, function(time){
