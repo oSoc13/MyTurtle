@@ -8,10 +8,15 @@
 
 window.Interface = (function() {
 
+    // Interface configuration
+    var config = {};
+    
     /*
      * Execute all functions for passed config
      */
     function setup(config) {
+        Interface.config = config;
+        
         if (config.color)
             color(config.color);
         
@@ -26,6 +31,13 @@ window.Interface = (function() {
      * Change the ui color
      */
     function color(value) {
+        // just return the color value if no value is given
+        if (value == null)
+            return Interface.config.color;
+        
+        // set to config
+        Interface.config.color = value.replace('#', '');
+        
         // style element
         var custom = $('body style#custom');
         if (custom.length == 0) {
@@ -65,6 +77,7 @@ window.Interface = (function() {
      * Public interface to this object
      */
     return {
+        config : config,
         setup : setup,
         color : color,
         logo : logo,
