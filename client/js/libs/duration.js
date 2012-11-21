@@ -1,6 +1,7 @@
 /* 
- * FlatTurtle bvba
- * @Author: Michiel Vancoillie
+ * FlatTurtle
+ * @author: Michiel Vancoillie
+ * @license: AGPLv3
  */
 
 window.Duration = (function() {

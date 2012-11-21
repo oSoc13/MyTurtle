@@ -1,3 +1,11 @@
+/* 
+ * FlatTurtle
+ * Helper functions
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
+ */
+
 /*
  * Sort elements in a parent container by data-order attribute
  */
@@ -31,7 +39,7 @@ var Debug = {
 }
 
 /*
- * A friendly time format function
+ * A friendly time format function (unix style)
  * 
  * {Y} - 4 digit year
  * {m} - month with leading zero

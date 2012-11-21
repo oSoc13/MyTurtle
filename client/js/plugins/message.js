@@ -1,6 +1,11 @@
-/*
- * Message
+/* 
+ * FlatTurtle
+ * Flash message plugin
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
  */
+
 var Message = {
 
 	element : $("#message"),
@@ -43,6 +48,3 @@ var Message = {
 	}
 
 };
-
-// default behaviour
-Clock.enable();

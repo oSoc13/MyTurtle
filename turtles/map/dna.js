@@ -1,3 +1,9 @@
+/* 
+ * FlatTurtle
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
+ */
+
 (function($){
 
     var view = Backbone.View.extend({

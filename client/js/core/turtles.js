@@ -1,7 +1,12 @@
-/*
+/* 
+ * FlatTurtle
  * The core of the the flatturtle framework. Grow and manage turtles from this
  * basic interface, more functionality is added by prototype.
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
  */
+
 window.Turtles = (function() {
 
     // all known registered turtles
