@@ -9,7 +9,7 @@
 window.Panes = (function() {
 
     // the container element
-    var container = $('div#container');
+    var container = $("div#container");
     
     // current panes
     var panes = [];
@@ -28,7 +28,7 @@ window.Panes = (function() {
         pane.el = $('<section class="pane" data-id="' + id + '" data-order="' + pane.order + '"></section>');
         
         // search group
-        var group = $('.group.' + pane.type);
+        var group = $(".group." + pane.type);
         
         // create group if needed
         if (group.length == 0) {
@@ -37,10 +37,10 @@ window.Panes = (function() {
         }
         
         // widget mode
-        if (pane.type == 'widget') {
-            var header = group.find('header');
+        if (pane.type == "widget") {
+            var header = group.find("header");
             if (header.length == 0) {
-                header = $('<header></header>');
+                header = $("<header></header>");
                 group.prepend(header);
             }
             
@@ -48,11 +48,11 @@ window.Panes = (function() {
             header.append($('<div class="nav" data-pane="' + id + '"><div class="progress"></div>' + pane.title + '</div>'));
             
             // add color to group
-            group.addClass('bg-color');
+            group.addClass("bg-color");
         }
         
         // create first timer for rotation if more than 2 panes
-        if (group.find('.pane').length > 1 && timers[pane.type] == null) {
+        if (group.find(".pane").length > 1 && timers[pane.type] == null) {
             timers[pane.type] = setTimeout(function() {
                 rotate(pane.type);
             }, pane.duration);
@@ -62,10 +62,10 @@ window.Panes = (function() {
         group.append(pane.el);
         
         // make sure panes are in correct order
-        sort(group.find('.pane'));
+        sort(group.find(".pane"));
 
         // check if first pane and mark as active if so
-        if (group.find('.pane.active').length == 0) {
+        if (group.find(".pane.active").length == 0) {
             show(id);
         }
     }
@@ -81,20 +81,41 @@ window.Panes = (function() {
     }
     
     /*
+     * Make a pane fullscreen
+     */
+    function fullscreen(id, duration) {
+        // default duration
+        if (duration == undefined)
+            duration = 30000;
+        
+        var pane = panes[id];
+        
+        // remove element
+        pane.el.addClass("fullscreen");
+        
+        // remove
+        if (duration != 0) {
+            setTimeout(function() {
+                pane.el.removeClass("fullscreen");
+            }, duration);
+        }
+    }
+    
+    /*
      * Change pane order
      */
     function order(id, order) {
         var pane = panes[id];
-        var group = $('.group.' + pane.type);
+        var group = $(".group." + pane.type);
         
         // set order on object
         pane.order = order;
         
         // change order attribute
-        pane.el.attr('data-order', parseInt(order));
+        pane.el.attr("data-order", parseInt(order));
         
         // make sure panes are in correct order
-        sort(group.find('.pane'));
+        sort(group.find(".pane"));
     }
     
     /*
@@ -112,17 +133,17 @@ window.Panes = (function() {
      */
     function rotate(group) {
         // get the group and current active pane
-        var group = $('.group.' + group);
-        var active = group.find('.pane.active');
+        var group = $(".group." + group);
+        var active = group.find(".pane.active");
         
         // get the next pane
         var next = active.next();
         if (next.length == 0) {
-            next = group.find('.pane').first();
+            next = group.find(".pane").first();
         }
         
         // show next pane
-        show(next.data('id'));
+        show(next.data("id"));
     }
     
     /*
@@ -133,34 +154,34 @@ window.Panes = (function() {
             return;
         
         var pane = panes[id];
-        var group = $('.group.' + pane.type);
+        var group = $(".group." + pane.type);
         
         // stop previous timeout if it is still running
         clearTimeout(timers[pane.type]);
         
         // switch tabs
-        if (pane.type == 'widget') {
-             var header = group.find('header');
+        if (pane.type == "widget") {
+             var header = group.find("header");
              
              // mark as tab active and put in front
-             header.find('.active').appendTo(header).removeClass("active bg-color");
+             header.find(".active").appendTo(header).removeClass("active bg-color");
              var active = header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
             
              // start animation
              jQuery.fx.interval = 250;
-             header.find('.progress').stop().width(0);
-             header.find('.active .progress').animate({width:"100%"}, parseInt(pane.duration), function() {
+             header.find(".progress").stop().width(0);
+             header.find(".active .progress").animate({width:"100%"}, parseInt(pane.duration), function() {
                  $(this).width(0);
              });
         }
         
         // mark pane as active and show
-        group.find('.pane.active').removeClass("active");
+        group.find(".pane.active").removeClass("active");
         pane.el.addClass("active");
         
         // trigger event for turtles in this pane
-        pane.el.find('.turtle').each(function() {
-            Turtles.trigger($(this).data('id'), 'shown');
+        pane.el.find(".turtle").each(function() {
+            Turtles.trigger($(this).data("id"), "shown");
         });
         
         // create timer for next rotation
@@ -187,7 +208,7 @@ window.Panes = (function() {
         panes[id].el.append(element);
         
         // sort turtles
-        sort(panes[id].el.find('.turtle'));
+        sort(panes[id].el.find(".turtle"));
     }
     
     /*
@@ -197,7 +218,7 @@ window.Panes = (function() {
         if (panes[id] == null)
             return;
         
-        return panes[id].el.hasClass('active');
+        return panes[id].el.hasClass("active");
     }
 
     /*
@@ -212,6 +233,7 @@ window.Panes = (function() {
         order : order,
         duration : duration,
         append : append,
+        fullscreen : fullscreen,
         isActive : isActive
     };
 

@@ -25,6 +25,15 @@
 
             // render will be triggered when the google maps api is loaded
             this.bind("render", this.render);
+            
+            // resize trigger
+            var self = this;
+            this.bind("shown", function() {
+                if (self.map != null) {
+                    google.maps.event.trigger(self.map, "resize");
+                    self.map.setCenter(self.center);
+                }
+            });
 
             // refresh traffic
             refreshInterval = window.setInterval(this.refresh, 120000);
