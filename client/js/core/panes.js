@@ -93,6 +93,11 @@ window.Panes = (function() {
         // add fullscreen class
         pane.el.addClass("fullscreen");
         
+        // trigger event for turtles in this pane
+        pane.el.find(".turtle").each(function() {
+            Turtles.trigger($(this).data("id"), "shown");
+        });
+        
         // remove
         if (duration != 0) {
             setTimeout(function() {
