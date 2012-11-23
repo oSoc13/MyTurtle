@@ -1,4 +1,4 @@
-/* 
+/*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
  * @license: AGPLv3
@@ -25,7 +25,7 @@
 
             // render will be triggered when the google maps api is loaded
             this.bind("render", this.render);
-            
+
             // resize trigger
             var self = this;
             this.bind("shown", function() {
@@ -97,11 +97,11 @@
                                 new google.maps.Size(40, 37),
                                 new google.maps.Point(0, 0),
                                 new google.maps.Point(12, 35));
-                            
+
                             var marker = new google.maps.Marker({
                                 map: self.map,
                                 position: results[0].geometry.location,
-                                icon: pinImage,
+                                // icon: pinImage,
                                 shadow: pinShadow
                             });
                         }
