@@ -24,7 +24,7 @@ window.Duration = (function() {
 	 */
 	function calculate(mode, from, to, callback){
 		$.ajax({
-			url: "http://data.irail.be/Geo/Distance/" + from + "/" + to + ".json?mode=" + mode,
+			url: "https://data.flatturtle.com/Geo/Distance/" + from + "/" + to + ".json?mode=" + mode,
 			headers: {
 				'Accept' : 'application/json'
 			},
