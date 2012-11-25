@@ -24,11 +24,12 @@
 	    this.bind("shown", this.shown);
 	},
 	render : function(){
-            //player.playfile(this.options.location);
+            player.playfile(this.options.location);
 	},
         shown : function(){
 //            if(typeof application !== 'undefined')
 //                player.replay();
+            player.playfile(this.options.location);
 	}
     });
     
