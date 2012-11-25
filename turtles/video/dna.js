@@ -20,7 +20,6 @@
                     $("#videocanvas").html("<video src='" + self.options.location + "' autoplay=autoplay width=100% height=100%></video>");
                 }else{
                     //application exists, which means we are on a FlatTurtle device. In order to save bandwidth, we will automatically download the video file onto a device an play it using the hardware accelerated phonon qt plugin
-                    $("#videocanvas").html("<object type=\"application/x-qt-plugin\" classid=\"MyPlayer\" name=\"player\" width=100% height=100%></object>");//todo: set right width and height
                     player.playfile(self.options.location);
                 }
                 self.render();
