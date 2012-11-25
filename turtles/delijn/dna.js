@@ -158,6 +158,7 @@
                 };
                 
                 // add html to container
+                this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));
             }
         }
