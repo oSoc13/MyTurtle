@@ -29,6 +29,7 @@ window.Duration = (function() {
 				'Accept' : 'application/json'
 			},
 			dataType: 'jsonp',
+			timeout: '10000',
 			success: function(data) {
 				if(data.Distance != null && data.Distance.duration){
 					// Cancel timezone effect
