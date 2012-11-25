@@ -26,8 +26,9 @@
 	render : function(){
 	},
         shown : function(){
-            if(typeof application !== 'undefined')
-                player.replay();
+            player.playfile(self.options.location);
+//            if(typeof application !== 'undefined')
+//                player.replay();
 	}
     });
     
