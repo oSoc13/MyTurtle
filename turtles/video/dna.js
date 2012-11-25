@@ -26,8 +26,8 @@
 	render : function(){
 	},
 	shown : function(){
-            if(typeof application !== 'undefined')
-                player.replay();
+//            if(typeof application !== 'undefined')
+//                player.replay();
 	}
     });
     
