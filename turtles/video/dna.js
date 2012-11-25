@@ -24,14 +24,10 @@
 	    this.bind("shown", this.shown);
 	},
 	render : function(){
-                if(typeof application !== 'undefined'){
-                    //application exists, which means we are on a FlatTurtle device. In order to save bandwidth, we will automatically download the video file onto a device an play it using the hardware accelerated phonon qt plugin
-                    player.playfile(self.options.location);
-                }
-
 	},
 	shown : function(){
-            player.replay();
+            if(typeof application !== 'undefined')
+                player.replay();
 	}
     });
     
