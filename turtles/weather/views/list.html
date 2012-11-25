@@ -1,0 +1,16 @@
+{{#entries}}
+<div class="weatherBox">
+    <div class="type">
+    	{{#raining}}
+			<i class="zwareregen"></i>
+		{{/raining}}
+		{{^raining}}
+			<i class="lichtbewolkt"></i>
+		{{/raining}}
+        
+    </div>
+    <div class="time">
+        <p>{{time}}</p>
+    </div>
+</div>
+{{/entries}}
