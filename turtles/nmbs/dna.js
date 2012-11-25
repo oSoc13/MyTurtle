@@ -1,4 +1,4 @@
-/* 
+/*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
  * @license: AGPLv3
@@ -35,7 +35,7 @@
         	// don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
-            
+
             var self = this;
             self.fetch({
                 error : function() {
@@ -51,7 +51,7 @@
         url : function() {
             var today = new Date();
             var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
-            
+
             // get station name
             $.getJSON("http://data.irail.be/NMBS/Liveboard/" + query + ".json", this.parseStation);
 
@@ -86,7 +86,7 @@
                 var self = this;
                 var fromGeocode = Screen.location.geocode;
                 var toGeocode = data.Liveboard.location.latitude + "," + data.Liveboard.location.longitude;
-                
+
                 Duration.walking(fromGeocode, toGeocode, function(time){
                     if (self.options.walking != time.format("{H}:{M}")) {
                         self.options.walking = time.format("{H}:{M}");
@@ -98,7 +98,7 @@
                         self.options.bicycling = time.format("{H}:{M}");
                         self.trigger("reset");
                     }
-                });                                
+                });
             }
         }
     });
