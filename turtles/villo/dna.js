@@ -6,8 +6,8 @@
             _.bindAll(this, "refresh");
 
             // bind refresh
-            this.bind("born", this.refresh);
-            this.bind("refresh", this.refresh);
+            this.on("born", this.refresh);
+            this.on("refresh", this.refresh);
 
             // default error value
             options.error = false;
@@ -80,7 +80,7 @@
             _.bindAll(this, "render");
             
             // bind render to collection reset
-            this.collection.bind("reset", this.render);
+            this.collection.on("reset", this.render);
 
             // pre-fetch template file and render when ready
             var self = this;

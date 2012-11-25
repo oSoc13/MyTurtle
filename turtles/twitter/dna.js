@@ -12,8 +12,8 @@
             _.bindAll(this, "refresh");
             
             // fetch data when born
-            this.bind("born", this.fetch);
-            this.bind("refresh", this.refresh);
+            this.on("born", this.fetch);
+            this.on("refresh", this.refresh);
             
             // default error value
             options.error = false;
@@ -74,7 +74,7 @@
             _.bindAll(this, "render");
 
             // bind render to collection reset
-            this.collection.bind("reset", this.render);
+            this.collection.on("reset", this.render);
             
             // pre-fetch template file and render when ready
             var self = this;

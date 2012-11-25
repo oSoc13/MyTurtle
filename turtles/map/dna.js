@@ -24,11 +24,11 @@
             $.getScript("//maps.googleapis.com/maps/api/js?sensor=false&callback=mapsLoaded");
 
             // render will be triggered when the google maps api is loaded
-            this.bind("render", this.render);
+            this.on("render", this.render);
 
             // resize trigger
             var self = this;
-            this.bind("shown", function() {
+            this.on("shown", function() {
                 if (self.map != null) {
                     google.maps.event.trigger(self.map, "resize");
                     self.map.setCenter(self.center);

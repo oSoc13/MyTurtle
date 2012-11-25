@@ -23,7 +23,7 @@
 
 		<footer>
 			<img src="client/css/images/ft_logo.jpg" alt="FlatTurtle" id="flatturtle-logo" />
-			<!-- <p id="where" class="text-color">Check in at <span class="bold">location</span> or tag <span class="bold">#location</span></p> -->
+			<p id="where" class="text-color"></p>
 			<img src="client/css/images/logo_placeholder.png" alt="Logo" id="client-logo" />
 		</footer>
 

@@ -180,7 +180,7 @@ window.Panes = (function() {
              
              // mark as tab active and put in front
              header.find(".active").appendTo(header).removeClass("active bg-color");
-             var active = header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
+             header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
             
              // start animation
              jQuery.fx.interval = 250;
