@@ -18,19 +18,20 @@
                 if(typeof application === 'undefined'){
                     //for normal browsers, let's use HTML5
                     $("#videocanvas").html("<video src='" + self.options.location + "' autoplay=autoplay width=100% height=100%></video>");
-                }else{
-                    //application exists, which means we are on a FlatTurtle device. In order to save bandwidth, we will automatically download the video file onto a device an play it using the hardware accelerated phonon qt plugin
-                    player.playfile(self.options.location);
                 }
                 self.render();
 	    });
 	    this.bind("shown", this.shown);
 	},
 	render : function(){
-            player.replay();
+                if(typeof application !== 'undefined'){
+                    //application exists, which means we are on a FlatTurtle device. In order to save bandwidth, we will automatically download the video file onto a device an play it using the hardware accelerated phonon qt plugin
+                    player.playfile(self.options.location);
+                }
+
 	},
 	shown : function(){
-		//add play function here
+            player.replay();
 	}
     });
     
