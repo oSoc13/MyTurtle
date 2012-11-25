@@ -25,9 +25,9 @@
 	},
 	render : function(){
 	},
-	shown : function(){
-//            if(typeof application !== 'undefined')
-//                player.replay();
+        shown : function(){
+            if(typeof application !== 'undefined')
+                player.replay();
 	}
     });
     
