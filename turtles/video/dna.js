@@ -24,9 +24,9 @@
 	    this.bind("shown", this.shown);
 	},
 	render : function(){
+            //player.playfile(this.options.location);
 	},
         shown : function(){
-            player.playfile(self.options.location);
 //            if(typeof application !== 'undefined')
 //                player.replay();
 	}
