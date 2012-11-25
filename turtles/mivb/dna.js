@@ -5,7 +5,7 @@
  */
 
 (function($) {
-    
+
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
             // prevents loss of 'this' inside methods
@@ -15,7 +15,7 @@
             // bind refresh
             this.on("born", this.refresh);
             this.on("refresh", this.refresh);
-            
+
             // default error value
             options.error = false;
             
@@ -26,8 +26,8 @@
             // default limit
             if (!options.limit)
                 options.limit = 5;
-            
-            // automatic collection refresh each minute, this will 
+
+            // automatic collection refresh each minute, this will
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
@@ -41,9 +41,10 @@
                 error : function() {
                     // will allow the view to detect errors
                     self.options.error = true;
-                    
-                    // if there are no previous items to show, display error message
-                    if(self.length == 0)
+
+                    // if there are no previous items to show, display error
+                    // message
+                    if (self.length == 0)
                         self.trigger("reset");
                 }
             });
@@ -52,18 +53,17 @@
             var today = new Date();
             var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
 
-            if(isNaN(this.options.location)) {
+            if (isNaN(this.options.location)) {
                 this.options.station = this.options.location.capitalize();
-                $.getJSON("http://data.irail.be/DeLijn/Stations.json?name=" + encodeURIComponent(this.options.station), this.parseStationName);
+                $.getJSON("http://data.irail.be/MIVBSTIB/Stations.json?name=" + encodeURIComponent(this.options.location), this.parseStationName);
             } else {
-                $.getJSON("http://data.irail.be/DeLijn/Stations.json?id=" + encodeURIComponent(this.options.location), this.parseStationName);
+                $.getJSON("http://data.irail.be/MIVBSTIB/Stations.json?id=" + encodeURIComponent(this.options.location), this.parseStationName);
             }
-            
-            // remote source url - todo: add departures or arrivals
-            return "http://data.irail.be/DeLijn/Departures/" + query + ".json?offset=0&rowcount=" + parseInt(this.options.limit);
+
+            // remote source url
+            return "http://data.irail.be/MIVBSTIB/Departures/" + query + ".json?offset=0&rowcount=" + parseInt(this.options.limit);;
         },
         parse : function(json) {
-            // this.options.station = json.Departures.location.name;
             // parse ajax results
             var liveboard = json.Departures;
 
@@ -79,23 +79,15 @@
 
                 if (!liveboard[i].long_name)
                     liveboard[i].long_name = "-";
-                else 
+                else
                     liveboard[i].long_name = this.parseTripName(liveboard[i].long_name)
-                    
-                switch (parseInt(liveboard[i].type)) {
-                    case 0:
-                        liveboard[i].type = "tram";
-                        break;
-                    default:
-                        liveboard[i].type = "bus";
-                        break;
-                }
             }
 
             return liveboard;
         },
-        parseStationName : function (data) {
-            this.options.station = data.Stations[0].name.capitalize();
+        parseStationName : function(data) {
+            if (data.Stations[0] != undefined)
+                this.options.station = data.Stations[0].name.capitalize();
             
             // get walk and bike times from station location
             if (Screen.location) {
@@ -116,14 +108,14 @@
                     }
                 });                                
             }
-        }, 
-        parseTripName: function (strTripName) {
+        },
+        parseTripName : function(strTripName) {
             strTripName = strTripName.capitalize();
-            
-            if(strTripName.split("-").length == 2) {
+
+            if (strTripName.split("-").length == 2) {
                 strTripName = strTripName.split("-")[1];
             }
-            
+
             return strTripName;
         }
     });
@@ -139,7 +131,7 @@
             // pre-fetch template file and render when ready
             var self = this;
             if (this.template == null) {
-                $.get("turtles/delijn/views/list.html", function(template) {
+                $.get("turtles/mivb/views/list.html", function(template) {
                     self.template = template;
                     self.render();
                 });
@@ -153,10 +145,9 @@
                     bicycling : this.options.bicycling,
                     station : this.options.station,
                     entries : this.collection.toJSON(),
-                    color : this.options.color,
                     error : this.options.error // have there been any errors?
                 };
-                
+
                 // add html to container
                 this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));
@@ -165,7 +156,7 @@
     });
 
     // register turtle
-    Turtles.register("delijn", {
+    Turtles.register("mivb", {
         collection : collection,
         view : view
     });

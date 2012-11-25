@@ -1,3 +1,9 @@
+/* 
+ * FlatTurtle
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
+ */
+
 (function($) {
 
     var collection = Backbone.Collection.extend({
@@ -7,8 +13,8 @@
             _.bindAll(this, "parseStation");
 
             // bind refresh
-            this.bind("born", this.refresh);
-            this.bind("refresh", this.refresh);
+            this.on("born", this.refresh);
+            this.on("refresh", this.refresh);
 
             // default error value
             options.error = false;
@@ -26,6 +32,10 @@
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         refresh : function() {
+        	// don't fetch if there is no location
+            if (this.options.location == null || !this.options.location)
+                return;
+            
             var self = this;
             self.fetch({
                 error : function() {
@@ -40,7 +50,7 @@
         },
         url : function() {
             var today = new Date();
-            var query = this.options.location + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
+            var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
             
             // get station name
             $.getJSON("http://data.irail.be/NMBS/Liveboard/" + query + ".json", this.parseStation);
@@ -72,9 +82,9 @@
         },
         parseStation : function(data) {
             // get walk and bike times from station location
-            if(this.options.screen_location){
+            if (Screen.location) {
                 var self = this;
-                var fromGeocode = self.options.screen_location;
+                var fromGeocode = Screen.location.geocode;
                 var toGeocode = data.Liveboard.location.latitude + "," + data.Liveboard.location.longitude;
                 
                 Duration.walking(fromGeocode, toGeocode, function(time){
@@ -99,7 +109,7 @@
             _.bindAll(this, "render");
 
             // bind render to collection reset
-            this.collection.bind("reset", this.render);
+            this.collection.on("reset", this.render);
 
             // pre-fetch template file and render when ready
             var self = this;
@@ -123,6 +133,7 @@
                 };
 
                 // add html to container
+                this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));
             }
         }

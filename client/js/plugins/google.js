@@ -1,3 +1,11 @@
+/* 
+ * FlatTurtle
+ * Google Analytics plugin
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
+ */
+
 var _gaq = _gaq || [];
   
 var Google = {
@@ -17,4 +25,4 @@ var Google = {
 		// there is not point disabling this plugin
 	}
 		
-}
+};

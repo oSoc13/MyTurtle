@@ -1,38 +1,24 @@
-/* 
- * FlatTurtle
- * @author: Jens Segers (jens@irail.be)
- * @license: AGPLv3
- */
-
 (function($) {
     
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
             // prevents loss of 'this' inside methods
             _.bindAll(this, "refresh");
-            
-            // fetch data when born
-            this.on("born", this.fetch);
+
+            // bind refresh
+            this.on("born", this.refresh);
             this.on("refresh", this.refresh);
-            
+
             // default error value
             options.error = false;
-            
-            // default hashtag
-            if (!options.search)
-                options.search = "flatturtle";
-            
-            // default limit
-            if (!options.limit)
-                options.limit = 3;
-            
+
             // automatic collection refresh each minute, this will 
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         refresh : function() {
-            // don't fetch if there is no search
-            if (this.options.search == null || !this.options.search)
+            // don't fetch if there is no location
+            if (this.options.location == null || !this.options.location)
                 return;
             
             var self = this;
@@ -40,7 +26,7 @@
                 error : function() {
                     // will allow the view to detect errors
                     self.options.error = true;
-                    
+
                     // if there are no previous items to show, display error message
                     if(self.length == 0)
                         self.trigger("reset");
@@ -48,23 +34,46 @@
             });
         },
         url : function() {
-            // remote source url
-            return "http://data.irail.be/spectql/twitter/search/" + encodeURIComponent(this.options.search) + "/results.limit(" + this.options.limit + "):json";
+            var latitude = this.options.location.split(',')[0];
+            var longitude = this.options.location.split(',')[1];
+            
+            return "https://data.flatturtle.com/Weather/Rainfall/" + encodeURIComponent(latitude) + "/" + encodeURIComponent(longitude) + ".json";
         },
         parse : function(json) {
-            var tweets = json.spectql;
-
-            // process tweets
-            for (var i in tweets) {
-                // #tags
-                tweets[i].text = tweets[i].text.replace(/(#[\w-_]+)/g, '<span class="text-color">$1</span>');
-                // @replies
-                tweets[i].text = tweets[i].text.replace(/(@[\w-_]+)/g, '<span class="text-color">$1</span>');
-                // links                                  [   https://www.   |www.| domain.| ... ]
-                tweets[i].text = tweets[i].text.replace(/((https?:\/\/(\w\.)*|\w\.)[^\s]+\.[^\s]+)/g, '<span class="text-color">$1</span>');
+            var data = json.Rainfall;
+            
+            // new array
+            var results = new Array();
+            var raining;
+            
+            for (var i in data) {
+            	// first item
+            	if (results.length == 0) {
+            		raining = parseInt(data[i].milimeter) != 0;
+            		data[i].time = "nu";
+            		data[i].raining = raining;
+            		
+            		results.push(data[i]);
+            		continue;
+            	}
+            	
+            	if (raining && parseInt(data[i].milimeter) == 0) {
+            		raining = false;
+            		data[i].time = new Date(data[i].time * 1000).format("{H}:{M}");
+            		data[i].raining = raining;
+            		
+            		results.push(data[i]);
+            	}
+            	else if (!raining && parseInt(data[i].milimeter) != 0) {
+            		raining = true;
+            		data[i].time = new Date(data[i].time * 1000).format("{H}:{M}");
+            		data[i].raining = raining;
+            		
+            		results.push(data[i]);
+            	}
             }
             
-            return tweets;
+            return results.slice(0,2);
         }
     });
 
@@ -72,14 +81,14 @@
         initialize : function() {
             // prevents loss of 'this' inside methods
             _.bindAll(this, "render");
-
+            
             // bind render to collection reset
             this.collection.on("reset", this.render);
-            
+
             // pre-fetch template file and render when ready
             var self = this;
-            if(this.template == null) {
-                $.get("turtles/twitter/views/widget.html", function(template) {
+            if (this.template == null) {
+                $.get("turtles/weather/views/list.html", function(template) {
                     self.template = template;
                     self.render();
                 });
@@ -87,11 +96,11 @@
         },
         render : function() {
             // only render when template file is loaded
-            if(this.template) {
+            if (this.template && this.collection.length) {
+            
                 var data = {
-                    search : this.options.search,
-                    error : this.options.error,
-                    entries : this.collection.toJSON()
+                    entries : this.collection.toJSON(),
+                    error : this.options.error // have there been any errors?
                 };
                 
                 // add html to container
@@ -102,7 +111,7 @@
     });
 
     // register turtle
-    Turtles.register("twitter", {
+    Turtles.register("weather", {
         collection : collection,
         view : view
     });

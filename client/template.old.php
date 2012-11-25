@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -9,8 +10,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="client/js/libs/modernizr.js"></script>
+        <link rel="stylesheet" href="css/main.old.css">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -438,22 +438,6 @@
             <p id="where" class="text-color">Check in at <span class="bold">location</span> or tag <span class="bold">#location</span></p>
         	<img src="client/css/images/logo_placeholder.png" alt="Logo" id="loc_logo" />
         </footer>
-
-        <script src="js/libs/jquery.js"></script>
-        <script src="js/libs/underscore.js"></script>
-        <script src="js/libs/backbone.js"></script>
-        
-        <script src="js/screen.js"></script>
-        <script src="js/turtles.js"></script>
-        <script src="js/panes.js"></script>
-        
-        <script src="js/main.js"></script>
-        
-        <!-- Config from initializer -->
-        <script>
-        	var config = <?php echo json_encode($config); ?>;
-        	Screen.initialize(config);
-        </script>
         
     </body>
 </html>

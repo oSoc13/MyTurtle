@@ -6,8 +6,8 @@
             _.bindAll(this, "refresh");
 
             // bind refresh
-            this.bind("born", this.refresh);
-            this.bind("refresh", this.refresh);
+            this.on("born", this.refresh);
+            this.on("refresh", this.refresh);
 
             // default error value
             options.error = false;
@@ -20,6 +20,10 @@
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         refresh : function() {
+            // don't fetch if there is no location
+            if (this.options.location == null || !this.options.location)
+                return;
+            
             var self = this;
             self.fetch({
                 error : function() {
@@ -55,7 +59,7 @@
             // get walk time from station location
             if (this.options.screen_location){
                 var self = this;
-                var fromGeocode = self.options.screen_location;
+                var fromGeocode = Screen.location.geocode;
                 var toGeocode = villo[0].latitude + "," + villo[0].longitude;
 
                 Duration.walking(fromGeocode, toGeocode, function(time){
@@ -76,7 +80,7 @@
             _.bindAll(this, "render");
             
             // bind render to collection reset
-            this.collection.bind("reset", this.render);
+            this.collection.on("reset", this.render);
 
             // pre-fetch template file and render when ready
             var self = this;
@@ -97,6 +101,7 @@
                 data.error = this.options.error; // have there been any errors?
                 
                 // add html to container
+                this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));
             }
         }

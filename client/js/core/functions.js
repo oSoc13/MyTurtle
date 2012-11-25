@@ -1,3 +1,11 @@
+/* 
+ * FlatTurtle
+ * Helper functions
+ * 
+ * @author: Jens Segers (jens@irail.be)
+ * @license: AGPLv3
+ */
+
 /*
  * Sort elements in a parent container by data-order attribute
  */
@@ -20,13 +28,31 @@ function sort(items, attribute) {
 }
 
 /*
- * A friendly time format function
+ * Debugging object
+ */
+var Debug = {
+    log : function(message) {
+        // check for console availability
+        if (window.console && console.log)
+            console.log(message)
+    }
+}
+
+/*
+ * A friendly time format function (unix style)
+ * 
+ * {Y} - 4 digit year
+ * {m} - month with leading zero
+ * {d} - day with leading zero
+ * {H} - hours with leading zero
+ * {M} - minutes with leading zero
+ * {S} - seconds with leading zero
  */
 Date.prototype.format = function(format) {
 
     var date = this;
     
-    // 2 digit year
+    // 4 digit year
     format = format.replace('{Y}', function() {
         return date.getFullYear();
     });
@@ -64,6 +90,9 @@ Date.prototype.format = function(format) {
     return format;    
 }
 
+/*
+ * Capitalize every word of a string
+ */
 String.prototype.capitalize = function() {
     return this.replace(/(\w)(\w*)/g, function(g0,g1,g2){
         return g1.toUpperCase() + g2.toLowerCase();
