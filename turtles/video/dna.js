@@ -17,7 +17,7 @@
                 //make a difference between the Qt Browser used by FlatTurtle customers and normal browser users
                 if(typeof application === 'undefined'){
                     //for normal browsers, let's use HTML5
-                    $("#videocanvas").html("<video src='https://my.flatturtle.com/uploads/hub/" + self.options.location + "' autoplay=autoplay width=100% height=100%></video>"); //TODO: replace hub with alias name
+                    $("#videocanvas").html("<video id='videotag' src='https://my.flatturtle.com/uploads/hub/" + self.options.location + "' width=100% height=100%></video>"); //TODO: replace hub with alias name
                 }
                 self.render();
 	    });
@@ -31,6 +31,8 @@
         shown : function(){
             if(typeof application !== 'undefined'){
                 player.replay();
+            }else{
+                $("#videotag").get(0).play();
             }
 	}
     });
