@@ -6,6 +6,13 @@
  * @license: AGPLv3
  */
 
+ /*
+  * Set e default timeout of 15 seconds for all ajax requests
+  */
+$.ajaxSetup({
+	timeout: 15000
+});
+
 /*
  * Sort elements in a parent container by data-order attribute
  */
