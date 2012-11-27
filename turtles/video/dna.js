@@ -25,13 +25,13 @@
 	},
 	render : function(){
             if(typeof application !== 'undefined'){
-                player.playfile(this.options.location);
-                player.pause();
+                player.playfile.get(0).(this.options.location);
+                player.get(0).pause();
             }
 	},
         shown : function(){
             if(typeof application !== 'undefined'){
-                $("#playerobject").replay();
+                $("#playerobject").get(0).replay();
             }else{
                 $("#videotag").get(0).play();
             }
