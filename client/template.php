@@ -45,6 +45,7 @@
 		<script src="client/js/core/jobs.js?<?php echo $rand; ?>"></script>
 
 		<script src="client/js/plugins/clock.js?<?php echo $rand; ?>"></script>
+		<script src="client/js/plugins/google.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/plugins/power.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/plugins/message.js?<?php echo $rand; ?>"></script>
 
