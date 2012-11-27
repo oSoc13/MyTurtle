@@ -25,8 +25,8 @@
 	},
 	render : function(){
             if(typeof application !== 'undefined'){
-                player.get(0).playfile(this.options.location);
-                player.get(0).pause();
+                $("#playerobject").get(0).playfile(this.options.location);
+                $("#playerobject").get(0).pause();
             }
 	},
         shown : function(){
