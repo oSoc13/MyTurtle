@@ -25,7 +25,7 @@
 	},
 	render : function(){
             if(typeof application !== 'undefined'){
-                player.playfile.get(0).(this.options.location);
+                player.get(0).playfile(this.options.location);
                 player.get(0).pause();
             }
 	},
