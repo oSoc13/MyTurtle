@@ -24,10 +24,6 @@
 	    this.bind("shown", this.shown);
 	},
 	render : function(){
-            if(typeof application !== 'undefined'){
-                $("#playerobject").get(0).playfile(this.options.location);
-                $("#playerobject").get(0).pause();
-            }
 	},
         shown : function(){
             if(typeof application !== 'undefined'){
