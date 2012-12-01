@@ -6,9 +6,9 @@
  * @license: AGPLv3
  */
 
- /*
-  * Set a default timeout of 15 seconds for all ajax requests
-  */
+/*
+ * Set a default timeout of 15 seconds for all ajax requests
+ */
 $.ajaxSetup({
 	timeout: 15000
 });

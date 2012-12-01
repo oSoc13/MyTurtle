@@ -12,7 +12,7 @@
 
 		<link rel="stylesheet" href="client/css/normalize.css?<?php echo $rand; ?>">
 		<link rel="stylesheet" href="client/css/main.css?<?php echo $rand; ?>">
-   		<link type="text/css" rel="stylesheet" href="https://fast.fonts.com/cssapi/66253153-9c89-413c-814d-60d3ba0d6ac2.css"/>
+   		<link type="text/css" rel="stylesheet" href="//fast.fonts.com/cssapi/66253153-9c89-413c-814d-60d3ba0d6ac2.css"/>
 	</head>
 	<body>
 		<!--[if lt IE 7]>
@@ -25,7 +25,7 @@
 
 		<footer>
 			<img src="client/css/images/ft_logo.jpg" alt="FlatTurtle" id="flatturtle-logo" />
-			<!-- <p id="where" class="text-color">Check in at <span class="bold">location</span> or tag <span class="bold">#location</span></p> -->
+			    <p id="where" class="text-color">Check in at <span class="bold">location</span> or tag <span class="bold">#location</span></p>
 			<img src="client/css/images/logo_placeholder.png" alt="Logo" id="client-logo" />
 		</footer>
 
@@ -48,6 +48,7 @@
 		<script src="client/js/plugins/google.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/plugins/power.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/plugins/message.js?<?php echo $rand; ?>"></script>
+		<script src="client/js/plugins/footer.js?<?php echo $rand; ?>"></script>
 
 		<script>
 			Screen.load('<?php echo $alias; ?>.json?<?php echo $rand; ?>');

@@ -1036,9 +1036,10 @@ footer #client-logo {
 }
 
 footer #where {
+	text-align: center;
 	position: absolute;
-	left: 50%;
-	width: 30%;
+	left: 20%;
+	right: 20%;
 	top: 0;
 	height: 80px;
 	line-height: 4.4em;
@@ -1092,6 +1093,17 @@ footer #where {
 
 #clock #blink {
 	text-decoration: blink;
+}
+
+marquee {
+	white-space: nowrap;
+	overflow: hidden;
+	overflow-x: -webkit-marquee;
+	overflow-style: marquee;
+}
+
+marquee span {
+	padding-right: 50%;
 }
 
 /* ==========================================================================
