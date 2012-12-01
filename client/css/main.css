@@ -1035,16 +1035,6 @@ footer #client-logo {
 	height: 60px;
 }
 
-footer #message {
-	text-align: center;
-	position: absolute;
-	left: 20%;
-	right: 20%;
-	top: 0;
-	height: 80px;
-	line-height: 4.4em;
-}
-
 /* ==========================================================================
    Plugins
    ========================================================================== */
@@ -1095,15 +1085,26 @@ footer #message {
 	text-decoration: blink;
 }
 
-marquee {
+footer #message {
+	text-align: center;
+	position: absolute;
+	left: 20%;
+	right: 20%;
+	top: 0;
+	height: 80px;
+	font-size: 1.2em;
+	line-height: 80px;
+}
+
+footer marquee {
 	white-space: nowrap;
 	overflow: hidden;
 	overflow-x: -webkit-marquee;
 	overflow-style: marquee;
 }
 
-marquee span {
-	padding-right: 50%;
+footer marquee span {
+	padding-right: 30%;
 }
 
 /* ==========================================================================

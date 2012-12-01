@@ -26,7 +26,7 @@ var Google = {
 		// There is not point disabling this plugin
 	},
 	
-	destroy = function() {}
+	destroy : function() {}
 
 };
 
