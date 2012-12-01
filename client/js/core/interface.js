@@ -22,9 +22,6 @@ window.Interface = (function() {
         
         if (config.logo)
             logo(config.logo);
-        
-        if (config.footer)
-            footer(config.footer);
     }
     
     /*
@@ -65,13 +62,6 @@ window.Interface = (function() {
     function logo(url) {
         $('footer img#client-logo').attr('src', url);
     }
-    
-    /*
-     * Set the footer message
-     */
-    function footer(value) {
-        $('footer #where').html(value);
-    }
 
     /*
      * Public interface to this object
@@ -80,8 +70,7 @@ window.Interface = (function() {
         config : config,
         setup : setup,
         color : color,
-        logo : logo,
-        footer : footer
+        logo : logo
     };
 
 }());

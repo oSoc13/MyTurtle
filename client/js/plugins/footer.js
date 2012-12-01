@@ -8,38 +8,41 @@
 
 var Footer = {
 
-    original : $("footer #where"),
-	element  :null,
+	element : null,
 
-	enable : function(feed) {
-	    $.getJSON("//www.google.com/reader/public/javascript/feed/" + feed + "?callback=?", function(data) {
-	        var items = data.items.slice(0,5);
-	        
-	        // hide original message
-	        Footer.original.hide();
-	        
+	enable : function(source) {
+	    // destroy previous message
+	    Footer.destroy();
+	    
+	    if (source.indexOf('http://') == 0 || source.indexOf('//') == 0) {
+    	    $.getJSON("//www.google.com/reader/public/javascript/feed/" + source + "?callback=?", function(data) {
+    	        var items = data.items.slice(0,5);
+    	        
+    	        // create marquee element
+    	        Footer.element = $('<marquee id="message" class="text-color"></marquee>');
+    	        
+    	        // create content
+    	        for(var i in items) {
+    	            Footer.element.append('<span>' + items[i]['title'] + '</span>');
+    	        }
+    	        
+    	        $("footer").append(Footer.element);
+    	    });
+	    } else {
 	        // create marquee element
-	        Footer.element = $('<marquee id="' + Footer.original.attr('id') + '" class="' + Footer.original.attr('class') + '"></marquee>');
-	        
-	        // create content
-	        for(var i in items) {
-	            Footer.element.append('<span>' + items[i]['title'] + '</span>');
-	        }
-	        
-	        $("footer").append(Footer.element);
-	    });
+            Footer.element = $('<div id="message" class="text-color">' + source + '</div>');
+            $("footer").append(Footer.element);
+	    }
 	},
 
 	disable : function() {
 	    // enable marquee style
-	    Footer.element.remove();
-	    
-	    // restore original message
-	    Footer.original.show();
-	    
+	    if (Footer.element)
+	        Footer.element.remove();	    
 	},
-
+	
 	destroy : function() {
+	    Footer.disable();
 	}
 
 };

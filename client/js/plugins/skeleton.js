@@ -16,6 +16,11 @@ var Skeleton = {
 	/*
      * Disable this plugin
      */
-	disable : function() {}
+	disable : function() {},
+	
+	/*
+	 * Remove all ui elements and disable plugin
+	 */
+	destroy : function() {}
 
 };

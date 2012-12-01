@@ -28,6 +28,8 @@ var Power = {
 		
 		if (typeof application == "object")
 			application.enableScreen(false);
-	}
+	},
+	
+	destroy : function() {}
 
 };
