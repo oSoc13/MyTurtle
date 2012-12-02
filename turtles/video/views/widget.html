@@ -1,0 +1,19 @@
+<div id="videocanvas" style="width: 100%; height: 100%;">
+  <br/><br/>
+  <object id="playerobject" type="application/x-qt-plugin" classid="MyPlayer" name="player" width="100%" height="80%">
+</object>
+<script>
+if(typeof application !== "undefined"){
+     //make sure music is turned off
+     application.soundControl("stop");
+     //play the movie
+     $("#playerobject").playfile("/home/flatturtle/{{{location}}}");
+}
+</script>
+</div>
+
+<style>
+#videocanvas{
+	background: black;
+}
+</style>
