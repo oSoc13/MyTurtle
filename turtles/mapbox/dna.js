@@ -17,17 +17,21 @@
 			if (!this.options.zoom)
 				this.options.zoom = 13;
 
-            // for some reason mapbox breaks mustache, so save a backup
-            var Mustache = window.Mustache;
-            
-			// get the google maps api
-			$.getScript("http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js", function() {
-			    // reset backup
-			    window.Mustache = Mustache;
-			    
-			    // render map
-	            self.render();
-			});
+            // get the mapbox api if needed
+            if (typeof(mapbox) == 'undefined') {
+                // for some reason mapbox breaks mustache, so take a backup
+                var Mustache = window.Mustache;
+                
+    			$.getScript("http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js", function() {
+    			    // restore backup
+    			    window.Mustache = Mustache;
+    			    
+    			    // render map
+    	            self.render();
+    			});
+            } else {
+                self.render();
+            }
 		},
 		render : function() {
 			var self = this;
