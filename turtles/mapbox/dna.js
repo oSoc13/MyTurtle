@@ -42,7 +42,7 @@
 				
 				// render html
 				self.$el.empty();
-				self.$el.html(Mustache.render(template, data));
+				self.$el.html(Mustache.render(template));
 
 				// change turtle padding
 				self.$el.addClass("nopadding");
@@ -56,7 +56,7 @@
 				
 				var latitude = self.options.location.split(',')[0];
                 var longitude = self.options.location.split(',')[1];
-				
+                
 				// center and zoom
 				self.map.center({ lat: latitude, lon: longitude });
 				self.map.zoom(parseInt(self.options.zoom));
