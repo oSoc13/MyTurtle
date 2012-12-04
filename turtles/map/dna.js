@@ -4,7 +4,7 @@
  * @license: AGPLv3
  */
 
- (function($){
+(function($){
 
  	var view = Backbone.View.extend({
 		// hold google maps objects
@@ -112,8 +112,8 @@
 				self.traffic = new google.maps.TrafficLayer();
 				self.traffic.setMap(self.map);
 			});
-}
-});
+		}
+ 	});
 
 	// register turtle
 	Turtles.register("map", {

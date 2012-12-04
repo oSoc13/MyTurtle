@@ -9,12 +9,13 @@
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
             // prevents loss of 'this' inside methods
-            _.bindAll(this, "refresh");
-            _.bindAll(this, "parseStationName");
+            _.bindAll(this, "refresh", "configure");
 
-            // bind refresh
+            // bind events
+            this.on("born", this.configure);
             this.on("born", this.refresh);
             this.on("refresh", this.refresh);
+            this.on("reconfigure", this.configure);
             
             // default error value
             options.error = false;
@@ -30,6 +31,41 @@
             // automatic collection refresh each minute, this will 
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
+        },
+        configure : function() {
+            // don't fetch if there is no location
+            if (this.options.location == null || !this.options.location)
+                return;
+            
+            if(isNaN(this.options.location))
+                this.options.station = this.options.location.capitalize();
+            
+            var self = this;
+            $.getJSON("http://data.irail.be/DeLijn/Stations.json?name=" + encodeURIComponent(this.options.station), function(data) {
+                if (data.Stations[0] != undefined) {
+                    self.options.station = data.Stations[0].name.capitalize();
+                    self.trigger("reset");
+                }
+                
+                // get walk and bike times from station location
+                if (Screen.location) {
+                    var fromGeocode = Screen.location.geocode;
+                    var toGeocode = data.Stations[0].latitude + "," + data.Stations[0].longitude;
+                    
+                    Duration.walking(fromGeocode, toGeocode, function(time){
+                        if (self.options.walking != time.format("{H}:{M}")) {
+                            self.options.walking = time.format("{H}:{M}");
+                            self.trigger("reset");
+                        }
+                    });
+                    Duration.cycling(fromGeocode, toGeocode, function(time){
+                        if (self.options.bicycling != time.format("{H}:{M}")) {
+                            self.options.bicycling = time.format("{H}:{M}");
+                            self.trigger("reset");
+                        }
+                    });                                
+                }
+            });
         },
         refresh : function() {
             // don't fetch if there is no location
@@ -50,14 +86,7 @@
         },
         url : function() {
             var today = new Date();
-            var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
-
-            if(isNaN(this.options.location)) {
-                this.options.station = this.options.location.capitalize();
-                $.getJSON("http://data.irail.be/DeLijn/Stations.json?name=" + encodeURIComponent(this.options.station), this.parseStationName);
-            } else {
-                $.getJSON("http://data.irail.be/DeLijn/Stations.json?id=" + encodeURIComponent(this.options.location), this.parseStationName);
-            }
+            var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");            
             
             // remote source url - todo: add departures or arrivals
             return "http://data.irail.be/DeLijn/Departures/" + query + ".json?offset=0&rowcount=" + parseInt(this.options.limit);
@@ -68,7 +97,6 @@
             var liveboard = json.Departures;
 
             for (var i in liveboard) {
-                
                 var time = new Date(liveboard[i].time * 1000);
                 liveboard[i].time = time.format("{H}:{M}");
                 
@@ -77,10 +105,14 @@
                     liveboard[i].delay = delay.format("{H}:{M}");
                 }
 
-                if (!liveboard[i].long_name)
+                if (!liveboard[i].long_name) {
                     liveboard[i].long_name = "-";
-                else 
-                    liveboard[i].long_name = this.parseTripName(liveboard[i].long_name)
+                } else {
+                    liveboard[i].long_name = liveboard[i].long_name.capitalize();
+                    
+                    if (liveboard[i].long_name.split("-").length == 2)
+                        liveboard[i].long_name = liveboard[i].long_name.split("-")[1];
+                }
                     
                 switch (parseInt(liveboard[i].type)) {
                     case 0:
@@ -93,29 +125,6 @@
             }
 
             return liveboard;
-        },
-        parseStationName : function (data) {
-            this.options.station = data.Stations[0].name.capitalize();
-            
-            // get walk and bike times from station location
-            if (Screen.location) {
-                var self = this;
-                var fromGeocode = Screen.location.geocode;
-                var toGeocode = data.Stations[0].latitude + "," + data.Stations[0].longitude;
-                
-                Duration.walking(fromGeocode, toGeocode, function(time){
-                    if (self.options.walking != time.format("{H}:{M}")) {
-                        self.options.walking = time.format("{H}:{M}");
-                        self.trigger("reset");
-                    }
-                });
-                Duration.cycling(fromGeocode, toGeocode, function(time){
-                    if (self.options.bicycling != time.format("{H}:{M}")) {
-                        self.options.bicycling = time.format("{H}:{M}");
-                        self.trigger("reset");
-                    }
-                });                                
-            }
         }, 
         parseTripName: function (strTripName) {
             strTripName = strTripName.capitalize();
@@ -149,9 +158,9 @@
             // only render when template file is loaded
             if (this.template) {
                 var data = {
+                    station : this.options.station || this.options.location,
                     walking : this.options.walking,
                     bicycling : this.options.bicycling,
-                    station : this.options.station,
                     entries : this.collection.toJSON(),
                     color : this.options.color,
                     error : this.options.error // have there been any errors?

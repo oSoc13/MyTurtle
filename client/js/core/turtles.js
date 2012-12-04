@@ -205,8 +205,8 @@ window.Turtles = (function() {
         if (turtle.view.options != null)
             turtle.view.options = _.extend(turtle.view.options, options);
         
-        // trigger refresh event
-        trigger(id, "refresh");
+        // trigger reconfigure event
+        trigger(id, "reconfigure");
     }
     
     /*

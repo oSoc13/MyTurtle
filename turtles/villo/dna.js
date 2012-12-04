@@ -3,11 +3,13 @@
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
             // prevents loss of 'this' inside methods
-            _.bindAll(this, "refresh");
+            _.bindAll(this, "refresh", "configure");
 
-            // bind refresh
+            // bind events
+            this.on("born", this.configure);
             this.on("born", this.refresh);
             this.on("refresh", this.refresh);
+            this.on("reconfigure", this.configure);
 
             // default error value
             options.error = false;
@@ -18,6 +20,24 @@
             // automatic collection refresh each minute, this will 
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
+        },
+        configure : function() {
+            // don't fetch if there is no location
+            if (this.options.location == null || !this.options.location)
+                return;
+            
+            var villo = this.get(0);
+            if (villo != undefined && Screen.location) {
+                var fromGeocode = Screen.location.geocode;
+                var toGeocode = villo.latitude + "," + villo.longitude;
+                
+                Duration.walking(fromGeocode, toGeocode, function(time){
+                    if (self.options.walking != time.format("{H}:{M}")) {
+                        self.options.walking = time.format("{H}:{M}");
+                        self.trigger("reset");
+                    }
+                });                               
+            }
         },
         refresh : function() {
             // don't fetch if there is no location
@@ -39,14 +59,11 @@
         url : function() {
             var latitude = this.options.location.split(',')[0];
             var longitude = this.options.location.split(',')[1];
+            
             return "http://data.irail.be/Bikes/Villo.json?lat=" + encodeURIComponent(latitude) + "&long=" + encodeURIComponent(longitude) + "&offset=0&rowcount=1";
         },
         parse : function(json) {
             var villo = json.Villo;
-            
-            if (villo.length <= 0) {
-                return undefined;
-            }
             
             for(var i in villo) {
                 villo[i].distance = Math.round(parseInt(villo[i].distance)/10)*10;
@@ -54,20 +71,6 @@
                 var name = jQuery.trim(villo[i].name);
                 name = name.match(/^[0-9]+\s*-\s*(.*?)(?:[\/|:](.*))?$/)[1];
                 villo[i].name = name.capitalize();
-            }
-            
-            // get walk time from station location
-            if (this.options.screen_location){
-                var self = this;
-                var fromGeocode = Screen.location.geocode;
-                var toGeocode = villo[0].latitude + "," + villo[0].longitude;
-
-                Duration.walking(fromGeocode, toGeocode, function(time){
-                    if (self.options.walking != time.format("{H}:{M}")) {
-                        self.options.walking = time.format("{H}:{M}");
-                        self.trigger("reset");
-                    }
-                });                            
             }
             
             return villo;

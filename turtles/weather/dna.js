@@ -8,6 +8,7 @@
             // bind refresh
             this.on("born", this.refresh);
             this.on("refresh", this.refresh);
+            this.on("reconfigure", this.refresh);
 
             // default error value
             options.error = false;

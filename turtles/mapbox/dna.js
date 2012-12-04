@@ -37,16 +37,12 @@
 			var self = this;
 
 			$.get("turtles/mapbox/views/widget.html", function(template) {
-				var data = {
-					location : Screen.location.address
-				};
-
 				// set window height to load
 				self.$el.height("100%");
 				
 				// render html
 				self.$el.empty();
-				self.$el.html(window.Mustache.render(template, data));
+				self.$el.html(Mustache.render(template, data));
 
 				// change turtle padding
 				self.$el.addClass("nopadding");
@@ -58,8 +54,11 @@
 				self.map = mapbox.map(canvas);
 				self.map.addLayer(mapbox.layer().id('examples.map-vyofok3q'));
 				
+				var latitude = self.options.location.split(',')[0];
+                var longitude = self.options.location.split(',')[1];
+				
 				// center and zoom
-				self.map.center({ lat: Screen.location.latitude, lon: Screen.location.longitude });
+				self.map.center({ lat: latitude, lon: longitude });
 				self.map.zoom(parseInt(self.options.zoom));
 			});
 		}

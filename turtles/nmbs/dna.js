@@ -8,13 +8,14 @@
 
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
-            // prevents loss of "this" inside methods
-            _.bindAll(this, "refresh");
-            _.bindAll(this, "parseStation");
+            // prevents loss of 'this' inside methods
+            _.bindAll(this, "refresh", "configure");
 
-            // bind refresh
+            // bind events
+            this.on("born", this.configure);
             this.on("born", this.refresh);
             this.on("refresh", this.refresh);
+            this.on("reconfigure", this.configure);
 
             // default error value
             options.error = false;
@@ -30,6 +31,41 @@
             // automatic collection refresh each minute, this will
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
+        },
+        configure : function() {
+            // don't fetch if there is no location
+            if (this.options.location == null || !this.options.location)
+                return;
+            
+            var today = new Date();
+            var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
+            
+            var self = this;
+            $.getJSON("http://data.irail.be/NMBS/Liveboard/" + query + ".json", function(data) {
+                if (data.Liveboard.location.name != undefined) {
+                    self.options.station = data.Liveboard.location.name.capitalize();
+                    self.trigger("reset");
+                }
+                
+                // get walk and bike times from station location
+                if (Screen.location) {
+                    var fromGeocode = Screen.location.geocode;
+                    var toGeocode = data.Liveboard.location.latitude + "," + data.Liveboard.location.longitude;
+                    
+                    Duration.walking(fromGeocode, toGeocode, function(time){
+                        if (self.options.walking != time.format("{H}:{M}")) {
+                            self.options.walking = time.format("{H}:{M}");
+                            self.trigger("reset");
+                        }
+                    });
+                    Duration.cycling(fromGeocode, toGeocode, function(time){
+                        if (self.options.bicycling != time.format("{H}:{M}")) {
+                            self.options.bicycling = time.format("{H}:{M}");
+                            self.trigger("reset");
+                        }
+                    });                                
+                }
+            });
         },
         refresh : function() {
         	// don't fetch if there is no location
@@ -51,9 +87,6 @@
         url : function() {
             var today = new Date();
             var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
-
-            // get station name
-            $.getJSON("http://data.irail.be/NMBS/Liveboard/" + query + ".json", this.parseStation);
 
             return "http://data.irail.be/spectql/NMBS/Liveboard/" + query + "/departures.limit(" + parseInt(this.options.limit) + "):json";
         },
@@ -79,27 +112,6 @@
             }
 
             return liveboard;
-        },
-        parseStation : function(data) {
-            // get walk and bike times from station location
-            if (Screen.location) {
-                var self = this;
-                var fromGeocode = Screen.location.geocode;
-                var toGeocode = data.Liveboard.location.latitude + "," + data.Liveboard.location.longitude;
-
-                Duration.walking(fromGeocode, toGeocode, function(time){
-                    if (self.options.walking != time.format("{H}:{M}")) {
-                        self.options.walking = time.format("{H}:{M}");
-                        self.trigger("reset");
-                    }
-                });
-                Duration.cycling(fromGeocode, toGeocode, function(time){
-                    if (self.options.bicycling != time.format("{H}:{M}")) {
-                        self.options.bicycling = time.format("{H}:{M}");
-                        self.trigger("reset");
-                    }
-                });
-            }
         }
     });
 
@@ -124,7 +136,7 @@
             // only render when template file is loaded
             if (this.template) {
                 var data = {
-                    station : this.options.location,
+                    station : this.options.station || this.options.location,
                     walking : this.options.walking,
                     bicycling : this.options.bicycling,
                     entries : this.collection.toJSON(),

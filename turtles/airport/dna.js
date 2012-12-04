@@ -9,11 +9,13 @@
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
             // prevents loss of 'this' inside methods
-            _.bindAll(this, "refresh");
+            _.bindAll(this, "refresh", "configure");
 
-            // bind refresh
+            // bind events
+            this.on("born", this.configure);
             this.on("born", this.refresh);
             this.on("refresh", this.refresh);
+            this.on("reconfigure", this.configure);
 
             // default error value
             options.error = false;
@@ -30,14 +32,13 @@
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
-        refresh : function() {
+        configure : function() {
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
             
-            var self = this;
-            
             // get the airport name
+            var self = this;
             $.ajax({
                 url: "http://data.irail.be/spectql/Airports/Stations%7Bname,code,longitude,latitude%7D?code=='" + self.options.location + "':json",
                 dataType: "json",
@@ -70,8 +71,14 @@
                     }
                 }
             });
+        },
+        refresh : function() {
+            // don't fetch if there is no location
+            if (this.options.location == null || !this.options.location)
+                return;
             
             // refresh entries
+            var self = this;
             self.fetch({
                 error : function() {
                     // will allow the view to detect errors
