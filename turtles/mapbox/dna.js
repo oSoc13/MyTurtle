@@ -16,6 +16,10 @@
 			// default zoom
 			if (!this.options.zoom)
 				this.options.zoom = 13;
+			
+			// mapbox layer id
+			if (!this.options.layer)
+			    this.options.layer = 'examples.map-vyofok3q';
 
             // get the mapbox api if needed
             if (typeof(mapbox) == 'undefined') {
@@ -52,7 +56,7 @@
 
 				// create the mapbox object
 				self.map = mapbox.map(canvas);
-				self.map.addLayer(mapbox.layer().id('examples.map-vyofok3q'));
+				self.map.addLayer(mapbox.layer().id(self.options.layer));
 				
 				var latitude = self.options.location.split(',')[0];
                 var longitude = self.options.location.split(',')[1];
