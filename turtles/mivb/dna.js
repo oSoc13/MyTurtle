@@ -1,4 +1,4 @@
-/* 
+/*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
  * @license: AGPLv3
@@ -19,10 +19,6 @@
 
             // default error value
             options.error = false;
-            
-            // default distance values
-            options.walking = "00:00";
-            options.bicycling = "00:00";
 
             // default limit
             if (!options.limit)
@@ -36,34 +32,15 @@
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
-            
+
             if(isNaN(this.options.location))
                 this.options.station = this.options.location.capitalize();
-            
+
             var self = this;
             $.getJSON("http://data.irail.be/MIVBSTIB/Stations.json?name=" + encodeURIComponent(this.options.station), function(data) {
                 if (data.Stations[0] != undefined) {
                     self.options.station = data.Stations[0].name.capitalize();
                     self.trigger("reset");
-                }
-                
-                // get walk and bike times from station location
-                if (Screen.location) {
-                    var fromGeocode = Screen.location.geocode;
-                    var toGeocode = data.Stations[0].latitude + "," + data.Stations[0].longitude;
-                    
-                    Duration.walking(fromGeocode, toGeocode, function(time){
-                        if (self.options.walking != time.format("{H}:{M}")) {
-                            self.options.walking = time.format("{H}:{M}");
-                            self.trigger("reset");
-                        }
-                    });
-                    Duration.cycling(fromGeocode, toGeocode, function(time){
-                        if (self.options.bicycling != time.format("{H}:{M}")) {
-                            self.options.bicycling = time.format("{H}:{M}");
-                            self.trigger("reset");
-                        }
-                    });                                
                 }
             });
         },
@@ -71,7 +48,7 @@
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
-            
+
             var self = this;
             self.fetch({
                 error : function() {
@@ -97,10 +74,10 @@
             var liveboard = json.Departures;
 
             for (var i in liveboard) {
-                
+
                 var time = new Date(liveboard[i].time * 1000);
                 liveboard[i].time = time.format("{H}:{M}");
-                
+
                 if (liveboard[i].delay) {
                     var delay = new Date(liveboard[i].delay * 1000 + time.getTimezoneOffset() * 60000);
                     liveboard[i].delay = delay.format("{H}:{M}");
@@ -110,7 +87,7 @@
                     liveboard[i].long_name = "-";
                 } else {
                     liveboard[i].long_name = liveboard[i].long_name.capitalize();
-                    
+
                     if (liveboard[i].long_name.split("-").length == 2)
                         liveboard[i].long_name = liveboard[i].long_name.split("-")[1];
                 }
@@ -124,7 +101,7 @@
         initialize : function() {
             // prevents loss of 'this' inside methods
             _.bindAll(this, "render");
-            
+
             // bind render to collection reset
             this.collection.on("reset", this.render);
 
@@ -142,8 +119,6 @@
             if (this.template) {
                 var data = {
                     station : this.options.station || this.options.location,
-                    walking : this.options.walking,
-                    bicycling : this.options.bicycling,
                     entries : this.collection.toJSON(),
                     error : this.options.error // have there been any errors?
                 };

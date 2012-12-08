@@ -1,4 +1,4 @@
-/* 
+/*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
  * @license: AGPLv3
@@ -19,16 +19,12 @@
 
             // default error value
             options.error = false;
-            
-            // default distance values
-            options.walking = "00:00";
-            options.bicycling = "00:00";
-            
+
             // default limit
             if (!options.limit)
                 options.limit = 5;
-            
-            // automatic collection refresh each minute, this will 
+
+            // automatic collection refresh each minute, this will
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
@@ -36,7 +32,7 @@
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
-            
+
             // get the airport name
             var self = this;
             $.ajax({
@@ -48,25 +44,6 @@
                         if (self.options.airport != data.spectql[0].name) {
                             self.options.airport = data.spectql[0].name;
                             self.trigger("reset");
-                            
-                            // get walk and bike times with airport name
-                            if (Screen.location) {
-                                var fromGeocode = Screen.location.geocode;
-                                var toGeocode = data.spectql[0].latitude + "," + data.spectql[0].longitude;
-                                
-                                Duration.walking(fromGeocode, toGeocode, function(time){
-                                    if (self.options.walking != time.format("{H}:{M}")) {
-                                        self.options.walking = time.format("{H}:{M}");
-                                        self.trigger("reset");
-                                    }
-                                });
-                                Duration.cycling(fromGeocode, toGeocode, function(time){
-                                    if (self.options.bicycling != time.format("{H}:{M}")) {
-                                        self.options.bicycling = time.format("{H}:{M}");
-                                        self.trigger("reset");
-                                    }
-                                });                                
-                            }
                         }
                     }
                 }
@@ -76,14 +53,14 @@
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
-            
+
             // refresh entries
             var self = this;
             self.fetch({
                 error : function() {
                     // will allow the view to detect errors
                     self.options.error = true;
-                    
+
                     // if there are no previous items to show, display error message
                     if(self.length == 0) {
                         self.trigger("reset");
@@ -106,13 +83,13 @@
             for (var i in liveboard) {
                 var time = new Date(liveboard[i].time * 1000);
                 liveboard[i].time = time.format("{H}:{M}");
-                
+
                 if (liveboard[i].delay) {
                     var delay = new Date(liveboard[i].delay * 1000 + time.getTimezoneOffset() * 60000);
                     liveboard[i].delay = delay.format("{H}:{M}");
                 }
             }
-            
+
             return liveboard;
         }
     });
@@ -126,7 +103,7 @@
             this.collection.on("reset", this.render);
 
             var self = this;
-            
+
             // pre-fetch template file and render when ready
             if (this.template == null) {
                 $.get("turtles/airport/views/list.html", function(template) {
@@ -140,12 +117,10 @@
             if (this.template) {
                 var data = {
                     airport : this.options.airport || this.options.location,
-                    walking : this.options.walking,
-                    bicycling : this.options.bicycling,
                     entries : this.collection.toJSON(),
                     error : this.options.error // have there been any errors?
                 };
-                
+
                 // add html to container
                 this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));

@@ -20,10 +20,6 @@
             // default error value
             options.error = false;
 
-            // default distance values
-            options.walking = "00:00";
-            options.bicycling = "00:00";
-
             // default limit
             if (!options.limit)
                 options.limit = 5;
@@ -36,34 +32,15 @@
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
-            
+
             var today = new Date();
             var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
-            
+
             var self = this;
             $.getJSON("http://data.irail.be/NMBS/Liveboard/" + query + ".json", function(data) {
                 if (data.Liveboard.location.name != undefined) {
                     self.options.station = data.Liveboard.location.name.capitalize();
                     self.trigger("reset");
-                }
-                
-                // get walk and bike times from station location
-                if (Screen.location) {
-                    var fromGeocode = Screen.location.geocode;
-                    var toGeocode = data.Liveboard.location.latitude + "," + data.Liveboard.location.longitude;
-                    
-                    Duration.walking(fromGeocode, toGeocode, function(time){
-                        if (self.options.walking != time.format("{H}:{M}")) {
-                            self.options.walking = time.format("{H}:{M}");
-                            self.trigger("reset");
-                        }
-                    });
-                    Duration.cycling(fromGeocode, toGeocode, function(time){
-                        if (self.options.bicycling != time.format("{H}:{M}")) {
-                            self.options.bicycling = time.format("{H}:{M}");
-                            self.trigger("reset");
-                        }
-                    });                                
                 }
             });
         },
@@ -137,8 +114,6 @@
             if (this.template) {
                 var data = {
                     station : this.options.station || this.options.location,
-                    walking : this.options.walking,
-                    bicycling : this.options.bicycling,
                     entries : this.collection.toJSON(),
                     color : this.options.color,
                     error : this.options.error // have there been any errors?

@@ -1,5 +1,5 @@
 (function($) {
-    
+
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
             // prevents loss of 'this' inside methods
@@ -13,11 +13,8 @@
 
             // default error value
             options.error = false;
-            
-            // default distance values
-            options.walking = "00:00";
 
-            // automatic collection refresh each minute, this will 
+            // automatic collection refresh each minute, this will
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
@@ -25,25 +22,12 @@
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
-            
-            var velo = this.get(0);
-            if (velo != undefined && Screen.location) {
-                var fromGeocode = Screen.location.geocode;
-                var toGeocode = velo.latitude + "," + velo.longitude;
-                
-                Duration.walking(fromGeocode, toGeocode, function(time){
-                    if (self.options.walking != time.format("{H}:{M}")) {
-                        self.options.walking = time.format("{H}:{M}");
-                        self.trigger("reset");
-                    }
-                });                               
-            }
         },
         refresh : function() {
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
-            
+
             var self = this;
             self.fetch({
                 error : function() {
@@ -59,17 +43,17 @@
         url : function() {
             var latitude = this.options.location.split(',')[0];
             var longitude = this.options.location.split(',')[1];
-            
+
             return "http://data.irail.be/Bikes/Velo.json?lat=" + encodeURIComponent(latitude) + "&long=" + encodeURIComponent(longitude) + "&offset=0&rowcount=1";
         },
         parse : function(json) {
             var velo = json.Velo;
-            
+
             for(var i in velo) {
                 velo[i].distance = Math.round(parseInt(velo[i].distance)/10)*10;
                 velo[i].name = jQuery.trim(velo[i].name).capitalize();
             }
-            
+
             return velo;
         }
     });
@@ -78,7 +62,7 @@
         initialize : function() {
             // prevents loss of 'this' inside methods
             _.bindAll(this, "render");
-            
+
             // bind render to collection reset
             this.collection.on("reset", this.render);
 
@@ -94,12 +78,11 @@
         render : function() {
             // only render when template file is loaded
             if (this.template && this.collection.length) {
-            
+
                 var data = this.collection.toJSON()[0];
                 data.freespots += data.freebikes;
-                data.walking =  this.options.walking;
                 data.error = this.options.error; // have there been any errors?
-                
+
                 // add html to container
                 this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));
