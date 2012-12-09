@@ -38,6 +38,10 @@ window.Panes = (function() {
         
         // widget mode
         if (pane.type == "widget") {
+            // add color to group
+            group.addClass("bg-color");
+            
+            // check if the header element exists
             var header = group.find("header");
             if (header.length == 0) {
                 header = $("<header></header>");
@@ -45,17 +49,13 @@ window.Panes = (function() {
             }
             
             // append header
-            header.append($('<div class="nav" data-pane="' + id + '"><div class="progress"></div>' + pane.title + '</div>'));
+            var tab = $('<div class="nav" data-pane="' + id + '"><div class="progress"></div>' + pane.title + '</div>')
+            header.append(tab);
             
-            // add color to group
-            group.addClass("bg-color");
-        }
-        
-        // create first timer for rotation if more than 2 panes
-        if (group.find(".pane").length > 1 && timers[pane.type] == null) {
-            timers[pane.type] = setTimeout(function() {
-                rotate(pane.type);
-            }, pane.duration);
+            // check if first pane and mark as active if so
+            if (header.find(".nav.active").length == 0) {
+                tab.addClass("active bg-color");
+            }
         }
         
         // append element
@@ -66,7 +66,20 @@ window.Panes = (function() {
 
         // check if first pane and mark as active if so
         if (group.find(".pane.active").length == 0) {
-            show(id);
+            pane.el.addClass("active");
+        }
+        
+        // create first timer for rotation if more than 2 panes
+        if (group.find(".pane").length > 1 && timers[pane.type] == null) {
+            // get the previous pane
+            var active = group.find(".pane.active").data('id');
+            
+            // start the progress bar
+            show(active);
+           
+            timers[pane.type] = setTimeout(function() {
+                rotate(pane.type);
+            }, panes[active].duration);
         }
     }
     
@@ -178,16 +191,20 @@ window.Panes = (function() {
         if (pane.type == "widget") {
              var header = group.find("header");
              
-             // mark as tab active and put in front
-             header.find(".active").appendTo(header).removeClass("active bg-color");
-             header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
-            
-             // start animation
-             jQuery.fx.interval = 250;
-             header.find(".progress").stop().width(0);
-             header.find(".active .progress").animate({width:"100%"}, parseInt(pane.duration), function() {
-                 $(this).width(0);
-             });
+             if (group.find(".pane").length > 1) {
+                 // mark as tab active and put in front
+                 header.find(".active").appendTo(header).removeClass("active bg-color");
+                 header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
+                
+                 // start animation
+                 jQuery.fx.interval = 250;
+                 header.find(".progress").stop().width(0);
+                 header.find(".active .progress").animate({width:"100%"}, parseInt(pane.duration), function() {
+                     $(this).width(0);
+                 });
+             } else {
+                 header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
+             }
         }
         
         // mark pane as active and show

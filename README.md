@@ -18,7 +18,6 @@ Features
 Tools used
 ==========
 
- * less: allows us to write nicer css3
  * JQuery
  * Backbone.js
  * Later.js: for cronjobs when the code is ran on FlatOS (http://github.com/FlatTurtle/FlatOS) using the FlatTurtle browser (http://github.com/FlatTurtle/InfoScreenQT)

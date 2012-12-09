@@ -58,12 +58,11 @@
 				self.map = mapbox.map(canvas);
 				self.map.addLayer(mapbox.layer().id(self.options.layer));
 				
-				var latitude = self.options.location.split(',')[0];
-                var longitude = self.options.location.split(',')[1];
+				var latitude = parseFloat(self.options.location.split(',')[0]);
+                var longitude = parseFloat(self.options.location.split(',')[1]);
                 
 				// center and zoom
-				self.map.center({ lat: latitude, lon: longitude });
-				self.map.zoom(parseInt(self.options.zoom));
+				self.map.centerzoom({ lat: latitude, lon: longitude }, self.options.zoom);
 			});
 		}
     });
