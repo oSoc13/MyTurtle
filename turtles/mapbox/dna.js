@@ -61,8 +61,6 @@
 				var latitude = parseFloat(self.options.location.split(',')[0]);
                 var longitude = parseFloat(self.options.location.split(',')[1]);
                 
-                console.log({ lat: latitude, lon: longitude });
-                
 				// center and zoom
 				self.map.centerzoom({ lat: latitude, lon: longitude }, self.options.zoom);
 			});
