@@ -46,13 +46,15 @@ var Debug = {
 }
 
 /*
- * A friendly time format function (unix style)
+ * A friendly time format function
  *
  * {Y} - 4 digit year
  * {m} - month with leading zero
  * {d} - day with leading zero
  * {H} - hours with leading zero
+ * {h} - hours without leading zero
  * {M} - minutes with leading zero
+ * {i} - minutes without leading zero
  * {S} - seconds with leading zero
  */
 Date.prototype.format = function(format) {
@@ -81,11 +83,21 @@ Date.prototype.format = function(format) {
         var hours = date.getHours();
         return (hours < 10 ? "0" : "") + hours;
     });
+    
+    // hours without leading zero
+    format = format.replace('{h}', function() {
+        return date.getHours();
+    });
 
     // minutes with leading zero
     format = format.replace('{M}', function() {
         var minutes = date.getMinutes();
         return (minutes < 10 ? "0" : "") + minutes;
+    });
+    
+    // minutes without leading zero
+    format = format.replace('{i}', function() {
+        return date.getMinutes();
     });
 
     // seconds with leading zero

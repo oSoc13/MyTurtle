@@ -46,32 +46,45 @@
             // new array
             var results = new Array();
             var raining;
+            
+            // now date object
+            var now = data[0].time;
+            var date = new Date();
 
             for (var i in data) {
             	// first item
             	if (results.length == 0) {
             		raining = parseInt(data[i].milimeter) != 0;
-            		data[i].time = "nu";
+            		data[i].text = "nu";
             		data[i].raining = raining;
 
             		results.push(data[i]);
             		continue;
             	}
-
+            	
+            	// get date difference
+                var diff = new Date((data[i].time - now)* 1000 + date.getTimezoneOffset() * 60000);
+                
+                if (diff.getHours() > 1)
+                    data[i].text = diff.format("in {h} uren");
+                else if (diff.getHours() == 1)
+                    data[i].text = diff.format("in {h} uur");
+                else
+                    data[i].text = diff.format("in {i} minuten");
+            	
+                // only add entries with change
             	if (raining && parseInt(data[i].milimeter) == 0) {
-            		raining = false;
-            		data[i].time = new Date(data[i].time * 1000).format("{H}:{M}");
-            		data[i].raining = raining;
+                    raining = false;
+                    data[i].raining = raining;
 
-            		results.push(data[i]);
-            	}
-            	else if (!raining && parseInt(data[i].milimeter) != 0) {
-            		raining = true;
-            		data[i].time = new Date(data[i].time * 1000).format("{H}:{M}");
-            		data[i].raining = raining;
-
-            		results.push(data[i]);
-            	}
+                    results.push(data[i]);
+                }
+                else if (!raining && parseInt(data[i].milimeter) != 0) {
+                    raining = true;
+                    data[i].raining = raining;
+    
+                    results.push(data[i]);
+                }
             }
 
             return results.slice(0,2);
