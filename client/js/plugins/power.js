@@ -8,7 +8,7 @@
 
 var Power = {
 		
-	element : null,
+	element : $('#black-screen'),
 
 	enable : function() {
 		if (Power.element.length != 0) {
