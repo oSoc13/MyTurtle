@@ -13,9 +13,9 @@
             // default error value
             options.error = false;
 
-            // automatic collection refresh each minute, this will
+            // automatic collection refresh each 5 minutes, this will
             // trigger the reset event
-            refreshInterval = window.setInterval(this.refresh, 60000);
+            refreshInterval = window.setInterval(this.refresh, 300000);
         },
         refresh : function() {
             // don't fetch if there is no location
