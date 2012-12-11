@@ -969,31 +969,41 @@ ul li {
 
 .floor h2 {
 	font-size: 1em;
-	float: left;
 	width: 20%;
-	margin-top: 20px;
+	margin-top: 28px;
+	float: left;
 }
 
-.floor .here {
+.floor .floors {
 	float: right;
-	font-size: 0.45em;
-	width: 35%;
+	top: 0px;
+	font-size: 0.6em;
+	width: 80%;
 }
 
-.floor .logo {
-	float: right;
+.floor .floors span{
+	padding-left: 30%;
+}
+
+.floor .floors div.bg{
+	position: absolute;
 	width: 25%;
-	margin-right: 5%;
-}
-
-.floor .logo img {
-	max-width: auto;
+	height: 35px;
+	background-size: contain;
 }
 
 .floor ul li {
+	line-height: 35px;
+	height: 35px;
 	display: block;
 	float: none;
 	margin-bottom: 20px;
+	position: relative;
+	vertical-align: middle;
+}
+
+.floor ul li:last-child{
+	margin-bottom: 5px;
 }
 
 /* ==========================================================================
