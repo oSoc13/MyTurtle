@@ -36,18 +36,21 @@
 			});
 
 			// refresh traffic
-			refreshInterval = window.setInterval(this.refresh, 120000);
+			refreshInterval = setInterval(this.refresh, 5000);
 		},
 		refresh : function() {
-			var self = this;
+		    var self = this;
 
 			// remove old layer
-			self.traffic.setMap(null);
-			self.traffic = null;
-
-			// add fresh layer
-			self.traffic = new google.maps.TrafficLayer();
-			self.traffic.setMap(self.map);
+			this.traffic.setMap(null);
+			this.traffic = null;
+			
+			// source: http://stackoverflow.com/questions/7659072/google-maps-refresh-traffic-layer
+			setTimeout(function() {
+			    // add fresh layer
+			    self.traffic = new google.maps.TrafficLayer();
+			    self.traffic.setMap(self.map);
+			}, 10);
 		},
 		render : function() {
 			var self = this;
@@ -89,22 +92,10 @@
 						self.center = results[0].geometry.location;
 						self.map.setCenter(self.center);
 
-						var pinColor = Interface.color() || "FE7569";
-						var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-							new google.maps.Size(21, 34),
-							new google.maps.Point(0,0),
-							new google.maps.Point(10, 34));
-						var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-							new google.maps.Size(40, 37),
-							new google.maps.Point(0, 0),
-							new google.maps.Point(12, 35));
-
 						var marker = new google.maps.Marker({
 							map: self.map,
-							position: results[0].geometry.location,
-								// icon: pinImage,
-								shadow: pinShadow
-							});
+							position: results[0].geometry.location
+						});
 					}
 				});
 
