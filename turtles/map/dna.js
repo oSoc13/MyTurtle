@@ -36,7 +36,7 @@
 			});
 
 			// refresh traffic
-			refreshInterval = setInterval(this.refresh, 5000);
+			refreshInterval = setInterval(this.refresh, 300000);
 		},
 		refresh : function() {
 		    var self = this;
@@ -50,7 +50,7 @@
 			    // add fresh layer
 			    self.traffic = new google.maps.TrafficLayer();
 			    self.traffic.setMap(self.map);
-			}, 10);
+			}, 5);
 		},
 		render : function() {
 			var self = this;
