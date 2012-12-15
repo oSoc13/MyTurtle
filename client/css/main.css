@@ -663,65 +663,49 @@ ul li {
 	margin-bottom: 2%;
 }
 
-.widget .com_shares div:nth-child(2) {
+.widget .com_shares .numbers{
 	float: left;
-	width: 60%;
-	clear: both;
+	min-width: 60%;
+	padding: 20px 0px;
+	position: relative;
 }
 
-.widget .com_shares div:nth-child(2) div:first-child {
-	float: left;
-	width: 100%;
-	clear: both;
-	margin-bottom: 6%;
-	margin-top: 4%;
-}
-
-.widget .com_shares div:nth-child(2) div:first-child>* {
-	float: left;
-	width: 30%;
-	clear: none;
-	padding: 3%;
-}
-
-.widget .com_shares .numbers ul li {
-	float: right;
-	clear: both;
-	margin-right: 5%;
-}
-
-.widget .com_shares div:nth-child(2) div:first-child .main_number {
-	float: left;
-	width: 35%;
+.widget .com_shares .ask{
 	padding: 0;
-	padding-top: 3%;
-}
-
-.widget .com_shares div:nth-child(2) div:first-child .div:nth-child(2) ul li
-	{
-	display: block;
-	float: right;
-}
-
-.widget .com_shares div:nth-child(3) {
-	float: right;
-	width: 40%;
-	margin-top: 2%;
-}
-
-.widget .com_shares div:nth-child(3) ul li {
-	float: right;
-	clear: both;
-	margin-bottom: 3%;
-}
-
-.widget .com_shares .main_number {
 	font-family: "Soho Gothic W01 Bold";
 	margin-right: 4%;
 	font-size: 1.8em;
+	line-height: 1.5em;
 	margin-top: 2%;
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+	display: inline-block;
+	float:left;
 }
+
+.widget .com_shares .change {
+	top: 0px;
+	padding: 10px;
+	margin-left: 5px;
+	display: inline-block;
+	float:left;
+}
+
+.widget .com_shares li {
+	display: block;
+	float:right;
+	clear: both;
+	padding: 1px;
+}
+
+.widget .com_shares .more {
+	bottom: 0px;
+	float: right;
+}
+
+.widget .com_shares .more li{
+	padding:5px;
+}
+
 
 .shares {
 	width: 94%;
