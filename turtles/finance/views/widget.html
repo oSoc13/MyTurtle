@@ -1,0 +1,46 @@
+{{#data}}
+	{{#primary}}
+		<div class="com_shares">
+			<h2>Our shares</h2>
+			<div class='more'>
+				<ul>
+					<li>Open &euro; {{Open}}</li>
+					<li>Hoog &euro; {{DaysHigh}}</li>
+					<li>Laag &euro; {{DaysLow}}</li>
+					<li>Vorig slot &euro; {{PreviousClose}}</li>
+					<li>Volume {{Volume}}</li>
+				</ul>
+			</div>
+			<div>
+				<div class='numbers'>
+					<div class="ask">&euro; {{Ask}}</div>
+					<div class="change {{Color}}">
+						<ul>
+							<li>{{ChangeRealtime}}</li>
+							<li>{{ChangeinPercent}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class='name'>
+					<h2>{{Symbol}}</h2>
+					<h3>{{Name}}</h3>
+				</div>
+			</div>
+		</div>
+	{{/primary}}
+	{{#secondary}}
+		<div class="shares color2">
+			<div>
+				<h2>{{Symbol}}</h2>
+				<h3>{{Name}}</h3>
+			</div>
+			<div class="numbers {{Color}}">
+				<ul>
+					<li>{{ChangeRealtime}}</li>
+					<li>{{ChangeinPercent}}</li>
+				</ul>
+			</div>
+			<p class="main_number">&euro; {{Ask}}</p>
+		</div>
+	{{/secondary}}
+{{/data}}
