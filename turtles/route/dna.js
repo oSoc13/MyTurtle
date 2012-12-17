@@ -166,7 +166,10 @@
 						var map = new L.Map(canvas, {zoomControl:false})
 						.addLayer(new wax.leaf.connector(tilejson))
 						.setView(new L.LatLng(51.505, -0.09), 10);
-						var	polyline = new L.Polyline(data.route, {color:'#'+Interface.config.color, weight: 6, opacity: 0.9}).addTo(map);
+						var	polyline = new L.Polyline(data.route, {color:'#'+Interface.config.color, weight: 6, opacity: 0.7}).addTo(map);
+						for(var i in data.route){
+							new L.CircleMarker(data.route[i],{fillColor: Interface.config.darkColor, weight: 0, fillOpacity: 0.9, radius: 5}).addTo(map);
+						}
 						map.fitBounds(polyline.getBounds());
 					}
 				);

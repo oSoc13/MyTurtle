@@ -1128,8 +1128,7 @@ footer marquee span {
 	height: 100%;
 }
 
-.route .connections,
-.route .mapcontainer{
+.route .connections{
 	background-color: #333;
 }
 
@@ -1181,8 +1180,10 @@ footer marquee span {
 }
 
 .route .map{
-	width: 97%;
+	width: 100%;
 	height: 100%;
+	margin-top: -80px;
+	padding-bottom: 80px;
 }
 
 

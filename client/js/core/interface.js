@@ -54,6 +54,9 @@ window.Interface = (function() {
 
 		// add to body
 		custom.html(style);
+
+		Interface.config.darkColor = darkColor;
+		Interface.config.lightColor = lightColor;
 	}
 
 	/*
