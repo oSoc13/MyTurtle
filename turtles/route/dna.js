@@ -87,7 +87,7 @@
 			part.end = data[0].arrival.station;
 			interestpoints.push(part);
 
-			// calculate every stops
+			// calculate every stop
 			var route = new Array();
 			for(var i=0; i< interestpoints.length; i++){
 				var ipoint = interestpoints[i];
@@ -179,8 +179,3 @@
 	});
 
 })(jQuery);
-
-Panes.fullscreen(29,1000000);
-setTimeout(function(){
-	Turtles.options(110,{from:'Poperinge',to:'Visé'});
-}, 1000);
