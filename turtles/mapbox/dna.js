@@ -71,7 +71,7 @@
                 		coordinates: [longitude, latitude]
                 	},
                 	properties: {
-                		'marker-color': '#000',
+                		'marker-color': '#333333',
                 		'marker-symbol': 'star-stroked'
                 	}
                 });
