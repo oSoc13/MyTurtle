@@ -61,24 +61,26 @@
 			var interestpoints = new Array();
 			var part = new Object();
 			part.start = data[0].departure.station;
-			var count = parseInt(data[0].vias.number);
 
-			if(data[0].vias != null && count > 0){
-				for(var i in data[0].vias.via){
-					var via = data[0].vias.via[i];
-					part.vehicle = via.vehicle;
-					part.end = via.station;
-					interestpoints.push(part);
-
-					part = new Object();
-					part.start = via.station;
-
-					if(i < (count-2)){
-						i++;
+			if(data[0].vias != null){
+				var count = parseInt(data[0].vias.number);
+				if(count > 0){
+					for(var i in data[0].vias.via){
 						var via = data[0].vias.via[i];
 						part.vehicle = via.vehicle;
 						part.end = via.station;
-						i--;
+						interestpoints.push(part);
+
+						part = new Object();
+						part.start = via.station;
+
+						if(i < (count-2)){
+							i++;
+							var via = data[0].vias.via[i];
+							part.vehicle = via.vehicle;
+							part.end = via.station;
+							i--;
+						}
 					}
 				}
 			}
