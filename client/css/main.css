@@ -682,6 +682,10 @@ ul li {
 	float:left;
 }
 
+.widget .com_shares .name{
+	clear: left;
+}
+
 .widget .com_shares .change {
 	top: 0px;
 	padding: 10px;
@@ -751,7 +755,7 @@ ul li {
 }
 
 .shares .numbers.red,.com_shares .red {
-	background-color: #F00;
+	background-color: #b5202e;
 	color: #FFF;
 }
 
@@ -761,7 +765,7 @@ ul li {
 }
 
 .shares .numbers.grey,.com_shares .grey {
-	background-color: #CCC;
+	background-color: #aaa;
 	color: #FFF;
 }
 
