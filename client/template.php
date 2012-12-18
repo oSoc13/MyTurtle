@@ -29,6 +29,8 @@
 			<img src="client/css/images/logo_placeholder.png" alt="Logo" id="client-logo" />
 		</footer>
 
+		<script src="client/js/libs/leaflet.js?<?php echo $rand; ?>"></script>
+		<script src="client/js/libs/wax.leaf.min.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/libs/jquery.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/libs/underscore.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/libs/backbone.js?<?php echo $rand; ?>"></script>
@@ -36,8 +38,6 @@
 		<script src="client/js/libs/tinycolor.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/libs/later.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/libs/duration.js?<?php echo $rand; ?>"></script>
-		<script src="client/js/libs/leaflet.js?<?php echo $rand; ?>"></script>
-		<script src="client/js/libs/wax.leaf.min.js?<?php echo $rand; ?>"></script>
 
 		<script src="client/js/core/functions.js?<?php echo $rand; ?>"></script>
 		<script src="client/js/core/screen.js?<?php echo $rand; ?>"></script>
