@@ -161,7 +161,7 @@
 				var canvas = this.$el.find(".map")[0];
 
 				var self = this;
-				wax.tilejson('https://api.tiles.mapbox.com/v2/' + this.options.layer + '.jsonp',
+				wax.tilejson('http://api.tiles.mapbox.com/v2/' + this.options.layer + '.jsonp',
 					function(tilejson) {
 						var map = new L.Map(canvas, {zoomControl:false})
 						.addLayer(new wax.leaf.connector(tilejson))
