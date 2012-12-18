@@ -27,7 +27,6 @@
 			this.options.liveboard = null;
 			this.options.connections = null;
 			this.options.route = null;
-			this.options.type = null;
 
 			// don't fetch if there are no parameters
 			if ((this.options.from == null || !this.options.from  || this.options.to == null || !this.options.to) &&
