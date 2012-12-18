@@ -6,7 +6,7 @@
 
 (function($){
 
- 	var view = Backbone.View.extend({
+	var view = Backbone.View.extend({
 		// hold google maps objects
 		center : null,
 		map : null,
@@ -25,32 +25,30 @@
 
 			// render will be triggered when the google maps api is loaded
 			this.on("render", this.render);
+			this.on("shown", this.refresh);
 
-			// resize trigger
-			var self = this;
-			this.on("shown", function() {
-				if (self.map != null) {
-					google.maps.event.trigger(self.map, "resize");
-					self.map.setCenter(self.center);
-				}
-			});
-
-			// refresh traffic
 			refreshInterval = setInterval(this.refresh, 300000);
 		},
 		refresh : function() {
-		    var self = this;
+			var self = this;
 
-			// remove old layer
-			this.traffic.setMap(null);
-			this.traffic = null;
-			
-			// source: http://stackoverflow.com/questions/7659072/google-maps-refresh-traffic-layer
-			setTimeout(function() {
-			    // add fresh layer
-			    self.traffic = new google.maps.TrafficLayer();
-			    self.traffic.setMap(self.map);
-			}, 5);
+			if(this.traffic != null){
+				console.log('j');
+				// remove old layer
+				this.traffic.setMap(null);
+				this.traffic = null;
+
+				// source: http://stackoverflow.com/questions/7659072/google-maps-refresh-traffic-layer
+				setTimeout(function() {
+					// add fresh layer
+					self.traffic = new google.maps.TrafficLayer();
+					self.traffic.setMap(self.map);
+				}, 100);
+			}
+			if (self.map != null) {
+				google.maps.event.trigger(self.map, "resize");
+				self.map.setCenter(self.center);
+			}
 		},
 		render : function() {
 			var self = this;
@@ -104,7 +102,7 @@
 				self.traffic.setMap(self.map);
 			});
 		}
- 	});
+	});
 
 	// register turtle
 	Turtles.register("map", {
