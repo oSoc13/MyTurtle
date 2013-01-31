@@ -33,17 +33,17 @@
 		refresh : function() {
 			var self = this;
 
-			if(this.traffic != null){
+			if(self.traffic != null){
 				// remove old layer
-				this.traffic.setMap(null);
-				this.traffic = null;
+				self.traffic.setMap(null);
+				self.traffic = null;
 
 				// source: http://stackoverflow.com/questions/7659072/google-maps-refresh-traffic-layer
 				setTimeout(function() {
 					// add fresh layer
 					self.traffic = new google.maps.TrafficLayer();
 					self.traffic.setMap(self.map);
-				}, 100);
+				}, 250);
 			}
 			if (self.map != null) {
 				google.maps.event.trigger(self.map, "resize");
