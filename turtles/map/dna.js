@@ -15,6 +15,7 @@
 		initialize : function() {
 			// prevents loss of "this" inside methods
 			_.bindAll(this, "refresh");
+			_.bindAll(this, "traffic");
 
 			// default zoom
 			if (!this.options.zoom)
@@ -28,23 +29,29 @@
 			this.on("shown", this.refresh);
 			this.on("reconfigure", this.render);
 
-			refreshInterval = setInterval(this.refresh, 300000);
+			refreshInterval = setInterval(this.traffic, 480000);
 		},
-		refresh : function() {
+		traffic : function() {
 			var self = this;
 
-			if(this.traffic != null){
+			if(self.traffic != null){
 				// remove old layer
-				this.traffic.setMap(null);
-				this.traffic = null;
+				self.traffic.setMap(null);
+				self.traffic = null;
 
 				// source: http://stackoverflow.com/questions/7659072/google-maps-refresh-traffic-layer
 				setTimeout(function() {
 					// add fresh layer
 					self.traffic = new google.maps.TrafficLayer();
 					self.traffic.setMap(self.map);
-				}, 100);
+				}, 1000);
 			}
+
+			self.trigger('render');
+		},
+		refresh : function() {
+			var self = this;
+
 			if (self.map != null) {
 				google.maps.event.trigger(self.map, "resize");
 				self.map.setCenter(self.center);
