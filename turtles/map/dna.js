@@ -15,6 +15,7 @@
 		initialize : function() {
 			// prevents loss of "this" inside methods
 			_.bindAll(this, "refresh");
+			_.bindAll(this, "traffic");
 
 			// default zoom
 			if (!this.options.zoom)
@@ -28,9 +29,9 @@
 			this.on("shown", this.refresh);
 			this.on("reconfigure", this.render);
 
-			refreshInterval = setInterval(this.refresh, 300000);
+			refreshInterval = setInterval(this.traffic, 480000);
 		},
-		refresh : function() {
+		traffic : function() {
 			var self = this;
 
 			if(self.traffic != null){
@@ -43,8 +44,14 @@
 					// add fresh layer
 					self.traffic = new google.maps.TrafficLayer();
 					self.traffic.setMap(self.map);
-				}, 250);
+				}, 1000);
 			}
+
+			self.trigger('render');
+		},
+		refresh : function() {
+			var self = this;
+
 			if (self.map != null) {
 				google.maps.event.trigger(self.map, "resize");
 				self.map.setCenter(self.center);
