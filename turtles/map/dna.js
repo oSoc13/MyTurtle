@@ -6,130 +6,150 @@
 
 (function($){
 
-	var view = Backbone.View.extend({
-		// hold google maps objects
-		center : null,
-		map : null,
-		traffic : null,
+    var view = Backbone.View.extend({
+        // hold google maps objects
+        center : null,
+        map : null,
+        traffic : null,
 
-		initialize : function() {
-			// prevents loss of "this" inside methods
-			_.bindAll(this, "refresh");
-			_.bindAll(this, "traffic");
+        initialize : function() {
+            // prevents loss of "this" inside methods
+            _.bindAll(this, "refresh");
+            _.bindAll(this, "traffic");
+            _.bindAll(this, "zoom");
 
-			// default zoom
-			if (!this.options.zoom)
-				this.options.zoom = 13;
+            // default zoom
+            this.options.zoom = parseInt(this.options.zoom);
+            if (!this.options.zoom)
+                this.options.zoom = 13;
 
-			// get the google maps api
-			$.getScript("//maps.googleapis.com/maps/api/js?sensor=false&callback=mapsLoaded");
+            this.options.originalzoom = this.options.zoom;
 
-			// render will be triggered when the google maps api is loaded
-			this.on("render", this.render);
-			this.on("shown", this.refresh);
-			this.on("reconfigure", this.render);
+            // get the google maps api
+            $.getScript("//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=mapsLoaded");
 
-			refreshInterval = setInterval(this.traffic, 480000);
-		},
-		traffic : function() {
-			var self = this;
+            // render will be triggered when the google maps api is loaded
+            this.on("render", this.render);
+            this.on("shown", this.refresh);
+            this.on("reconfigure", this.render);
 
-			if(self.traffic != null){
-				// remove old layer
-				self.traffic.setMap(null);
-				self.traffic = null;
+            refreshInterval = setInterval(this.traffic, 300000);
+            zoomInterval = setInterval(this.zoom, 10000);
+        },
+        traffic : function() {
+            var self = this;
 
-				// source: http://stackoverflow.com/questions/7659072/google-maps-refresh-traffic-layer
-				setTimeout(function() {
-					// add fresh layer
-					self.traffic = new google.maps.TrafficLayer();
-					self.traffic.setMap(self.map);
-				}, 1000);
-			}
+            if(self.traffic != null){
+                // remove old layer
+                self.traffic.setMap(null);
+                delete self.traffic;
+                self.traffic = null;
+            }
 
-			self.trigger('render');
-		},
-		refresh : function() {
-			var self = this;
+            // source: http://stackoverflow.com/questions/7659072/google-maps-refresh-traffic-layer
+            // add traffic layer
+            setTimeout(function() {
+                // add fresh layer
+                self.traffic = new google.maps.TrafficLayer();
+                self.traffic.setMap(self.map);
+            }, 1000);
 
-			if (self.map != null) {
-				google.maps.event.trigger(self.map, "resize");
-				self.map.setCenter(self.center);
-			}
-		},
-		render : function() {
-			var self = this;
+        },
+        zoom : function() {
+            var self = this;
 
-			$.get("turtles/map/views/widget.html", function(template) {
-				var data = {
-					location : self.options.location
-				};
+            // zoom in
+            self.options.zoom += 1;
+            if(self.options.zoom > self.options.originalzoom + 2){
+                self.options.zoom = self.options.originalzoom;
+            }
 
-				// set window height to load
-				self.$el.height("100%");
+            self.map.setZoom(self.options.zoom);
+        },
+        refresh : function() {
+            var self = this;
 
-				// render html
-				self.$el.empty();
-				self.$el.html(Mustache.render(template, data));
+            if (self.map != null) {
+                google.maps.event.trigger(self.map, "resize");
+                self.map.setCenter(self.center);
+            }
+        },
+        render : function() {
+            var self = this;
 
-				// change turtle padding
-				self.$el.addClass("nopadding");
+            $.get("turtles/map/views/widget.html", function(template) {
+                var data = {
+                    location : self.options.location
+                };
 
-				// canvas element
-				var canvas = self.$el.find("#canvas")[0];
+                // set window height to load
+                self.$el.height("100%");
 
-				// map options
-				var options = {
-					zoom : parseInt(self.options.zoom),
-					disableDefaultUI: true,
-					mapTypeId : google.maps.MapTypeId.ROADMAP
-				};
+                // render html
+                self.$el.empty();
+                self.$el.html(Mustache.render(template, data));
 
-				// create the google map object
-				self.map = new google.maps.Map(canvas, options);
+                // change turtle padding
+                self.$el.addClass("nopadding");
 
-				// pick screen location when location is not set
-				if(self.options.location == null || self.options.location == ""){
-					self.options.location = Screen.location.address;
-					Screen.listeners[self.options.id] = true;
-				}else{
-					delete Screen.listeners[self.options.id];
-				}
+                // canvas element
+                var canvas = self.$el.find("#canvas")[0];
 
-				// convert location to geocode
-				var geocoder = new google.maps.Geocoder();
-				geocoder.geocode({
-					"address" : self.options.location
-				}, function(results, status) {
-					if (status == google.maps.GeocoderStatus.OK) {
-						self.center = results[0].geometry.location;
-						self.map.setCenter(self.center);
+                // map options
+                var options = {
+                    zoom : parseInt(self.options.zoom),
+                    disableDefaultUI: true,
+                    mapTypeId : google.maps.MapTypeId.ROADMAP
+                };
 
-						var marker = new google.maps.Marker({
-							map: self.map,
-							position: results[0].geometry.location
-						});
-					}
-				});
+                // create the google map object
+                self.map = new google.maps.Map(canvas, options);
 
-				// add traffic layer
-				self.traffic = new google.maps.TrafficLayer();
-				self.traffic.setMap(self.map);
-			});
-		}
-	});
+                // pick screen location when location is not set
+                if(self.options.location == null || self.options.location == ""){
+                    self.options.location = Screen.location.address;
+                    Screen.listeners[self.options.id] = true;
+                }else{
+                    delete Screen.listeners[self.options.id];
+                }
 
-	// register turtle
-	Turtles.register("map", {
-		view : view
-	});
+                // convert location to geocode
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({
+                    "address" : self.options.location
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        self.center = results[0].geometry.location;
+                        self.map.setCenter(self.center);
+
+                        var marker = new google.maps.Marker({
+                            map: self.map,
+                            position: results[0].geometry.location
+                        });
+
+                        // add traffic layer
+                        setTimeout(function() {
+                            // add fresh layer
+                            self.traffic = new google.maps.TrafficLayer();
+                            self.traffic.setMap(self.map);
+                        }, 1000);
+                    }
+                });
+            });
+        }
+    });
+
+    // register turtle
+    Turtles.register("map", {
+        view : view
+    });
 
 })(jQuery);
 
 // callback when the google maps api is ready
 if (typeof mapsLoaded != "function") {
-	function mapsLoaded() {
-		// trigger for all map turtles
-		Turtles.trigger("map", "render");
-	}
+    function mapsLoaded() {
+        // trigger for all map turtles
+        Turtles.trigger("map", "render");
+    }
 }
