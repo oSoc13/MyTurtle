@@ -1,33 +1,33 @@
-/* 
+/*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
  * @license: AGPLv3
  */
 
 (function($) {
-    
+
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
             // prevents loss of 'this' inside methods
             _.bindAll(this, "refresh");
-            
+
             // fetch data when born
-            this.on("born", this.fetch);
+            this.on("born", this.refresh);
             this.on("refresh", this.refresh);
             this.on("reconfigure", this.refresh);
-            
+
             // default error value
             options.error = false;
-            
+
             // default hashtag
             if (!options.search)
                 options.search = "flatturtle";
-            
+
             // default limit
             if (!options.limit)
                 options.limit = 3;
-            
-            // automatic collection refresh each minute, this will 
+
+            // automatic collection refresh each minute, this will
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
@@ -35,13 +35,13 @@
             // don't fetch if there is no search
             if (this.options.search == null || !this.options.search)
                 return;
-            
+
             var self = this;
             self.fetch({
                 error : function() {
                     // will allow the view to detect errors
                     self.options.error = true;
-                    
+
                     // if there are no previous items to show, display error message
                     if(self.length == 0)
                         self.trigger("reset");
@@ -64,7 +64,7 @@
                 // links                                  [   https://www.   |www.| domain.| ... ]
                 tweets[i].text = tweets[i].text.replace(/((https?:\/\/(\w\.)*|\w\.)[^\s]+\.[^\s]+)/g, '<span class="text-color">$1</span>');
             }
-            
+
             return tweets;
         }
     });
@@ -76,7 +76,7 @@
 
             // bind render to collection reset
             this.collection.on("reset", this.render);
-            
+
             // pre-fetch template file and render when ready
             var self = this;
             if(this.template == null) {
@@ -91,10 +91,10 @@
             if(this.template) {
                 var data = {
                     search : this.options.search,
-                    error : this.options.error,
-                    entries : this.collection.toJSON()
+                    entries : this.collection.toJSON(),
+                    error : this.options.error
                 };
-                
+
                 // add html to container
                 this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));

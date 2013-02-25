@@ -16,7 +16,7 @@
 			 this.on("refresh", this.refresh);
 			 this.on("reconfigure", this.configure);
 
-			 // this.options.error = false;
+			 options.error = false;
 
 			 // automatic collection refresh each minute
 			 refreshInterval = window.setInterval(this.refresh, 300000);
@@ -39,8 +39,9 @@
 			 var self = this;
 			 self.fetch({
 				 error : function() {
-					 // will allow the view to detect errors
-					 self.options.error = true;
+					// will allow the view to detect errors
+					self.options.error = true;
+                    self.trigger('reset');
 				 }
 			 });
 		 },
@@ -103,7 +104,8 @@
 			 // only render when template file is loaded
 			 if (this.template) {
 				 var data = {
-				 	data: this.collection.toJSON()
+                    data: this.collection.toJSON(),
+                    error: this.options.error
 				 };
 
 				 // add html to container

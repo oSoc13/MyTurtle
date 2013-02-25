@@ -182,7 +182,7 @@ window.Panes = (function() {
 		var pane = panes[id];
 
 		// set duration on object
-		pane.duration = ms;
+		pane.duration = parseInt(ms);
 	}
 
 	/*
@@ -193,7 +193,7 @@ window.Panes = (function() {
 
 		// Duration
 		if(options.duration)
-			this.duration(id, options.duration);
+			this.duration(id, parseInt(options.duration));
 
 		// Update title
 		if(options.title){
@@ -231,6 +231,7 @@ window.Panes = (function() {
 
 		// stop previous timeout if it is still running
 		clearTimeout(timers[pane.type]);
+        delete timers[pane.type];
 
 		// switch tabs
 		if (pane.type == "widget") {

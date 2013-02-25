@@ -1241,3 +1241,7 @@ footer marquee span {
 .clearfix {
 	*zoom: 1;
 }
+
+.error p{
+    padding:20px;
+}
