@@ -31,7 +31,7 @@
             this.on("shown", this.refresh);
             this.on("reconfigure", this.render);
 
-            refreshInterval = setInterval(this.traffic, 300000);
+            refreshInterval = setInterval(this.traffic, 240000);
         },
         traffic : function() {
             var self = this;
