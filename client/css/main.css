@@ -526,7 +526,7 @@ ul li {
 }
 
 .widget .weather .weatherBox {
-	width: 200px;
+	width: 22%;
 	height: auto;
 	float: left;
 }
@@ -557,9 +557,12 @@ ul li {
 }
 
 .widget .weather .weatherBox .type i {
-	width: 160px;
+	width: 100%;
+	max-width: 160px;
 	height: 125px;
 	margin: auto;
+	background-position: center center;
+	background-size: 100%;
 }
 
 .widget .weather .weatherBox:after {
@@ -601,17 +604,14 @@ ul li {
 
 .wisselvallig {
 	background-image: url(images/FT__0006_wisselvallig.png);
-	background-position: right -15px !important;
 }
 
 .lichtbewolkt {
 	background-image: url(images/FT__0007_licht-bewolkt.png);
-	background-position: right -15px !important;
 }
 
 .zon {
 	background-image: url(images/FT__0008_zonnig.png);
-	background-position: center -15px !important;
 }
 
 /* ==============
@@ -1240,4 +1240,8 @@ footer marquee span {
 
 .clearfix {
 	*zoom: 1;
+}
+
+.error p{
+    padding:20px;
 }

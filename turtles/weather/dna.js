@@ -50,49 +50,62 @@
 
 			// new array
 			var results = new Array();
+
 			var raining;
 
 			// now date object
 			var now = data[0].time;
 			var date = new Date();
 
-			for (var i in data) {
-				// first item
-				if (results.length == 0) {
-					raining = parseInt(data[i].milimeter) != 0;
-					data[i].text = "now";
-					data[i].raining = raining;
+			// intervals in minutes to keep
+			var keep = [0, 30, 60, 120];
 
+			for (var i in data) {
+
+				// minutes from now
+				var delta = (data[i].time - data[0].time) / 60;
+
+				// text
+				if (delta == 0)
+					data[i].text = "now";
+				else if (delta > 60)
+					data[i].text = "in " + Math.floor(delta/60) + " hours";
+				else if (delta == 60)
+					data[i].text = "in 1 hour";
+				else
+					data[i].text = "in " + delta + " minutes";
+
+				// raining?
+				data[i].raining = parseInt(data[i].milimeter) != 0;
+
+				// first item
+				if (i == 0) {
+					raining = data[i].raining;
+				}
+
+				// delta is a keep value
+				if (keep.indexOf(delta) > -1) {
 					results.push(data[i]);
 					continue;
 				}
 
-				// get date difference
-				var diff = new Date((data[i].time - now)* 1000 + date.getTimezoneOffset() * 60000);
-
-				if (diff.getHours() > 1)
-					data[i].text = diff.format("in {h} hours");
-				else if (diff.getHours() == 1)
-					data[i].text = diff.format("in 1 hour");
-				else
-					data[i].text = diff.format("in {i} minutes");
-
-				// only add entries with change
-				if (raining && parseInt(data[i].milimeter) == 0) {
+				// sunshine
+				if (raining && !data[i].raining) {
 					raining = false;
-					data[i].raining = raining;
-
 					results.push(data[i]);
+					continue;
 				}
-				else if (!raining && parseInt(data[i].milimeter) != 0) {
-					raining = true;
-					data[i].raining = raining;
 
+				// raining
+				if (!raining && data[i].raining) {
+					raining = false;
 					results.push(data[i]);
+					continue;
 				}
+
 			}
 
-			return results.slice(0,2);
+			return results.slice(0,4);
 		}
 	});
 
