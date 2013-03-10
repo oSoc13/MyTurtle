@@ -31,6 +31,7 @@
                 if(minutes< 10) minutes = '0' + minutes;
                 this.options.time_walk = hours + ':' + minutes;
             }
+            this.trigger("reset");
 
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
