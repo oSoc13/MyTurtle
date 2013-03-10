@@ -20,19 +20,6 @@
             // default error value
             options.error = false;
 
-            // Walking time
-            var hours = Math.floor(options.time_walk/60);
-            var minutes = Math.floor(options.time_walk%60);
-            if(hours == 0 && minutes == 0){
-                options.time_walk = "< 1 min";
-            }else if(options.time_walk < 0){
-                options.time_walk = false;
-            }else{
-                if(hours< 10) hours = '0' + hours;
-                if(minutes< 10) minutes = '0' + minutes;
-                options.time_walk = hours + ':' + minutes;
-            }
-
             // default limit
             if (!options.limit)
                 options.limit = 5;
@@ -42,6 +29,19 @@
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         configure : function() {
+            // Walking time
+            var hours = Math.floor(this.options.time_walk/60);
+            var minutes = Math.floor(this.options.time_walk%60);
+            if(hours == 0 && minutes == 0){
+                this.options.time_walk = "< 1 min";
+            }else if(this.options.time_walk < 0){
+                this.options.time_walk = false;
+            }else{
+                if(hours< 10) hours = '0' + hours;
+                if(minutes< 10) minutes = '0' + minutes;
+                this.options.time_walk = hours + ':' + minutes;
+            }
+
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
