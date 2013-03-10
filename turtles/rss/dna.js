@@ -25,7 +25,7 @@
 
             // automatic collection refresh each minute, this will
             // trigger the reset event
-            refreshInterval = window.setInterval(this.refresh, 60000);
+            refreshInterval = window.setInterval(this.refresh, 120000);
         },
         refresh : function() {
             // don't fetch if there is no feed
@@ -51,14 +51,27 @@
         parse : function(json) {
             this.options.source = json.title;
             var items = json.items.slice(0, this.options.limit - 1);
+            var entries = new Object();
 
             for (var i in items) {
                 var time = new Date(items[i].published * 1000);
                 items[i].time = time.format("{H}:{M}");
+
+                // Determine type
+                if(items[i].enclosure && items[i].enclosure.href != null && !items[i].summary){
+                    entries.type_images = true;
+                    if(!entries.rss_images)
+                        entries.rss_images = new Array();
+                    entries.rss_images.push(items[i]);
+                }else{
+                    if(!entries.rss_feeds)
+                        entries.rss_feeds = new Array();
+                    entries.rss_feeds.push(items[i]);
+                }
             }
 
             // return only limited number if items
-            return items;
+            return entries;
         }
     });
 
