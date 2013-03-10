@@ -11,6 +11,13 @@
             this.on("refresh", this.refresh);
             this.on("reconfigure", this.configure);
 
+            // Walking time
+            if(options.time_walk == 0){
+                options.time_walk = "< 1 min";
+            }else if(options.time_walk < 0){
+                options.time_walk = false;
+            }
+
             // default error value
             options.error = false;
 
@@ -84,6 +91,7 @@
 
                 var data = this.collection.toJSON()[0];
                 data.freespots += data.freebikes;
+                data.time_walk = this.options.time_walk;
                 data.error = this.options.error; // have there been any errors?
 
                 // add html to container
