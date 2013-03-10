@@ -943,6 +943,47 @@ ul li {
     line-height: 1.1em;
 }
 
+.rss .imagewall {
+    padding:0px;
+    padding-top: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.rss .imagewall p.source{
+    padding-left: 10px;
+}
+
+.rss .imagewall p{
+    margin-bottom: 10px;
+}
+.rss .imagewall .wall{
+   /* Prevent vertical gaps */
+   line-height: 0;
+
+   -webkit-column-count: 2;
+   -webkit-column-gap:   0px;
+   -moz-column-count:    2;
+   -moz-column-gap:      0px;
+   column-count:         2;
+   column-gap:           0px;
+
+}
+
+@media (max-width: 1200px) {
+  .rss .imagewall .wall {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
+}
+
+.rss .imagewall .wall img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+}
+
 /* ==============
 * LOCATION TURTLE > FLOORS
 ============== */

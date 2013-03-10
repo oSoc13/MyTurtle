@@ -1,10 +1,29 @@
 {{#entries}}
-<div class="rss bg-color-dark">
-	<h2>{{title}}</h2>
-	<p class="time">{{time}}</p>
-	<div class="text">
-		<p>{{summary}}</p>
-	</div>
-	<p class="source">Source: {{source}}</p>
-</div>
+    {{#type_images}}
+        <div class="rss bg-color-dark imagewall">
+            <p class="source">Image stream: {{source}}</p>
+                <div class="wall">
+                    {{#rss_images}}
+                        {{#enclosure}}
+                            <img src="{{href}}" />
+                        {{/enclosure}}
+                    {{/rss_images}}
+                </div>
+        </div>
+    {{/type_images}}
+    {{#rss_feeds}}
+        <div class="rss bg-color-dark">
+            <h2>{{title}}</h2>
+            <p class="time">{{time}}</p>
+            <div class="text">
+                {{#enclosure}}
+                    <div class="img">
+                        <img src="{{href}}" />
+                    </div>
+                {{/enclosure}}
+                <p>{{summary}}</p>
+            </div>
+            <p class="source">Source: {{source}}</p>
+        </div>
+    {{/rss_feeds}}
 {{/entries}}
