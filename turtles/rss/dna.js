@@ -25,7 +25,7 @@
 
             // automatic collection refresh each minute, this will
             // trigger the reset event
-            refreshInterval = window.setInterval(this.refresh, 120000);
+            refreshInterval = window.setInterval(this.refresh, 240000);
         },
         refresh : function() {
             // don't fetch if there is no feed
@@ -104,6 +104,11 @@
                 // add html to container
                 this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));
+
+                if(data.entries.length > 0 && data.entries[0].type_images){
+                    // change turtle padding for imagewall
+                    this.$el.addClass("nopadding");
+                }
             }
         }
     });
