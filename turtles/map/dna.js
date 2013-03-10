@@ -22,7 +22,6 @@
             if (!this.options.zoom)
                 this.options.zoom = 13;
 
-
             // get the google maps api
             $.getScript("//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=mapsLoaded");
 

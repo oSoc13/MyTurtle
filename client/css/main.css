@@ -284,12 +284,13 @@ ul li {
 
 .list .header .distance {
     height: 55px;
+    min-width: 120px;
     position: absolute;
     right: 0;
     top: 0;
     line-height: 2.2em;
     width: auto;
-    padding: 18px 10px 0 10px;
+    padding: 18px 10px 0 0px;
     background: #232323;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #232323),
         color-stop(100%, #333333) );
@@ -308,7 +309,7 @@ ul li {
     width: auto;
     font-size: 1em;
     margin: 0 10px 0 0;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .list .header .distance .bike {
@@ -344,7 +345,7 @@ ul li {
 }
 
 .results ul li>* {
-    width: 60%;
+    width: 80%;
     height: auto;
 }
 
@@ -359,7 +360,7 @@ ul li {
 
 .results ul li .time {
     float: right;
-    width: 30%;
+    width: 20%;
     line-height: 1.7em;
     font-size: 1.2em;
 }
@@ -399,11 +400,11 @@ ul li {
 }
 
 .results ul li .square:nth-child(2)+h3 {
-    width: 60%;
+    /*width: 60%;*/
 }
 
 .results ul li .square.wide+h3 {
-    width: 60%;
+    /*width: 60%;*/
 }
 
 .results ul li .square.light {
@@ -884,7 +885,7 @@ ul li {
     position: absolute;
     background: #333;
     padding: 10px;
-    right: 10px;
+    right: 150px;
     height: 60px;
     top: 0px
 }

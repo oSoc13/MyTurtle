@@ -20,6 +20,19 @@
             // default error value
             options.error = false;
 
+            // Walking time
+            if(options.time_walk == 0){
+                options.time_walk = "< 1 min";
+            }else if(options.time_walk < 0){
+                options.time_walk = false;
+            }else{
+                var hours = Math.floor(options.time_walk/60);
+                if(hours< 10) hours = '0' + hours;
+                var minutes = Math.floor(options.time_walk%60);
+                if(minutes< 10) minutes = '0' + minutes;
+                options.time_walk = hours + ':' + minutes;
+            }
+
             // default limit
             if (!options.limit)
                 options.limit = 5;
@@ -138,6 +151,7 @@
                     station : this.options.station || this.options.location,
                     entries : this.collection.toJSON(),
                     color : this.options.color,
+                    time_walk : this.options.time_walk,
                     error : this.options.error // have there been any errors?
                 };
 
