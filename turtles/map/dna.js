@@ -16,14 +16,11 @@
             // prevents loss of "this" inside methods
             _.bindAll(this, "refresh");
             _.bindAll(this, "traffic");
-            _.bindAll(this, "zoom");
 
             // default zoom
             this.options.zoom = parseInt(this.options.zoom);
             if (!this.options.zoom)
                 this.options.zoom = 13;
-
-            this.options.originalzoom = this.options.zoom;
 
             // get the google maps api
             $.getScript("//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=mapsLoaded");
@@ -34,7 +31,6 @@
             this.on("reconfigure", this.render);
 
             refreshInterval = setInterval(this.traffic, 300000);
-            zoomInterval = setInterval(this.zoom, 10000);
         },
         traffic : function() {
             var self = this;
@@ -54,17 +50,6 @@
                 self.traffic.setMap(self.map);
             }, 1000);
 
-        },
-        zoom : function() {
-            var self = this;
-
-            // zoom in
-            self.options.zoom += 1;
-            if(self.options.zoom > self.options.originalzoom + 2){
-                self.options.zoom = self.options.originalzoom;
-            }
-
-            self.map.setZoom(self.options.zoom);
         },
         refresh : function() {
             var self = this;

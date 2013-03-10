@@ -26,9 +26,9 @@
             }else if(options.time_walk < 0){
                 options.time_walk = false;
             }else{
-                var hours = Math.round(options.time_walk/60);
+                var hours = Math.floor(options.time_walk/60);
                 if(hours< 10) hours = '0' + hours;
-                var minutes = Math.round(options.time_walk%60);
+                var minutes = Math.floor(options.time_walk%60);
                 if(minutes< 10) minutes = '0' + minutes;
                 options.time_walk = hours + ':' + minutes;
             }
