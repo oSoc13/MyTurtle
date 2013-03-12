@@ -19,11 +19,11 @@ var Footer = {
 				var items = data.items.slice(0,5);
 
 				// create marquee element
-				Footer.element = $('<marquee id="message" class="text-color"></marquee>');
+				Footer.element = $('<div id="message" class="scroll-footer"><div class="fade left"></div><div class="fade right"></div><marquee class="text-color"></marquee>');
 
 				// create content
 				for(var i in items) {
-					Footer.element.append('<span>' + items[i]['title'] + '</span>');
+					Footer.element.find('marquee').append('<span>' + items[i]['title'] + '</span>');
 				}
 
 				$("footer").append(Footer.element);

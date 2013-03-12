@@ -83,7 +83,7 @@ Date.prototype.format = function(format) {
         var hours = date.getHours();
         return (hours < 10 ? "0" : "") + hours;
     });
-    
+
     // hours without leading zero
     format = format.replace('{h}', function() {
         return date.getHours();
@@ -94,7 +94,7 @@ Date.prototype.format = function(format) {
         var minutes = date.getMinutes();
         return (minutes < 10 ? "0" : "") + minutes;
     });
-    
+
     // minutes without leading zero
     format = format.replace('{i}', function() {
         return date.getMinutes();
@@ -109,11 +109,21 @@ Date.prototype.format = function(format) {
     return format;
 }
 
+// Roman digit regepx
+var detectRomanNumber = new RegExp('^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$');
+
 /*
  * Capitalize every word of a string
  */
 String.prototype.capitalize = function() {
     return this.replace(/(\w)(\w*)/g, function(g0,g1,g2){
-        return g1.toUpperCase() + g2.toLowerCase();
+        // Filter roman numbers
+        if(g2.match(detectRomanNumber)){
+            g2 = g2.toUpperCase();
+        }else{
+            g2 = g2.toLowerCase();
+        }
+
+        return g1.toUpperCase() + g2;
     });
 }

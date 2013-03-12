@@ -1,46 +1,48 @@
 {{#data}}
-	{{#primary}}
-		<div class="com_shares">
-			<h2>Our shares</h2>
-			<div class='more'>
-				<ul>
-					<li>Open &euro; {{Open}}</li>
-					<li>High &euro; {{DaysHigh}}</li>
-					<li>Low &euro; {{DaysLow}}</li>
-					<li>Previous close &euro; {{PreviousClose}}</li>
-					<li>Volume {{Volume}}</li>
-				</ul>
-			</div>
-			<div>
-				<div class='numbers'>
-					<div class="ask">&euro; {{Ask}}</div>
-					<div class="change {{Color}}">
-						<ul>
-							<li>{{ChangeRealtime}}</li>
-							<li>{{ChangeinPercent}}</li>
-						</ul>
-					</div>
-				</div>
-				<div class='name'>
-					<h2>{{Symbol}}</h2>
-					<h3>{{Name}}</h3>
-				</div>
-			</div>
-		</div>
-	{{/primary}}
-	{{#secondary}}
-		<div class="shares bg-color-light color2">
-			<div>
-				<h2>{{Symbol}}</h2>
-				<h3>{{Name}}</h3>
-			</div>
-			<div class="numbers {{Color}}">
-				<ul>
-					<li>{{ChangeRealtime}}</li>
-					<li>{{ChangeinPercent}}</li>
-				</ul>
-			</div>
-			<p class="main_number">&euro; {{Ask}}</p>
-		</div>
-	{{/secondary}}
+    {{#primary}}
+        <div class="com_shares">
+            <h2>Our shares</h2>
+            <div class='more'>
+                <ul>
+                    <li>Open &mdash; {{Open}}</li>
+                    <li>High &mdash; {{DaysHigh}}</li>
+                    <li>Low &mdash; {{DaysLow}}</li>
+                    <li>Previous close &mdash; {{PreviousClose}}</li>
+                    <li>Volume &mdash; {{Volume}}</li>
+                </ul>
+            </div>
+            <div>
+                <div class='numbers'>
+                    <div class="ask">
+                        {{Ask}}
+                        <span class='{{Color}}'>{{{Arrow}}}  {{ChangeRealtime}} ({{ChangeinPercent}})</span>
+                    </div>
+                </div>
+                <div class='name'>
+                    <h2>{{Symbol}}</h2>
+                    <h3>{{Name}}</h3>
+                </div>
+            </div>
+        </div>
+    {{/primary}}
+        <p class='note'>
+            Stock quotes are delayed with ~15min
+        </p>
+    {{#secondary}}
+        <div class="shares bg-color-light color2">
+            <div>
+                <h2>{{Symbol}}</h2>
+            </div>
+            <p class="main_number">{{Ask}}<br/></p>
+            <div class='dark-bg bg-color-dark'>
+                <span class='{{Color}}'>{{{Arrow}}}  {{ChangeRealtime}} ({{ChangeinPercent}})</span>
+                <h3>{{Name}}</h3>
+            </div>
+        </div>
+    {{/secondary}}
 {{/data}}
+{{#error}}
+<div class="error bg-color-dark">
+    <p>There is no live stock information available at this moment, awaiting updates.</p>
+</div>
+{{/error}}
