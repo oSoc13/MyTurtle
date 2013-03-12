@@ -73,7 +73,7 @@
 				else if (delta == 60)
 					data[i].text = "in 1 hour";
 				else
-					data[i].text = "in " + delta + " minutes";
+					data[i].text = "in " + delta + " min";
 
 				// raining?
 				data[i].raining = parseInt(data[i].milimeter) != 0;

@@ -23,7 +23,7 @@
             if (!options.limit)
                 options.limit = 5;
 
-            // automatic collection refresh each minute, this will
+            // automatic collection refresh each 4 minutes, this will
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 240000);
         },

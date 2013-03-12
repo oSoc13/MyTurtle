@@ -94,6 +94,10 @@
                     liveboard[i].delay = delay.format("{H}:{M}");
                 }
 
+                if (liveboard[i].direction){
+                    liveboard[i].direction = liveboard[i].direction.capitalize();
+                }
+
                 if (!liveboard[i].platform.name)
                     liveboard[i].platform.name = "-";
 
