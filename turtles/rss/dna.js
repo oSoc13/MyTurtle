@@ -23,7 +23,7 @@
             if (!options.limit)
                 options.limit = 5;
 
-            // automatic collection refresh each minute, this will
+            // automatic collection refresh each 4 minutes, this will
             // trigger the reset event
             refreshInterval = window.setInterval(this.refresh, 240000);
         },
@@ -46,7 +46,7 @@
         },
         url : function() {
             // remote source url
-            return "//www.google.com/reader/public/javascript/feed/" + this.options.feed + "?callback=?";
+            return "//www.google.com/reader/public/javascript/feed/" + encodeURIComponent(this.options.feed) + "?callback=?";
         },
         parse : function(json) {
             this.options.source = json.title;
@@ -108,6 +108,8 @@
                 if(data.entries.length > 0 && data.entries[0].type_images){
                     // change turtle padding for imagewall
                     this.$el.addClass("nopadding");
+                }else{
+                    this.$el.removeClass("nopadding");
                 }
             }
         }

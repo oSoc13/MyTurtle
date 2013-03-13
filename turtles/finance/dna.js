@@ -18,7 +18,7 @@
 
 			 options.error = false;
 
-			 // automatic collection refresh each minute
+			 // automatic collection refresh each 5 minutes
 			 refreshInterval = window.setInterval(this.refresh, 300000);
 		 },
 		 configure : function() {
@@ -57,13 +57,21 @@
 		 parse : function(json) {
 			 // parse ajax results
 			 var stocks = json.Stock;
-			 var data = new Object();
+             var data = new Object();
 			 data.primary = null;
 			 data.secondary = null;
 
+             if(stocks == null){
+                this.options.error = true;
+                return false;
+             }
+
 			 if(Array.isArray(stocks)){
 			 	for (var i=0; i<stocks.length; i++) {
-			 		stocks[i].Color = (stocks[i].ChangeRealtime.match(/^\+/g))? "green" : (stocks[i].ChangeRealtime.match(/^\-/g) )? "red" : "grey";
+                    stocks[i].Arrow = (stocks[i].ChangeRealtime.match(/^\+/g))? "&#11014;" : (stocks[i].ChangeRealtime.match(/^\-/g) )? "&#11015;" : "";
+			 		stocks[i].Color = (stocks[i].ChangeRealtime.match(/^\+/g))? "green" : (stocks[i].ChangeRealtime.match(/^\-/g) )? "red" : "white";
+                    stocks[i].ChangeRealtime = stocks[i].ChangeRealtime.replace('+','').replace('-','');
+                    stocks[i].ChangeinPercent = stocks[i].ChangeinPercent.replace('+','').replace('-','');
 			 	}
 			 	if(this.options.primary){
 			 		data.primary = stocks[0];
@@ -71,7 +79,10 @@
 			 	}
 			 	if(stocks.length > 0 ) data.secondary = stocks;
 			 }else{
-			 	stocks.Color = (stocks.ChangeRealtime.match(/^\+/g))? "green" : (stocks.ChangeRealtime.match(/^\-/g) )? "red" : "grey";
+                stocks.Arrow = (stocks.ChangeRealtime.match(/^\+/g))? "&#11014;" : (stocks.ChangeRealtime.match(/^\-/g) )? "&#11015;" : "";
+			 	stocks.Color = (stocks.ChangeRealtime.match(/^\+/g))? "green" : (stocks.ChangeRealtime.match(/^\-/g) )? "red" : "white";
+                stocks.ChangeRealtime = stocks.ChangeRealtime.replace('+','').replace('-','');
+                stocks.ChangeinPercent = stocks.ChangeinPercent.replace('+','').replace('-','');
 			 	if(this.options.primary)
 			 		data.primary = stocks;
 			 	else
@@ -104,8 +115,8 @@
 			 // only render when template file is loaded
 			 if (this.template) {
 				 var data = {
-                    data: this.collection.toJSON(),
-                    error: this.options.error
+                    error: this.options.error,
+				 	data: this.collection.toJSON()
 				 };
 
 				 // add html to container

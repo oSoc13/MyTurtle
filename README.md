@@ -5,7 +5,7 @@ A modular HTML5 interface to display "turtles" on a digital signage template. Tu
 
 MyTurtle is version 2 of the FlatTurtle InfoScreen project. You can find the first version on [the old github repository](http://github.com/FlatTurtle/InfoScreen).
 
-This is a project by [FlatTurtle](http://flatturtle.com). It's the back-end for our digital signage platform. FlatTurtle is a member of the [iRail NPO](http://hello.iRail.be). 
+This is a project by [FlatTurtle](http://flatturtle.com). It's the back-end for our digital signage platform. FlatTurtle is a member of the [iRail NPO](http://hello.iRail.be).
 
 Features
 ========
@@ -22,5 +22,3 @@ Tools used
  * Backbone.js
  * Later.js: for cronjobs when the code is ran on FlatOS (http://github.com/FlatTurtle/FlatOS) using the FlatTurtle browser (http://github.com/FlatTurtle/InfoScreenQT)
  * PHP5.3 with CodeIgniter prints the right configuration from the database as an initializer, and takes care of the URL structure. It does however not work as an API.
-
-

@@ -174,7 +174,7 @@ ul li {
 
 .group.widget {
     width: 50%;
-    float: left;
+    float: right;
     overflow-y: hidden;
     overflow-x: hidden;
     height: 100%;
@@ -242,6 +242,14 @@ ul li {
     font-weight: bold;
     line-height: 2.8em;
     font-family: "Soho Gothic W01 Bold";
+}
+
+.list .header h4 {
+    float: left;
+    margin-left: 20px;
+    font-size: 1em;
+    line-height: 87px;
+    color: #888;
 }
 
 .list .header>i+h2 {
@@ -461,6 +469,7 @@ ul li {
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%,
         rgba(0, 0, 0, 0) 100% );
     position: relative;
+    overflow: hidden;
 }
 
 .widget header .progress {
@@ -477,8 +486,9 @@ ul li {
 }
 
 .widget header .nav {
-    width: 18%;
     height: 75px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin: 0;
     margin-top: 5px;
     float: left;
@@ -492,7 +502,9 @@ ul li {
 
 .widget header .nav.active {
     margin: 5px 0 0 0;
-    width: 25%;
+    padding-left: 30px;
+    padding-right: 30px;
+    min-width: 10%;
     background-image: none;
     -webkit-box-shadow: 10px -4px 2px 1px rgba(0, 0, 0, 0.4);
     box-shadow: 3px -4px 2px 1px rgba(0, 0, 0, 0.4);
@@ -675,12 +687,17 @@ ul li {
     padding: 0;
     font-family: "Soho Gothic W01 Bold";
     margin-right: 4%;
-    font-size: 1.8em;
+    font-size: 2.2em;
     line-height: 1.5em;
-    margin-top: 2%;
+    margin-top: 1%;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
     display: inline-block;
     float:left;
+}
+
+.widget .com_shares .ask span{
+    padding-left: 20px;
+    font-size: 0.8em;
 }
 
 .widget .com_shares .name{
@@ -711,12 +728,17 @@ ul li {
     padding:5px;
 }
 
+.turtle.finance .note{
+    padding-bottom: 2%;
+    text-align: right;
+}
 
 .shares {
-    width: 94%;
-    min-height: 40px;
+    width: 96%;
+    min-height: 80px;
     margin-bottom: 25px;
-    padding: 3%;
+    padding: 2%;
+    position: relative;
 }
 
 .shares div:first-child {
@@ -729,54 +751,53 @@ ul li {
     font-family: "Soho Gothic W01 Bold";
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
     margin-bottom: 8%;
-    margin-top: 5%;
+    margin-top: 2%;
     font-size: 1.8em;
 }
 
 .shares h3 {
     text-transform: uppercase;
+    padding: 1.2% 2%;
+    display: inline-block;
 }
 
-.shares .numbers {
-    float: right;
-    width: 15%;
-    height: 80% !important;
-    padding: 3%;
-    color: #FFF;
+.shares .red, .com_shares .red {
+    color: #ff0000;
 }
 
-.shares .numbers ul {
-    margin: 0 auto;
-}
-
-.shares .numbers ul li {
-    float: right;
-    display: block;
-    clear: right;
-}
-
-.shares .numbers.red,.com_shares .red {
-    background-color: #b5202e;
-    color: #FFF;
-}
-
-.shares .numbers.green,.com_shares .green {
-    background-color: #3C3;
-    color: #FFF;
-}
-
-.shares .numbers.grey,.com_shares .grey {
-    background-color: #aaa;
-    color: #FFF;
+.shares .green,.com_shares .green {
+    color: #1fd31f;
 }
 
 .shares .main_number {
+    position: absolute;
     font-family: "Soho Gothic W01 Bold";
-    float: right;
-    margin-right: 4%;
+    right: 0px;
+    top: 0px;
+    text-align: right;
+    vertical-align: middle;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 2%;
     font-size: 1.8em;
-    margin-top: 4%;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+    line-height: 1.1em;
+    height: 98%;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.shares .dark-bg span{
+    display: inline-block;
+    float:right;
+    padding: 1.2% 2%;
+}
+
+
+.shares .dark-bg{
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 40%;
+    position: absolute;
 }
 
 /* ==============
@@ -1071,8 +1092,57 @@ footer #flatturtle-logo {
 footer #client-logo {
     position: absolute;
     top: 9px;
-    right: 20px;
+    right: 2%;
     height: 60px;
+    max-width: 18%;
+}
+
+footer #message {
+    text-align: center;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 0;
+    height: 80px;
+    font-size: 1.2em;
+    line-height: 80px;
+}
+
+footer #message.scroll-footer{
+    left: 200px;
+    position: absolute;
+    height: 80px;
+}
+
+footer .scroll-footer .fade{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+}
+
+footer .scroll-footer .fade.left{
+    left: 0;
+    top: 0;
+    background-image: url(images/footer_fade_left.png);
+}
+
+footer .scroll-footer .fade.right{
+    right: -1px;
+    top: 0;
+    background-image: url(images/footer_fade_right.png);
+}
+
+footer marquee {
+    width: 100%;
+    height: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: -webkit-marquee;
+    overflow-style: marquee;
+}
+
+footer marquee span {
+    padding-right: 25%;
 }
 
 /* ==========================================================================
@@ -1125,28 +1195,6 @@ footer #client-logo {
 
 #clock #blink {
     text-decoration: blink;
-}
-
-footer #message {
-    text-align: center;
-    position: absolute;
-    left: 20%;
-    right: 20%;
-    top: 0;
-    height: 80px;
-    font-size: 1.2em;
-    line-height: 80px;
-}
-
-footer marquee {
-    white-space: nowrap;
-    overflow: hidden;
-    overflow-x: -webkit-marquee;
-    overflow-style: marquee;
-}
-
-footer marquee span {
-    padding-right: 30%;
 }
 
 /*
@@ -1307,5 +1355,5 @@ div.taxi .line:last-child{
 }
 
 .error p{
-    padding:20px;
+    padding:2%;
 }
