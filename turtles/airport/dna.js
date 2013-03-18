@@ -69,7 +69,9 @@
             });
         },
         url : function() {
+            // Fetch the results from half an hour from now
             var today = new Date();
+            today.addHours(1);
             var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
 
             // remote source url

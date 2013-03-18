@@ -25,8 +25,8 @@
 		</div>
 
 		<footer>
-			<img src="client/css/images/ft_logo.jpg" alt="FlatTurtle" id="flatturtle-logo" />
-			<img src="client/css/images/logo_placeholder.png" alt="Logo" id="client-logo" />
+            <div id='flatturtle-logo' class='logo' style='background-image:url("client/css/images/logo.jpg")'></div>
+            <div id='client-logo' class='logo' style='background-image:url("client/css/images/logo_placeholder.png")'></div>
 		</footer>
 
 		<script src="client/js/libs/leaflet.js?<?php echo $rand; ?>"></script>

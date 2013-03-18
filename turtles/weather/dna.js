@@ -1,154 +1,194 @@
 (function($) {
 
-	var collection = Backbone.Collection.extend({
-		initialize : function(models, options) {
-			// prevents loss of 'this' inside methods
-			_.bindAll(this, "refresh");
-			_.bindAll(this, "url");
+    var collection = Backbone.Collection.extend({
+        initialize : function(models, options) {
+            // prevents loss of 'this' inside methods
+            _.bindAll(this, "refresh");
+            _.bindAll(this, "url");
 
-			// bind refresh
-			this.on("born", this.refresh);
-			this.on("refresh", this.refresh);
-			this.on("reconfigure", this.refresh);
+            // bind refresh
+            this.on("born", this.refresh);
+            this.on("refresh", this.refresh);
+            this.on("reconfigure", this.refresh);
 
-			// default error value
-			options.error = false;
+            // default error value
+            options.error = false;
 
-			// automatic collection refresh each 5 minutes, this will
-			// trigger the reset event
-			refreshInterval = window.setInterval(this.refresh, 300000);
-		},
-		refresh : function() {
-			var self = this;
-			// pick screen location when location is not set
-			if(typeof self.options == "undefined" || self.options.location == null || self.options.location == ""){
-				self.options.location = Screen.location.geocode;
-				Screen.listeners[self.options.id] = true;
-			}else{
-				delete Screen.listeners[self.options.id];
-			}
+            // automatic collection refresh each 5 minutes, this will
+            // trigger the reset event
+            refreshInterval = window.setInterval(this.refresh, 300000);
+        },
+        refresh : function() {
+            var self = this;
+            // pick screen location when location is not set
+            if(typeof self.options == "undefined" || self.options.location == null || self.options.location == ""){
+                self.options.location = Screen.location.geocode;
+                Screen.listeners[self.options.id] = true;
+            }else{
+                delete Screen.listeners[self.options.id];
+            }
 
-			self.fetch({
-				error : function() {
-					// will allow the view to detect errors
-					self.options.error = true;
+            self.fetch({
+                error : function() {
+                    // will allow the view to detect errors
+                    self.options.error = true;
 
-					// if there are no previous items to show, display error message
-					if(self.length == 0)
-						self.trigger("reset");
-				}
-			});
-		},
-		url : function() {
-			var self = this;
-			var latitude = self.options.location.split(',')[0];
-			var longitude = self.options.location.split(',')[1];
-			return "https://data.flatturtle.com/Weather/Rainfall/" + encodeURIComponent(latitude) + "/" + encodeURIComponent(longitude) + ".json";
-		},
-		parse : function(json) {
-			var data = json.Rainfall;
+                    // if there are no previous items to show, display error message
+                    if(self.length == 0)
+                        self.trigger("reset");
+                }
+            });
+        },
+        url : function() {
+            var self = this;
+            var latitude = self.options.location.split(',')[0];
+            var longitude = self.options.location.split(',')[1];
+            return "https://data.flatturtle.com/Weather/Rainfall/" + encodeURIComponent(latitude) + "/" + encodeURIComponent(longitude) + ".json";
+        },
+        parse : function(json) {
+            var data = json.Rainfall;
 
-			// new array
-			var results = new Array();
+            // new array
+            var results = new Array();
+            var keep = new Array();
+            // intervals in minutes to keep
+            var keepMinutes = [30, 60, 90, 120, 160, 190];
 
-			var raining;
+            var raining = false;
 
-			// now date object
-			var now = data[0].time;
-			var date = new Date();
+            // now date object
+            var now = data[0].time;
 
-			// intervals in minutes to keep
-			var keep = [0, 30, 60, 120];
+            for (var i in data) {
 
-			for (var i in data) {
+                // minutes from now
+                var delta = (data[i].time - now) / 60;
 
-				// minutes from now
-				var delta = (data[i].time - data[0].time) / 60;
+                // text
+                if (delta == 0)
+                    data[i].text = "now";
+                else if (delta > 60)
+                    data[i].text = "in " + Math.round(delta/60*10)/10 + " hours";
+                else if (delta == 60)
+                    data[i].text = "in 1 hour";
+                else
+                    data[i].text = "in " + delta + " min";
 
-				// text
-				if (delta == 0)
-					data[i].text = "now";
-				else if (delta > 60)
-					data[i].text = "in " + Math.floor(delta/60) + " hours";
-				else if (delta == 60)
-					data[i].text = "in 1 hour";
-				else
-					data[i].text = "in " + delta + " min";
+                // raining?
+                data[i].regular = new Object();
+                data[i].regular.raining = parseInt(data[i].milimeter) != 0;
 
-				// raining?
-				data[i].raining = parseInt(data[i].milimeter) != 0;
+                if (i == 0) {
+                    // first item
+                    results.push(data[i]);
+                }else if(raining && !data[i].regular.raining) {
+                    // sunshine
+                    results.push(data[i]);
+                }else if(!raining && data[i].regular.raining) {
+                    // raining
+                    results.push(data[i]);
+                }else if(keepMinutes.indexOf(delta) > -1) {
+                    // delta is a keep value
+                    keep.push(data[i]);
+                }
 
-				// first item
-				if (i == 0) {
-					raining = data[i].raining;
-				}
+                raining = data[i].regular.raining;
+            }
 
-				// delta is a keep value
-				if (keep.indexOf(delta) > -1) {
-					results.push(data[i]);
-					continue;
-				}
+            // Add other data or keepers if there is not enough change
+            if(results.length < 4){
+                var owmData = new Array();
+                var latitude = this.options.location.split(',')[0];
+                var longitude = this.options.location.split(',')[1];
+                owmURL = 'https://data.flatturtle.com/Weather/City/' + encodeURIComponent(latitude) + '/' + encodeURIComponent(longitude)+ '.json';
+                $.ajax({
+                    url: owmURL,
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        if(data.City && data.City.length > 0)
+                            owmData = data.City[0];
+                    }
+                });
 
-				// sunshine
-				if (raining && !data[i].raining) {
-					raining = false;
-					results.push(data[i]);
-					continue;
-				}
+                if(owmData.main){
+                    var extra_data = new Object();
+                    extra_data.text = "Temperature";
+                    // Kelvin to °C
+                    extra_data.data = Math.round(owmData.main.temp - 273.15) + " °C";
+                    results.push(extra_data);
 
-				// raining
-				if (!raining && data[i].raining) {
-					raining = false;
-					results.push(data[i]);
-					continue;
-				}
 
-			}
+                    extra_data = new Object();
+                    extra_data.text = "Wind speed";
+                    // MPS to KM/H
+                    var windspeed = owmData.wind.speed;
+                    windspeed = Math.round(windspeed*60*60/1000);
+                    if(windspeed < 100){
+                        extra_data.data =  windspeed + "<span>km/h</span>";
+                    }else{
+                        extra_data.wind = "wind";
+                        extra_data.data =  windspeed + "<p>km/h</p>";
+                    }
+                    results.push(extra_data);
 
-			return results.slice(0,4);
-		}
-	});
 
-	var view = Backbone.View.extend({
-		initialize : function() {
-			// prevents loss of 'this' inside methods
-			_.bindAll(this, "render");
+                    extra_data = new Object();
+                    extra_data.text = "Humidity";
+                    extra_data.data = Math.round(owmData.main.humidity) + " %";
+                    results.push(extra_data);
+                }else{
+                    results = results.concat(keep);
+                    // Sort the new added results
+                    results.sort(function(a, b){
+                        return a.time > b.time;
+                    });
+                }
+            }
+            return results.slice(0,4);
+        }
+    });
 
-			// bind render to collection reset
-			this.collection.on("reset", this.render);
+    var view = Backbone.View.extend({
+        initialize : function() {
+            // prevents loss of 'this' inside methods
+            _.bindAll(this, "render");
 
-			// pre-fetch template file and render when ready
-			var self = this;
-			if (this.template == null) {
-				$.get("turtles/weather/views/list.html", function(template) {
-					self.template = template;
-					self.render();
-				});
-			}
-		},
-		render : function() {
-			// only render when template file is loaded
-			if (this.template && this.collection.length) {
+            // bind render to collection reset
+            this.collection.on("reset", this.render);
 
-				var data = {
-					entries : this.collection.toJSON(),
-					error : this.options.error // have there been any errors?
-				};
+            // pre-fetch template file and render when ready
+            var self = this;
+            if (this.template == null) {
+                $.get("turtles/weather/views/list.html", function(template) {
+                    self.template = template;
+                    self.render();
+                });
+            }
+        },
+        render : function() {
+            // only render when template file is loaded
+            if (this.template && this.collection.length) {
 
-				// add html to container
-				this.$el.empty();
-				this.$el.html(Mustache.render(this.template, data));
+                var data = {
+                    entries : this.collection.toJSON(),
+                    error : this.options.error // have there been any errors?
+                };
 
-				// change turtle padding
-				this.$el.css('padding-bottom','0px');
-			}
-		}
-	});
+                // add html to container
+                this.$el.empty();
+                this.$el.html(Mustache.render(this.template, data));
 
-	// register turtle
-	Turtles.register("weather", {
-		collection : collection,
-		view : view
-	});
+                // change turtle padding
+                this.$el.css('padding-bottom','0px');
+            }
+        }
+    });
+
+    // register turtle
+    Turtles.register("weather", {
+        collection : collection,
+        view : view
+    });
 
 })(jQuery);

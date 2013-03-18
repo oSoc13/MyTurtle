@@ -63,7 +63,7 @@ window.Interface = (function() {
 	 * Set the footer logo url
 	 */
 	function logo(url) {
-		$('footer img#client-logo').attr('src', url);
+		$('footer #client-logo').css('background-image', 'url("'+url + '")');
 	}
 
 	/*
