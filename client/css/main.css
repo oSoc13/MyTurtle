@@ -243,10 +243,8 @@ ul li {
 .list .header h2 {
     float: left;
     font-size: 1.5em;
-    font-weight: bold;
     line-height: 2.8em;
     line-height: 80px;
-    font-family: "Soho Gothic W01 Bold";
 }
 
 .list .header h4 {
@@ -621,6 +619,7 @@ ul li {
     background-size: 100%;
     background-position: center top;
     background-repeat: no-repeat;
+    opacity: 0.5;
     height: 5px;
     display: block;
 }
@@ -872,7 +871,7 @@ ul li {
 
 .instgrm:after {
     content: "";
-    background-image: url(images/shadow3.png);
+    background-image: url(images/shadow_bottom.png);
     background-size: 100%;
     background-position: center top;
     background-repeat: no-repeat;
@@ -894,12 +893,12 @@ ul li {
 
 .tweet .body:after {
     content: "";
-    background-image: url(images/shadow3.png);
+    background-image: url(images/shadow_bottom.png);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: top center;
     width: 100%;
-    opacity: 0.4;
+    opacity: 0.3;
     height: 50px;
     position: absolute;
     bottom: 0px;
@@ -915,6 +914,7 @@ ul li {
     height: 35px;
     line-height: 35px;
     position: relative;
+    font-weight: normal;
     margin: 0px;
 }
 

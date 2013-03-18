@@ -104,6 +104,7 @@
                 $.ajax({
                     url: owmURL,
                     async: false,
+                    dataType: 'json',
                     success: function(data) {
                         if(data.City && data.City.length > 0)
                             owmData = data.City[0];
