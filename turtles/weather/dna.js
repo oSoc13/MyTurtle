@@ -75,16 +75,16 @@
                     data[i].text = "in " + delta + " min";
 
                 // raining?
-                data[i].raining = parseInt(data[i].milimeter) != 0;
-                console.log(delta + " - " + data[i].raining);
+                data[i].regular = new Object();
+                data[i].regular.raining = parseInt(data[i].milimeter) != 0;
 
                 if (i == 0) {
                     // first item
                     results.push(data[i]);
-                }else if(raining && !data[i].raining) {
+                }else if(raining && !data[i].regular.raining) {
                     // sunshine
                     results.push(data[i]);
-                }else if(!raining && data[i].raining) {
+                }else if(!raining && data[i].regular.raining) {
                     // raining
                     results.push(data[i]);
                 }else if(keepMinutes.indexOf(delta) > -1) {
@@ -92,16 +92,53 @@
                     keep.push(data[i]);
                 }
 
-                raining = data[i].raining;
+                raining = data[i].regular.raining;
             }
 
-            // Add keepers if there is not enough data
+            // Add other data or keepers if there is not enough change
             if(results.length < 4){
-                results = results.concat(keep);
-                // Sort the new added results
-                results.sort(function(a, b){
-                    return a.time > b.time;
+                var owmData = new Array();
+                var latitude = this.options.location.split(',')[0];
+                var longitude = this.options.location.split(',')[1];
+                owmURL = 'https://data.flatturtle.com/Weather/City/' + encodeURIComponent(latitude) + '/' + encodeURIComponent(longitude)+ '.json';
+                $.ajax({
+                    url: owmURL,
+                    async: false,
+                    success: function(data) {
+                        if(data.City && data.City.length > 0)
+                            owmData = data.City[0];
+                    }
                 });
+
+                if(owmData.main){
+                    var extra_data = new Object();
+                    extra_data.text = "Temperature";
+                    // Kelvin to °C
+                    extra_data.data = Math.round(owmData.main.temp - 273.15) + " °C";
+                    results.push(extra_data);
+
+
+                    extra_data = new Object();
+                    extra_data.text = "Wind speed";
+                    extra_data.wind = "wind";
+                    // MPS to KM/H
+                    var windspeed = owmData.wind.speed;
+                    windspeed = windspeed*60*60/1000
+                    extra_data.data =  Math.round(windspeed) + "<span>km/h</span>";
+                    results.push(extra_data);
+
+
+                    extra_data = new Object();
+                    extra_data.text = "Humidity";
+                    extra_data.data = Math.round(owmData.main.humidity) + " %";
+                    results.push(extra_data);
+                }else{
+                    results = results.concat(keep);
+                    // Sort the new added results
+                    results.sort(function(a, b){
+                        return a.time > b.time;
+                    });
+                }
             }
             return results.slice(0,4);
         }

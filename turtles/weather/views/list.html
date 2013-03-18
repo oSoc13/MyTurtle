@@ -1,12 +1,17 @@
 {{#entries}}
 <div class="weatherBox">
-    <div class="type">
-    	{{#raining}}
-			<i class="zwareregen"></i>
-		{{/raining}}
-		{{^raining}}
-			<i class="lichtbewolkt"></i>
-		{{/raining}}
+    <div class="type {{wind}}">
+        {{#regular}}
+            {{#raining}}
+                <i class="zwareregen"></i>
+            {{/raining}}
+            {{^raining}}
+                <i class="lichtbewolkt"></i>
+            {{/raining}}
+        {{/regular}}
+        {{#data}}
+            {{{data}}}
+        {{/data}}
     </div>
     <div class="time">
         <p>{{text}}</p>
