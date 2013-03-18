@@ -120,11 +120,15 @@
 
                     extra_data = new Object();
                     extra_data.text = "Wind speed";
-                    extra_data.wind = "wind";
                     // MPS to KM/H
                     var windspeed = owmData.wind.speed;
-                    windspeed = windspeed*60*60/1000
-                    extra_data.data =  Math.round(windspeed) + "<span>km/h</span>";
+                    windspeed = Math.round(windspeed*60*60/1000);
+                    if(windspeed < 100){
+                        extra_data.data =  windspeed + "<span>km/h</span>";
+                    }else{
+                        extra_data.wind = "wind";
+                        extra_data.data =  windspeed + "<p>km/h</p>";
+                    }
                     results.push(extra_data);
 
 

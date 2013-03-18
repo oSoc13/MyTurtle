@@ -586,11 +586,16 @@ ul li {
     line-height: 100px;
 }
 
-.widget .weather .weatherBox .type.wind span{
+.widget .weather .weatherBox .type span{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.widget .weather .weatherBox .type p{
     font-size: 20px;
     margin-top: -60px;
-    display: block;
 }
+
 
 .widget .weather .weatherBox .time {
     width: 100%;
