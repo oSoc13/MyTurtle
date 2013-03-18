@@ -3,6 +3,7 @@
  * Helper functions
  *
  * @author: Jens Segers (jens@irail.be)
+ * @author: Michiel Vancoillie (michiel@irail.be)
  * @license: AGPLv3
  */
 
@@ -126,4 +127,20 @@ String.prototype.capitalize = function() {
 
         return g1.toUpperCase() + g2;
     });
+}
+
+/*
+ * Add a number of hours to a date
+ */
+Date.prototype.addHours= function(h){
+    this.addMinutes(this.getHours()+(h*60));
+    return this;
+}
+
+/*
+ * Add a number of minutes to a date
+ */
+Date.prototype.addMinutes= function(m){
+    this.setMinutes(this.getMinutes()+m);
+    return this;
 }
