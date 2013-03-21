@@ -6,38 +6,46 @@
 
  (function($){
 
-	var collection = Backbone.Collection.extend({
-		initialize : function(models, options) {
-			options.data = JSON.parse(options.data);
+    var collection = Backbone.Collection.extend({
+        initialize : function(models, options) {
+            _.bindAll(this, "configure");
 
-			this.on("reconfigure", this.render);
-		}
-	});
+            this.on("born", this.configure);
+            this.on("reconfigure", this.configure);
+        },
+        configure : function(){
+            if(!this.options.data)
+                return false;
 
-	var view = Backbone.View.extend({
+            this.options.data = JSON.parse(this.options.data);
+            this.trigger("render");
+        }
+    });
 
-		initialize : function() {
-			this.on("born", this.render);
-		},
-		render : function() {
-			var self = this;
+    var view = Backbone.View.extend({
 
-			$.get("turtles/signage/views/widget.html", function(template) {
-				var data = {
-					data : self.options.data
-				};
+        initialize : function() {
+            this.on("born", this.render);
+        },
+        render : function() {
+            var self = this;
 
-				// render html
-				self.$el.empty();
-				self.$el.html(Mustache.render(template, data));
-			});
-		}
-	});
+            $.get("turtles/signage/views/widget.html", function(template) {
+                var data = {
+                    data : self.options.data
+                };
 
-	// register turtle
-	Turtles.register("signage", {
-		collection : collection,
-		view : view
-	});
+                // render html
+                self.$el.empty();
+                self.$el.html(Mustache.render(template, data));
+            });
+        }
+    });
+
+    // register turtle
+    Turtles.register("signage", {
+        collection : collection,
+        view : view
+    });
 
 })(jQuery);
