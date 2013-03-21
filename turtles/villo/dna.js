@@ -64,11 +64,21 @@
             var villo = json.Villo;
 
             for(var i in villo) {
-                villo[i].distance = Math.round(parseInt(villo[i].distance)/10)*10;
+                if(villo[i].distance)
+                    villo[i].distance = Math.round(parseInt(villo[i].distance)/10)*10;
 
                 var name = jQuery.trim(villo[i].name);
                 name = name.match(/^[0-9]+\s*-\s*(.*?)(?:[\/|:](.*))?$/)[1];
                 villo[i].name = name.capitalize();
+
+                if(!villo[i].freebikes){
+                    villo[i].freebikes = 0;
+                }
+                if(!villo[i].freespots){
+                    villo[i].freespots = 0;
+                }
+
+                villo[i].freespots += villo[i].freebikes;
             }
 
             return villo;
@@ -97,7 +107,6 @@
             if (this.template && this.collection.length) {
 
                 var data = this.collection.toJSON()[0];
-                data.freespots += data.freebikes;
                 data.time_walk = this.options.time_walk;
                 data.error = this.options.error; // have there been any errors?
 

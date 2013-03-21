@@ -1,6 +1,7 @@
 /*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
+ * @author: Michiel Vancoillie (michiel@irail.be)
  * @license: AGPLv3
  */
 
@@ -88,12 +89,14 @@
             var liveboard = json.Departures;
 
             for (var i in liveboard) {
-                var time = new Date(liveboard[i].time * 1000);
-                liveboard[i].time = time.format("{H}:{M}");
+                if(liveboard[i].time){
+                    var time = new Date(liveboard[i].time * 1000);
+                    liveboard[i].time = time.format("{H}:{M}");
 
-                if (liveboard[i].delay) {
-                    var delay = new Date(liveboard[i].delay * 1000 + time.getTimezoneOffset() * 60000);
-                    liveboard[i].delay = delay.format("{H}:{M}");
+                    if (liveboard[i].delay) {
+                        var delay = new Date(liveboard[i].delay * 1000 + time.getTimezoneOffset() * 60000);
+                        liveboard[i].delay = delay.format("{H}:{M}");
+                    }
                 }
 
                 if (!liveboard[i].long_name) {
@@ -105,13 +108,17 @@
                         liveboard[i].long_name = liveboard[i].long_name.split("-")[1];
                 }
 
-                switch (parseInt(liveboard[i].type)) {
-                    case 0:
-                        liveboard[i].type = "tram";
-                        break;
-                    default:
-                        liveboard[i].type = "bus";
-                        break;
+                if(liveboard[i].type){
+                    switch (parseInt(liveboard[i].type)) {
+                        case 0:
+                            liveboard[i].type = "tram";
+                            break;
+                        default:
+                            liveboard[i].type = "bus";
+                            break;
+                    }
+                }else{
+                    liveboard[i].type = "bus";
                 }
             }
 

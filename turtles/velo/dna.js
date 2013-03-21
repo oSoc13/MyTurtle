@@ -64,8 +64,19 @@
             var velo = json.Velo;
 
             for(var i in velo) {
-                velo[i].distance = Math.round(parseInt(velo[i].distance)/10)*10;
+                if(velo[i].distance)
+                    velo[i].distance = Math.round(parseInt(velo[i].distance)/10)*10;
+
                 velo[i].name = jQuery.trim(velo[i].name).capitalize();
+
+                if(!velo[i].freebikes){
+                    velo[i].freebikes = 0;
+                }
+                if(!velo[i].freespots){
+                    velo[i].freespots = 0;
+                }
+
+                velo[i].freespots += velo[i].freebikes;
             }
 
             return velo;
@@ -94,7 +105,6 @@
             if (this.template && this.collection.length) {
 
                 var data = this.collection.toJSON()[0];
-                data.freespots += data.freebikes;
                 data.time_walk = this.options.time_walk;
                 data.error = this.options.error; // have there been any errors?
 
