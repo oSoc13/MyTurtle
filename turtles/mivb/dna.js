@@ -1,6 +1,7 @@
 /*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
+ * @author: Michiel Vancoillie (michiel@irail.be)
  * @license: AGPLv3
  */
 
@@ -88,13 +89,14 @@
             var liveboard = json.Departures;
 
             for (var i in liveboard) {
+                if(liveboard[i].time){
+                    var time = new Date(liveboard[i].time * 1000);
+                    liveboard[i].time = time.format("{H}:{M}");
 
-                var time = new Date(liveboard[i].time * 1000);
-                liveboard[i].time = time.format("{H}:{M}");
-
-                if (liveboard[i].delay) {
-                    var delay = new Date(liveboard[i].delay * 1000 + time.getTimezoneOffset() * 60000);
-                    liveboard[i].delay = delay.format("{H}:{M}");
+                    if (liveboard[i].delay) {
+                        var delay = new Date(liveboard[i].delay * 1000 + time.getTimezoneOffset() * 60000);
+                        liveboard[i].delay = delay.format("{H}:{M}");
+                    }
                 }
 
                 if (!liveboard[i].long_name) {

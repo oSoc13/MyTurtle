@@ -46,10 +46,13 @@
 
                 if(this.options.station == null){
                     // Get connection
-                    var url = "http://api.irail.be/connections/?to=" + encodeURIComponent(this.options.to) + "&from=" + encodeURIComponent(this.options.from) + "&format=json&results=" + this.options.limit;
+                    var url = "http://api.irail.be/connections/?to=" + encodeURIComponent(this.options.to) + "&from=" + encodeURIComponent(this.options.from) + "&format=json&fast=true";
 
                     $.getJSON(url, function(data){
                         self.parse(data);
+                        self.trigger("reset");
+                    }).error(function(){
+                        self.options.error = true;
                         self.trigger("reset");
                     });
                 }else{
@@ -68,6 +71,9 @@
                     var self = this;
                     $.getJSON(url, function(data){
                         self.parse(data);
+                        self.trigger("reset");
+                    }).error(function(){
+                        self.options.error = true;
                         self.trigger("reset");
                     });
                 }
@@ -94,6 +100,9 @@
                 $.getJSON(url, function(data){
                     self.parse(data);
                     self.trigger("reset");
+                }).error(function(){
+                        self.options.error = true;
+                        self.trigger("reset");
                 });
             }
         },
@@ -147,68 +156,9 @@
                         }
                     }
 
-                    // calculate viapoints
-                    var interestpoints = new Array();
-                    var part = new Object();
-                    part.start = data[0].departure.station;
-
-                    if(data[0].vias != null){
-                        var count = parseInt(data[0].vias.number);
-                        if(count > 0){
-                            for(var i in data[0].vias.via){
-                                var via = data[0].vias.via[i];
-                                part.vehicle = via.vehicle;
-                                part.end = via.station;
-                                interestpoints.push(part);
-
-                                part = new Object();
-                                part.start = via.station;
-
-                                if(i < (count-2)){
-                                    i++;
-                                    var via = data[0].vias.via[i];
-                                    part.vehicle = via.vehicle;
-                                    part.end = via.station;
-                                    i--;
-                                }
-                            }
-                        }
-                    }
-
-                    part.vehicle = data[0].arrival.vehicle;
-                    part.end = data[0].arrival.station;
-                    interestpoints.push(part);
-
-                    // calculate every stop
-                    var route = new Array();
-                    for(var i=0; i< interestpoints.length; i++){
-                        var ipoint = interestpoints[i];
-                        $.ajax({
-                            url: "http://api.irail.be/vehicle/?id="+ ipoint.vehicle + "&format=json",
-                            dataType: 'json',
-                            async: false,
-                            success: function(json) {
-                                var in_route = false;
-                                for(var j in json.stops.stop){
-                                    var stop = json.stops.stop[j];
-                                    if(stop.station == ipoint.start){
-                                        in_route = true;
-                                    }
-                                    if(in_route){
-                                        route.push(new Array(parseFloat(stop.stationinfo.locationY),
-                                                                parseFloat(stop.stationinfo.locationX)));
-                                    }
-                                    if(stop.station == ipoint.end){
-                                        in_route = false;
-                                    }
-                                }
-                            }
-                        });
-                    }
                     var connections = new Object();
                     connections.connection = data;
                     this.options.connections = connections;
-                    this.options.route = route;
                 }else if(json.Departures != null || json.Arrivals != null){
                     // Parse liveboard results
                     var data = json.Departures;
@@ -251,7 +201,6 @@
                 if(data.results == null){
                     data.results = json.Arrivals;
                     data.type = "Arrivals";
-                    console.log(data);
                     data.arrivals = null;
                 }else{
                     data.type = "Departures";
@@ -316,7 +265,7 @@
         },
         render : function() {
             // only render when template file is loaded
-            if (this.template && (this.options.connections != null || this.options.liveboard != null)) {
+            if (this.template && (this.options.error || this.options.connections != null || this.options.liveboard != null)) {
                 if(this.options.route_type == "mivb"){
                     this.options.liveboard.location = new Object();
                     this.options.liveboard.location.name = this.options.location;
@@ -325,37 +274,18 @@
                 var data = {
                     liveboard : this.options.liveboard,
                     connections : this.options.connections,
-                    route : this.options.route
+                    error: this.options.error
                 };
 
                 // add html to container
                 this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));
 
-                var self = this;
-                // only draw map on correct type
-                if(this.options.connections != null){
-                    // draw map with stops
-                    var canvas = this.$el.find(".map")[0];
-
-                    wax.tilejson('http://api.tiles.mapbox.com/v2/' + this.options.layer + '.jsonp',
-                        function(tilejson) {
-                            var map = new L.Map(canvas, {zoomControl:false})
-                            .addLayer(new wax.leaf.connector(tilejson))
-                            .setView(new L.LatLng(51.505, -0.09), 10);
-                            var polyline = new L.Polyline(data.route, {color:'#'+Interface.config.color, weight: 6, opacity: 0.7}).addTo(map);
-                            for(var i in data.route){
-                                new L.CircleMarker(data.route[i],{fillColor: Interface.config.darkColor, weight: 0, fillOpacity: 0.9, radius: 5}).addTo(map);
-                            }
-                            map.fitBounds(polyline.getBounds());
-                        }
-                    );
-                }
-
                 // reset results
                 this.options.liveboard = null;
                 this.options.connections = null;
                 this.options.route = null;
+                this.options.error = false;
             }else{
                 this.$el.empty();
                 this.$el.html("<div class='loading bg-color'><div class='message'>Calculating...</div></div>");

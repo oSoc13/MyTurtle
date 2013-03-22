@@ -1,3 +1,16 @@
+{{#error}}
+<div class="header bg-color">
+    <h2>Something went wrong. Please try again!</h2>
+</div>
+<div class="results">
+    <div class='connections half bg-color'>
+        <div class='error bg-color-dark' style='padding:1.5%;margin:0% 38px;color:#fff;'>
+            <h4>We couldn't calculate the requested route, check if all the information is there and correct.</h4>
+        </div>
+    </div>
+</div>
+{{/error}}
+
 {{#connections}}
 <div class="header bg-color">
 	<h2>Planning your route</h2>
@@ -86,17 +99,13 @@
 		</div>
 		{{/connection}}
 	</div>
-	<div class='mapcontainer half bg-color'>
-		<div class='map'>
-		</div>
-	</div>
 </div>
 {{/connections}}
 {{#liveboard}}
 <div class="header bg-color">
 	<h2>{{route_type}} {{type}}: {{#location}}{{name}}{{/location}}</h2>
 </div>
-<div class="results">
+<div class="results half bg-color">
 	<ul>
         {{#nmbs}}
     		{{#results}}
