@@ -36,6 +36,14 @@
 					<p>{{time}}</p>
 				{{/delay}}
 			</div>
+            {{#via}}
+                <div class='via'>
+                    &#8627;  &nbsp; &nbsp;{{station}}
+                    <span class='viatime'>
+                        {{time}}
+                    </span>
+                </div>
+            {{/via}}
 		</li>
 		{{/entries}}
 	</ul>
