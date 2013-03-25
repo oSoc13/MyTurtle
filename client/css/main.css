@@ -369,6 +369,16 @@ ul li {
     width: 80%;
     display: block;
     font-size: 1.2em;
+    width: 80%;
+}
+
+.results ul li .via{
+    float: left;
+    margin-left: 130px;
+}
+
+.results ul li .via .viatime{
+    margin-left: 15px;
 }
 
 .results ul li .time {
