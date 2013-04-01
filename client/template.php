@@ -31,7 +31,7 @@
 
         <?php
             // Clear previous log file
-            $log_file = "client/logs/log.txt";
+            $log_file = "client/logs/log-". preg_replace('/[^A-Za-z0-9_\-]/', '_', $alias);
             $fh = fopen($log_file, 'w') or die("can't open file");
             fclose($fh);
         ?>
@@ -45,7 +45,7 @@
             var logPattern = new log4javascript.PatternLayout("%d{HH:mm:ss SSS} - %-6p > %m{10}");
 
             // Create an ajaxAppender
-            var ajaxAppender = new log4javascript.AjaxAppender("client/logs/logger.php");
+            var ajaxAppender = new log4javascript.AjaxAppender("client/logs/logger.php?alias=<?php echo preg_replace('/[^A-Za-z0-9_\-]/', '_', $alias) ?>");
             ajaxAppender.setLayout(logPattern);
 
             // Create a browserAppender

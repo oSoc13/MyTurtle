@@ -1,7 +1,8 @@
 <?php
 
 // Log logs from an ajax call
-$log_file = "log.txt";
+$alias = str_replace('/', '_', $_GET['alias']);
+$log_file = "log-".$alias;
 $size = @filesize($log_file);
 // Clear file if bigger than 5MB
 if($size > 5242880){
