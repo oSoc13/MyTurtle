@@ -9,6 +9,7 @@
 
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
+            log.debug("TURTLE - AIRPORT - Initialize");
             // prevents loss of 'this' inside methods
             _.bindAll(this, "refresh", "configure");
 
@@ -30,6 +31,7 @@
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         configure : function() {
+            log.debug("TURTLE - AIRPORT - Configure");
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
@@ -47,10 +49,14 @@
                             self.trigger("reset");
                         }
                     }
+                },
+                error: function(jqXHR, textStatus) {
+                    log.error("TURTLE - AIRPORT - Can't fetch station name: ", textStatus);
                 }
             });
         },
         refresh : function() {
+            log.debug("TURTLE - AIRPORT - Refresh");
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
@@ -58,7 +64,8 @@
             // refresh entries
             var self = this;
             self.fetch({
-                error : function() {
+                error : function(jqXHR, e) {
+                    log.error("TURTLE - AIRPORT - Can't fetch results: ", e.statusText);
                     // will allow the view to detect errors
                     self.options.error = true;
 
@@ -70,6 +77,7 @@
             });
         },
         url : function() {
+            log.debug("TURTLE - AIRPORT - Get URL");
             // Fetch the results from half an hour from now
             var today = new Date();
             today.addHours(1);
@@ -80,6 +88,7 @@
             return "http://data.irail.be/spectql/Airports/Liveboard/" + query + "/departures.limit(" + parseInt(this.options.limit) + "):json";
         },
         parse : function(json) {
+            log.info("TURTLE - AIRPORT - Parse results");
             // parse ajax results
             var liveboard = json.spectql;
 
@@ -101,6 +110,7 @@
 
     var view = Backbone.View.extend({
         initialize : function() {
+            log.debug("TURTLE - AIRPORT - Initialize view");
             // prevents loss of 'this' inside methods
             _.bindAll(this, "render");
 
@@ -118,6 +128,7 @@
             }
         },
         render : function() {
+            log.debug("TURTLE - AIRPORT - Render view");
             // only render when template file is loaded
             if (this.template) {
                 var data = {

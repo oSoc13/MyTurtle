@@ -1,6 +1,7 @@
 /*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
+ * @author: Michiel Vancoillie (michiel@irail.be)
  * @license: AGPLv3
  */
 

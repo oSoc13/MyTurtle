@@ -2,6 +2,7 @@
 
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
+            log.debug("TURTLE - WEATHER - Initialize");
             // prevents loss of 'this' inside methods
             _.bindAll(this, "refresh");
             _.bindAll(this, "url");
@@ -19,6 +20,7 @@
             refreshInterval = window.setInterval(this.refresh, 300000);
         },
         refresh : function() {
+            log.debug("TURTLE - WEATHER - Refresh");
             var self = this;
             // pick screen location when location is not set
             if(typeof self.options == "undefined" || self.options.location == null || self.options.location == ""){
@@ -40,12 +42,14 @@
             });
         },
         url : function() {
+            log.debug("TURTLE - WEATHER - Create URL");
             var self = this;
             var latitude = self.options.location.split(',')[0];
             var longitude = self.options.location.split(',')[1];
             return "https://data.flatturtle.com/Weather/Rainfall/" + encodeURIComponent(latitude) + "/" + encodeURIComponent(longitude) + ".json";
         },
         parse : function(json) {
+            log.info("TURTLE - WEATHER - Parse results");
             var data = json.Rainfall;
 
             // new array
@@ -57,42 +61,44 @@
             var raining = false;
 
             // now date object
-            var now = data[0].time;
+            if(data.length > 0){
+                var now = data[0].time;
 
-            for (var i in data) {
+                for (var i in data) {
 
-                // minutes from now
-                var delta = (data[i].time - now) / 60;
+                    // minutes from now
+                    var delta = (data[i].time - now) / 60;
 
-                // text
-                if (delta == 0)
-                    data[i].text = "now";
-                else if (delta > 60)
-                    data[i].text = "in " + Math.round(delta/60*10)/10 + " hours";
-                else if (delta == 60)
-                    data[i].text = "in 1 hour";
-                else
-                    data[i].text = "in " + delta + " min";
+                    // text
+                    if (delta == 0)
+                        data[i].text = "now";
+                    else if (delta > 60)
+                        data[i].text = "in " + Math.round(delta/60*10)/10 + " hours";
+                    else if (delta == 60)
+                        data[i].text = "in 1 hour";
+                    else
+                        data[i].text = "in " + delta + " min";
 
-                // raining?
-                data[i].regular = new Object();
-                data[i].regular.raining = parseInt(data[i].milimeter) != 0;
+                    // raining?
+                    data[i].regular = new Object();
+                    data[i].regular.raining = parseInt(data[i].milimeter) != 0;
 
-                if (i == 0) {
-                    // first item
-                    results.push(data[i]);
-                }else if(raining && !data[i].regular.raining) {
-                    // sunshine
-                    results.push(data[i]);
-                }else if(!raining && data[i].regular.raining) {
-                    // raining
-                    results.push(data[i]);
-                }else if(keepMinutes.indexOf(delta) > -1) {
-                    // delta is a keep value
-                    keep.push(data[i]);
+                    if (i == 0) {
+                        // first item
+                        results.push(data[i]);
+                    }else if(raining && !data[i].regular.raining) {
+                        // sunshine
+                        results.push(data[i]);
+                    }else if(!raining && data[i].regular.raining) {
+                        // raining
+                        results.push(data[i]);
+                    }else if(keepMinutes.indexOf(delta) > -1) {
+                        // delta is a keep value
+                        keep.push(data[i]);
+                    }
+
+                    raining = data[i].regular.raining;
                 }
-
-                raining = data[i].regular.raining;
             }
 
             // Add other data or keepers if there is not enough change
@@ -151,6 +157,7 @@
 
     var view = Backbone.View.extend({
         initialize : function() {
+            log.debug("TURTLE - WEATHER - Initialize view");
             // prevents loss of 'this' inside methods
             _.bindAll(this, "render");
 
@@ -167,6 +174,7 @@
             }
         },
         render : function() {
+            log.debug("TURTLE - WEATHER - Render view");
             // only render when template file is loaded
             if (this.template && this.collection.length) {
 

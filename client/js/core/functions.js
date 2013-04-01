@@ -11,7 +11,7 @@
  * Set a default timeout of 15 seconds for all ajax requests
  */
 $.ajaxSetup({
-	timeout: 15000
+    timeout: 15000
 });
 
 /*
@@ -33,17 +33,6 @@ function sort(items, attribute) {
     });
 
     $.each(list, function(idx, itm) { parent.append(itm); });
-}
-
-/*
- * Debugging object
- */
-var Debug = {
-    log : function(message) {
-        // check for console availability
-        if (window.console && console.log)
-            console.log(message)
-    }
 }
 
 /*
@@ -144,15 +133,3 @@ Date.prototype.addMinutes= function(m){
     this.setMinutes(this.getMinutes()+m);
     return this;
 }
-
-/**
- * Clones an object
- */
- function clone(obj) {
-     if (null == obj || "object" != typeof obj) return obj;
-     var copy = obj.constructor();
-     for (var attr in obj) {
-         if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
-     }
-     return copy;
- }

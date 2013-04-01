@@ -3,6 +3,7 @@
  * The panes object will take care of the available panes
  *
  * @author: Jens Segers (jens@irail.be)
+ * @author: Michiel Vancoillie (michiel@irail.be)
  * @license: AGPLv3
  */
 
@@ -22,6 +23,9 @@ window.Panes = (function() {
      * Create a new pane
      */
     function add(id, pane) {
+        id = parseInt(id);
+
+        log.info("PANES - Creating #" + id + " (" + pane.type + ")");
         // save pane
         panes[id] = pane;
 
@@ -67,11 +71,13 @@ window.Panes = (function() {
 
         // check if first pane and mark as active if so
         if (group.find(".pane.active").length == 0) {
+            log.info("PANES -   First in line: #" + id);
             pane.el.addClass("active");
         }
 
         // create first timer for rotation if more than 2 panes
         if (group.find(".pane").length > 1 && timers[pane.type] == null) {
+            log.info("PANES -  Added timer for #" + id);
             // get the previous pane
             var active = group.find(".pane.active").data('id');
 
@@ -88,10 +94,10 @@ window.Panes = (function() {
      * Remove a pane
      */
     function remove(id) {
-        if (panes[id] == null)
-            return Debug.log("Unknown pane instance: " + id);
+        log.info("PANES - Removing #" + id);
+        var pane = get(id);
+        if(!pane){ return; }
 
-        var pane = panes[id];
 
         // stop previous timeout if it is still running
         clearTimeout(timers[pane.type]);
@@ -102,6 +108,7 @@ window.Panes = (function() {
         }
         // remove element
         pane.el.remove();
+        var group = $(".group." + pane.type);
 
         delete panes[id];
 
@@ -110,24 +117,29 @@ window.Panes = (function() {
 
         // rotate to next pane
         this.rotate(pane.type);
-        // create next timer
-        timers[pane.type] = setTimeout(function() {
-            rotate(pane.type);
-        }, pane.duration);
+
+        if (group.find(".pane").length > 1 && timers[pane.type] == null) {
+            // create next timer
+            timers[pane.type] = setTimeout(function() {
+                rotate(pane.type);
+            }, pane.duration);
+        }
     }
 
     /*
      * Make a pane fullscreen
      */
     function fullscreen(id, duration) {
-        id = parseInt(id);
         duration = parseInt(duration);
 
         // default duration
         if (duration == undefined)
             duration = pane.duration;
 
-        var pane = panes[id];
+        log.info("PANES - Make #" + id + " fullscreen (" + duration + ")");
+
+        var pane = get(id);
+        if(!pane){ return; }
 
         // add fullscreen class
         pane.el.addClass("fullscreen");
@@ -152,7 +164,12 @@ window.Panes = (function() {
      * Reset a pane from fullscreen
      */
     function close(id) {
-        var pane = panes[id];
+        log.info("PANES - Close #" + id + " from fullscreen");
+        var pane = get(id);
+        if(!pane){ return; }
+
+        // clear timer
+        clearTimeout(timers['fullscreen']);
 
         // remove fullscreen class
         pane.el.removeClass("fullscreen");
@@ -162,7 +179,11 @@ window.Panes = (function() {
      * Change pane order
      */
     function order(id, order) {
-        var pane = panes[id];
+        order = parseInt(order);
+
+        log.info("PANES - Reorder #" + id + ": " + order);
+        var pane = get(id);
+        if(!pane){ return; }
         var group = $(".group." + pane.type);
 
         // set order on object
@@ -183,17 +204,24 @@ window.Panes = (function() {
      * Change pane display duration
      */
     function duration(id, ms) {
-        var pane = panes[id];
+        ms = parseInt(ms);
+
+        log.info("PANES - Change duration for #" + id + ": " + ms);
+        var pane = get(id);
+        if(!pane){ return; }
 
         // set duration on object
-        pane.duration = parseInt(ms);
+        pane.duration = ms;
     }
 
     /*
      * Change pane options
      */
     function options(id, options) {
-        var pane = panes[id];
+        log.info("PANES - Change options for #" + id);
+        log.debug("PANES -   New options: " + options);
+        var pane = get(id);
+        if(!pane){ return; }
 
         // Duration
         if(options.duration)
@@ -208,29 +236,36 @@ window.Panes = (function() {
     /*
      * Rotate to the next pane in a group
      */
-    function rotate(group) {
+    function rotate(type) {
+        log.info("PANES - Rotate group (" + type +")");
+
         // get the group and current active pane
-        var group = $(".group." + group);
-        var active = group.find(".pane.active");
+        var group = $(".group." + type);
+        if(group.length > 0){
+            var active = group.find(".pane.active");
 
-        // get the next pane
-        var next = active.next();
-        if (next.length == 0) {
-            next = group.find(".pane").first();
+            // get the next pane
+            var next = active.next();
+            if (next.length == 0) {
+                next = group.find(".pane").first();
+            }
+
+            // show next pane
+            show(next.data("id"));
+        }else{
+            log.warn("PANES - Non existing group: " + type);
         }
-
-        // show next pane
-        show(next.data("id"));
     }
 
     /*
      * Switch to a pane by id
      */
     function show(id) {
-        if (panes[id] == null)
-            return;
+        log.info("PANES - Show #" + id);
 
-        var pane = panes[id];
+        var pane = get(id);
+        if(!pane){ return; }
+
         var group = $(".group." + pane.type);
 
         // stop previous timeout if it is still running
@@ -266,25 +301,34 @@ window.Panes = (function() {
             Turtles.trigger($(this).data("id"), "shown");
         });
 
-        // create timer for next rotation
-        timers[pane.type] = setTimeout(function() {
-            rotate(pane.type);
-        }, pane.duration);
+
+        if (group.find(".pane").length > 1 && timers[pane.type] == null) {
+            // create timer for next rotation
+            timers[pane.type] = setTimeout(function() {
+                rotate(pane.type);
+            }, pane.duration);
+        }
     }
 
     /*
      * Get a panel by id
      */
     function get(id) {
-        return panes[id];
+        id = parseInt(id);
+        var pane = panes[id];
+        if (pane == null){
+            log.warn("PANES -   Unknown instance #" + id);
+            return false;
+        }
+        return pane;
     }
 
     /*
      * Append an element to a pane by id
      */
     function append(id, element) {
-        if (panes[id] == null)
-            return;
+        var pane = get(id);
+        if(!pane){ return; }
 
         // append
         panes[id].el.append(element);
@@ -297,8 +341,8 @@ window.Panes = (function() {
      * Check if a pane is active
      */
     function isActive(id) {
-        if (panes[id] == null)
-            return;
+        var pane = get(id);
+        if(!pane){ return; }
 
         return panes[id].el.hasClass("active");
     }

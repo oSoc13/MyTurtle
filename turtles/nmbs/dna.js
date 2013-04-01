@@ -112,8 +112,7 @@
                             url: "http://api.irail.be/vehicle/?id="+vehicle + "&format=json",
                             async: true,
                             success: function(data){
-                                data = JSON.parse(data);
-                                self.getConnections(data, clone(i));
+                                self.getConnections(data, i);
                             }
                         }
                         self.openRequestsObjects.push(xhr);
@@ -153,7 +152,6 @@
         },
         getConnections : function(data, i){
             var self = this;
-            console.log(i);
             if(data.stops && data.stops.stop && data.stops.stop.length > 2){
                 var stoparray = data.stops.stop;
 

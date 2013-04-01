@@ -4,262 +4,299 @@
  * basic interface, more functionality is added by prototype.
  *
  * @author: Jens Segers (jens@irail.be)
+ * @author: Michiel Vancoillie (michiel@irail.be)
  * @license: AGPLv3
  */
 
 window.Turtles = (function() {
 
-	// all known registered turtles
-	var turtles = {};
+    // all known registered turtles
+    var turtles = {};
 
-	// all active turtles
-	var instances = {};
+    // all active turtles
+    var instances = {};
 
-	/*
-	 * Register a new turtle interface
-	 */
-	function register(type, turtle) {
-		if (turtles[type] != null)
-			return Debug.log("Turtle already registered: " + type);
-		else if (typeof turtle != "object")
-			return Debug.log("Turtle has invalid type: " + type);
-		else
-			turtles[type] = turtle;
+    /*
+     * Register a new turtle interface
+     */
+    function register(type, turtle) {
+        log.info("TURTLES -     Registering: " + type);
+        log.debug("TURTLES -       Turtle: ", turtle);
+        if (turtles[type] != null){
+            log.warn("TURTLES -     Already registered: " + type);
+            return false;
+        }else if (typeof turtle != "object"){
+            log.error("TURTLES -     Invalid type: " + type);
+            return false;
+        }else{
+            turtles[type] = turtle;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	/*
-	 * Check if a turtle is registered
-	 */
-	function registered(type) {
-		return turtles[type] != null;
-	}
+    /*
+     * Check if a turtle is registered
+     */
+    function registered(type) {
+        return turtles[type] != null;
+    }
 
-	/*
-	 * Trigger an event for a turtle by id or all turtles by type
-	 */
-	function trigger(type, event) {
-		// trigger event turtle type
-		if (isNaN(type)) {
-			_(instances).each(function(instance, id) {
-				if (instance.type == type) {
-					if (typeof instance.collection == "object")
-						instance.collection.trigger(event);
-					if (typeof instance.view == "object")
-						instance.view.trigger(event);
-				}
-			});
-		}
-		// trigger event for turtle id
-		else {
-			if (instances[type] == null)
-				return Debug.log("Unknown turtle instance: " + type);
+    /*
+     * Trigger an event for a turtle by id or all turtles by type
+     */
+    function trigger(type, event) {
+        if (isNaN(type)) {
+            // trigger event turtle type
+            log.info("TURTLES - Trigger event (" + event + ") for type: " + type);
+            _(instances).each(function(instance, id) {
+                if (instance.type == type) {
+                    if (typeof instance.collection == "object")
+                        instance.collection.trigger(event);
+                    if (typeof instance.view == "object")
+                        instance.view.trigger(event);
+                }
+            });
+        }else {
+            // trigger event for turtle id
+            log.info("TURTLES - Trigger event (" + event + ") for #" + type);
+            if (instances[type] == null){
+                log.error("TURTLES - Unknown instance: #" + id);
+                return;
+            }
 
-			var instance = instances[type];
+            var instance = instances[type];
 
-			if (typeof instance.collection == "object")
-				instance.collection.trigger(event);
-			if (typeof instance.view == "object")
-				instance.view.trigger(event);
-		}
-	}
+            if (typeof instance.collection == "object")
+                instance.collection.trigger(event);
+            if (typeof instance.view == "object")
+                instance.view.trigger(event);
+        }
+    }
 
-	/*
-	 * Create a new turtle (backbone) instance
-	 */
-	function instantiate(type, id, pane, options) {
-		// get turtle specification
-		var turtle = turtles[type];
+    /*
+     * Create a new turtle (backbone) instance
+     */
+    function instantiate(type, id, pane, options) {
+        // get turtle specification
+        var turtle = turtles[type];
+        if(turtle == null){
+            log.error("TURTLES - Type (" + type + ") is not registered");
+            return;
+        }
+        log.info("TURTLES - Instantiate #"+ id + " (type: "+ type+ ", pane: #" + pane + ")");
 
-		// perpare instance object
-		var instance = {};
-		instance.type = type;
-		instance.id = id;
-		instance.pane = pane;
-		instance.el = options.el;
-		options.id = id;
+        // perpare instance object
+        var instance = {};
+        instance.type = type;
+        instance.id = parseInt(id);
+        instance.pane = pane;
+        instance.el = options.el;
+        options.id = id;
 
 
-		// assign model
-		instance.model = turtle.model || Backbone.Model.extend();
+        // assign model
+        instance.model = turtle.model || Backbone.Model.extend();
 
-		// build and assign collection
-		if (typeof turtle.collection == "function") {
-			instance.collection = new turtle.collection(turtle.models, options);
+        // build and assign collection
+        if (typeof turtle.collection == "function") {
+            instance.collection = new turtle.collection(turtle.models, options);
 
-			if (instance.collection.model == null)
-				instance.collection.model = instance.model;
+            if (instance.collection.model == null)
+                instance.collection.model = instance.model;
 
-			// link options
-			instance.collection.options = options;
-		}
+            // link options
+            instance.collection.options = options;
+        }
 
-		// build and assign view
-		if (typeof turtle.view == "function") {
-			instance.view = new turtle.view(_.extend(options, {
-				collection : instance.collection,
-				model : instance.model,
-				el : options.el
-			}));
+        // build and assign view
+        if (typeof turtle.view == "function") {
+            instance.view = new turtle.view(_.extend(options, {
+                collection : instance.collection,
+                model : instance.model,
+                el : options.el
+            }));
 
-			// link options
-			instance.view.options = options;
-		}
+            // link options
+            instance.view.options = options;
+        }
 
-		// trigger born event
-		if (typeof instance.collection == "object")
-			instance.collection.trigger("born");
-		if (typeof instance.view == "object")
-			instance.view.trigger("born");
+        // trigger born event
+        if (typeof instance.collection == "object")
+            instance.collection.trigger("born");
+        if (typeof instance.view == "object")
+            instance.view.trigger("born");
 
-		// save instance
-		instances[id] = instance;
-		return instance;
-	}
+        // save instance
+        instances[id] = instance;
+        return instance;
+    }
 
-	/*
-	 * Load a turtle dna with a callback (async)
-	 */
-	function load(type) {
-		// dna location
-		var source = "turtles/" + type + "/dna.js";
+    /*
+     * Load a turtle dna with a callback (async)
+     */
+    function load(type) {
+        // dna location
+        var source = "turtles/" + type + "/dna.js";
+        log.info("TURTLES - Load DNA ("+ source+ ")");
 
-		$.ajax({
-			url : source,
-			dataType : "script",
-			async : false, // to prevent duplicate javascript file loading
-			error : function() {
-				Debug.log("Unable to load turtle dna: " + type);
-			}
-		});
-	}
+        $.ajax({
+            url : source,
+            dataType : "script",
+            async : false, // prevent duplicate javascript file loading
+            error : function() {
+                log.error("TURTLES - Unable to load DNA: " + type);
+            }
+        });
+    }
 
-	/*
-	 * Grows baby turtles.
-	 */
-	function grow(type, id, pane, order, options) {
-		// check if turtle already exists
-		if (instances[id] != null)
-			return Debug.log("Turtle already exists: " + id);
+    /*
+     * Grows baby turtles.
+     */
+    function grow(type, id, pane, order, options) {
+        id = parseInt(id);
+        log.info("TURTLES - Grow #"+ id + " (type: "+ type+ ", pane: #" + pane + ", order: "+ order +")");
 
-		// load the turtle dna if needed
-		if (!registered(type))
-			load(type);
+        // check if turtle already exists
+        if (instances[id] != null){
+            log.error("TURTLES - Already exists: " + id);
+            return;
+        }
 
-		// check if dna was loaded
-		if (turtles[type] == null)
-			return Debug.log("Unknown turtle dna: " + type);
+        // load the turtle dna if needed
+        if (!registered(type))
+            load(type);
 
-		// options must be an object
-		if (options == null || typeof options != "object") {
-			options = {};
-		}
+        // check if dna was loaded
+        if (turtles[type] == null){
+            log.error("TURTLES - Unknown DNA: " + type);
+            return;
+        }
 
-		// create a placeholder
-		var placeholder = $('<section class="turtle ' + type + '" data-id="' + id + '" data-order="' + parseInt(order) + '"></section>');
-		options.el = placeholder;
+        // options must be an object
+        if (options == null || typeof options != "object") {
+            options = {};
+        }
 
-		// append placeholder to pane
-		Panes.append(pane, placeholder);
+        // create a placeholder
+        var placeholder = $('<section class="turtle ' + type + '" data-id="' + id + '" data-order="' + parseInt(order) + '"></section>');
+        options.el = placeholder;
 
-		// create a baby turtle
-		var instance = instantiate(type, id, pane, options);
+        // append placeholder to pane
+        Panes.append(pane, placeholder);
 
-		// check if pane is active and trigger event
-		if (Panes.isActive(pane)) {
-			Turtles.trigger(id, "shown");
-		}
+        // create a baby turtle
+        var instance = instantiate(type, id, pane, options);
 
-		// return our baby turtle
-		return instance;
-	}
+        // check if pane is active and trigger event
+        if (Panes.isActive(pane)) {
+            Turtles.trigger(id, "shown");
+        }
 
-	/*
-	 * Change a turtle's order
-	 */
-	function order(id, order) {
-		if (instances[id] == null)
-			return Debug.log("Unknown turtle instance: " + id);
+        // return our baby turtle
+        return instance;
+    }
 
-		var turtle = instances[id];
+    /*
+     * Change a turtle's order
+     */
+    function order(id, order) {
+        id = parseInt(id);
+        log.info("TURTLES - Reorder #"+ id + " (order: "+ order +")");
+        if (instances[id] == null){
+            log.error("TURTLES - Unknown instance: #" + id);
+            return;
+        }
 
-		// change order attribute
-		turtle.el.attr("data-order", parseInt(order));
+        var turtle = instances[id];
 
-		// sort turtles in this group
-		sort(turtle.el.parent().find(".turtle"));
-	}
+        // change order attribute
+        turtle.el.attr("data-order", parseInt(order));
 
-	/*
-	 * Change a turtle's options object
-	 */
-	function options(id, options) {
-		if (instances[id] == null)
-			return Debug.log("Unknown turtle instance: " + id);
+        // sort turtles in this group
+        sort(turtle.el.parent().find(".turtle"));
+    }
 
-		var turtle = instances[id];
+    /*
+     * Change a turtle's options object
+     */
+    function options(id, options) {
+        id = parseInt(id);
+        log.info("TURTLES - Set options for #"+ id);
+        log.debug("TURTLES -   Options: ", options);
+        if (instances[id] == null){
+            log.error("TURTLES - Unknown instance: #" + id);
+            return;
+        }
 
-		// update collection options
-		if (typeof turtle.collection != 'undefined')
-			turtle.collection.options = _.extend(turtle.collection.options, options);
+        var turtle = instances[id];
 
-		// update view options
-		if (typeof turtle.view != 'undefined')
-			turtle.view.options = _.extend(turtle.view.options, options);
+        // update collection options
+        if (typeof turtle.collection != 'undefined')
+            turtle.collection.options = _.extend(turtle.collection.options, options);
 
-		// trigger reconfigure event
-		trigger(id, "reconfigure");
-	}
+        // update view options
+        if (typeof turtle.view != 'undefined')
+            turtle.view.options = _.extend(turtle.view.options, options);
 
-	/*
-	 * Kill a turtle :(
-	 */
-	function kill(id) {
-		if (instances[id] == null)
-			return Debug.log("Unknown turtle instance: " + id);
+        // trigger reconfigure event
+        trigger(id, "reconfigure");
+    }
 
-		var turtle = instances[id];
+    /*
+     * Kill a turtle :(
+     */
+    function kill(id) {
+        id = parseInt(id);
+        log.info("TURTLES - Kill #"+ id);
+        if (instances[id] == null){
+            log.error("TURTLES - Unknown instance: #" + id);
+            return;
+        }
 
-		// trigger destroy event
-		trigger(id, "destroy");
+        var turtle = instances[id];
 
-		// remove placeholder
-		turtle.el.remove();
+        // trigger destroy event
+        trigger(id, "destroy");
 
-		// delete backbone objects
-		delete turtle.collection;
-		delete turtle.view;
-		delete turtle.model;
+        // remove placeholder
+        turtle.el.remove();
 
-		// delete instance
-		delete instances[id];
-	}
+        // delete backbone objects
+        delete turtle.collection;
+        delete turtle.view;
+        delete turtle.model;
 
-	/*
-	 * Kill all turtles in a specific pane
-	 */
-	function killByPane(pane_id) {
-		for(t in instances){
-			turtle = instances[t];
-			if(turtle.pane == pane_id){
-				this.kill(t);
-			}
-		}
-	}
+        // delete instance
+        delete instances[id];
+    }
 
-	/*
-	 * Public interface to this object
-	 */
-	return {
-		register : register,
-		registered : registered,
-		trigger : trigger,
-		grow : grow,
-		kill : kill,
-		killByPane : killByPane,
-		options : options,
-		order : order
-	};
+    /*
+     * Kill all turtles in a specific pane
+     */
+    function killByPane(pane_id) {
+        pane_id = parseInt(pane_id);
+        log.info("TURTLES - Kill all in pane #"+ pane_id);
+        for(t in instances){
+            turtle = instances[t];
+            if(turtle.pane == pane_id){
+                this.kill(t);
+            }
+        }
+    }
+
+    /*
+     * Public interface to this object
+     */
+    return {
+        register : register,
+        registered : registered,
+        trigger : trigger,
+        grow : grow,
+        kill : kill,
+        killByPane : killByPane,
+        options : options,
+        order : order
+    };
 
 }());

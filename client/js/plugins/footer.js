@@ -3,46 +3,50 @@
  * Footer RSS plugin
  *
  * @author: Jens Segers (jens@irail.be)
+ * @author: Michiel Vancoillie (michiel@irail.be)
  * @license: AGPLv3
  */
 
 var Footer = {
 
-	element : null,
+    element : null,
 
-	enable : function(source) {
-		// destroy previous message
-		Footer.destroy();
+    enable : function(source) {
+        // destroy previous message
+        Footer.destroy();
+        log.info("PLUGIN - FOOTER - Enable: " + source);
 
-		if (source.indexOf('http://') == 0 || source.indexOf('//') == 0) {
-			$.getJSON("//www.google.com/reader/public/javascript/feed/" + source + "?callback=?", function(data) {
-				var items = data.items.slice(0,5);
 
-				// create marquee element
-				Footer.element = $('<div id="message" class="scroll-footer"><div class="fade left"></div><div class="fade right"></div><marquee class="text-color"></marquee>');
+        if (source.indexOf('http://') == 0 || source.indexOf('//') == 0) {
+            $.getJSON("//www.google.com/reader/public/javascript/feed/" + source + "?callback=?", function(data) {
+                var items = data.items.slice(0,5);
 
-				// create content
-				for(var i in items) {
-					Footer.element.find('marquee').append('<span>' + items[i]['title'] + '</span>');
-				}
+                // create marquee element
+                Footer.element = $('<div id="message" class="scroll-footer"><div class="fade left"></div><div class="fade right"></div><marquee class="text-color"></marquee>');
 
-				$("footer").append(Footer.element);
-			});
-		} else {
-			// create marquee element
-			Footer.element = $('<div id="message" class="text-color">' + source + '</div>');
-			$("footer").append(Footer.element);
-		}
-	},
+                // create content
+                for(var i in items) {
+                    Footer.element.find('marquee').append('<span>' + items[i]['title'] + '</span>');
+                }
 
-	disable : function() {
-		// enable marquee style
-		if (Footer.element)
-			Footer.element.remove();
-	},
+                $("footer").append(Footer.element);
+            });
+        } else {
+            // create marquee element
+            Footer.element = $('<div id="message" class="text-color">' + source + '</div>');
+            $("footer").append(Footer.element);
+        }
+    },
 
-	destroy : function() {
-		Footer.disable();
-	}
+    disable : function() {
+        log.info("PLUGIN - FOOTER - Disable");
+        // enable marquee style
+        if (Footer.element)
+            Footer.element.remove();
+    },
+
+    destroy : function() {
+        Footer.disable();
+    }
 
 };

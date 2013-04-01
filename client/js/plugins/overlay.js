@@ -8,24 +8,26 @@
 
 var Overlay = {
 
-	element : null,
+    element : null,
 
-	enable : function(url) {
-		if (this.element != null) {
-			this.element.remove();
-		};
+    enable : function(url) {
+        log.info("PLUGIN - OVERLAY - Enable (url: + " + url + ")");
+        if (this.element != null) {
+            this.element.remove();
+        };
 
-		this.element = $('<div id="black-screen" style="background-image:url(\''+url+'\');"></div>');
-		$("body").append(this.element);
+        this.element = $('<div id="black-screen" style="background-image:url(\''+url+'\');"></div>');
+        $("body").append(this.element);
 
-		this.element.fadeIn();
-	},
+        this.element.fadeIn();
+    },
 
-	disable : function() {
-		var self = this;
-		this.element.fadeOut(200, function(){
-			self.element.remove();
-		});
-	}
+    disable : function() {
+        log.info("PLUGIN - OVERLAY - Disable");
+        var self = this;
+        this.element.fadeOut(200, function(){
+            self.element.remove();
+        });
+    }
 
 };

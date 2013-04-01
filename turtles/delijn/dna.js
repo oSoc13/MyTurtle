@@ -9,6 +9,7 @@
 
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
+            log.debug("TURTLE - DELIJN - Initialize");
             // prevents loss of 'this' inside methods
             _.bindAll(this, "refresh", "configure");
 
@@ -30,6 +31,7 @@
             refreshInterval = window.setInterval(this.refresh, 60000);
         },
         configure : function() {
+            log.debug("TURTLE - DELIJN - Configure");
             // Walking time
             var hours = Math.floor(this.options.time_walk/60);
             var minutes = Math.floor(this.options.time_walk%60);
@@ -60,6 +62,7 @@
             });
         },
         refresh : function() {
+            log.debug("TURTLE - DELIJN - Refresh");
             // don't fetch if there is no location
             if (this.options.location == null || !this.options.location)
                 return;
@@ -77,6 +80,7 @@
             });
         },
         url : function() {
+            log.debug("TURTLE - DELIJN - Create URL");
             var today = new Date();
             var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
 
@@ -84,6 +88,7 @@
             return "http://data.irail.be/DeLijn/Departures/" + query + ".json?offset=0&rowcount=" + parseInt(this.options.limit);
         },
         parse : function(json) {
+            log.info("TURTLE - DELIJN - Parse results");
             // this.options.station = json.Departures.location.name;
             // parse ajax results
             var liveboard = json.Departures;

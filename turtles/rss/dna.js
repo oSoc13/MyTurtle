@@ -1,6 +1,7 @@
 /*
  * FlatTurtle
  * @author: Jens Segers (jens@irail.be)
+ * @author: Michiel Vancoillie (michiel@irail.be)
  * @license: AGPLv3
  */
 
@@ -8,6 +9,7 @@
 
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
+            log.debug("TURTLE - RSS - Initialize");
             // prevents loss of "this" inside methods
             _.bindAll(this, "refresh");
 
@@ -28,13 +30,15 @@
             refreshInterval = window.setInterval(this.refresh, 240000);
         },
         refresh : function() {
+            log.debug("TURTLE - RSS - Refresh");
             // don't fetch if there is no feed
             if (this.options.feed == null || !this.options.feed)
                 return;
 
             var self = this;
             self.fetch({
-                error : function(jqXHR, textStatus, errorThrown) {
+                error : function(jqXHR, e) {
+                    log.error("TURTLE - RSS - Can't fetch results: ", e.statusText);
                     // will allow the view to detect errors
                     self.options.error = true;
 
@@ -45,13 +49,18 @@
             });
         },
         url : function() {
+            log.debug("TURTLE - RSS - Create URL");
             // remote source url
             return "//www.google.com/reader/public/javascript/feed/" + encodeURIComponent(this.options.feed) + "?callback=?";
         },
         parse : function(json) {
+            log.info("TURTLE - RSS - Parse results");
+
+            var entries = new Object();
+
+            try{
             this.options.source = json.title;
             var items = json.items.slice(0, this.options.limit - 1);
-            var entries = new Object();
 
             for (var i in items) {
                 var time = new Date(items[i].published * 1000);
@@ -69,6 +78,9 @@
                     entries.rss_feeds.push(items[i]);
                 }
             }
+        }catch(e){
+            console.log("éjkjljlk");
+        }
 
             // return only limited number if items
             return entries;
@@ -77,6 +89,7 @@
 
     var view = Backbone.View.extend({
         initialize : function() {
+            log.debug("TURTLE - RSS - Initialize view");
             // prevents loss of "this" inside methods
             _.bindAll(this, "render");
 
@@ -93,6 +106,7 @@
             }
         },
         render : function() {
+            log.debug("TURTLE - RSS - Refresh view");
             // only render when template file is loaded
             if (this.template) {
                 var data = {

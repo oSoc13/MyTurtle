@@ -1,4 +1,7 @@
 index.php
+client/logs/*
+!client/logs/logger.php
+
 
 ######################
 # OS generated files #
