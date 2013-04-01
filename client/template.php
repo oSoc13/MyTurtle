@@ -31,8 +31,13 @@
 
         <?php
             // Clear previous log file
-            $log_file = "client/logs/log-". preg_replace('/[^A-Za-z0-9_\-]/', '_', $alias);
-            $fh = fopen($log_file, 'w') or die("can't open file");
+            $safe_alias = preg_replace('/[^A-Za-z0-9_\-]/', '_', $alias);
+            $log_file = "client/logs/log". $safe_alias;
+            if(ENVIRONMENT == 'development'){
+                $log_file = "client/logs/log";
+                $safe_alias = "";
+            }
+            $fh = fopen($log_file, 'w') or die("Can't write to logs folder, make it writable");
             fclose($fh);
         ?>
         <script src="client/js/libs/log4javascript.js?<?php echo $rand; ?>"></script>
@@ -45,7 +50,7 @@
             var logPattern = new log4javascript.PatternLayout("%d{HH:mm:ss SSS} - %-6p > %m{10}");
 
             // Create an ajaxAppender
-            var ajaxAppender = new log4javascript.AjaxAppender("client/logs/logger.php?alias=<?php echo preg_replace('/[^A-Za-z0-9_\-]/', '_', $alias) ?>");
+            var ajaxAppender = new log4javascript.AjaxAppender("client/logs/logger.php?alias=<?php echo $safe_alias ?>");
             ajaxAppender.setLayout(logPattern);
 
             // Create a browserAppender
