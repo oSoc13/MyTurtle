@@ -974,6 +974,34 @@ ul li {
     line-height: 1.9em;
 }
 
+.info i{
+    display: inline;
+}
+
+.info h2{
+    margin: 25px 0px 20px 0px;
+}
+
+.info h3{
+    margin: 15px 0px 10px 0px;
+}
+
+.info ul {
+    list-style: disc !important;
+    list-style-type: disc !important;
+}
+
+.info ul li{
+    float: none !important;
+    list-style: disc !important;
+    list-style-type: disc !important;
+}
+
+.info ol, ul {
+    padding: 10px;
+    padding-left: 55px;
+}
+
 .rss {
     width: 96%;
     padding: 20px 2% 40px 2%;
