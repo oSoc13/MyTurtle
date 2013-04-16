@@ -22,6 +22,11 @@
             // default error value
             options.error = false;
 
+            // set type (departures | arrivals)
+            if(!options.type || options.type != "arrivals"){
+                options.type = "departures";
+            }
+
             // default limit
             if (!options.limit)
                 options.limit = 5;
@@ -85,7 +90,7 @@
 
             // remote source url
             // todo: add departures or arrivals
-            return "http://data.irail.be/spectql/Airports/Liveboard/" + query + "/departures.limit(" + parseInt(this.options.limit) + "):json";
+            return "http://data.irail.be/spectql/Airports/Liveboard/" + query + "/" + this.options.type + ".limit(" + parseInt(this.options.limit) + "):json";
         },
         parse : function(json) {
             log.info("TURTLE - AIRPORT - Parse results");
@@ -137,6 +142,7 @@
             if (this.template) {
                 var data = {
                     airport : this.options.airport || this.options.location,
+                    type: this.options.type.toUpperCase(),
                     entries : this.collection.toJSON(),
                     error : this.options.error // have there been any errors?
                 };
