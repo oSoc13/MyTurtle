@@ -44,6 +44,8 @@
             if (this.options.location == null || !this.options.location)
                 return;
 
+            this.options.location = this.options.location.toUpperCase();
+
             // get the airport name
             var self = this;
             $.ajax({
