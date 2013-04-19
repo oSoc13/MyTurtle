@@ -122,7 +122,7 @@ String.prototype.capitalize = function() {
  * Add a number of hours to a date
  */
 Date.prototype.addHours= function(h){
-    this.addMinutes(this.getHours()+(h*60));
+    this.addMinutes(h*60);
     return this;
 }
 

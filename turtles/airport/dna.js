@@ -9,6 +9,7 @@
 
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
+            var self = this;
             log.debug("TURTLE - AIRPORT - Initialize");
             // prevents loss of 'this' inside methods
             _.bindAll(this, "refresh", "configure");
@@ -33,7 +34,9 @@
 
             // automatic collection refresh each minute, this will
             // trigger the reset event
-            refreshInterval = window.setInterval(this.refresh, 60000);
+            setTimeout(function(){
+                refreshInterval = setInterval(self.refresh, 60000);
+            }, Math.round(Math.random()*5000));
         },
         configure : function() {
             log.debug("TURTLE - AIRPORT - Configure");
@@ -85,7 +88,16 @@
             log.debug("TURTLE - AIRPORT - Get URL");
             // Fetch the results from half an hour from now
             var today = new Date();
-            today.addHours(1);
+
+            // For arrivals remove quarter hour
+            if(this.options.type == "arrivals"){
+                today.addHours(-0.25);
+            }else{
+                // For departures add one hour
+                today.addHours(1);
+            }
+
+
             var query = encodeURIComponent(this.options.location) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
 
             // remote source url
@@ -98,9 +110,10 @@
             var liveboard = json.Liveboard[this.options.type];
             this.options.error = false;
 
-            liveboard = liveboard.slice(0, this.options.limit + 5);
+            liveboard = liveboard.slice(0, this.options.limit + 25);
 
             var today = new Date();
+            today.addHours(-0.25);
             today = today.getTime()/1000;
 
             if(liveboard.length > 0){

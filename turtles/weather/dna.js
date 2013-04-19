@@ -2,6 +2,7 @@
 
     var collection = Backbone.Collection.extend({
         initialize : function(models, options) {
+            var self = this;
             log.debug("TURTLE - WEATHER - Initialize");
             // prevents loss of 'this' inside methods
             _.bindAll(this, "refresh");
@@ -17,7 +18,9 @@
 
             // automatic collection refresh each 5 minutes, this will
             // trigger the reset event
-            refreshInterval = window.setInterval(this.refresh, 300000);
+            setTimeout(function(){
+                refreshInterval = setInterval(self.refresh, 300000);
+            }, Math.round(Math.random()*5000));
         },
         refresh : function() {
             log.debug("TURTLE - WEATHER - Refresh");
