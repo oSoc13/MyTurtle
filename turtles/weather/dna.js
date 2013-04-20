@@ -68,14 +68,16 @@
                 var now = data[0].time;
 
                 for (var i in data) {
-
                     // minutes from now
                     var delta = (data[i].time - now) / 60;
                     if(delta >= 0){
+                        // format the time
                         if (delta == 0)
                         data[i].text = "now";
+                        if (delta > 60 && delta%60 == 0)
+                            data[i].text = "in " + Math.round(delta/60) + " hours";
                         else if (delta > 60)
-                            data[i].text = "in " + Math.round(delta/60*10)/10 + " hours";
+                            data[i].text = "in " + Math.floor(delta/60) + "h" + Math.floor(delta%60);
                         else if (delta == 60)
                             data[i].text = "in 1 hour";
                         else
@@ -85,6 +87,7 @@
                         data[i].regular = new Object();
                         data[i].regular.raining = parseInt(data[i].milimeter) != 0;
 
+                        // select only the interesting results
                         if (i == 0) {
                             // first item
                             results.push(data[i]);
