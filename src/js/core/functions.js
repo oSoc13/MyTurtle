@@ -159,11 +159,11 @@ function formatTime(time){
  * Hash a string
  */
  String.prototype.hashCode = function(){
-     var hash = 0, i, char;
+     var hash = 0, i, character;
      if (this.length == 0) return hash;
      for (i = 0; i < this.length; i++) {
-         char = this.charCodeAt(i);
-         hash = ((hash<<5)-hash)+char;
+         character = this.charCodeAt(i);
+         hash = ((hash<<5)-hash)+character;
          hash = hash & hash; // Convert to 32bit integer
      }
      return hash;

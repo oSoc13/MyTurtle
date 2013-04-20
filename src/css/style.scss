@@ -1,10 +1,12 @@
 /*
- * FlatTurtle Screens >> StyleSheet
+ * FlatTurtle bvba
  *
- * StyleSheet for the FlatTurtle Screens.
- * Based on Boilerplate template.
- *
+ * Stylesheet for the FlatTurtle screens
  */
+
+@import "normalize";
+@import "leaflet";
+
 
 /* ==========================================================================
    Base styles: opinionated defaults
@@ -210,7 +212,7 @@ ul li {
     overflow: hidden;
     z-index: 2000;
     left: 0;
-    background: url(images/bg_transparant.png) repeat;
+    background: url(../images/bg_transparant.png) repeat;
 }
 
 /* ==========================================================================
@@ -266,36 +268,36 @@ ul li {
 }
 
 .list .header .train {
-    background-image: url(images/turtle_header_train.png);
+    background-image: url(../images/turtle_header_train.png);
 }
 
 .list .header .traffic {
-    background-image: url(images/turtle_header_car.png);
+    background-image: url(../images/turtle_header_car.png);
 }
 
 .list .header .plane {
-    background-image: url(images/turtle_header_plane.png);
+    background-image: url(../images/turtle_header_plane.png);
 }
 
 .list .header .tram.bus {
-    background-image: url(images/turtle_header_tram.png);
+    background-image: url(../images/turtle_header_tram.png);
 }
 
 .list .header .bike {
-    background-image: url(images/turtle_header_bike.png);
+    background-image: url(../images/turtle_header_bike.png);
 }
 
 .list .header .bus {
-    background-image: url(images/turtle_header_bus.png);
+    background-image: url(../images/turtle_header_bus.png);
 }
 
 .list .results .bus {
-    background-image: url(images/FT__0002_bus.png);
+    background-image: url(../images/FT__0002_bus.png);
     padding: 0;
 }
 
 .list .results .tram {
-    background-image: url(images/FT__0003_tram.png);
+    background-image: url(../images/FT__0003_tram.png);
     padding: 0;
 }
 
@@ -332,11 +334,11 @@ ul li {
 }
 
 .list .header .distance .bike {
-    background-image: url(images/turtle_distance_bike.png);
+    background-image: url(../images/turtle_distance_bike.png);
 }
 
 .list .header .distance .foot {
-    background-image: url(images/turtle_distance_walk.png);
+    background-image: url(../images/turtle_distance_walk.png);
 }
 
 /* ==========================================================================
@@ -532,7 +534,7 @@ ul li {
     height: 80px;
     width: 3px;
     position: absolute;
-    background: url(images/shadow_vertical.png) no-repeat;
+    background: url(../images/shadow_vertical.png) no-repeat;
     z-index: 1001;
     top: 0;
     right: -1.5px;
@@ -550,7 +552,7 @@ ul li {
     height: 80px;
     width: 15px;
     position: absolute;
-    background: url(images/shadow_active.png) no-repeat;
+    background: url(../images/shadow_active.png) no-repeat;
     z-index: 1001;
     top: 0;
     right: -15px;
@@ -641,7 +643,7 @@ ul li {
 
 .widget .weather .weatherBox:after {
     content: "";
-    background-image: url(images/shadow_bottom.png);
+    background-image: url(../images/shadow_bottom.png);
     background-size: 100%;
     background-position: center top;
     background-repeat: no-repeat;
@@ -654,39 +656,39 @@ ul li {
    Weather icons
    ========================================================================== */
 .mist {
-    background-image: url(images/FT__0000_mist.png);
+    background-image: url(../images/FT__0000_mist.png);
 }
 
 .bliksem {
-    background-image: url(images/FT__0001_bliksem.png);
+    background-image: url(../images/FT__0001_bliksem.png);
 }
 
 .sneeuw {
-    background-image: url(images/FT__0002_sneeuw.png);
+    background-image: url(../images/FT__0002_sneeuw.png);
 }
 
 .hagel {
-    background-image: url(images/FT__0003_hagel.png);
+    background-image: url(../images/FT__0003_hagel.png);
 }
 
 .zwareregen {
-    background-image: url(images/FT__0004_zwareregen.png);
+    background-image: url(../images/FT__0004_zwareregen.png);
 }
 
 .regen {
-    background-image: url(images/FT__0005_regen.png);
+    background-image: url(../images/FT__0005_regen.png);
 }
 
 .wisselvallig {
-    background-image: url(images/FT__0006_wisselvallig.png);
+    background-image: url(../images/FT__0006_wisselvallig.png);
 }
 
 .lichtbewolkt {
-    background-image: url(images/FT__0007_licht-bewolkt.png);
+    background-image: url(../images/FT__0007_licht-bewolkt.png);
 }
 
 .zon {
-    background-image: url(images/FT__0008_zonnig.png);
+    background-image: url(../images/FT__0008_zonnig.png);
 }
 
 /* ==============
@@ -897,7 +899,7 @@ ul li {
 
 .instgrm:after {
     content: "";
-    background-image: url(images/shadow_bottom.png);
+    background-image: url(../images/shadow_bottom.png);
     background-size: 100%;
     background-position: center top;
     background-repeat: no-repeat;
@@ -1198,7 +1200,7 @@ footer {
 footer:before {
     content: "";
     position: relative;
-    background-image: url(images/shadow_footer.png);
+    background-image: url(../images/shadow_footer.png);
     background-size: 100% auto;
     background-position: center bottom;
     background-repeat: no-repeat;
@@ -1249,12 +1251,12 @@ footer .scroll-footer .fade{
 
 footer .scroll-footer .fade.left{
     left: 0;
-    background-image: url(images/footer_fade_left.png);
+    background-image: url(../images/footer_fade_left.png);
 }
 
 footer .scroll-footer .fade.right{
     right: -1px;
-    background-image: url(images/footer_fade_right.png);
+    background-image: url(../images/footer_fade_right.png);
 }
 
 footer marquee {
@@ -1311,7 +1313,7 @@ footer marquee span {
     height: 80px;
     width: 15px;
     position: absolute;
-    background: url(images/shadow_clock.png) no-repeat;
+    background: url(../images/shadow_clock.png) no-repeat;
     z-index: 1001;
     top: 0;
     left: -15px;

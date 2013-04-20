@@ -167,6 +167,7 @@
                         this.connectionsRequest = $.ajax({
                             url: "https://data.flatturtle.com/NMBS/Vehicles/"+ vehicle_ids + ".json",
                             async: true,
+                            datatype: "json",
                             success: function(data){
                                 self.matchConnections(data);
                             }
@@ -183,7 +184,6 @@
         },
         matchConnections : function(data){
             var self = this;
-            data = JSON.parse(data);
             data = data.Vehicles;
 
             // match results from vehicles stops with via's
