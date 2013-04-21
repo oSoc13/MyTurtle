@@ -6,142 +6,19 @@
 
 @import "normalize";
 @import "leaflet";
+@import "base";
 
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-html,button,input,select,textarea {
-    color: #222;
-}
-
-i {
-    display: block;
-}
-
-div,ul,li,h1,h2,h3,h4,section,p,i {
-    background-repeat: no-repeat;
-    background-position: left center;
-}
-
-h2 {
-    display: block;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    font-weight: bold;
-}
-
-p {
-    display: block;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-}
-
-h5 {
-    display: block;
-    font-size: 0.75em;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
-
-body {
-    font-size: 19px;
-    line-height: 120%;
-    width: 100%;
-    height: 100%;
-    font-family: "Soho Gothic W01 Medium";
-    overflow: hidden;
-}
-
-#container {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 80px;
-    overflow: hidden;
-}
-
-/*
- * Remove text-shadow in selection highlight: h5bp.com/i
- * These selection declarations have to be separate.
- * Customize the background color to match your design.
- */
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
-/*
- * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
- */
-img {
-    vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/*
- * Allow only vertical resizing of textareas.
- */
-textarea {
-    resize: vertical;
-}
-
-ul,ul li {
-    list-style-type: none;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 0;
-}
-
-ul li {
-    float: left;
-}
+$default-color: #21aeb0;
 
 /* ==========================================================================
    Default colors and styles
    ========================================================================== */
 .bg-color {
-    background-color: #21aeb0;
+    background-color: $default-color;
 }
 
 .text-color {
-    color: #21aeb0;
+    color: $default-color;
 }
 
 .border-color {
@@ -156,7 +33,6 @@ ul li {
     color: #c30000;
 }
 
-
 .green {
     color: #10c300;
 }
@@ -168,177 +44,184 @@ ul li {
 /* ==========================================================================
    Groups 'n panes
    ========================================================================== */
-.group.list {
+.group{
     width: 50%;
-    float: left;
-    background-color: #CCC;
     overflow-y: hidden;
     overflow-x: hidden;
     height: 100%;
     position: relative;
     -webkit-overflow-scrolling: touch;
-}
 
-.group.widget {
-    width: 50%;
-    float: right;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    height: 100%;
-    position: relative;
-    -webkit-overflow-scrolling: touch;
+    &.list {
+        float: left;
+        background-color: #CCC;
+    }
+
+    &.widget {
+        float: right;
+    }
+
+    &.hidden{
+        position: absolute;
+        width: 100%;
+
+        .pane {
+            position: absolute;
+            left: 9000px;
+
+            &.fullscreen {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                z-index: 2000;
+                left: 0;
+                background: url(../images/bg_transparant.png) repeat;
+            }
+        }
+    }
 }
 
 .pane {
     width: 100%;
     position: absolute;
     left: 9000px;
+
+    &.active{
+        position: static;
+        left: 0;
+    }
 }
 
-.pane.active {
-    position: static;
-    left: 0;
-}
-
-.group.hidden .pane {
-    position: absolute;
-    left: 9000px;
-}
-
-.group.hidden .pane.fullscreen {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 2000;
-    left: 0;
-    background: url(../images/bg_transparant.png) repeat;
-}
 
 /* ==========================================================================
    List pane
    ========================================================================== */
-.list .turtle {
-    padding-bottom: 1px;
-    background-color: #FFF;
-}
+.list{
+    .turtle {
+        padding-bottom: 1px;
+        background-color: #FFF;
+    }
 
-.list .turtle:last-child {
-    padding-bottom: 0;
-}
+    .turtle:last-child {
+        padding-bottom: 0;
+    }
 
-.list .header {
-    width: 100%;
-    height: 80px;
-    color: #FFF;
-    background-color: #333;
-    position: relative;
-}
+    .header {
+        width: 100%;
+        height: 80px;
+        color: #FFF;
+        background-color: #333;
+        position: relative;
 
-.list .header>i {
-    width: 60px;
-    height: 60px;
-    float: left;
-    margin-top: 10px;
-    margin-left: 15px;
-    margin-right: 10px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-}
+        &>i{
+            width: 60px;
+            height: 60px;
+            float: left;
+            margin-top: 10px;
+            margin-left: 15px;
+            margin-right: 10px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+        }
 
-.list .header h2 {
-    float: left;
-    font-size: 1.5em;
-    line-height: 2.8em;
-    line-height: 80px;
-}
+        &>i+h2 {
+            margin-left: 5px;
+        }
 
-.list .header h4 {
-    float: left;
-    margin-left: 20px;
-    font-size: 1em;
-    line-height: 78px;
-    padding-top: 3px;
-    color: #888;
-}
+        h2{
+            float: left;
+            font-size: 1.5em;
+            line-height: 2.8em;
+            line-height: 80px;
+        }
 
-.list .header>i+h2 {
-    margin-left: 5px;
-}
+        h4{
+            float: left;
+            margin-left: 20px;
+            font-size: 1em;
+            line-height: 78px;
+            padding-top: 3px;
+            color: #888;
+        }
 
-.list .header .train {
-    background-image: url(../images/turtle_header_train.png);
-}
+        .train {
+            background-image: url(../images/turtle_header_train.png);
+        }
 
-.list .header .traffic {
-    background-image: url(../images/turtle_header_car.png);
-}
+        .traffic {
+            background-image: url(../images/turtle_header_car.png);
+        }
 
-.list .header .plane {
-    background-image: url(../images/turtle_header_plane.png);
-}
+        .plane {
+            background-image: url(../images/turtle_header_plane.png);
+        }
 
-.list .header .tram.bus {
-    background-image: url(../images/turtle_header_tram.png);
-}
+        .tram.bus {
+            background-image: url(../images/turtle_header_tram.png);
+        }
 
-.list .header .bike {
-    background-image: url(../images/turtle_header_bike.png);
-}
+        .bike {
+            background-image: url(../images/turtle_header_bike.png);
+        }
 
-.list .header .bus {
-    background-image: url(../images/turtle_header_bus.png);
-}
+        .bus {
+            background-image: url(../images/turtle_header_bus.png);
+        }
 
-.list .results .bus {
-    background-image: url(../images/FT__0002_bus.png);
-    padding: 0;
-}
 
-.list .results .tram {
-    background-image: url(../images/FT__0003_tram.png);
-    padding: 0;
-}
+        .distance {
+            height: 55px;
+            min-width: 120px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            line-height: 2.2em;
+            width: auto;
+            padding: 18px 10px 0 0px;
+            background: #232323;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #232323),
+                color-stop(100%, #333333) );
+            background: -webkit-linear-gradient(top, #232323 0%, #333333 100%);
+            background: linear-gradient(to bottom, #232323 0%, #333333 100%);
 
-.list .header .distance {
-    height: 55px;
-    min-width: 120px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    line-height: 2.2em;
-    width: auto;
-    padding: 18px 10px 0 0px;
-    background: #232323;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #232323),
-        color-stop(100%, #333333) );
-    background: -webkit-linear-gradient(top, #232323 0%, #333333 100%);
-    background: linear-gradient(to bottom, #232323 0%, #333333 100%);
-}
+            i {
+                float: left;
+                width: 40px;
+                height: 40px;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
 
-.list .header .distance i {
-    float: left;
-    width: 40px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+            p {
+                float: left;
+                width: auto;
+                font-size: 1em;
+                margin: 0 10px 0 0;
+                padding-left: 10px;
+            }
 
-.list .header .distance p {
-    float: left;
-    width: auto;
-    font-size: 1em;
-    margin: 0 10px 0 0;
-    padding-left: 10px;
-}
+            .bike {
+                background-image: url(../images/turtle_distance_bike.png);
+            }
 
-.list .header .distance .bike {
-    background-image: url(../images/turtle_distance_bike.png);
-}
+            .foot {
+                background-image: url(../images/turtle_distance_walk.png);
+            }
+        }
+    }
 
-.list .header .distance .foot {
-    background-image: url(../images/turtle_distance_walk.png);
+    .results{
+        .bus {
+            background-image: url(../images/FT__0002_bus.png);
+            padding: 0;
+        }
+
+        .tram {
+            background-image: url(../images/FT__0003_tram.png);
+            padding: 0;
+        }
+    }
 }
 
 /* ==========================================================================
