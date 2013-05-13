@@ -63,7 +63,7 @@
                     var today = new Date();
                     var query = this.options.type + "/" + encodeURIComponent(this.options.station) + "/" + today.format("{Y}/{m}/{d}/{H}/{M}");
 
-                    var url = "http://data.irail.be/NMBS/" + query + ".json";
+                    var url = "https://data.irail.be/NMBS/" + query + ".json";
                     var self = this;
                     $.getJSON(url, function(data){
                         self.parse(data);
