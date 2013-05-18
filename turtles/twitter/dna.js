@@ -56,7 +56,9 @@
             return "https://data.irail.be/spectql/twitter/search/" + encodeURIComponent(this.options.search) + "/results.limit(" + this.options.limit + "):json";
         },
         parse : function(json) {
+            
             var tweets = json.spectql;
+            this.options.error = false;
 
             // process tweets
             for (var i in tweets) {
