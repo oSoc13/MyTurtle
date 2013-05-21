@@ -54,8 +54,8 @@ window.Interface = (function() {
                   + ".bg-color { background-color: " + value + " !important; }\n"
                   + ".bg-color-light { background-color: " + lightColor + "; }\n"
                   + ".bg-color-dark { background-color: " + darkColor + "; }\n"
-                  + ".border-color { border-color: " + value + " transparent; }\n"
-                  + ".border-color-light { border-color: " + lightColor + " transparent; }\n"
+                  + ".border-color { border-color: " + value + "; }\n"
+                  + ".border-color-light { border-color: " + lightColor + "; }\n"
                   + ".text-shadow-light { text-shadow: 1px 1px 1px " + tinycolor.saturate(value).toRgbString() + "; }\n"
                   + ".text-shadow-dark { text-shadow: 1px 1px 1px " + darkColor.toRgbString() + "; }\n";
 

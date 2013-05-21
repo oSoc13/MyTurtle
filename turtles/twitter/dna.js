@@ -60,8 +60,6 @@
                 tweets[i].text = tweets[i].text.replace(/(@[\w-_]+)/g, '<span class="text-color-dark text-shadow-light">$1</span>');
                 // links                                  [   https://www.   |www.| domain.| ... ]
                 tweets[i].text = tweets[i].text.replace(/((https?:\/\/(\w\.)*|\w\.)[^\s]+\.[^\s]+)/g, '<span class="text-color-dark text-shadow-light">$1</span>');
-
-                console.log(tweets[i])
             }
 
             return tweets;

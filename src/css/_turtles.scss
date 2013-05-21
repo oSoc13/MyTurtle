@@ -344,11 +344,18 @@
     width: 100%;
     position: relative;
     display: block;
+
+    .clearfix{
+        margin-bottom: 3%;
+    }
 }
 
 .tweet .body {
-    padding: 25px;
+    width: 67%;
+    padding: 2%;
     line-height: 1.5em;
+    position: relative;
+    float: left;
 
     img{
         margin-right: 2%;
@@ -356,33 +363,42 @@
 }
 
 .tweet .author {
-    width: 100%;
+    width: 24%;
+    margin-left: 3%;
     height: 50px;
-}
+    float: left;
 
-.tweet .author h5 {
-    height: 35px;
-    line-height: 35px;
-    position: relative;
-    font-weight: normal;
-    margin: 0px;
-}
+    img{
+        margin-right: 15px;
+        float: left;
+        width: 48px;
+        height: 48px;
+    }
 
-.tweet .author .account{
-    padding-left: 8px;
+    h5 {
+        font-size: 17px;
+        position: relative;
+        font-weight: normal;
+        margin: 0px;
+    }
+
+    .account{
+        display: inline-block;
+        font-size: 15px;
+    }
 }
 
 .tweet .triangle {
     width: 0;
     height: 0;
     border-style: solid;
-    border-top-width: 20px;
-    border-left: 0px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom-color: transparent;
+    border-left-width: 15px;
+    border-right: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
     position: absolute;
-    top: 0px;
-    margin-left: 12px;
+    top: 10px;
+    right: -29px;
 }
 
 .villo {

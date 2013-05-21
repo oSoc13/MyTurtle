@@ -2,16 +2,18 @@
 <div class="tweet">
     <div class='body bg-color-light text-shadow-dark'>
         {{&text}}
+        <span class='triangle border-color-light'></span>
     </div>
     <div class="author">
+        {{#profile_image_url_https}}
+            <img src='{{profile_image_url_https}}'/>
+        {{/profile_image_url_https}}
         <h5>
-            {{#profile_image_url_https}}
-                <img src='{{profile_image_url_https}}' />
-            {{/profile_image_url_https}}
             {{from_user_name}}
-            <span class='account text-color-dark'>@{{from_user}}</span><span class='triangle border-color-light'></span>
         </h5>
+        <span class='account text-color-dark'>@{{from_user}}</span>
     </div>
+    <div class='clearfix'></div>
 </div>
 {{/entries}}
 {{^entries}}
