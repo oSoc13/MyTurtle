@@ -1,15 +1,21 @@
-{{#error}}
-    <div class="error bg-color-light">
-        <p>At this moment there are no tweet for '{{search}}' to display.</p>
-    </div>
-{{/error}}
 {{#entries}}
 <div class="tweet">
-    <p class='body bg-color-light'>
+    <div class='body bg-color-light text-shadow-dark'>
         {{&text}}
-    </p>
+    </div>
     <div class="author">
-        <h5>{{from_user_name}} <span class='account'>&ndash; @{{from_user}}</span><span class='triangle border-color-light'></span></h5>
+        <h5>
+            {{#profile_image_url_https}}
+                <img src='{{profile_image_url_https}}' />
+            {{/profile_image_url_https}}
+            {{from_user_name}}
+            <span class='account text-color-dark'>@{{from_user}}</span><span class='triangle border-color-light'></span>
+        </h5>
     </div>
 </div>
+{{/entries}}
+{{^entries}}
+    <div class="error bg-color-light text-shadow-dark">
+        <p>At this moment there are no tweet for '{{search}}' to display.</p>
+    </div>
 {{/entries}}

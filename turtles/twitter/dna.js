@@ -17,9 +17,6 @@
             this.on("refresh", this.refresh);
             this.on("reconfigure", this.refresh);
 
-            // default error value
-            options.error = false;
-
             // default hashtag
             if (!options.search)
                 options.search = "flatturtle";
@@ -42,10 +39,7 @@
             var self = this;
             self.fetch({
                 error : function() {
-                    // will allow the view to detect errors
-                    self.options.error = true;
-
-                    // if there are no previous items to show, display error message
+                    // if there are no previous items to show, display a message
                     if(self.length == 0)
                         self.trigger("reset");
                 }
@@ -56,18 +50,18 @@
             return "https://data.irail.be/spectql/twitter/search/" + encodeURIComponent(this.options.search) + "/results.limit(" + this.options.limit + "):json";
         },
         parse : function(json) {
-            
             var tweets = json.spectql;
-            this.options.error = false;
 
             // process tweets
             for (var i in tweets) {
                 // #tags
-                tweets[i].text = tweets[i].text.replace(/(#[\w-_]+)/g, '<span class="text-color">$1</span>');
+                tweets[i].text = tweets[i].text.replace(/(#[\w-_]+)/g, '<span class="text-color-dark text-shadow-light">$1</span>');
                 // @replies
-                tweets[i].text = tweets[i].text.replace(/(@[\w-_]+)/g, '<span class="text-color">$1</span>');
+                tweets[i].text = tweets[i].text.replace(/(@[\w-_]+)/g, '<span class="text-color-dark text-shadow-light">$1</span>');
                 // links                                  [   https://www.   |www.| domain.| ... ]
-                tweets[i].text = tweets[i].text.replace(/((https?:\/\/(\w\.)*|\w\.)[^\s]+\.[^\s]+)/g, '<span class="text-color">$1</span>');
+                tweets[i].text = tweets[i].text.replace(/((https?:\/\/(\w\.)*|\w\.)[^\s]+\.[^\s]+)/g, '<span class="text-color-dark text-shadow-light">$1</span>');
+
+                console.log(tweets[i])
             }
 
             return tweets;
@@ -96,9 +90,8 @@
             if(this.template) {
                 var data = {
                     search : this.options.search,
-                    entries : this.collection.toJSON(),
-                    error : this.options.error
-                };
+                    entries : this.collection.toJSON()
+                 };
 
                 // add html to container
                 this.$el.empty();
