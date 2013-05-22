@@ -50,6 +50,7 @@ window.Interface = (function() {
         var lightColor = tinycolor.lighten(value);
         var darkColor = tinycolor.desaturate(tinycolor.darken(value));
         var style = ".text-color { color: " + value + "; }\n"
+                  + ".text-color-light { color: " + lightColor + "; }\n"
                   + ".text-color-dark { color: " + darkColor + "; }\n"
                   + ".bg-color { background-color: " + value + " !important; }\n"
                   + ".bg-color-light { background-color: " + lightColor + "; }\n"

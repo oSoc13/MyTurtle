@@ -24,6 +24,8 @@
             // default limit
             if (!options.limit)
                 options.limit = 3;
+            else
+                options.limit = options.limit.trim();
 
             // automatic collection refresh each minute, this will
             // trigger the reset event
@@ -36,9 +38,12 @@
             if (this.options.search == null || !this.options.search)
                 return;
 
+
             var self = this;
             self.fetch({
-                error : function() {
+                error : function(d,e) {
+                    console.log(self.url());
+                    console.log(e);
                     // if there are no previous items to show, display a message
                     if(self.length == 0)
                         self.trigger("reset");
@@ -47,6 +52,7 @@
         },
         url : function() {
             // remote source url
+            //return "https://search.twitter.com/search.json?include_entities=true&result_type=recent&q=" + encodeURIComponent(this.options.search) + "&rpp=" + this.options.limit;
             return "https://data.irail.be/spectql/twitter/search/" + encodeURIComponent(this.options.search) + "/results.limit(" + this.options.limit + "):json";
         },
         parse : function(json) {
