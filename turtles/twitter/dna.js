@@ -42,8 +42,7 @@
             var self = this;
             self.fetch({
                 error : function(d,e) {
-                    console.log(self.url());
-                    console.log(e);
+                    console.log('errr');
                     // if there are no previous items to show, display a message
                     if(self.length == 0)
                         self.trigger("reset");
@@ -51,15 +50,17 @@
             });
         },
         url : function() {
-            // remote source url
-            //return "https://search.twitter.com/search.json?include_entities=true&result_type=recent&q=" + encodeURIComponent(this.options.search) + "&rpp=" + this.options.limit;
-            return "https://data.irail.be/spectql/twitter/search/" + encodeURIComponent(this.options.search) + "/results.limit(" + this.options.limit + "):json";
+            return "https://data.flatturtle.com/2/twitter/search/" + encodeURIComponent(this.options.search) + "/" + this.options.limit + ".json";
         },
         parse : function(json) {
-            var tweets = json.spectql;
+            var tweets = json.search.results;
 
             // process tweets
             for (var i in tweets) {
+                // date
+                var date = new Date(Date.parse(tweets[i].created_at));
+                tweets[i].created_at = getTimestamp(date);
+
                 // #tags
                 tweets[i].text = tweets[i].text.replace(/(#[\w-_]+)/g, '<span class="text-color-dark text-shadow-light">$1</span>');
                 // @replies
