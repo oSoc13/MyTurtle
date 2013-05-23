@@ -46,6 +46,7 @@
                 self.$el.html(Mustache.render(template, data));
             });
         }
+
     });
 
     // register turtle
