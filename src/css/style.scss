@@ -391,6 +391,14 @@ $default-color: #21aeb0;
             width: 100%;
             padding: 0px;
         }
+
+        &.fullheight{
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            margin: 3%;
+            padding: 0px;
+        }
     }
 }
 
