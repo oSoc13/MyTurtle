@@ -27,8 +27,6 @@
             else
                 options.limit = options.limit.trim();
 
-            options.size = "big";
-
             // automatic collection refresh each minute, this will
             // trigger the reset event
             setTimeout(function(){
