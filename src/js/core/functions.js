@@ -56,6 +56,11 @@ Date.prototype.format = function(format) {
         return date.getFullYear();
     });
 
+    // 4 digit year
+    format = format.replace('{y}', function() {
+        return date.getFullYear() % 100;
+    });
+
     // month with leading zero
     format = format.replace('{m}', function() {
         var month = date.getMonth() + 1;

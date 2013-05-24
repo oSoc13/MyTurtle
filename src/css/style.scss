@@ -16,6 +16,7 @@
 @import "turtles/finance";
 @import "turtles/rss";
 @import "turtles/image";
+@import "turtles/calendar";
 
 
 $default-color: #21aeb0;
@@ -177,6 +178,10 @@ $default-color: #21aeb0;
 
         .bus {
             background-image: url(../images/turtle_header_bus.png);
+        }
+
+        .calendar {
+            background-image: url(../images/turtle_header_calendar.png);
         }
 
 
