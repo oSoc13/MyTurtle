@@ -27,6 +27,8 @@
             else
                 options.limit = options.limit.trim();
 
+            options.size = "big";
+
             // automatic collection refresh each minute, this will
             // trigger the reset event
             setTimeout(function(){
@@ -95,7 +97,8 @@
             if(this.template) {
                 var data = {
                     search : this.options.search,
-                    entries : this.collection.toJSON()
+                    entries : this.collection.toJSON(),
+                    size: this.options.size
                  };
 
                 // add html to container

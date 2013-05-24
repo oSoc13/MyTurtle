@@ -19,7 +19,7 @@
             this.on("reconfigure", this.configure);
 
             setTimeout(function(){
-                refreshInterval = setInterval(self.refresh, 120000);
+                refreshInterval = setInterval(self.refresh, 300000);
             }, Math.round(Math.random()*5000));
         },
         configure : function() {
@@ -31,6 +31,8 @@
             // don't fetch if there is no url
             if (this.options.url == null || !this.options.url)
                 return;
+
+            this.options.error = false;
 
             var self = this;
             self.fetch({

@@ -16,10 +16,12 @@
             </div>
         </li>
         {{/entries}}
-        {{#error}}
-        <li class='error'>
-            <span class='message'>No planned events</span>
-        </li>
-        {{/error}}
+        {{^entries}}
+            {{#error}}
+            <li class='error'>
+                <span class='message'>No planned events</span>
+            </li>
+            {{/error}}
+        {{/entries}}
     </ul>
 </div>
