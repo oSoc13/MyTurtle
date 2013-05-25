@@ -61,6 +61,9 @@
                 var date = new Date(Date.parse(tweets[i].created_at));
                 tweets[i].created_at = getTimestamp(date);
 
+                if(tweets[i].expanded_text)
+                    tweets[i].text = tweets[i].expanded_text;
+
                 // #tags
                 tweets[i].text = tweets[i].text.replace(/(#[\w-_]+)/g, '<span class="text-color-dark text-shadow-light">$1</span>');
                 // @replies
