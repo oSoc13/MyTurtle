@@ -50,7 +50,8 @@
             });
         },
         url : function() {
-            return "https://data.flatturtle.com/2/twitter/search/" + encodeURIComponent(this.options.search) + "/" + this.options.limit + ".json";
+            // -RT filters retweets
+            return "https://data.flatturtle.com/2/twitter/search/" + encodeURIComponent(this.options.search) + " -RT/" + this.options.limit + ".json";
         },
         parse : function(json) {
             var tweets = json.search.results;
