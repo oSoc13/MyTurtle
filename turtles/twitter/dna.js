@@ -65,6 +65,10 @@
                 if(tweets[i].expanded_text)
                     tweets[i].text = tweets[i].expanded_text;
 
+                // only show first media entity
+                if(tweets[i].entities.media)
+                    tweets[i].media = tweets[i].entities.media[0];
+
                 // remove t.co links
                 tweets[i].text = tweets[i].text.replace(/(https?:\/\/t\.co\/[^\s]+)/g, '');
 

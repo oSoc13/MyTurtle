@@ -2,12 +2,11 @@
 <div class="tweet {{size}}">
     <div class='body bg-color-light text-shadow-dark'>
         <p>
-            {{#entities}}
-                {{#media}}
-                    <img src="{{media_url_https}}" />
-                {{/media}}
-            {{/entities}}
+            {{#media}}
+                <img src="{{media_url_https}}" />
+            {{/media}}
             {{&text}}
+            <span class='clearfix'></span>
         </p>
         <span class='time'>
             {{created_at}}

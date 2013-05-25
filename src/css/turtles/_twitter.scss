@@ -28,7 +28,7 @@
             margin-right: 2%;
             float: left;
             max-width: 200px;
-            max-height: 100%;
+            max-height: 94%;
         }
     }
 
@@ -87,9 +87,8 @@
             position: relative;
 
             p{
-                padding: 3%;
-                line-height: 1.5em;
                 font-size: 33px;
+                padding: 3%;
             }
 
             span.time{
@@ -102,13 +101,6 @@
                 text-align: right;
                 z-index: 5;
                 font-size: 26px;
-            }
-
-            img{
-                margin-right: 2%;
-                float: left;
-                max-width: 200px;
-                max-height: 100%;
             }
         }
 
@@ -147,16 +139,7 @@
 
 
         .triangle {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-bottom-width: 15px;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            position: absolute;
-            z-index: 555;
-            top: 25px;
-            right: 26%;
+            display: none;
         }
     }
 }
