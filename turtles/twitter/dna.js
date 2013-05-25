@@ -65,6 +65,9 @@
                 if(tweets[i].expanded_text)
                     tweets[i].text = tweets[i].expanded_text;
 
+                // remove t.co links
+                tweets[i].text = tweets[i].text.replace(/(https?:\/\/t\.co\/[^\s]+)/g, '');
+
                 // #tags
                 tweets[i].text = tweets[i].text.replace(/(#[\w-_]+)/g, '<span class="text-color-dark text-shadow-light">$1</span>');
                 // @replies
