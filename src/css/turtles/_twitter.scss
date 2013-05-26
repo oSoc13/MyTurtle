@@ -48,6 +48,7 @@
         top: 0px;
         right: 0px;
         bottom: 0px;
+        margin-right: -1px;
 
         img{
             margin-right: 15px;
@@ -104,9 +105,10 @@
                 display: block;
                 position: absolute;
                 top: 0px;
-                padding: 0px;
+                padding: 2% 0px;
                 right: 3%;
-                margin-top: 40px;
+                line-height: 58px;
+                height: 60px;
                 text-align: right;
                 z-index: 5;
                 font-size: 26px;
@@ -126,6 +128,7 @@
             left: 0px;
             height: 60px;
             width: 96%;
+            right: 0px;
 
             img{
                 margin: 0px;
