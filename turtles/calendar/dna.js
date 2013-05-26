@@ -8,10 +8,12 @@
 
     var collection = Backbone.Collection.extend({
 
+        data: null,
+
         initialize : function(models, options) {
             var self = this;
             // prevents loss of 'this' inside methods
-            _.bindAll(this, "refresh", "configure");
+            _.bindAll(this, "refresh", "configure", "refreshData");
 
             // bind events
             this.on("born", this.configure);
@@ -22,9 +24,13 @@
             setTimeout(function(){
                 refreshInterval = setInterval(self.refresh, 300000);
             }, Math.round(Math.random()*5000));
+
+
+            setTimeout(function(){
+                refreshInterval = setInterval(self.refreshData, 60000);
+            }, Math.round(Math.random()*5000));
         },
         configure : function() {
-
 
             this.trigger("reset");
         },
@@ -58,13 +64,16 @@
             return "https://data.flatturtle.com/2/Calendar/ICal/" + url + ".json";
         },
         parse : function(json) {
-
             // parse ajax results
-            var data = json.ical;
+            this.data = json.ical;
+            this.refreshData();
+        },
+        refreshData: function(){
+            var data = this.data;
+
             var calendar = [];
             var now = new Date();
             now_unix = now.getTime();
-
 
             for(var i in data){
                 // Check if event is happening now or in the future
@@ -96,10 +105,19 @@
                     data[i].start_date = null;
                     data[i].end_time = data[i].end_date;
                     data[i].end_date = null;
+
+
+                    if(end.getTime() - start.getTime() == 1000*60*60*24){
+                        data[i].end_time = null;
+                    }
                 }
 
                 // Replace \n
                 data[i].description = data[i].description.replace(/\\n/gi,"<br/>");
+
+
+                data[i].now = false;
+                data[i].next = false;
 
                 // Check if an event is happening now
                 if(start.getTime() <= now_unix &&
@@ -113,7 +131,8 @@
                 }
             }
 
-            return calendar;
+            this.options.events = calendar;
+            this.trigger("reset");
         }
     });
 
@@ -138,7 +157,7 @@
             // only render when template file is loaded
             if (this.template) {
                 var data = {
-                    entries : this.collection.toJSON(),
+                    entries : this.options.events,
                     error : this.options.error,
                     header: this.options.header,
                     size: this.options.size,

@@ -9,7 +9,11 @@
             <div class="time">
                 <div class='shift-right'>
                     <span class='icon-time'></span>
-                    {{start_time}} &mdash; {{end_time}}
+                    {{start_time}}
+                    {{#end_time}}
+                        &mdash;
+                        {{end_time}}
+                    {{/end_time}}
                     <span class='date'>
                         {{start_date}}
                         {{#end_date}}
