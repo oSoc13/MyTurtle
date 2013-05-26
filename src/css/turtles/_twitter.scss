@@ -15,6 +15,12 @@
             line-height: 1.5em;
             font-size: 25px;
             word-wrap: break-word;
+
+            .clearfix{
+                height: 1px;
+                margin: 0px;
+                padding: 0px;
+            }
         }
 
         span.time{
@@ -90,6 +96,8 @@
             p{
                 font-size: 33px;
                 padding: 3%;
+                padding-top: 2%;
+                position: relative;
             }
 
             span.time{
@@ -102,6 +110,10 @@
                 text-align: right;
                 z-index: 5;
                 font-size: 26px;
+            }
+
+            img{
+                max-width: 25%;
             }
         }
 

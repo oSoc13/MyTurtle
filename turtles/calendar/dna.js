@@ -32,8 +32,8 @@
             if (this.options.url == null || !this.options.url)
                 return;
 
-            if (this.options.title == null || !this.options.title)
-                this.options.title = "Calendar";
+            if (this.options.header == null || !this.options.header)
+                this.options.header = "Calendar";
 
 
             this.options.error = false;
@@ -109,7 +109,7 @@
                 var data = {
                     entries : this.collection.toJSON(),
                     error : this.options.error,
-                    title: this.options.title
+                    header: this.options.header
                 };
 
                 // add html to container
