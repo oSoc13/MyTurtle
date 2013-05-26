@@ -21,8 +21,6 @@
             font-size: 20px;
         }
 
-
-
         .clearfix{
             height: 1px !important;
             margin: 0px !important;
@@ -47,6 +45,10 @@
             max-width: 18%;
             float: left;
             margin-right: 2%;
+
+            &.media{
+                max-height: 100%;
+            }
         }
     }
 
