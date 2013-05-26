@@ -68,7 +68,11 @@
             for(var i in data){
                 // Check if event is happening now or in the future
                 if(data[i].end*1000 > now_unix){
-                    calendar.push(data[i]);
+                    // Check filter based on location
+                    if((this.options.filter && this.options.filter.length > 0 && data[i].location.toLowerCase() == this.options.filter.toLowerCase()) ||
+                        (!this.options.filter || this.options.filter == "")){
+                        calendar.push(data[i]);
+                    }
                 }else{
                     // Skip passed events
                     continue;
@@ -79,7 +83,7 @@
                 data[i].start_time = start.format("{H}:{M}");
                 data[i].start_date = start.format("{d}/{m}/{y}");
                 data[i].end_time = end.format("{H}:{M}");
-                data[i].end_date = end.format("{d}/{m}/{y}");
+                data[i].end_date = (end.format("{d}/{m}/{y}") != data[i].start_date)? end.format("{d}/{m}/{y}") : null;
             }
 
             return calendar;

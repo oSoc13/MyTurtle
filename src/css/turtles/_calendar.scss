@@ -1,41 +1,48 @@
 .turtle.calendar{
     .results{
         .info{
-            width: 65%;
-            float:left;
+            width: 96%;
+            padding: 0 2%;
 
             *{
                 display: block;
-                margin-left: 15px;
+                margin-left: 0px;
                 float: none;
+            }
+
+            .location{
+                color:#999;
             }
         }
 
+        h3{
+            width: 100%;
+        }
+
         .time{
-            width: 31%;
+            width: 96%;
             padding: 0 2%;
-            text-align: right;
+            margin: 0px;
             position: relative;
 
-            p{
-                text-align: right;
-                width: 70%;
-                margin:0px;
-                padding:0px;
+            .icon-time{
+                display: inline-block;
+                background:url(../images/icon_clock.png) no-repeat;
+                background-size: contain;
+                width: 20px;
+                height: 20px;
+                margin-right: 3px;
+                margin-top: 1px;
             }
 
-            span{
-                width: 30%;
-                text-align: left;
-                font-size: 15px;
-                position: absolute;
-                left: 72%;
-                color: #aaa;
-
-                &.end_date{
-                    top: 40px;
-                }
+            .date{
+                margin-left: 45px;
+                color: #999;
             }
+        }
+
+        .shift-right{
+            padding-left: 1.4%;
         }
     }
 

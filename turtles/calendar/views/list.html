@@ -6,13 +6,25 @@
     <ul>
         {{#entries}}
         <li>
-            <div class='info'>
-                <h3>{{summary}}</h3>
-                <p>{{location}}</p>
-            </div>
             <div class="time">
-                <p>From: {{start_time}}</p><span>{{start_date}}</span>
-                <p>To: {{end_time}}</p><span class='end_date'>{{end_date}}</span>
+                <div class='shift-right'>
+                    <span class='icon-time'></span>
+                    {{start_time}} &mdash; {{end_time}}
+                    <span class='date'>
+                        {{start_date}}
+                        {{#end_date}}
+                            &mdash;
+                            {{end_date}}
+                        {{/end_date}}
+                    </span>
+                </div>
+            </div>
+            <div class='info'>
+                <div class='shift-right'>
+                    <h3>{{summary}}</h3>
+                    <p>{{description}}</p>
+                    <p class='location'>{{location}}</p>
+                </div>
             </div>
         </li>
         {{/entries}}
