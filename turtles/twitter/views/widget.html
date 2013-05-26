@@ -6,7 +6,9 @@
                 <img src="{{media_url_https}}" />
             {{/media}}
             {{&text}}
-            <span class='clearfix'></span>
+            {{#media}}
+                <span class='clearfix'>&nbsp;</span>
+            {{/media}}
         </p>
         <span class='time'>
             {{created_at}}

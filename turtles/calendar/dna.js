@@ -32,6 +32,10 @@
             if (this.options.url == null || !this.options.url)
                 return;
 
+            if (this.options.title == null || !this.options.title)
+                this.options.title = "Calendar";
+
+
             this.options.error = false;
 
             var self = this;
@@ -104,7 +108,8 @@
             if (this.template) {
                 var data = {
                     entries : this.collection.toJSON(),
-                    error : this.options.error
+                    error : this.options.error,
+                    title: this.options.title
                 };
 
                 // add html to container
