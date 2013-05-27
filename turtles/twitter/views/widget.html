@@ -1,27 +1,31 @@
 {{#entries}}
 <div class="tweet {{size}}">
-    <div class='body bg-color-light text-shadow-dark'>
-        <p>
-            {{#media}}
-                <img src="{{media_url_https}}" class='media'/>
-            {{/media}}
-            {{&text}}
-            {{#media}}
-                <p class='clearfix'>&nbsp;</p>
-            {{/media}}
-        </p>
+    <div class="author bg-color-dark">
+        {{#profile_image_url_https}}
+            <img src='{{profile_image_url_https}}'/>
+        {{/profile_image_url_https}}
+        <h5>
+            {{from_user_name}}
+        </h5>
+        <span class='account text-color-light'>@{{from_user}}</span>
+
+
         <span class='time'>
             {{created_at}}
         </span>
+    </div>
 
-        <div class="author bg-color-dark">
-            {{#profile_image_url_https}}
-                <img src='{{profile_image_url_https}}'/>
-            {{/profile_image_url_https}}
-            <h5>
-                {{from_user_name}}
-            </h5>
-            <span class='account text-color-light'>@{{from_user}}</span>
+    <div class='body bg-color-light text-shadow-dark'>
+        <div>
+            <p>
+                {{#media}}
+                    <img src="{{media_url_https}}" class='media'/>
+                {{/media}}
+                {{&text}}
+            </p>
+            {{#media}}
+                <p class='clearfix'>&nbsp;</p>
+            {{/media}}
         </div>
     </div>
 </div>

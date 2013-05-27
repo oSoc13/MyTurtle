@@ -23,6 +23,12 @@
             width: 100%;
         }
 
+
+        li{
+            padding-top: 13px;
+            padding-bottom: 15px;
+        }
+
         .time{
             width: 96%;
             padding: 0 2%;
@@ -51,7 +57,6 @@
 
         .now{
             margin: 0px;
-            padding: 0px;
             position: relative;
 
             .message{
@@ -82,7 +87,7 @@
             font-size: 1.5em;
 
             li{
-                padding-top: 25px;
+                padding-top: 20px;
                 padding-bottom: 25px;
             }
 
