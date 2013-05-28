@@ -2,10 +2,10 @@
     <i class="calendar"></i>
     <h2>{{header}}</h2>
 </div>
-<div class="results">
+<div class="results {{size}}">
     <ul>
         {{#entries}}
-        <li>
+        <li class='{{label_class}}'>
             <div class="time">
                 <div class='shift-right'>
                     <span class='icon-time'></span>
@@ -22,10 +22,23 @@
             <div class='info'>
                 <div class='shift-right'>
                     <h3>{{summary}}</h3>
-                    <p>{{description}}</p>
+                    <p>{{{description}}}</p>
+                    {{^filter}}
                     <p class='location'>{{location}}</p>
+                    {{/filter}}
                 </div>
             </div>
+
+            {{#now}}
+            <div class='message bg-color-dark'>
+                NOW
+            </div>
+            {{/now}}
+            {{#next}}
+            <div class='message bg-color'>
+                NEXT
+            </div>
+            {{/next}}
         </li>
         {{/entries}}
         {{^entries}}

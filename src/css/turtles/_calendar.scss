@@ -2,7 +2,7 @@
     .results{
         .info{
             width: 96%;
-            padding: 0 2%;
+            padding: 5px 2%;
 
             *{
                 display: block;
@@ -12,6 +12,10 @@
 
             .location{
                 color:#999;
+            }
+
+            p{
+                line-height: 38px;
             }
         }
 
@@ -32,7 +36,7 @@
                 width: 20px;
                 height: 20px;
                 margin-right: 3px;
-                margin-top: 1px;
+                margin-top: 1px;;
             }
 
             .date{
@@ -43,6 +47,57 @@
 
         .shift-right{
             padding-left: 1.4%;
+        }
+
+        .now{
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+
+            .message{
+                display: table;
+                vertical-align: middle;
+                position: absolute;
+                text-align: center;
+                color: white;
+                width: 80px;
+                height: 40px;
+                padding: 0px;
+                margin: 0px;
+                top: 50%;
+                margin-top: -25px;
+                left: 0px;
+                z-index: 400;
+            }
+
+
+            .shift-right{
+                padding-left: 90px;
+            }
+
+        }
+
+
+        &.big{
+            font-size: 1.5em;
+
+            li{
+                padding-top: 25px;
+                padding-bottom: 25px;
+            }
+
+            .now{
+
+                .message{
+                    margin-top: -35px;
+                    width: 100px;
+                }
+
+
+                .shift-right{
+                    padding-left: 115px !important;
+                }
+            }
         }
     }
 

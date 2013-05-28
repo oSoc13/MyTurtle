@@ -7,6 +7,7 @@
 (function($) {
 
     var collection = Backbone.Collection.extend({
+
         initialize : function(models, options) {
             var self = this;
             // prevents loss of 'this' inside methods
@@ -81,9 +82,35 @@
                 var start = new Date((data[i].start * 1000));
                 var end = new Date((data[i].end * 1000));
                 data[i].start_time = start.format("{H}:{M}");
-                data[i].start_date = start.format("{d}/{m}/{y}");
+                data[i].start_date = start.formatDateString();
                 data[i].end_time = end.format("{H}:{M}");
-                data[i].end_date = (end.format("{d}/{m}/{y}") != data[i].start_date)? end.format("{d}/{m}/{y}") : null;
+                data[i].end_date = end.formatDateString();
+
+                // Event starts and ends on same day
+                if(data[i].end_date == data[i].start_date)
+                    data[i].end_date = null;
+
+                // Handle events that take all day, or multiple days
+                if(data[i].start_time == data[i].end_time && data[i].end_time == '00:00'){
+                    data[i].start_time = data[i].start_date;
+                    data[i].start_date = null;
+                    data[i].end_time = data[i].end_date;
+                    data[i].end_date = null;
+                }
+
+                // Replace \n
+                data[i].description = data[i].description.replace(/\\n/gi,"<br/>");
+
+                // Check if an event is happening now
+                if(start.getTime() <= now_unix &&
+                     end.getTime() >= now_unix){
+                    data[i].label_class = "now";
+                    data[i].now = true;
+                }else if(start.getTime() - now_unix < 1000*60*15){
+                    // Check if an event is coming up
+                    data[i].label_class = "now";
+                    data[i].next = true;
+                }
             }
 
             return calendar;
@@ -113,7 +140,9 @@
                 var data = {
                     entries : this.collection.toJSON(),
                     error : this.options.error,
-                    header: this.options.header
+                    header: this.options.header,
+                    size: this.options.size,
+                    filter: this.options.filter
                 };
 
                 // add html to container
