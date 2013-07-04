@@ -3,6 +3,7 @@ client/logs/*
 !client/logs/logger.php
 config.ini
 .sass-cache
+/*.json
 
 ######################
 # OS generated files #
