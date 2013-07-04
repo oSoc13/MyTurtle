@@ -1,0 +1,21 @@
+{{#entries}}
+<div class="event">
+    <div class='body bg-color-light text-shadow-dark'>
+        <div class="info">
+            {{#image}}
+                <img src="{{image}}" />
+            {{/image}}
+            <p>{{&location}}</p>
+        </div>
+        <div class="summary">
+            <h2>{{&name}}</h2>
+        </div>
+    </div>
+</div>
+{{/entries}}
+{{^entries}}
+    <div class="error bg-color-light text-shadow-dark">
+        <p>At this moment there are no events to display.</p>
+    </div>
+{{/entries}}
+

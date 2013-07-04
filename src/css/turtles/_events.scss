@@ -1,0 +1,59 @@
+.event {
+    width: 100%;
+    position: relative;
+    display: block;
+    margin-bottom: 3%;
+
+
+    .body {
+        width: 100%;
+        padding: 15px;
+        position: relative;
+        overflow: hidden;
+
+        .info {
+            width: 30%;
+            padding: 5px;
+            float: left;
+        }
+
+        .infolist {
+            width: 10%;
+            padding: 5px;
+            float: left;
+        }
+
+        .summarylist {
+            width: 85%;
+            line-height: 1.5em;
+            word-wrap: break-word;
+            float: left;
+
+            p{
+                font-size: 15px;
+            }
+        }
+
+
+        .summary {
+            width: 65%;
+            line-height: 1.5em;
+            word-wrap: break-word;
+            float: left;
+
+            p{
+                font-size: 15px;
+            }
+        }
+        .clearfix{
+            height: 2% !important;
+            margin: 0px !important;
+            padding: 2% !important;
+            font-size: 1px !important;
+        }
+
+        img{
+            width: 80%;
+        }
+    }
+}
