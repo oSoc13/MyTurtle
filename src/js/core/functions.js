@@ -40,6 +40,7 @@ function sort(items, attribute) {
  *
  * {Y} - 4 digit year
  * {m} - month with leading zero
+ * {mm} - month in three chars
  * {d} - day with leading zero
  * {H} - hours with leading zero
  * {h} - hours without leading zero
@@ -65,6 +66,12 @@ Date.prototype.format = function(format) {
     format = format.replace('{m}', function() {
         var month = date.getMonth() + 1;
         return (month < 10 ? "0" : "") + month;
+    });
+
+    // month with leading zero
+    format = format.replace('{mmm}', function() {
+        var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+        return monthNames[date.getMonth()];
     });
 
     // day with leading zero
