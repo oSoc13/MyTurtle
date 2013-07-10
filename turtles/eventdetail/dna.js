@@ -28,8 +28,10 @@
             this.on("born", this.refresh);
             this.on("refresh", this.refresh);
             this.on("reconfigure", this.refresh);
+            this.on("parsegeo", this.parse_geo);
 
-
+            // get the google maps api
+            $.getScript("//maps.google.com/maps/api/js?sensor=false&callback=geoLoaded");
 
             // automatic collection refresh each minute, this will
             // trigger the reset event
@@ -39,7 +41,7 @@
         },
         refresh : function() {
             // don't fetch if there are no credentials
-            if (this.options.user == null || !this.options.user || this.options.password == null || !this.options.password)
+            if (this.options.resource == null || !this.options.resource)
                 return;
 
             var self = this;
@@ -64,19 +66,42 @@
             * @param {Object} the object to check
             * @return {Boolean| Object} Returns false if empty, returns object if not empty.
             */
-            console.log(object)
             if(jQuery.isEmptyObject(object))
                 return false;
             else
                 return object;
         },
+        parse_geo : function() {
+            console.log("collection:" + this.collection.models);
+            for (var i in this.collection) {
+                var temp_location = this.collection[i].location.split('/'); 
+                temp_location = temp_location[temp_location.length-1]; // remove the rdf namespace for location
+                temp_location = temp_location.split(','); // split latitude and longitude
+                console.log(temp_location[temp_location.length-1]);
+
+                var geocoder = new google.maps.Geocoder();
+                var latLng = new google.maps.LatLng(temp_location[0],temp_location[1]);
+
+                if (geocoder) {
+                    geocoder.geocode({ 'latLng': latLng}, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            console.log(results[0].formatted_address);
+                        }
+                        else {
+                            console.log("Geocoding failed: " + status);
+                        }
+                    });
+                }
+            }
+            self.trigger("render");
+        },
         parse : function(json) {
-            console.log(json);
 
             // TODO: select event from correct id when semantic resource is completed
             // use this.options.eventid
-            var current_event = json.events.event[this.options.eventid];
-
+            var current_event = json[this.options.eventid];
+            
+            /*
             // reformat event from set
             // TODO: delete when resource follows http://schema.org/Event
             current_event.name = this.parse_object(current_event.ID1_titel) || this.parse_object(current_event.ID1_titel_fr) || 
@@ -88,7 +113,8 @@
             current_event.description = this.parse_object(current_event.ID2_beschrijving) || this.parse_object(current_event.ID2_beschrijving_fr) ||
                                         this.parse_object(current_event.ID2_beschrijving_en) || this.parse_object(current_event.ID2_beschrijving_du);
             // END TODO: delete until here
-
+            */
+            this.trigger("parsegeo");
             return current_event;
         }
     });
@@ -131,3 +157,11 @@
     });
 
 })(jQuery);
+
+// callback when the google maps api is ready
+if (typeof geoLoaded != "function") {
+    function geoLoaded() {
+        // trigger for all map turtles
+        Turtles.trigger("eventdetail", "parsegeo");
+    }
+}

@@ -14,6 +14,7 @@
 * @resource location of the resource with the events (items must follow http://schema.org/Event).
 * @user username for authentication if resource is protected
 * @pass password for authentication if resource is protected
+* @template select the template to render the list
 * @count number of items in the list
 */
 
@@ -35,26 +36,31 @@
             // automatic collection refresh each minute, this will
             // trigger the reset event
             setTimeout(function(){
-                refreshInterval = setInterval(self.refresh, 60000);
-            }, Math.round(Math.random()*5000));
+                refreshInterval = setInterval(self.refresh, 9000);
+            });
         },
         refresh : function() {
             // don't fetch if there are no credentials
-            if (this.options.user == null || !this.options.user || this.options.password == null || !this.options.password)
+            if (this.options.resource == null || !this.options.resource)
                 return;
 
-            var self = this;
-            self.fetch({
-                error : function(d,e) {
-                    console.log('errr');
-                    // if there are no previous items to show, display a message
-                    if(self.length == 0)
-                        self.trigger("reset");
-                }
-            });
+            if (this.length == 0){
+
+                var self = this;
+                self.fetch({
+                    error : function(d,e) {
+                        console.log('errr');
+                        // if there are no previous items to show, display a message
+                        if(self.length == 0)
+                            self.trigger("reset");
+                    }
+                });
+            } else {
+                this.trigger("reset");
+            }
+
         },
         url : function() {
-            //return "https://" + encodeURIComponent(this.options.user) + ":" + encodeURIComponent(this.options.password) + "@datahub.westtoer.be/sets/win/events.json";
             return this.options.resource;
         },
         parse_object : function(object) {
@@ -72,26 +78,18 @@
                 return object;
         },
         parse : function(json) {
-            console.log(json);
-            var events = json.events.event.slice(0,this.options.count);
+            var events = json;
 
-            // reformat events from set
-            // TODO: delete when resource follows http://schema.org/Event
             for (var i in events) {
-                // http://schema.org/Event
-
-                // code for parsing object from resource based on set
-                events[i].name = this.parse_object(events[i].ID1_titel) || this.parse_object(events[i].ID1_titel_fr) || 
-                                 this.parse_object(events[i].ID1_titel_en) || this.parse_object(events[i].ID1_titel_du);
-                events[i].location =  this.parse_object(events[i].ID18_straat) || this.parse_object(events[i].ID28_straat); 
-                events[i].location += " ";
-                events[i].location += this.parse_object(events[i].ID19_nummer) || this.parse_object(events[i].ID29_nr);
-                events[i].image = this.parse_object(events[i].ID14b_productbeeld) || null;
-                // end code for parsing object from resource based on set
+                eventdate = new Date(events[i].startDate);
+                events[i].day = eventdate.format("{d}");
+                events[i].month = eventdate.format("{mmm}");
             }
-            // END TODO: delete until here
 
             return events;
+        },
+        nextslide: function(json){
+            // 
         }
     });
 
@@ -99,6 +97,7 @@
         initialize : function() {
             // prevents loss of 'this' inside methods
             _.bindAll(this, "render");
+            this.current = 0;
 
             // bind render to collection reset
             this.collection.on("reset", this.render);
@@ -106,7 +105,7 @@
             // pre-fetch template file and render when ready
             var self = this;
             if(this.template == null) {
-                $.get("turtles/eventlist/views/widget.html", function(template) {
+                $.get("turtles/eventlist/views/" + this.options.template + ".html", function(template) {
                     self.template = template;
                     self.render();
                 });
@@ -116,12 +115,28 @@
             // only render when template file is loaded
             if(this.template) {
                 var data = {
-                    entries : this.collection.toJSON()
+                    entries : this.collection.at(this.current).toJSON()
                  };
+                 console.log(this.current);
+                 this.current++;
+                 if(this.current == this.collection.length){
+                    this.current = 0;
+                 }
 
                 // add html to container
                 this.$el.empty();
                 this.$el.html(Mustache.render(this.template, data));
+
+                // Temp hack for fullscreen
+                //TODO: implement fullscreen option in FlatTurtle Framework
+                this.$el.css( "position", "absolute" )
+                        .css( "top", "0" )
+                        .css( "left", "0" )
+                        .css( "right", "0" )
+                        .css( "bottom", "0" )
+                        .css( "margin", "0" )
+                        .css( "z-index", "111110" )
+                        .prependTo("body");
             }
         }
     });
