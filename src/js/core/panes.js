@@ -63,6 +63,19 @@ window.Panes = (function() {
             }
         }
 
+
+        // fullscreen mode
+        if (pane.type == "fullscreen")
+        {
+            // add fullscreen class
+            //pane.el.addClass("fullscreen");
+            // trigger event for turtles in this pane
+            //pane.el.find(".turtle").each(function() {
+            //    Turtles.trigger($(this).data("id"), "shown");
+            //});
+            fullscreen(pane.id, 0);
+        } 
+
         // append element
         group.append(pane.el);
 
@@ -88,6 +101,8 @@ window.Panes = (function() {
                 rotate(pane.type);
             }, panes[active].duration);
         }
+
+
     }
 
     /*
@@ -159,6 +174,7 @@ window.Panes = (function() {
             }, duration);
         }
     }
+
 
     /*
      * Reset a pane from fullscreen
@@ -291,6 +307,8 @@ window.Panes = (function() {
                  header.find('.nav[data-pane="' + id + '"]').addClass("active bg-color").prependTo(header);
              }
         }
+
+
 
         // get previous pane
         var prefpane = group.find(".pane.active");

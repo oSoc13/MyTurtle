@@ -8,7 +8,7 @@
 /**
 * Turtle README
 *
-* Turtle for event slides.
+* Turtle for fullscreen weather.
 *
 * Required options
 * @resource location of the resource with the events and attractions
@@ -29,14 +29,6 @@
             this.on("born", this.refresh);
             this.on("refresh", this.refresh);
             this.on("reconfigure", this.refresh);
-
-
-
-            // automatic collection refresh each minute, this will
-            // trigger the reset event
-            /*setTimeout(function(){
-                refreshInterval = setInterval(self.refresh, 3000);
-            });*/
             
 
         },
@@ -79,15 +71,9 @@
                 return object;
         },
         parse : function(json) {
-            var events = json;
+            var weather_items = json;
 
-            for (var i in events) {
-                eventdate = new Date(events[i].startDate);
-                events[i].day = eventdate.format("{d}");
-                events[i].month = eventdate.format("{mmm}");
-            }
-
-            return events;
+            return weather_items;
         }
     });
 
@@ -105,9 +91,9 @@
             // pre-fetch template file and render when ready
             var self = this;
             if(this.template == null) {
-                $.get("turtles/eventlist/views/" + this.options.template + ".html", function(template) {
+                $.get("turtles/weatherfullscreen/views/" + this.options.template + ".html", function(template) {
                     self.template = template;
-                    Panes.fullscreen(4,0);
+                    Panes.fullscreen(5,0);
                     self.render();
                 
                 });
@@ -116,7 +102,6 @@
         },
         pause : function(){
             Panes.close(this.options.thispaneid);
-            Panes.fullscreen(5,0);
         },
         render : function() {
             var self = this;
@@ -148,7 +133,7 @@
     });
 
     // register turtle
-    Turtles.register("eventlist", {
+    Turtles.register("weatherfullscreen", {
         collection : collection,
         view : view
     });
