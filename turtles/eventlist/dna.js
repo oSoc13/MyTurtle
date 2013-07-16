@@ -116,7 +116,7 @@
         },
         pause : function(){
             Panes.close(this.options.thispaneid);
-            Panes.fullscreen(5,0);
+            //Panes.fullscreen(5,0);
         },
         render : function() {
             var self = this;
@@ -138,11 +138,11 @@
 
                 // hack: if not first and a multiple of `count`: pause slides,
                 // else render again with new index.
-                if(this.current != 0 && this.current % this.options.count == 0 ){
-                    setTimeout(self.pause,this.options.timeout);
-                } else {
+                //if(this.current != 0 && this.current % this.options.count == 0 ){
+                //    setTimeout(self.pause,this.options.timeout);
+                //} else {
                     setTimeout(self.render,this.options.timeout);
-                }
+                //}
             }
         }
     });

@@ -93,7 +93,6 @@
             if(this.template == null) {
                 $.get("turtles/weatherfullscreen/views/" + this.options.template + ".html", function(template) {
                     self.template = template;
-                    Panes.fullscreen(5,0);
                     self.render();
                 
                 });
@@ -101,7 +100,7 @@
 
         },
         pause : function(){
-            Panes.close(this.options.thispaneid);
+            Panes.fullscreen(4,0);
         },
         render : function() {
             var self = this;
@@ -126,14 +125,14 @@
                 if(this.current != 0 && this.current % this.options.count == 0 ){
                     setTimeout(self.pause,this.options.timeout);
                 } else {
-                    setTimeout(self.render,this.options.timeout);
+                    //setTimeout(self.render,this.options.timeout);
                 }
             }
         }
     });
 
     // register turtle
-    Turtles.register("weatherfullscreen", {
+    Turtles.register("weatherunderground", {
         collection : collection,
         view : view
     });
